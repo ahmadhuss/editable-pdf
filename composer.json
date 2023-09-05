@@ -1,0 +1,20 @@
+{
+    "name": "leekim/editable-pdf",
+    "type": "project",
+    "description": "An API that takes html as input and outputs an editable pdf",
+    "keywords": ["api", "editable", "pdf"],
+    "require": {
+        "tecnickcom/tcpdf": "^6.6",
+        "symfony/http-foundation": "^6.0.20"
+    },
+    "autoload": {
+        "psr-4": {
+            "Leekim\\": ""
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    }
+}
