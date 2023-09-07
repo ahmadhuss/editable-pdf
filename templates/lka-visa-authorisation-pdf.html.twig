@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>LKA Visa Authorisation</title>
+    <style>
+        * {
+            font-size: 10px;
+        }
+
+        body {
+            font-family: Arial, "DejaVu Sans", sans-serif;
+        }
+
+        .table_bl_border {
+            border-top: 1px solid #dddddd;
+            border-right: 1px solid #dddddd;
+        }
+
+        .table_bl_border tr td {
+            border-bottom: 1px solid #dddddd;
+            border-left: 1px solid #dddddd;
+        }
+
+        .table_bl_border tr th {
+            border-bottom: 1px solid #dddddd;
+            border-left: 1px solid #dddddd;
+        }
+
+        .tl {
+            height: 23px;
+            line-height: 19px;
+            padding-left: 10px;
+            text-align: left;
+            font-size: 100%;
+        }
+
+        .rl {
+            height: 23px;
+            line-height: 19px;
+            padding-left: 10px;
+            text-align: left;
+            background-color: #ccccff;
+            font-weight: bold;
+            font-size: 140%;
+        }
+
+        .rl2 {
+            height: 23px;
+            line-height: 19px;
+            padding-left: 10px;
+            text-align: left;
+            background-color: #ccccff;
+            font-weight: normal;
+            font-size: 140%;
+        }
+
+        .ttl {
+            height: 23px;
+            line-height: 19px;
+            padding-left: 10px;
+            text-align: left;
+            font-size: 100%;
+        }
+
+        .ttc {
+            height: 23px;
+            line-height: 19px;
+            padding-left: 10px;
+            text-align: center;
+            font-size: 110%;
+        }
+
+        .tc {
+            height: 23px;
+            line-height: 19px;
+            padding-left: 10px;
+            text-align: center;
+        }
+
+        .tr {
+            height: 23px;
+            line-height: 19px;
+            padding-left: 10px;
+            text-align: right;
+        }
+
+        .pl {
+            height: 23px;
+            line-height: 19px;
+            padding-left: 10px;
+            text-align: left;
+            background-color: #efefef;
+            color: #333333;
+        }
+
+        .pc {
+            height: 23px;
+            line-height: 19px;
+            padding-left: 10px;
+            text-align: center;
+            background-color: #efefef;
+            color: #333333;
+        }
+
+        .pr {
+            height: 23px;
+            line-height: 19px;
+            padding-left: 10px;
+            text-align: right;
+            background-color: #efefef;
+            color: #333333;
+        }
+    </style>
+</head>
+
+<body>
+
+
+<table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td align="left"><img src="../public/assets/top.png"></td>
+    </tr>
+</table>
+
+<table border="1" cellspacing="0" cellpadding="0">
+    <tr style="font-family: Arial, Helvetica, sans-serif;">
+        <td class="rl2"> Declaration by Employer</td>
+    </tr>
+</table>
+<table border="1" cellspacing="0" cellpadding="0"
+       style="font-family: Arial, Helvetica, sans-serif;">
+    <tr>
+        <td width="16%" class="ttl"> Business Name</td>
+        <td width="84%"
+            class="ttl"> {{ company_name }}</td>
+    </tr>
+    <tr>
+        <td width="16%" class="ttl"> Business UEN</td>
+        <td width="84%"
+            class="ttl"> {{ uen }}</td>
+    </tr>
+    <tr>
+        <td width="16%" class="ttl"> Business Address</td>
+        <td width="84%"
+            class="ttl"> {{ address }}</td>
+    </tr>
+    <tr>
+        <td width="16%" class="ttl" style="line-height: 100%"> Representative
+            Name,<br>&nbsp;Designation
+        </td>
+        <td width="49%" class="ttl">
+            <form action="">
+                <select name="contact" style="font-size: 8px">
+                    <option value="blank"></option>
+                    <option value="DIRECTOR">{{ director }}
+                        , DIRECTOR
+                    </option>
+                    <option value="SECRETARY">{{ secretary }}
+                        , SECRETARY
+                    </option>
+                </select>
+            </form>
+        </td>
+        <td rowspan="3" class="ttl" width="35%" style="line-height: 15px;">
+            {% if datas.stamp %}
+                <table cellpadding="2">
+                    <tr>
+                        <td>Business Stamp,<br>Rep. Signature & Date</td>
+                        <td rowspan="2" style="line-height: 15px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <img width="70px"
+                                 src="static/stamp/{{ datas.file_name }}">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3"><img width="80px"
+                                             src="static/signature/LEE_YOUNGSANG_KEN.jpg">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <form action="">
+                                <input type="text" name="date" value=""
+                                       size="16">
+                            </form>
+                        </td>
+                    </tr>
+                </table>
+            {% else %}
+                Business Stamp,<br>&nbsp;&nbsp;Rep. Signature & Date
+            {% endif %}
+        </td>
+    </tr>
+    <tr>
+        <td width="16%" class="ttl"> Rep. NRIC/FIN No.</td>
+        <td width="49%" class="ttl">
+            <form action="">
+                <select name="contact001" style="font-size: 8px">
+                    <option value="blank_Contact"></option>
+                    <option value="ALD_DIRECTOR_ID_TYPE">{{ director_id }} </option>
+                    <option value="ACT_SECRETARY_ID_TYPE">{{ secretary_id }} </option>
+                </select>
+            </form>
+        </td>
+    </tr>
+    <tr>
+        <td width="16%" class="ttl"> Rep. Contact No.</td>
+        <td width="49%"
+            class="ttl"> {{ phone }} </td>
+    </tr>
+</table>
+<table border="1" cellspacing="0" cellpadding="0"
+       style="font-family: Arial, Helvetica, sans-serif;">
+    <tr>
+        <td width="5%" class="ttc">S/N</td>
+        <td width="40%" class="ttl"> Name of Foreign Worker(s)</td>
+        <td width="20%" class="ttc"> Passport / FIN / WP No.</td>
+        <td width="18%" class="ttc"> Work Pass Type</td>
+        <td width="17%" class="ttl" style="line-height: 100%" align="center">
+            Authorised Transaction
+        </td>
+    </tr>
+    <tr>
+        <td width="5%" class="ttc">1</td>
+        <td width="40%" class="ttl"> {{ applicant }}</td>
+        <td width="20%" class="tl">
+            <form action="">
+                <select name="FIN" style="font-size: 9px;">
+                    <option value="b"></option>
+                    <option value="FIN">{{ applicant_fin }}</option>
+                </select>
+            </form>
+        </td>
+        <td class="ttc"> {{ visa_type }}</td>
+        <td class="tl">
+            <form action="">
+                <select name="applies" style="font-size: 9px;">
+                    <option value="application">Application</option>
+                    <option value="renewal">Renewal</option>
+                    <option value="transfer">Transfer</option>
+                    <option value="cancellation">Cancellation</option>
+                </select>
+            </form>
+        </td>
+    </tr>
+    <tr>
+        <td width="5%" class="ttc">2</td>
+        <td width="40%" class="ttl"> NA</td>
+        <td width="20%" class="ttc"></td>
+        <td class="ttc"></td>
+        <td class="ttl"></td>
+    </tr>
+    <tr>
+        <td width="5%" class="ttc">3</td>
+        <td width="40%" class="ttl"> NA</td>
+        <td width="20%" class="ttc"></td>
+        <td class="ttc"></td>
+        <td class="ttl"></td>
+    </tr>
+    <tr>
+        <td width="5%" class="ttc">4</td>
+        <td width="40%" class="ttl"> NA</td>
+        <td width="20%" class="ttc"></td>
+        <td class="ttc"></td>
+        <td class="ttl"></td>
+    </tr>
+    <tr>
+        <td width="5%" class="ttc">5</td>
+        <td width="40%" class="ttl"> NA</td>
+        <td width="20%" class="ttc"></td>
+        <td class="ttc"></td>
+        <td class="ttl"></td>
+    </tr>
+</table>
+<table border="1" cellspacing="0" cellpadding="0">
+    <tr>
+        <td>
+            <table border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td width="5%" class="ttc">■</td>
+                    <td width="92%" class="ttl">I hereby declare that I am
+                        authorising <u>LEE KIM HR PTE. LTD.
+                            (14C7217)</u>
+                    </td>
+                    <td width="3%"></td>
+                </tr>
+                <tr>
+                    <td width="5%" class="ttl"></td>
+                    <td width="92%" class="ttl">(Name and licence no. of
+                        employment agency) to perform the above work pass
+                        transaction(s) on my behalf.
+                    </td>
+                    <td width="3%"></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+<table border="1" cellspacing="0" cellpadding="0">
+    <tr>
+        <td>
+            <table border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td width="1%" class="ttc"></td>
+                    <td width="96%" class="ttl">Fill in only if applicable.
+                    </td>
+                    <td width="3%"></td>
+                </tr>
+                <tr>
+                    <td width="5%" class="ttc">□</td>
+                    <td width="92%" class="ttl">I hereby authorise
+                        __________________________ (Full name as in
+                        NRIC/Passport), _________________
+                    </td>
+                    <td width="3%"></td>
+                </tr>
+                <tr>
+                    <td width="5%" class="ttc"></td>
+                    <td width="92%" class="ttl">(NRIC/Passport No.), to
+                        submit this authorisation form on my behalf. A copy
+                        of the representative’s
+                    </td>
+                    <td width="3%"></td>
+                </tr>
+                <tr>
+                    <td width="5%" class="ttl"></td>
+                    <td width="92%" class="ttl">NRIC/Passport is enclosed with
+                        this authorisation form.
+                    </td>
+                    <td width="3%"></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+<div style="height:5px;"></div>
+<table border="1" cellspacing="0" cellpadding="0">
+    <tr>
+        <td class="rl2"> Declaration by EA</td>
+    </tr>
+</table>
+<table border="1" cellspacing="0" cellpadding="0">
+    <tr>
+        <td>
+            <table border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td width="5%" class="ttc">■</td>
+                    <td width="92%" class="ttl">I have spoken to and verified
+                        with employer to confirm his / her authorisation.
+                    </td>
+                    <td width="3%"></td>
+                </tr>
+                <tr>
+                    <td width="5%" class="ttc">■</td>
+                    <td width="92%" class="ttl">I declare that I have verified
+                        the business details provided in this form in all
+                        publicly available search portals/websites.
+                    </td>
+                    <td width="3%"></td>
+                </tr>
+
+                <tr>
+                    <td width="5%" class="ttc">■</td>
+                    <td width="92%" class="ttl">I declare that I have ensured
+                        all necessary fields are filled in prior to making
+                        the abovementioned work pass transactions.
+                    </td>
+                    <td width="3%"></td>
+                </tr>
+
+                <tr>
+                    <td width="5%" class="ttc">■</td>
+                    <td width="92%" class="ttl">I declare that the information
+                        provided on this form is true and correct.
+                    </td>
+                    <td width="3%"></td>
+                </tr>
+            </table>
+            <table border="1" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td width="21%" class="ttl"> Name of EA personnel</td>
+                    <td width="45%" class="ttl"> LIN HUAYAN LAWRENCE</td>
+                    <td rowdiv="2" width="0%" class="ttl"
+                        style="line-height: 100%"> Signature & Date
+                        &nbsp;&nbsp;<img width="60px"
+                                         src="../public/assets/signature.png">
+                        <br>
+                        <form action="">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+                                    type="text" name="date"
+                                    value="{{ datas.lka_visa.field_visa_date }}"
+                                    size="9"
+                                    style="font-size: 10px;line-height: 19px;">
+                        </form>
+                        <br>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="21%" class="ttl"> Registration No.</td>
+                    <td width="45%" class="ttl"> R1440132</td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+<div></div>
+<br>
+<table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td align="left"><img src="../public/assets/bottom.png">
+        </td>
+    </tr>
+</table>
+</body>
+</html>
