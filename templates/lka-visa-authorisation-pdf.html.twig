@@ -194,13 +194,15 @@
     <tr>
         <td width="16%" class="ttl"> Rep. NRIC/FIN No.</td>
         <td width="49%" class="ttl">
-            <form action="">
-                <select name="contact001" style="font-size: 8px">
-                    <option value="blank_Contact"></option>
-                    <option value="ALD_DIRECTOR_ID_TYPE">{{ director_id }} </option>
-                    <option value="ACT_SECRETARY_ID_TYPE">{{ secretary_id }} </option>
-                </select>
-            </form>
+            {% if director_id or secretary_id %}
+                <form action="">
+                    <select name="contact001" style="font-size: 8px">
+                        <option value="blank_Contact"></option>
+                        <option value="ALD_DIRECTOR_ID_TYPE">{{ director_id }} </option>
+                        <option value="ACT_SECRETARY_ID_TYPE">{{ secretary_id }} </option>
+                    </select>
+                </form>
+            {% endif %}
         </td>
     </tr>
     <tr>
