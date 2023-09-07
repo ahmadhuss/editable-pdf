@@ -4,8 +4,9 @@
     "description": "An API that takes html as input and outputs an editable pdf",
     "keywords": ["api", "editable", "pdf"],
     "require": {
+        "symfony/http-foundation": "^6.0.20",
         "tecnickcom/tcpdf": "^6.6",
-        "symfony/http-foundation": "^6.0.20"
+        "twig/twig": "^3.7"
     },
     "autoload": {
         "psr-4": {
