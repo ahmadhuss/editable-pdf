@@ -20,8 +20,4 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
-        script: |
-          cd ${{ secrets.PATH }}
-          sudo -u ${{ secrets.LOGIN_USER }} git pull
-          sudo -u ${{ secrets.LOGIN_USER }} git status
-          composer install --prefer-dist --no-progress
+        
