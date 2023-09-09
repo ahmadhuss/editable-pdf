@@ -1,0 +1,27 @@
+name: Auto Deploy PHP App to Remote Server
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push event but only for the dev branch
+  push:
+    branches:
+      - master
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # Job name Build
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        script: |
+          cd ${{ secrets.PATH }}
+          sudo -u ${{ secrets.LOGIN_USER }} git pull
+          sudo -u ${{ secrets.LOGIN_USER }} git status
+          composer install --prefer-dist --no-progress
