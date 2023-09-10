@@ -16,6 +16,29 @@ use Twig\Loader\FilesystemLoader;
 $request = Request::createFromGlobals();
 if ($request->isMethod('GET')) {
 
+    $applicants = [];
+    if (isset($_GET['applicants'])) {
+        // The 'applicants' parameter is present in the query string
+        // "[{'applicant_id': 'APPL-00001', 'applicant': 'Hamza Ali', 'fin_no': '123456', 'visa_type': 'Dependants Pass'}]"
+        // Php Note:
+        // The problem here is that single quotes (') are used for enclosing keys
+        // and string values, which is not valid JSON. In JSON, double quotes (")
+        // should be used for both keys and string values. Once you correct the
+        // format, json_decode should be able to parse the JSON string correctly.
+        $applicantsQueryParam = $_GET['applicants'];
+
+        // Replace single quotes with double quotes
+        $applicantsQueryParam = str_replace("'", '"', $applicantsQueryParam);
+
+        // Convert the JSON string to a PHP array
+        $applicantsArray = json_decode($applicantsQueryParam, true);
+
+        // Check if $applicantsArray is not empty
+        if (!empty($applicantsArray)) {
+            $applicants = $applicantsArray;
+        }
+    }
+
     $data = [
         'company_name' => $request->query->get('company_name', ''),
         'uen' => $request->query->get('uen', ''),
@@ -27,10 +50,8 @@ if ($request->isMethod('GET')) {
         'secretary_id' => $request->query->get('secretary_id', ''),
         // Phone
         'phone' => $request->query->get('phone', ''),
-        // Applicant
-        'applicant' => $request->query->get('applicant', ''),
-        'applicant_fin' => $request->query->get('applicant_fin', ''),
-        'visa_type' => $request->query->get('visa_type', '')
+        // Applicants
+        'applicants' => $applicants
     ];
 
     // Load Twig
@@ -38,7 +59,7 @@ if ($request->isMethod('GET')) {
     $twig = new Environment($loader);
 
     // Render the first Twig template to generate HTML content
-    $templatePage1 = $twig->load('lka-visa-authorisation-pdf.html.twig');
+    $templatePage1 = $twig->load('lka-visa-all-authorisation-pdf.html.twig');
     $htmlContentPage1 = $templatePage1->render($data);
 
     // Render the second Twig template to generate HTML content
