@@ -4,12 +4,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>LKA Visa All Authorisation</title>
     <style>
-        body {
-            font-family: Arial, "DejaVu Sans", sans-serif;
-        }
-
         * {
             font-size: 10px;
+        }
+
+        body {
+            font-family: Arial, "DejaVu Sans", sans-serif;
         }
 
         .table_bl_border {
@@ -45,7 +45,25 @@
             font-size: 140%;
         }
 
+        .rl2 {
+            height: 23px;
+            line-height: 19px;
+            padding-left: 10px;
+            text-align: left;
+            background-color: #ccccff;
+            font-weight: normal;
+            font-size: 140%;
+        }
+
         .ttl {
+            height: 23px;
+            line-height: 19px;
+            padding-left: 10px;
+            text-align: left;
+            font-size: 100%;
+        }
+
+        .ttl2 {
             height: 23px;
             line-height: 19px;
             padding-left: 10px;
@@ -115,7 +133,7 @@
 
 <table border="1" cellspacing="0" cellpadding="0">
     <tr style="font-family: Arial, Helvetica, sans-serif;">
-        <td class="rl"> Declaration by Employer</td>
+        <td class="rl2"> Declaration by Employer</td>
     </tr>
 </table>
 <table border="1" cellspacing="0" cellpadding="0"
@@ -187,19 +205,20 @@
             Authorised Transaction
         </td>
     </tr>
-    {% for item in datas.lka_visa %}
+    {% for item in applicants %}
         <tr>
             <td width="5%" class="ttc">{{ loop.index }}</td>
-            <td width="40%" class="ttl"> {{ item.name }}</td>
+            <td width="40%" class="ttl2">
+                &nbsp;{{ item.applicant|upper }}</td>
             <td width="20%" class="tl">
                 <form action="">
                     <select name="FIN-{{ loop.index }}" style="font-size: 9px;">
                         <option value="b"></option>
-                        <option value="FIN">{{ item.field_visa_fin }}</option>
+                        <option value="FIN">{{ item.fin_no }}</option>
                     </select>
                 </form>
             </td>
-            <td class="ttc"> {{ item.field_visa_type }}</td>
+            <td class="ttc"> {{ item.visa_type }}</td>
             <td class="tl">
                 <form action="">
                     <select name="applies-{{ loop.index }}"
@@ -221,9 +240,9 @@
                 <tr>
                     <td width="5%" class="ttc">■</td>
                     <td width="92%" class="ttl">I hereby declare that I am
-                        authorising <b><u>LEE
-                                KIM HR PTE. LTD.
-                                (14C7217)</u></b>
+                        authorising <u>LEE
+                            KIM HR PTE. LTD.
+                            (14C7217)</u>
                     </td>
                     <td width="3%"></td>
                 </tr>
@@ -253,14 +272,14 @@
                 <tr>
                     <td width="5%" class="ttc">□</td>
                     <td width="92%" class="ttl">I hereby authorise
-                        __________________________ <b>(Full name as in
-                            NRIC/Passport)</b>, _________________
+                        __________________________ (Full name as in
+                        NRIC/Passport), _________________
                     </td>
                     <td width="3%"></td>
                 </tr>
                 <tr>
                     <td width="5%" class="ttc"></td>
-                    <td width="92%" class="ttl"><b>(NRIC/Passport No.)</b>, to
+                    <td width="92%" class="ttl">(NRIC/Passport No.), to
                         submit this
                         authorisation form on my behalf. A copy
                         of the representative’s
@@ -282,7 +301,7 @@
 <div style="height:5px;"></div>
 <table border="1" cellspacing="0" cellpadding="0">
     <tr>
-        <td class="rl"> Declaration by EA</td>
+        <td class="rl2"> Declaration by EA</td>
     </tr>
 </table>
 <table border="1" cellspacing="0" cellpadding="0">
@@ -334,7 +353,7 @@
                         style="line-height: 100%">
                         Signature & Date
                         &nbsp;&nbsp;<img width="60px"
-                                         src="../public/assets/bottom.png">
+                                         src="../public/assets/signature.png">
                         <br>
                         <form action="">
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
