@@ -1,0 +1,116 @@
+<html>
+<body>
+<h1 style="width:100%;text-align:center;">{{datas.title}} {{ datas.field_company_type }}</h1>
+<div style="width:100%;text-align:center;font-size:14px;">
+	(Company Registration Number: {{ datas.field_application_id }})<br/>
+	(Incorporated in the Republic of Singapore)
+</div>
+<hr style="border:solid height:10px;">
+<div style="width:100%; height:5px;"></div>
+<div style="width:100%;text-align:center;font-size:28px;font-weight:bold;">
+	Certificate of Corporate Seal
+</div>
+<hr style="border:solid height:10px;">
+<div style="width:100%; height:5px;"></div>
+<div style="width:100%;text-align:left;font-size:14px;"></div>
+</div>
+<div style="width:80%;text-align:left;font-size:14px;padding-left:100px;">
+	<table>
+		<tr>
+			<td width="25%"></td>
+			<td width="50%" border="1">
+				<p style="margin-left: 40px; margin-right: 0px">
+					<br/><br/>
+					<br/><br/>
+					<br/><br/>
+					<br/><br/>
+					<br/><br/>
+
+				</p>
+			</td>
+			<td  width="25%"></td>
+		</tr>
+	</table>
+</div>
+
+{#<div style="width:100%; height:5px;"></div>#}
+<div style="width:100%;text-align:left;font-size:16px;">
+	<table >
+		<tr>
+			<td width="25%" align="left" >
+				<p style="margin-left: 40px; margin-right: 0px">Company Name: </p>
+			</td>
+			<td width="75%">
+				<p style="margin-left: 40px; margin-right: 0px">
+					{{datas.title}} {{ datas.field_company_type }}
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="25%" align="left" >
+				<p style="margin-left: 40px; margin-right: 0px"><br/>Registration No. :</p>
+			</td>
+			<td width="75%">
+				<p style="margin-left: 40px; margin-right: 0px">
+					<br/>
+					{{ datas.field_application_id }}
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="25%" align="left" >
+				<p style="margin-left: 40px; margin-right: 0px"><br/>Registered Office<br/>Address :<br/></p>
+			</td>
+			<td width="75%">
+				<p style="margin-left: 40px; margin-right: 0px">
+					<br/>
+					{{ datas.field_address_line_1 }} {{ datas.field_address_line_2 }} ({{ datas.field_postcode }})
+				</p>
+			</td>
+		</tr>
+	</table>
+</div>
+<div style="width:100%;text-align:center;font-size:14px;">
+	<b>We certify that the above-pressed seal is the seal of the company.</b>
+</div>
+<div style="width:100%;text-align:left;font-size:14px;font-weight:bold;">
+	<div style="width:100%;text-align:left;font-size:14px;">
+		Dated :
+		<br/><br/>
+	</div>
+</div>
+<table border="0" cellpadding=0 cellspacing=0 width="90%" align="center">
+	<tr><td colspan="3" style="height:20px;"></td></tr>
+	{% for director in datas.directors %}
+		{% if loop.index % 2 == 1 %}
+			<tr>
+			<td style="width:40%; text-align:left;font-size:14px;">
+        <span style="color: white; font-size: 1px">_____________________________________________________________________
+            ___________________________________________{{ director.signature }}</span>
+        <hr>
+				<b>{{ director.full_name }}</b> <br/>
+				{{ director.field_position|upper }}
+			</td>
+			<td width="140"></td>
+		{% else %}
+			<td style="width:40%; text-align:left;font-size:14px;">
+        <span style="color: white; font-size: 1px">_____________________________________________________________________
+            ___________________________________________{{ director.signature }}</span>
+        <hr>
+				<b>{{ director.full_name }}</b> <br/>
+				{{ director.field_position|upper }}
+				<br/><br/>
+				<br/><br/>
+			</td>
+			</tr>
+		{% endif %}
+		{% if loop.index % 2 == 1 and loop.index == loop.length %}
+			<td>
+				&nbsp;
+			</td>
+			</tr>
+		{% endif %}
+	{% endfor %}
+</table>
+</body>
+</html>

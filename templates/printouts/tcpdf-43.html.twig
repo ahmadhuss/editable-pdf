@@ -1,0 +1,70 @@
+<html>
+  <body>
+    {% if datas.shareholders|length > 0 %}
+      {% for shareholder in datas.shareholders %}
+        <h2 style="width:100%;text-align:center;">REGISTER OF APPLICATIONS AND ALLOTMENTS ORDINARY</h2>
+        <div style="width:100%; height:10px;"></div>
+        <table>
+          <tr>
+            <td style="text-align:left;font-size:11px; font-weight: bold;">Name of Company:&nbsp;&nbsp;&nbsp;&nbsp;{{ datas.company_name }} {{ datas.field_company_type }}</td>
+            <td style="text-align:right;font-size:11px;">Page {{ loop.index }}</td>
+          </tr>
+        </table>
+        <div style="width:100%; height:5px;"></div>
+        <table cellpadding="4" border="3" width="100%">
+          <tr style="text-align:center;font-size:11px; font-weight: bold;">
+            <td class="tl" style="border: 1px solid #111" width="10%"><br/><br/>Date of Allotment</td>
+            <td class="tl" style="border: 1px solid #111" width="35%"><br/><br/>Name and Address</td>
+            <td class="tl" style="border: 1px solid #111" width="10%"><br/><br/>No of shares allotted</td>
+            <td class="tl" style="border: 1px solid #111" width="10%"><br/><br/>Amount paid In Cash</td>
+            <td class="tl" style="border: 1px solid #111" width="15%"><br/><br/>Allotted for consideration other than Cash</td>
+            <td class="tl" style="border: 1px solid #111" width="10%"><br/><br/>Certificate number</td>
+            <td class="tl" style="border: 1px solid #111" width="10%"><br/><br/>Member's folio no</td>
+          </tr>
+            {% for office in shareholder %}
+              <tr style="font-size: 11px">
+                <td class="tl" width="10%" style="text-align:center;border: 1px solid #111;">{% if office.date_allotment %}{{ office.date_allotment|date('d/m/Y') }}{% endif %}</td>
+                <td class="tl" width="35%" style="text-align:left;border: 1px solid #111;">{{ office.field_full_name }}</td>
+                <td class="tl" width="10%" style="text-align:center;border: 1px solid #111">{{ office.field_shareholder_shares_allotte }}</td>
+                <td class="tl" width="10%" style="text-align:center; border: 1px solid #111">{% if office.field_share_amount_paid %}${{ office.field_share_amount_paid }}{% endif %}</td>
+                <td class="tl" width="15%" style="text-align:center; border: 1px solid #111">{{ office.field_allotted_for_consideration }}</td>
+                <td class="tl" width="10%" style="text-align:center; border: 1px solid #111">{{ office.field_shareholder_certificate_no }}</td>
+                <td class="tl" width="10%" style="text-align:center; border: 1px solid #111">{{ office.field_members_folio_no }}</td>
+              </tr>
+              <tr style="font-size: 11px">
+                <td class="tl" style="border: 1px solid #111"></td>
+                <td class="tl" style="border: 1px solid #111">{{ office.field_address_line_1 }}</td>
+                <td class="tl" style="border: 1px solid #111"></td>
+                <td class="tl" style="border: 1px solid #111"></td>
+                <td class="tl" style="border: 1px solid #111"></td>
+                <td class="tl" style="border: 1px solid #111"></td>
+                <td class="tl" style="border: 1px solid #111"></td>
+              </tr>
+              <tr>
+                <td class="tl" style="border: 1px solid #111"></td>
+                <td class="tl" style="border: 1px solid #111">{{ office.field_address_line_2 }} {% if office.field_postal_code %}({{ office.field_postal_code }}){% endif %}</td>
+                <td class="tl" style="border: 1px solid #111"></td>
+                <td class="tl" style="border: 1px solid #111"></td>
+                <td class="tl" style="border: 1px solid #111"></td>
+                <td class="tl" style="border: 1px solid #111"></td>
+                <td class="tl" style="border: 1px solid #111"></td>
+              </tr>
+              <tr>
+                <td class="tl" style="border: 1px solid #111"></td>
+                <td class="tl" style="border: 1px solid #111"></td>
+                <td class="tl" style="border: 1px solid #111"></td>
+                <td class="tl" style="border: 1px solid #111"></td>
+                <td class="tl" style="border: 1px solid #111"></td>
+                <td class="tl" style="border: 1px solid #111"></td>
+                <td class="tl" style="border: 1px solid #111"></td>
+              </tr>
+            {% endfor %}
+        </table>
+        {% if loop.last %}
+        {% else %}
+          <br pagebreak="true" />
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  </body>
+</html>

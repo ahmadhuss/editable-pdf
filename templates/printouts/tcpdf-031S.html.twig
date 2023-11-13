@@ -1,0 +1,140 @@
+<html>
+<body>
+<style>
+  .bd {
+    border: 1px solid black;
+  }
+
+  .bdna {
+    border: 1px solid black;
+    vertical-align: middle;
+  }
+
+  .ftd {
+    width: 30%;
+    border: 1px solid black;
+  }
+
+  .std {
+    width: 25%;
+    border: 1px solid black;
+  }
+
+  .ttd {
+    width: 20%;
+    border: 1px solid black;
+  }
+
+  .fotd {
+    width: 25%;
+    border: 1px solid black;
+  }
+
+  .cl2 {
+    width: 35%;
+    border: 1px solid black;
+  }
+
+  .cl3 {
+    border: 1px solid black;
+    background-color: #D9D9D9;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .toptd {
+    border: 1px solid black;
+    background-color: #BFBFBF;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .p {
+    padding: 5px;
+  }
+
+  .cl4 {
+    width: 43%;
+    border: 1px solid black;
+  }
+
+  .cl5 {
+    width: 14%;
+    border: 1px solid black;
+  }
+
+  .input[type=checkbox] {
+    zoom: 2;
+  }
+</style>
+
+<table style="border-bottom:2px solid black; font-weight:bold; font-size:120%; cellspacing:0; cellpadding:0;">
+  <tr>
+    <td align="left">REGISTER OF NOMINEE SHAREHOLDERS</td>
+    <td align="right"> Annex E</td>
+  </tr>
+  <tr>
+    <td style="height:5px;"></td>
+  </tr>
+</table>
+
+<p style=" text-align: left; text-decoration: underline; font-weight:bold; font-size:92%;">{{ datas.company_name }} {{ datas.field_company_type }}   {{ datas.field_application_id }}</p>
+<table cellpadding="3px">
+  <tr>
+    <td class="cl2 cl3" width="15%"> Date of Entry / Update</td>
+    <td class="cl2 cl3" width="25%"> Name of Nominee Shareholder</td>
+    <td class="cl2 cl3" width="60%"> Particulars of Nominator</td>
+  </tr>
+
+  <tr>
+    <td class="bd" width="15%" style="text-align: center"><br/><br/>
+      {% if datas.officer.date_appointed_registrable is not null %}
+        {{ datas.officer.date_appointed_registrable|date('d/m/Y') }}
+      {% endif %}
+    </td>
+
+    {% if datas.doctype == 1  %}
+      <td class="bd" width="25%" style="text-align: center"><br/><br/>N/A</td>
+      <td class="bd" width="60%"><br/><br/>
+        The company has not received information on nominee shareholders of the company.
+        <br/><br/>
+        <br/><br/>
+        <br/><br/>
+        <br/><br/>
+      </td>
+    {% endif %}
+
+    {% if datas.doctype == 2  %}
+      <td class="bd" width="25%" style="text-align: center"><br/><br/>{{ datas.officer.nominee_shareholder }}</td>
+      <td class="bd" width="60%"><br/><br/>
+        Full Name: {{ datas.officer.field_full_name }} <br/><br/>
+        Residential Address: {{ datas.officer.field_address_line_1 }} {{ datas.officer.field_address_line_2 }} {{ datas.officer.field_postal_code }} <br/><br/>
+        Nationality: {{ datas.officer.field_nationality }} <br/><br/>
+        ID Card Number: {{ datas.officer.field_id_type }} {{ datas.officer.field_id_no }} <br/><br/>
+        Date of Birth: {{ datas.officer.field_date_of_birth|date('d/m/Y') }} <br/><br/>
+        Start date of Nominator: {% if datas.officer.date_appointed_registrable is not null %}{{ datas.officer.date_appointed_registrable|date('d/m/Y') }}{% endif %}<br/><br/>
+        Cessation date of Nominator: {% if datas.officer.date_ceased_as_registrable is not null %}{{ datas.officer.date_ceased_as_registrable|date('d/m/Y') }}{% endif %}
+        <br/><br/>
+      </td>
+    {% endif %}
+
+    {% if datas.doctype == 3  %}
+      <td class="bd" width="25%" style="text-align: center"><br/><br/>{{ datas.officer.nominee_shareholder }}</td>
+      <td class="bd" width="60%"><br/><br/>
+        Name: {{ datas.officer.field_full_name }} <br/><br/>
+        UEN: {{ datas.uen }} <br/><br/>
+        Registered Address: {{ datas.officer.field_address_line_1 }} {{ datas.officer.field_address_line_2 }} {{ datas.officer.field_postal_code }} <br/><br/><br/>
+        Legal form: {{ datas.officer.legal_form }}<br/><br/>
+        Jurisdiction: {{ datas.officer.jurisdiction }}<br/><br/>
+        Name of the Corporate Entity Register of the Jurisdiction: {{ datas.officer.corporate_entity_register }}<br/><br/><br/>
+        Registration Number on the Corporate Entity Register of the Jurisdiction: {{ datas.officer.field_id_no }}<br/><br/>
+        Start date of Nominator: {% if datas.officer.date_appointed_registrable is not null %}{{ datas.officer.date_appointed_registrable|date('d/m/Y') }}{% endif %}<br/><br/>
+        Cessation date of Nominator: {% if datas.officer.date_ceased_as_registrable is not null %}{{ datas.officer.date_ceased_as_registrable|date('d/m/Y') }}{% endif %}
+        <br/><br/>
+      </td>
+    {% endif %}
+  </tr>
+</table>
+
+</body>
+</html>

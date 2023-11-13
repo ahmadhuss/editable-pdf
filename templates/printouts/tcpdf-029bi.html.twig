@@ -1,0 +1,190 @@
+<html>
+<body>
+	<style>
+
+		.bd  { border: 1px solid black;	}
+		.bdna  { border: 1px solid black; vertical-align: middle;	}
+		.ftd { width: 30%; border: 1px solid black; }
+		.std { width: 25%; border: 1px solid black; }
+		.ttd { width: 20%; border: 1px solid black; }
+		.fotd{ width: 25%; border: 1px solid black; }
+		.cl2 { width: 35%; border: 1px solid black; }
+		.cl3   { border: 1px solid black ;background-color: #D9D9D9; text-align:center; font-weight: bold; }
+		.toptd { border: 1px solid black ;background-color: #BFBFBF; text-align:center; font-weight: bold; }
+		.p  {padding: 5px;}
+		.cl4 { width: 43%; border: 1px solid black; }
+		.cl5 { width: 14%; border: 1px solid black;}
+		.input[type=checkbox]{ zoom: 2;}
+
+	</style>
+		<table style="border-bottom:2px solid black; font-weight:bold; font-size:120%; cellspacing:0; cellpadding:0;">
+			<tr>
+				<td align="left" >NOTICE FOR CONTROLLERS</td>
+				<td align="right" > Annex B</td>
+			</tr>
+			<tr>
+				<td style="height:5px;"></td>
+			</tr>
+		</table>
+
+		<!-- <td width="52">&nbsp;</td> -->
+
+		<p style=" text-align: left; text-decoration: underline; font-weight:bold; font-size:100%;">Date of Notice: <b>{% if datas.field_company_effect_date is not null %}{{ datas.field_company_effect_date|date('d/m/Y') }}{% endif %}</b><br/><br/></p>
+		<p style="font-weight:bold; text-align: left;">Dear {{datas.officer.field_full_name}}</p>
+
+		<p style=" text-align:justify; text-indent:  8em;"> We know or have reasonable grounds to believe that you are a registrable controller of <b>{{ datas.company_name }} {{ datas.field_company_type }}</b></p>
+
+		<p style="text-align:justify; text-indent:  8em;"> This notice is sent under section 386AG(2)(a) of the Companies Act (Cap. 50) and requires you to
+provide the following information within 30 days after the date of this notice.</p>
+
+    <p style=" text-align:justify; text-indent:  8em;"> Please send your reply to {{ datas.field_address_line_1 }} {{ datas.field_address_line_2 }} {{ datas.field_postcode }}. Failure to provide the information required by this
+notice may be an offence.</p>
+
+    <p style="text-align:justify; text-indent:  8em;"> 1. Are you a registrable controller of <b>{{ datas.company_name }} {{ datas.field_company_type }}</b>?</p>
+    <p style="text-align:justify; text-indent:  14em;"> Your reply: Yes / <del>No</del> </p>
+    <p style="text-align:justify; text-indent:  8em;"> * Delete as appropriate. If your reply is yes and you are an individual, please provide the particulars in sub-paragraph
+      (a). If your reply is yes and you are a legal entity, please provide the particulars in sub-paragraph (b).
+    </p>
+
+		<p style="text-align: left;">(a) If your reply is yes and you are an individual, please provide the following particulars: </p>
+
+		<table cellpadding="3px">
+			<tr>
+				<td colspan="5" class="toptd" >Individual Information</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="bd">Full name (including any alias)</td>
+				<td colspan="3" class="bd">{{datas.officer.field_full_name}} </td>
+			</tr>
+			<tr >
+				<td colspan="2" class="bd">Address (residential/ place of business/ registered office)</td>
+				<td colspan="3" class="bd">{{datas.officer.field_address_line_1}} {{datas.officer.field_address_line_2}} {{datas.officer.field_postal_code}}  </td>
+			</tr>
+			<tr>
+				<td colspan="2" class="bd">Nationality</td>
+				<td colspan="3" class="bd">{{ datas.officer.field_nationality }} </td>
+			</tr>
+			<tr>
+			  <td colspan="2" class="bd">ID / Passport Number</td>
+				<td colspan="3" class="bd">{{datas.officer.field_id_type}} {{datas.officer.field_id_no}} </td>
+			</tr>
+			<tr>
+				<td colspan="2" class="bd">Date of Birth</td>
+				<td colspan="3" class="bd">{{datas.officer.field_date_of_birth|date('d/m/Y')}} </td>
+			</tr>
+
+			<tr>
+				<td colspan="2" class="bd">Contact number</td>
+				<td colspan="3" class="bd">{{datas.officer.field_mobile}} </td>
+			</tr>
+			<tr>
+				<td colspan="2" class="bd">The date on which you become an individual controller</td>
+				<td colspan="3" class="bd">{% if datas.officer.field_date_appointed_registrable is not null %}{{ datas.officer.field_date_appointed_registrable|date('d/m/Y') }}{% endif %}</td>
+			</tr>
+		</table>
+
+		<br/>
+		<p style="text-align: left;"><br/>
+		<p style="text-align: left;">(b) If your reply is yes and you are a legal entity, please provide the following particulars: </p>
+
+		<table cellpadding="3px">
+			<tr>
+				<td colspan="5" class="toptd" >Legal Entity Information</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="bd">Full name (including any alias)</td>
+				<td colspan="3" class="bd">  </td>
+			</tr>
+			<tr>
+				<td colspan="2" class="bd">Address (residential/ place of business/ registered office)</td>
+				<td colspan="3" class="bd">   </td>
+			</tr>
+			<tr>
+				<td colspan="2" class="bd">Nationality</td>
+				<td colspan="3" class="bd">  </td>
+			</tr>
+			<tr>
+			  <td colspan="2" class="bd">ID / Passport Number</td>
+				<td colspan="3" class="bd">  </td>
+			</tr>
+			<tr>
+				<td colspan="2" class="bd">Date of Birth</td>
+				<td colspan="3" class="bd">  </td>
+			</tr>
+
+			<tr>
+				<td colspan="2" class="bd">Contact number</td>
+				<td colspan="3" class="bd">  </td>
+			</tr>
+			<tr>
+				<td colspan="2" class="bd">The date on which you become an individual controller</td>
+				<td colspan="3" class="bd"> </td>
+			</tr>
+		</table>	 </p>
+
+    <br/>
+		<p style="text-align: left;"><br/>
+		<p style="text-align:justify; text-indent:  8em;"> 2. Do you know or have reasonable grounds to believe that any other person is a registrable
+controller of <b>{{ datas.company_name }} {{ datas.field_company_type }}</b> or is likely to have that knowledge?
+    </p>
+    <p style="text-align:justify; text-indent:  14em;"> Your reply: <del>Yes</del> / No </p>
+
+
+    <p style="text-align: left;">In this notice —</p>
+
+
+    <p style="text-align:justify; text-indent:  8em;"> “controller”, “corporate controller”, “individual controller” and “legal entity” have the meanings
+given to them in section 386AB of the Companies Act;</p>
+    <p style="text-align:justify; text-indent:  8em;"> “identity card” has the meaning given to it in section 2(1) of the National Registration
+Act (Cap. 201); “registrable” has the meaning given to it in section 386AC of the Companies Act.</p>
+    <p style="text-align: left;"><h3>SECRETARY</h3></p>
+    <table border="0" cellpadding=0 cellspacing=0 width="90%" align="center">
+      <tr><td colspan="3" style="height:20px;"></td></tr>
+      {% for secretories in datas.secretory %}
+        {% if loop.index % 2 == 1 %}
+          <tr>
+          <td style="width:40%; text-align:left;font-size:14px;">
+            <span style="color: white; font-size: 0.1px">_____________________________________________________________________
+                ___________________________________________{{ secretories.signature }}</span>
+            <hr><b>{{ secretories.full_name }}</b> <br/>
+            SECRETARY
+            <br/><br/>
+            <br/><br/>
+          </td>
+          <td width="140"></td>
+        {% else %}
+          <td style="width:40%; text-align:left;font-size:14px;">
+            <span style="color: white; font-size: 0.1px">_____________________________________________________________________
+                ___________________________________________{{ secretories.signature }}</span>
+            <hr><b>{{ secretories.full_name }}</b> <br/>
+            SECRETARY
+            <br/><br/>
+            <br/><br/>
+          </td>
+          </tr>
+        {% endif %}
+        {% if loop.index % 2 == 1 and loop.index == loop.length %}
+          <td>
+            &nbsp;
+          </td>
+          </tr>
+        {% endif %}
+      {% endfor %}
+    </table>
+	<p style="font-weight:bold; text-align: left;"><h3>CONTROLLER</H3></p>
+		<table border="0" cellpadding=0 cellspacing=0 width="90%" align="center">
+		  <tr><td colspan="3" style="height:20px;"></td></tr>
+      <tr>
+        <td style="width:40%; text-align:left;font-size:14px;">
+          <span style="color: white; font-size: 1px">_____________________________________________________________________
+          ___________________________________________{{ datas.share_holder.signature }}</span>
+          <hr><b>{{ datas.share_holder.full_name }}</b> <br/>
+          CONTROLLER
+          <br/>Date:<br/>
+          <br/><br/>
+        </td>
+      </tr>
+	  </table>
+
+</body>
+</html>

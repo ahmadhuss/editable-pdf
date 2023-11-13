@@ -1,0 +1,288 @@
+<style>
+  span {
+    font-size: 1px;
+    color: white;
+  }
+</style>
+<h1 style="width:100%;text-align:center;">{{ datas.company_name }} {{ datas.field_company_type }}</h1>
+<div style="width:100%; height:10px;"></div>
+<div style="width:100%;text-align:center;font-size:14px;line-height: 120%;">
+    (Company Registration Number: {% if datas.field_application_id is not null  %}
+        {{ datas.field_application_id }} {%  else  %} ________________ {% endif %})
+    <br/>(Incorporated the Republic of Singapore)
+</div>
+<div style="width:100%; height:5px;"></div>
+<div style="width:100%;text-align:center;font-size:14px;">
+    DIRECTORS' RESOLUTION IN WRITING MADE PURSUANT TO
+    <br>THE CONSTITUTION OF THE COMPANY
+</div>
+
+<hr height="3"></hr>
+
+<table border="0" width="655">
+    <tr><td colspan="3" height="20"></td></tr>
+    <tr><td colspan="3" height="20"></td></tr>
+    <tr>
+        <td width="32">&nbsp;</td>
+        <td width="569"><p><b>1. INCORPORATION</b></p></td>
+        <td width="32">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="52">&nbsp;</td>
+        <td width="550" style="text-align:justify;">
+            <br/>
+            <br/>IT WAS NOTED :
+            <br/>
+        </td>
+    </tr>
+
+    <tr>
+        <td width="52">&nbsp;</td>
+        <td width="20">(a) </td>
+        <td width="530" style="text-align:justify;">
+            <br/>THAT the company was incorporated on the {% if datas.field_company_effect_date is not null  %}
+            {{ datas.field_company_effect_date|date('d/m/Y') }} {%  else  %} ________________ {% endif %}<br/>
+        </td>
+    </tr>
+
+    <tr>
+        <td width="52">&nbsp;</td>
+        <td width="20">(b) </td>
+        <td width="530" style="text-align:justify;">
+            <br/>THAT the Notice of Incorporation No. {% if datas.field_application_id is not null  %}
+                {{ datas.field_application_id }} {%  else  %} ________________ {% endif %} was issued by the Accounting and
+            Corporate Regulatory Authority, Singapore, as attached and that the name of the Company
+            will be duly displayed at the Company’s registered office.
+            <br/>
+        </td>
+    </tr>
+
+    <tr>
+        <td width="52">&nbsp;</td>
+        <td width="20">(c) </td>
+        <td width="530" style="text-align:justify;">
+            <br/>THAT the copies of the Constitution registered with the
+            Accounting Corporate Regulatory Authority, Singapore have been printed and are
+            available.
+            <br/>
+            <br/>
+        </td>
+    </tr>
+
+    <tr>
+        <td width="32">&nbsp;</td>
+        <td width="569"><p><b>2. FIRST DIRECTORS</b></p></td>
+        <td width="32">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="52">&nbsp;</td>
+        <td width="550" style="text-align:justify;">
+            <br/>
+            <br/>IT WAS NOTED that &nbsp;
+            {%- for director in datas.directors -%}
+                {%- if loop.first -%}<b>{{ director.full_name }}</b>
+                {%- elseif loop.last -%}&nbsp;and <b>{{- director.full_name -}}</b>
+                {%- else -%}, <b>{{- director.full_name -}}</b>
+                {%- endif -%}
+            {%- endfor -%}
+            &nbsp;having consented to act as
+            the directors, were named at the First Directors in the Constitution in the Company,
+            and that the necessary returns were filed with the Accounting And Corporate Regulatory
+            Authority on incorporation.
+            <br/>
+            <br/>
+        </td>
+    </tr>
+
+    <tr>
+        <td width="32">&nbsp;</td>
+        <td width="569"><p><b>3. REGISTERED OFFICE</b></p></td>
+        <td width="32">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="52">&nbsp;</td>
+        <td width="550" style="text-align:justify;">
+            <br/>
+            <br/>IT WAS CONFIRMED that the registered office of the Company as from the date of
+            the Company as from the date of incorporation was at <b>{{ datas.field_address_line_1 }} {{ datas.field_address_line_2 }} {{ datas.field_postcode }}</b>
+            <br/>
+            <br/>
+        </td>
+    </tr>
+
+    <tr>
+        <td width="32">&nbsp;</td>
+        <td width="569"><p><b>4. ADOPTION OF COMMON SEAL</b></p></td>
+        <td width="32">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="52">&nbsp;</td>
+        <td width="550" style="text-align:justify;">
+            <br/>
+            <br/>IT WAS RESOLVED that the Common Seal of the Company, will not be adopted by the request of the directors.
+            <br/>
+            <br/>
+        </td>
+    </tr>
+
+    <tr>
+        <td width="32">&nbsp;</td>
+        <td width="569"><p><b>5. AMOUNT OF GUARANTEE</b></p></td>
+        <td width="32">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="52">&nbsp;</td>
+        <td width="550" style="text-align:justify;">
+            <br/>
+            <br/>IT WAS CONFIRMED that Each member of the company undertakes to contribute to the assets
+            of the company in the event of it being wound up while he or she is a member, or within one
+            year after he or she ceases to be a member:
+            <br/>
+            <br/>
+        </td>
+    </tr>
+</table>
+
+<!--hr height="3"></hr-->
+
+<table border="0" cellpadding=0 cellspacing=0 width="90%" align="center" nobr="true">
+    <tr>
+        <td style="width:10.0%; text-align:  left;font-size:13px;"></td>
+        <td style="width:55%; text-align:  left;font-size:13px;"><br/><br/><b>Member(s)              </b></td>
+{#        <td style="width:10.0%; text-align:  left;font-size:13px;"></td>#}
+        <td style="width:25%; text-align:  right;font-size:13px;cell-padding:3px"><br/><br/><b>Amount of guarantee</b></td>
+       <td style="width:10.0%; text-align:  left;font-size:13px;"></td>
+    </tr>
+    <tr><td colspan="3" height="20">&nbsp;</td></tr>
+    {% for key, value in datas.shareholders  %}
+        <tr>
+            <td></td>
+            <td align="left" style="font-size:10px;">{{ value.full_name }}
+                <br>{{ value.field_address_line_1 }}
+                <br>{{ value.field_address_line_2 }} {{ value.field_postal_code }}</td>
+            <td align="right"><br/><br/>{{ value.field_shareholder_shares_allotte|number_format(0,'',',') }}</td>
+            <td style="width:10.0%; text-align:  left;font-size:13px;"></td>
+        </tr>
+        {% if loop.last == false %}
+            <br>
+        {% endif %}
+    {%  endfor %}
+</table>
+
+
+<table border="0" width="655">
+    <tr><td colspan="3" height="20">&nbsp;</td></tr>
+
+    <tr>
+        <td width="32">&nbsp;</td>
+        <td width="569"><b>6. APPOINTMENT OF COMPANY SECRETARY</b></td>
+        <td width="32">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="52">&nbsp;</td>
+        <td width="550" style="text-align:justify;">
+            <br/>
+            <br/>IT WAS RESOLVED that the appointment of {% for key, value in datas.secretary %}
+                {% if loop.first %}
+                    <b>{{value.full_name|upper}}</b>
+                {% elseif loop.last %}
+                    and  <b>{{value.full_name|upper}}</b>
+                {% else %}
+                    , <b>{{value.full_name|upper}}</b>
+                {% endif %}
+            {% endfor %} as the Company Secretaries with effect from the date of
+            incorporation be and is hereby approved, confirmed and ratified.
+            <br/>
+            <br/>
+        </td>
+    </tr>
+
+    <tr>
+        <td width="32">&nbsp;</td>
+        <td width="569"><b>7. APPOINTMENT OF SECRETARIAL AGENTS</b></td>
+        <td width="32">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="52">&nbsp;</td>
+        <td width="550" style="text-align:justify;">
+            <br/>
+            <br/>IT WAS RESOLVED that <b>LEE KIM ALLIANCE PTE. LTD.</b> be appointed as Corporate
+            Secretarial Agency of the Company with immediate effect.
+            <br/>
+            <br/>
+        </td>
+    </tr>
+
+
+    <tr>
+        <td width="32">&nbsp;</td>
+        <td width="569"><b>8. FINANCIAL YEAR ENDED</b></td>
+        <td width="32">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="52">&nbsp;</td>
+        <td width="550" style="text-align:justify;">
+            <br/>
+            <br/>IT WAS RESOLVED that
+          {% if datas.field_financial_year_end %}
+            <b>{{ datas.field_financial_year_end|date('t/m/Y') }}</b>
+          {% else %}
+            <b><u> &nbsp; &nbsp; &nbsp; {{ datas.field_financial_year_end|date('t/m/Y') }} &nbsp; &nbsp; &nbsp; </u></b>
+          {% endif %}
+            be and hereby adopted as Company’s
+            financial year ended and that the first financial period of the Company shall be from <b><u> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </u></b>
+            until otherwise resolved.
+            <br/>
+            <br/>
+        </td>
+    </tr>
+
+
+    <tr>
+        <td width="52">&nbsp;</td>
+        <td width="601">
+            <br/>IT WAS NOTED that the First Annual General Meeting of the Company would be due on <br/><br/> Dated: <u> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</u>
+            <br/>
+            <br/>
+            <br/><br/>
+            <br/>
+        </td>
+    </tr>
+</table>
+
+<table border="0" cellpadding=0 cellspacing=0 width="90%" align="center">
+    <tr><td colspan="3" style="height:20px;"></td></tr>
+    {% for director in datas.directors %}
+        {% if loop.index % 2 == 1 %}
+            <tr>
+            <td style="width:40%; text-align:left;font-size:14px;">
+              <span>_________________________________________________________________________________________________________
+                ________________________________________</span>
+              <span>{{ director.signature }}</span>
+              <hr><b>{{ director.full_name }}<br></b>
+              {{ director.positions|upper }}
+              <br><br><br>
+            </td>
+            <td width="140"></td>
+        {% else %}
+            <td style="width:40%; text-align:left;font-size:14px;">
+              <span>_________________________________________________________________________________________________________
+                ________________________________________</span>
+              <span style="color: white; font-size: 1px">{{ director.signature }}</span>
+              <hr><b>{{ director.full_name }}<br></b>
+              {{ director.positions|upper }}
+              <br><br><br>
+            </td>
+            </tr>
+        {% endif %}
+        {% if loop.index % 2 == 1 and loop.index == loop.length %}
+            <td>
+                &nbsp;
+            </td>
+            </tr>
+        {% endif %}
+    {% endfor %}
+</table>
+
+</body>
+</html>

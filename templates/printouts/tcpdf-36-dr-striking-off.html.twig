@@ -1,0 +1,106 @@
+<html>
+<body>
+<div style="width:100%; height:10px;"></div>
+<h1 style="width:100%;text-align:center;">{{datas.title}} {{ datas.field_company_type }}</h1>
+<div style="width:100%;text-align:center;font-size:14px;">
+  (Unique Entity Number: {{ datas.field_application_id }})<br/>
+  (Incorporated in the Republic of Singapore)<br/>(the “Company”)
+</div>
+<div style="width:100%; height:5px;"></div>
+<div style="width:100%;text-align:center;font-size:14px;font-weight:bold;">
+  RESOLUTIONS OF THE DIRECTORS OF THE COMPANY<br/> PURSUANT TO THE COMPANY'S CONSTITUTION
+</div>
+<hr>
+<div style="width:100%; height:5px;"></div>
+<div style="width:100%; height:5px;"></div>
+<div style="width:100%; height:5px;"></div>
+<div style="width:100%;text-align:left;font-size:14px;font-weight: bold">APPLICATION FOR STRIKE OFF</div>
+<div style="width:100%;text-align:left;font-size:14px;">
+  <br/>
+  <span>It was resolved that application be made to ACRA to have the Company removed from the Register.</span>
+  <br/>
+  <br/>
+  <span>Further, it was noted that:</span>
+  <br/>
+  <br/>
+  (a) All directors and members of the Company agreed to the deregistration; and<br/>
+  (b) the Company is not carrying on business; and<br/>
+  (c) the Company's has no assets; and<br/>
+  (d) the Company has no outstanding liabilities; and<br/>
+  (e) the Company is not a party to any legal proceedings.<br/>
+</div>
+<br/>
+<br/>
+<div style="width:100%;text-align:left;font-size:14px;">DATED:</div>
+<br/>
+<br/>
+<div style="width:100%;text-align:left;font-size:14px;font-weight: bold">SOLE DIRECTOR:</div>
+<br/>
+<br/>
+<table border="0" cellpadding=0 cellspacing=0 width="98%" align="left">
+  <tr><td colspan="3" style="height:20px;"></td></tr>
+  {% for director in datas.directors %}
+    {% if loop.index % 2 == 1 %}
+      <tr>
+      <td style="width:40%; text-align:left;font-size:14px;">
+          <span style="color: white; font-size: 1px">_____________________________________________________________________
+            ___________________________________________{{ director.signature }}</span>
+        <hr><b>{{ director.full_name }}</b> <br/>
+        {{director.field_position}}
+        <br/><br/>
+        <br/><br/>
+      </td>
+      <td width="140"></td>
+    {% else %}
+      <td style="width:40%; text-align:left;font-size:14px;">
+          <span style="color: white; font-size: 1px">_____________________________________________________________________
+            ___________________________________________{{ director.signature }}</span>
+        <hr><b>{{ director.full_name }}</b> <br/>
+        {{director.field_position}}
+        <br/><br/>
+        <br/><br/>
+      </td>
+      </tr>
+    {% endif %}
+    {% if loop.index % 2 == 1 and loop.index == loop.length %}
+      <td>
+        &nbsp;
+      </td>
+      </tr>
+    {% endif %}
+  {% endfor %}
+</table>
+<br pagebreak="true" />
+<div style="width:100%; height:10px;"></div>
+<h1 style="width:100%;text-align:center;">{{datas.title}} {{ datas.field_company_type }}</h1>
+<div style="width:100%;text-align:center;font-size:14px;">
+  UEN: {{ datas.field_application_id }})<br/>
+</div>
+<div style="width:100%; height:5px;"></div>
+<div style="width:100%;text-align:center;font-size:14px;font-weight:bold;">MEMBERS CONSENT</div>
+<hr>
+<div style="width:100%; height:5px;"></div>
+<div style="width:100%; height:5px;"></div>
+<div style="width:100%; height:5px;"></div>
+<div style="width:100%;text-align:left;font-size:14px;">We, the undersigned, being all the members of the abovenamed company, hereby confirm our agreement for the company to be deregistered.</div>
+<br/>
+<br/>
+<div style="width:100%;text-align:left;font-size:14px;">DATED:</div>
+<br/>
+<br/>
+<table style="font-size: 14px; padding-top: 20px">
+  <tr>
+    <td style="text-align: center"><strong>Member</strong></td>
+    <td style="text-align: center"><strong>Signature</strong></td>
+  </tr>
+  <tr>
+    <td>PO Partners Pte. Ltd.</td>
+    <td style="border-bottom: 1px solid #111111"></td>
+  </tr>
+  <tr>
+    <td>Kabushiki Kaisha Mado</td>
+    <td style="border-bottom: 1px solid #111111"></td>
+  </tr>
+</table>
+</body>
+</html>

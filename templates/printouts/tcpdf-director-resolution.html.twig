@@ -1,0 +1,277 @@
+{#{{ kint(datas.node) }}#}
+<html>
+  <body>
+    <h1 style="width:100%;text-align:center;">{{ datas.node.title }}</h1>
+    <div style="width:100%; height:10px;"></div>
+    <div style="width:100%;text-align:center;font-size:14px;line-height: 120%;">
+      (Company Registration Number: ___{{ datas.node.field_application_id }}___ )
+      <br/>(Incorporated the Republic of Singapore)
+    </div>
+    <div style="width:100%; height:5px;"></div>
+    <div style="width:100%;text-align:center;font-size:14px;">
+      DIRECTORS\' RESOLUTION IN WRITING MADE PURSUANT TO
+      <br>THE CONSTITUTION OF THE COMPANY
+    </div>
+
+    <hr height="3"></hr>
+
+    <table border="0" width="655">
+      <tr><td colspan="3" height="20"></td></tr>
+      <tr><td colspan="3" height="20"></td></tr>
+      <tr>
+        <td width="32">&nbsp;</td>
+        <td width="569"><p><b>1. &nbsp;INCORPORATION</b></p></td>
+        <td width="32">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="52">&nbsp;</td>
+        <td width="550" style="text-align:justify;">
+          <br/>
+          <br/>IT WAS NOTED :
+          <br/>
+        </td>
+      </tr>
+
+      <tr>
+        <td width="52">&nbsp;</td>
+        <td width="20">(a) </td>
+        <td width="530" style="text-align:justify;">
+          <br/>THAT the company was incorporated on the
+          <u> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </u><br/>
+        </td>
+      </tr>
+
+      <tr>
+        <td width="52">&nbsp;</td>
+        <td width="20">(b) </td>
+        <td width="530" style="text-align:justify;">
+          <br/>THAT the Notice of Incorporation No. ______________ was issued by the Accounting and
+          Corporate Regulatory Authority, Singapore, as attached and that the name of the Company
+          will be duly displayed at the Company’s registered office.
+          <br/>
+        </td>
+      </tr>
+
+      <tr>
+        <td width="52">&nbsp;</td>
+        <td width="20">(c) </td>
+        <td width="530" style="text-align:justify;">
+          <br/>THAT the copies of the Constitution registered with the
+          Accounting Corporate Regulatory Authority, Singapore have been printed and are
+          available.
+          <br/>
+          <br/>
+        </td>
+      </tr>
+
+      <tr>
+        <td width="32">&nbsp;</td>
+        <td width="569"><p><b>2. &nbsp;FIRST DIRECTORS</b></p></td>
+        <td width="32">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="52">&nbsp;</td>
+        <td width="550" style="text-align:justify;">
+          <br/>
+          {% set director = '' %}
+          {% for key, value in datas.node.field_director_shareholder %}
+            {% set director = director ~ value.field_full_name ~ ',' %}
+          {% endfor %}
+          <br/>IT WAS NOTED that <b>{{ director }}</b> having consented to act as
+          the directors, were named at the First Directors in the Constitution in the Company,
+          and that the necessary returns were filed with the Accounting And Corporate Regulatory
+          Authority on incorporation.
+          <br/>
+          <br/>
+        </td>
+      </tr>
+
+      <tr>
+        <td width="32">&nbsp;</td>
+        <td width="569"><p><b>3. REGISTERED OFFICE</b></p></td>
+        <td width="32">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="52">&nbsp;</td>
+        <td width="550" style="text-align:justify;">
+          <br/>
+          <br/>IT WAS CONFIRMED that the registered office of the Company as from the date of
+          the Company as from the date of incorporation was at <b>{{ datas.node.field_address_line_1 }} {{ datas.node.field_address_line_2 }} {{ datas.node.field_postcode }}</b>
+          <br/>
+          <br/>
+        </td>
+      </tr>
+
+      <tr>
+        <td width="32">&nbsp;</td>
+        <td width="569"><p><b>4. ADOPTION OF COMMON SEAL</b></p></td>
+        <td width="32">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="52">&nbsp;</td>
+        <td width="550" style="text-align:justify;">
+          <br/>
+          <br/>IT WAS RESOLVED that the Common Seal of the Company, will not be adopted by the request of the directors.
+          <br/>
+          <br/>
+        </td>
+      </tr>
+
+      <tr>
+        <td width="32">&nbsp;</td>
+        <td width="569"><p><b>5. ISSUE OF SUBSCRIBERS’ SHARE</b></p></td>
+        <td width="32">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="52">&nbsp;</td>
+        <td width="550" style="text-align:justify;">
+          <br/>
+          <br/>IT WAS CONFIRMED that the subscriber to the Constitution of the Company
+          be registered as Member in respect of the share subscribed in full for cash as follows;
+          <br/>
+          <br/>
+        </td>
+      </tr>
+    </table>
+
+    <!--hr height="3"></hr-->
+
+    <table border="0" cellpadding=0 cellspacing=0 width="90%" align="center">
+      <tr>
+        <td style="width:10.0%; text-align:  left;font-size:13px;"></td>
+        <td style="width:51.0%; text-align:  left;font-size:13px;"><br/><br/><b>Subscribers              </b></td>
+        <td style="width:19.5%; text-align:  center;font-size:13px;cellpadding:3px"><br/><br/><b>No. of Shares            </b></td>
+        <td style="width:19.5%; text-align:center;font-size:13px;"><br/><br/><b>Share Certificates Number</b></td>
+      </tr>
+      {% set count = 1 %}
+      {% set str = '' %}
+      {% for key, value in datas.node.field_director_shareholder %}
+        <tr><td colspan="3" height="20">&nbsp;</td></tr>
+        <tr>
+          <td></td>
+          <td align="left" style="font-size:10px;">{{ value.field_full_name }}<br/>
+            {{ value.field_address_line_1 }}<br/>
+            {{ value.field_address_line_2 }} {{ value.field_postal_code }}
+          </td>
+          <td align="center"  > {{ value.field_no_of_shares }}</td>
+          <td align="center"> {{ count }} </td>
+          {% set str = str ~ count ~ ',' %}
+          {% set count = count + 1 %}
+        </tr>
+      {% endfor %}
+
+    </table>
+
+    <table border="0" width="655">
+      <tr><td colspan="3" height="50">&nbsp;</td></tr>
+      <tr>
+        <td width="52">&nbsp;</td>
+        <td width="550" style="text-align:justify;">
+          <br/>
+          <br/>
+          <br/>IT WAS RESOLVED that share certificate no. {{ str }} be issued to above named
+          subscribers and that the Common Seal of the Company not be affixed thereto in accordance with the provisions of the Company’s Article on Association.
+          <br/>
+          <br/>
+        </td>
+      </tr>
+      <tr>
+        <td width="32">&nbsp;</td>
+        <td width="569"><b>6.&nbsp;&nbsp; APPOINTMENT OF COMPANY SECRETARY</b></td>
+        <td width="32">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="52">&nbsp;</td>
+        <td width="550" style="text-align:justify;">
+          <br/>
+          <br/>
+          {% set str = '' %}
+          {% for key,value in datas.node.field_secratary %}
+            {% set str = str ~ value.field_full_name ~ ',' %}
+          {% endfor %}
+          <br/>IT WAS RESOLVED that the appointment of <b>{{ str }}</b> as the Company Secretaries with effect from the date of
+          incorporation be and is hereby approved, confirmed and ratified.
+          <br/>
+          <br/>
+        </td>
+      </tr>
+
+      <tr>
+        <td width="32">&nbsp;</td>
+        <td width="569"><b>7. APPOINTMENT OF SECRETARIAL AGENTS</b></td>
+        <td width="32">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="52">&nbsp;</td>
+        <td width="550" style="text-align:justify;">
+          <br/>
+          <br/>
+          <br/>IT WAS RESOLVED that <b>LEE KIM ALLIANCE PTE. LTD.</b> be appointed as Corporate
+          Secretarial Agency of the Company with immediate effect.
+          <br/>
+          <br/>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td width="32">&nbsp;</td>
+        <td width="569"><b>8.&nbsp;&nbsp; FINANCIAL YEAR ENDED</b></td>
+        <td width="32">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="52">&nbsp;</td>
+        <td width="550" style="text-align:justify;">
+          <br/>
+          <br/>
+          <br/>IT WAS RESOLVED that <b><u> &nbsp; &nbsp; &nbsp; {{ datas.node.field_financial_year_end |date('d/m/Y') }}&nbsp; &nbsp; &nbsp; </u></b> be and hereby adopted as Company’s
+          financial year ended and that the first financial period of the Company shall be from <b><u> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </u></b>
+          until otherwise resolved.
+          <br/>
+          <br/>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td width="52">&nbsp;</td>
+        <td width="601">
+          <br/>IT WAS NOTED that the First Annual General Meeting of the Company would be due on <br/><br/> Dated: <u> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</u>
+          <br/>
+          <br/>
+          <br/><br/>
+          <br/>
+        </td>
+      </tr>
+    </table>
+
+    <table border="0" cellpadding=0 cellspacing=0 width="90%" align="center">
+      <tr><td colspan="3" style="height:20px;"></td></tr>
+
+
+      {% set count = 1 %}
+      {% for key, value in datas.node.field_director_shareholder %}
+        {% if count % 3 == 1 %}
+          <tr>
+          {% endif %}
+          <td style="width:40%; text-align:left;font-size:14px; border-top: solid 1px #000000; line-height: 120%;">
+            <b>{{ value.field_full_name }} </b> <br/>
+            '.$ALD_DIRECTOR_NORMAL_DESIGNATION.'
+            <br/><br/>
+            <br/><br/>
+          </td>
+          {% if count % 2 == 1 %}
+            <td width="100px"></td>
+          {% endif %}
+          {% set count = count + 1 %}
+          {% if count % 3 == 0 %}
+          </tr>
+        {% endif %}
+
+      {% endfor %}
+
+
+    </table>
+
+  </body>
+</html>

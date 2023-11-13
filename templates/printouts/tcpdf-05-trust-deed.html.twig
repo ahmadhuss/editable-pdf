@@ -1,0 +1,409 @@
+<style>
+
+  .tl { text-align: left; padding-left: 20px; }
+  .tc { text-align: center; }
+
+</style>
+
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td align="left" style="width:30%;"><img src="/themes/custom/zurblk/img/logo.png"
+                                             style="height:40px;"></td>
+    <td align="right" style="width:70%;"><h1
+        style="font-size:20px;">{{ datas.company_name }} {{ datas.field_company_type }}</h1></td>
+  </tr>
+</table>
+<div style="width:100%; height:20px;"></div>
+<h1 style="width:100%;text-align:center;">TRUST DEED</h1>
+<div style="width:100%; height:10px;"></div>
+
+<table border="0" width="100%">
+
+
+  <tr>
+    <td width="20">&nbsp;</td>
+    <td width=""><b>THIS TRUST DEED</b> is made on the</td>
+    <td width="20"><br/><br/></td>
+  </tr>
+
+  <tr>
+    <td width="20">&nbsp;</td>
+    <td width=""><b>BETWEEN</b></td>
+    <td width="20"><br/><br/></td>
+  </tr>
+  <tr>
+    <td width="20">&nbsp;</td>
+    <td width="20">A.</td>
+    <td width="90%" style="font-size:13px; text-align:justify;" colspan="2">
+      <br/><b>{{ datas.nominee.full_name }}</b> ({{ datas.nominee.field_id_type }}
+      {% if datas.nominee.field_id_type_key != 2563 %}
+      No.:
+      {% endif %}
+      <b>{{ datas.nominee.field_id_no }}</b>) care of <b>{{ datas.nominee.field_address_line_1 }}
+        {{ datas.nominee.field_address_line_2 }} {{ datas.nominee.field_postal_code }}</b> (hereinafter referred to as
+      the "<b>Trustee</b>");
+      <br/>
+    </td>
+  </tr>
+  <tr>
+    <td width="20">&nbsp;</td>
+    <td width="">AND</td>
+    <td width="20"><br/><br/></td>
+  </tr>
+  <tr>
+    <td width="20">&nbsp;</td>
+    <td width="20">B.</td>
+    <td width="90%" style="font-size:13px; text-align:justify;" colspan="2">
+      <br/><b>{{ datas.shareholder.full_name }}</b> ({{ datas.shareholder.field_id_type }}
+      {% if datas.shareholder.field_id_type_key != 2563 %}
+        No.:
+      {% endif %}
+      <b>{{ datas.shareholder.field_id_no }}</b>) of <b>{{ datas.shareholder.field_address_line_1 }}
+        {{ datas.shareholder.field_address_line_2 }} {{ datas.shareholder.field_postal_code }}</b>
+      {#            <b>'.$Memo.'</b> #}
+      (hereinafter referred to as the "Beneficiary");
+      <br/>
+    </td>
+  </tr>
+  <tr>
+    <td width="20">&nbsp;</td>
+    <td width=""><b>WHEREAS</b></td>
+    <td width="20"><br/><br/></td>
+  </tr>
+  <tr>
+    <td width="20">&nbsp;</td>
+    <td width="20">A.</td>
+    <td width="90%" style="font-size:13px; text-align:justify;" colspan="2">
+      <br/>The Beneficiary has lately caused to be allotted to the Trustee the shares specified in the Schedule
+      hereto.
+      <br/>
+    </td>
+  </tr>
+  <tr>
+    <td width="20">&nbsp;</td>
+    <td width="20">B.</td>
+    <td width="90%" style="font-size:13px; text-align:justify;" colspan="2">
+      <br/>All such allotment as foresaid was (or were) made to the Trustee as a nominee of the Beneficiary and it
+      was agreed prior to the date of such allotment that the Trustee should execute this trust deed as is
+      hereinafter contained.
+      <br/>
+    </td>
+  </tr>
+
+  <tr>
+    <td width="20">&nbsp;</td>
+    <td width=""><b>NOW THIS DEED WITNESSETH</b> as follows:</td>
+    <td width="20"><br/><br/></td>
+  </tr>
+  <tr>
+    <td width="20">&nbsp;</td>
+    <td width="20">01.</td>
+    <td width="90%" style="font-size:13px; text-align:justify;" colspan="2">
+      <br/>Interpretation,<br/><br/>
+
+      "Company" means <b>{{ datas.company_name }} {{ datas.field_company_type }}</b>, a company incorporated in
+      Singapore with Company Registration No.
+      {% if datas.field_application_id %}
+        <b>{{ datas.field_application_id }}</b>
+      {% else %}
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {% endif %}
+
+      and having its registered office at
+      <b>{{ datas.field_address_line_1 }} {{ datas.field_address_line_2 }} {{ datas.field_postcode }}</b>.
+      <br/><br/>
+
+      "Trust Shares" means the <b>{{ datas.capital_detail.field_number_of_share|number_format(0,'',',') }}</b> ordinary
+      shares of the Company more particularly set out in the
+      Schedule hereto, or any of them and this Trust Shares will include all of shares which will be issued under
+      same name;
+      <br/><br/>
+      "winding-up" includes bankruptcy, judicial management and any procedure under any applicable law which is
+      analogous to winding-up or bankruptcy; and
+      <br/><br/>
+      Words importing any particular gender shall include all other genders.
+
+      <br/>
+    </td>
+  </tr>
+  <tr>
+    <td width="20">&nbsp;</td>
+    <td width="20">02.</td>
+    <td width="90%" style="font-size:13px; text-align:justify;" colspan="2">
+      <br/>The Trustee hereby declares that he holds the Trust Shares and all dividends and interest accrued or to
+      accrue upon the same or any of them upon trust for the Beneficiary and agrees to transfer pay and deal with
+      the Trust Shares and the dividends and interest payable in respect of the same in such manner as the
+      Beneficiary may from time to time direct.
+      <br/>
+    </td>
+  </tr>
+  <tr>
+    <td width="20">&nbsp;</td>
+    <td width="20">03.</td>
+    <td width="90%" style="font-size:13px; text-align:justify;" colspan="2">
+      <br/>The Trustee will at the request of the Beneficiary attend all meetings of shareholders of the Company,
+      or otherwise which it shall be entitled to attend by virtue of being the registered proprietor of the Trust
+      Shares and will vote at every meeting in such manner as the Beneficiary shall have previously directed in
+      writing and in default of and subject to any such direction, at the discretion of the Trustee(acting in the
+      best interest of the Beneficiary) and further will if so required by the Beneficiary execute all proxies or
+      other documents which shall be necessary or proper to enable the Beneficiary, his personal representatives
+      or assigns or his or their nominees to attend and vote at any such meeting in place of the Trustee.
+      <br/>
+    </td>
+  </tr>
+  <tr>
+    <td width="20">&nbsp;</td>
+    <td width="20">04.</td>
+    <td width="90%" style="font-size:13px; text-align:justify;" colspan="2">
+      <br/>The Beneficiary will at all times hereafter indemnify and keep indemnified the Trustee against all
+      liabilities which the Trustee may incur by reason of the Trust Shares being registered in the name of the
+      Trustee and in particular will punctually pay all calls and other demands which the Trustee may be or become
+      liable to pay in respect of the Trust Shares or in respect of any shares or securities for which pursuant to
+      any conditional or preferential right offered to the Trustee in respect of the Trust Shares the Trustee may
+      in its discretion subject as hereinafter mentioned think fit to subscribe and all costs and expenses
+      incurred by the Trustee in the execution of the trusts of this deed.
+      <br/>
+    </td>
+  </tr>
+  <tr>
+    <td width="20">&nbsp;</td>
+    <td width="20">05.</td>
+    <td width="90%" style="font-size:13px; text-align:justify;" colspan="2">
+      <br/>lf any conditional or preferential right to subscribe for shares or securities, or any other option
+      shall be offered to the Trustee as holder of the Trust Shares, or otherwise in respect thereof, or any call
+      be made upon the Trust Shares or any shares and securities so offered to and subscribed for by the Trustee
+      as aforesaid, or other payment demanded in respect thereof, the Trustee shall, so soon as conveniently may,
+      give written notice thereof to the Beneficiary and if not less than seven (7) days (Saturdays, Sundays and
+      Public Holidays excluded) before the expiration of the time allowed for the exercise of such option or
+      making such payment the Trustee shall receive any direction in writing from the Beneficiary and the
+      Beneficiary shall pay or provide for any money required to be paid to comply with such direction the Trustee
+      shall act on such direction; but if no direction shall be received or the money required to be provided for
+      such actions hall not be received or sufficient money to the satisfaction of the Trustee shall not be
+      received before the time aforesaid the Trustee shall act in its discretion in the matter and such action
+      shall be binding on the Beneficiary.
+      <br/>
+    </td>
+  </tr>
+  <tr>
+    <td width="20">&nbsp;</td>
+    <td width="20">06.</td>
+    <td width="90%" style="font-size:13px; text-align:justify;" colspan="2">
+      <br/>If the Trustee shall pay any money for calls or other demands in respect of the Trust Shares or in
+      respect of any shares or securities so offered to and subscribed for by the Trustee as aforesaid such money
+      together with interest thereon at five per cent per annum until payment shall be and remain a charge in
+      favour of the Trustee upon the Trust Shares.
+      <br/>
+    </td>
+  </tr>
+  <tr>
+    <td width="20">&nbsp;</td>
+    <td width="20">07.</td>
+    <td width="90%" style="font-size:13px; text-align:justify;" colspan="2">
+      <br/>The Trustees hall hold all and any shares or securities so offered to the Trustee in respect of the
+      Trust Shares as aforesaid and subscribed for by it upon the trusts and subject to the powers and provisions
+      hereby declared concerning the Trust Shares as if the same were an accretion thereto.
+      <br/>
+    </td>
+  </tr>
+
+
+  <tr>
+    <td width="20">&nbsp;</td>
+    <td width="20">08.</td>
+    <td width="90%" style="font-size:13px; text-align:justify;" colspan="2">
+      <br/>The Trustee shall during the continuance of this Deed :
+      <br/>
+    </td>
+  </tr>
+  <tr>
+    <td width="35">&nbsp;</td>
+    <td width="35">08.1</td>
+    <td width="85%" style="font-size:13px; text-align:justify;" colspan="2">
+      <br/>at all times discharge its duties as trustee in a proper and efficient manner;
+      <br/>
+    </td>
+  </tr>
+  <tr>
+    <td width="35">&nbsp;</td>
+    <td width="35">08.2</td>
+    <td width="87%" style="font-size:13px; text-align:justify;" colspan="2">
+      <br/>at all times keep proper records of the Trust Shares and any shares or securities subscribed to (or
+      otherwise acquired) by the Trustee as the registered proprietor of the Trust Shares, and any dividend,
+      interest or other entitlement accruing thereto;
+      <br/>
+    </td>
+  </tr>
+  <tr>
+    <td width="35">&nbsp;</td>
+    <td width="35">08.3</td>
+    <td width="87%" style="font-size:13px; text-align:justify;" colspan="2">
+      <br/>give immediate notice to the Beneficiary of all notices of meetings of shareholders of the Company,
+      minutes of meetings of shareholders, resolutions passed by the directors of the Company affecting the
+      shareholders and generally keep the Beneficiary informed of matters that are relevant for disclosure to the
+      Beneficiary;
+      <br/>
+    </td>
+  </tr>
+  <tr>
+    <td width="35">&nbsp;</td>
+    <td width="35">08.4</td>
+    <td width="87%" style="font-size:13px; text-align:justify;" colspan="2">
+      <br/>send to the Beneficiary, as soon as they are available, copies of the annual report of the Company;
+      <br/>
+    </td>
+  </tr>
+  <tr>
+    <td width="35">&nbsp;</td>
+    <td width="35">08.5</td>
+    <td width="87%" style="font-size:13px; text-align:justify;" colspan="2">
+      <br/>at all times execute and do all such further documents, acts and things as may be necessary at any time
+      or times in the reasonable opinion of the Trustee to give effect to the terms and conditions of these
+      presents
+      <br/>
+    </td>
+  </tr>
+
+
+  <tr>
+    <td width="20">&nbsp;</td>
+    <td width="20">09.</td>
+    <td width="90%" style="font-size:13px; text-align:justify;" colspan="2">
+      <br/>The Beneficiary shall not require the Trustee to exercise its rights and powers as the registered
+      proprietor of the Trust Shares or any shares or securities subscribed to (or otherwise acquired) by the
+      Trustee as the registered proprietor of the Trust Shares, to:
+      <br/>
+    </td>
+  </tr>
+  <tr>
+    <td width="35">&nbsp;</td>
+    <td width="35">09.1</td>
+    <td width="85%" style="font-size:13px; text-align:justify;" colspan="2">
+      <br/>appoint the Beneficiary or any nominee of the Beneficiary to the board of directors of the Company, or
+      as an officer of the Company as defined in the Companies Act, Cap 50;
+      <br/>
+    </td>
+  </tr>
+  <tr>
+    <td width="35">&nbsp;</td>
+    <td width="35">09.2</td>
+    <td width="87%" style="font-size:13px; text-align:justify;" colspan="2">
+      <br/>convene any meeting of the shareholders of the Company;
+      <br/>
+    </td>
+  </tr>
+  <tr>
+    <td width="35">&nbsp;</td>
+    <td width="35">09.3</td>
+    <td width="87%" style="font-size:13px; text-align:justify;" colspan="2">
+      <br/>table at any meeting of the shareholders of the Company any resolution calling for the winding-up or
+      voluntary liquidation of the Company
+      <br/>
+    </td>
+  </tr>
+  <tr>
+    <td width="35">&nbsp;</td>
+    <td width="35">09.4</td>
+    <td width="87%" style="font-size:13px; text-align:justify;" colspan="2">
+      <br/>allow the Beneficiary or any nominee of the Beneficiary to inspect the books of account of the Company
+      <br/>
+    </td>
+  </tr>
+  <tr>
+    <td width="20">&nbsp;</td>
+    <td width="20">10.</td>
+    <td width="90%" style="font-size:13px; text-align:justify;" colspan="2">
+      <br/>By way of supplement to the Trustees Act, Cap 337,it is expressly declared as follows:
+      <br/>
+    </td>
+  </tr>
+  <tr>
+    <td width="35">&nbsp;</td>
+    <td width="35">10.1</td>
+    <td width="87%" style="font-size:13px; text-align:justify;" colspan="2">
+      <br/>the Trustee may in the exercise of or in the discharge of its duties under these presents act on the
+      opinion or advice of or any information obtained from any lawyer, accountant or other expert considered by
+      the Trustee to be competent in that behalf and shall not be responsible any loss occasioned by so acting;
+      and
+      <br/>
+    </td>
+  </tr>
+  <tr>
+    <td width="35">&nbsp;</td>
+    <td width="35">10.2</td>
+    <td width="87%" style="font-size:13px; text-align:justify;" colspan="2">
+      <br/>the Trustee may in the exercise of or in the discharge of its duties under these presents act on the
+      opinion or advice of or any information obtained from any lawyer, accountant or other expert considered by
+      the Trustee to be competent in that behalf and shall not be responsible any loss occasioned by so acting;
+      and
+      <br/>
+    </td>
+  </tr>
+  <tr>
+    <td width="20">&nbsp;</td>
+    <td width="20">11.</td>
+    <td width="90%" style="font-size:13px; text-align:justify;" colspan="2">
+      <br/>The Beneficiary may at any time during the continuance of this Deed require the Trustee to transfer to
+      the Beneficiary or any nominee of the Beneficiary all (and not some only of) the Trust Shares or any shares
+      or securities subscribed to (or otherwise acquired) by the Trustee as the registered proprietor of the Trust
+      Shares. Any such transfers hall be subject to the provisions of the memorandum and articles of association
+      of the Company and any fees, charges or expenses payable for such transfer which shall be borne by the
+      Beneficiary.
+      <br/>
+    </td>
+  </tr>
+  <tr>
+    <td width="20">&nbsp;</td>
+    <td width="20">12.</td>
+    <td width="90%" style="font-size:13px; text-align:justify;" colspan="2">
+      <br/>The power to appoint a new trustee hereof is vested in the Beneficiary during his life
+      <br/>
+    </td>
+  </tr>
+</table>
+<b class="tc">THE SCHEDULE</b>
+
+<br><b>{{ datas.shareholder.field_shareholder_shares_allotte|number_format(0,'',',') }}</b> ordinary shares in the capital of the Company comprised in share certificate number <b>{{ datas.shareholder.field_shareholder_shares_certificate_number }}.</b>
+<br/>
+<br/>
+IN WITNESS WHEREOF the parties have executed this Deed the day and year first above written.
+<br>
+
+
+
+<table border="0" width="100%" height="300" align="left">
+  <tr>
+    <td class="tl" width="30%" height="20" valign="absmiddle"> Dated this: </td>
+    <td class="tl" width="70%" height="20" valign="absmiddle"> &nbsp;      </td>
+  </tr>
+  <tr><td colspan="2" height="30"></td></tr>
+  <tr>
+    <td class="tl" width="50%" height="20" align="left"> SIGNED AND WITNESSED AND DELIVERED </td>
+    <td class="tl" width="50%" height="20" align="left"></td>
+  </tr>
+  <tr>
+    <td class="tl" width="50%" height="20" align="left"> By <b>{{ datas.nominee.full_name }}</b></td>
+    <td class="tl" width="50%" height="20" align="left">_________________<span style="color: white; font-size: 0.1px">{{ datas.nominee.signature }}</span>______________________________</td>
+  </tr>
+
+  <tr><td colspan="2" height="20"></td></tr>
+  <tr>
+    <td class="tl" width="50%" height="20" align="left"> In the presence of: <b>{{ datas.secretary.full_name }}</b></td>
+    <td class="tl" width="50%" height="20" align="left">_________________<span style="color: white; font-size: 0.1px">{{ datas.secretary.signature }}</span>______________________________</td>
+  </tr>
+
+  <tr><td colspan="2" height="50"></td></tr>
+
+  <tr>
+    <td class="tl" width="50%" height="20" align="left"> SIGNED AND WITNESSED AND DELIVERED </td>
+    <td class="tl" width="50%" height="20" align="left"></td>
+  </tr>
+  <tr>
+    <td class="tl" width="50%" height="20" align="left"> By <b>{{ datas.shareholder.full_name }}</b></td>
+    <td class="tl" width="50%" height="20" align="left">_________________<span style="color: white; font-size: 0.1px">{{ datas.shareholder.signature }}</span>______________________________</td>
+  </tr>
+  <tr><td colspan="2" height="20"></td></tr>
+  <tr>
+    <td class="tl" width="50%" height="20" align="left"> In the presence of: <b>{{ datas.secretary.full_name }}</b></td>
+    <td class="tl" width="50%" height="20" align="left">_________________<span style="color: white; font-size: 0.1px">{{ datas.secretary.signature }}</span>______________________________</td>
+  </tr>
+</table>

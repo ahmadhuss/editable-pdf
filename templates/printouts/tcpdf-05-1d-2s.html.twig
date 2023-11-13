@@ -1,0 +1,129 @@
+<html>
+<body>
+	<style>
+
+		.tl { text-align:   left; padding-left: 20px; }
+		.tc { text-align: center; }
+
+	</style>
+
+	<h1 style="width:100%;text-align:center;">DIRECTOR SERVICE INDEMNITY AGREEMENT</h1>
+	<div style="width:100%; height:10px;"></div>
+
+	<table border="0" width="100%">
+    <tr>
+    	<td width="100%" style="font-size:14px;font-weight:bold; text-align:justify;" colspan="2">
+					<br/>
+			{% set director = datas.directors|first  %}
+			{% set shareholder = datas.shareholders|first  %}
+					In consideration of {{director.full_name}} ({{director.field_id_type}}: {{director.field_id_no}}) of  {{director.field_address_line_1}} {{director.field_address_line_2}} {{director.field_postal_code}} ('the Local Director')
+					agreeing at my/our request to act as a Director of {{ datas.title }} {{ datas.field_company_type }} ('the Company') of {{ datas.field_address_line_1 }} {{ datas.field_address_line_2 }} {{director.field_postal_code}} <br> I,
+			{{shareholder.full_name}} ("{{shareholder.field_id_type}}: {{shareholder.field_id_no}}") ('The Principal') of
+			{{shareholder.field_address_line_1}} {{shareholder.field_address_line_2}} {{shareholder.field_postal_code}} hereby agree as follows:-
+	        <br/>
+    	</td>
+    </tr>
+    <tr>
+    	<td width="20">&nbsp;</td>
+    	<td width="20">1) </td>
+    	<td width="90%" style="font-size:12px; text-align:justify;" colspan="2">
+					<br/>At all times hereafter The Principal shall fully and effectually indemnify and keep the Local Director and
+					any of his/its directors or officers indemnified from and against all actions, proceedings, claims or demands of any nature whatsoever which may be made against the Local Director or any of his/its directors or officers directly or indirectly by reason of his/its acting as Director of the Company or by reason of any act, deed, matter of thing done or omitted to be done by the Local Director in the capacity of Director and to pay all liabilities, costs and expenses which the Local Director or any of his/its directors or officers may become liable for or may incur in connection with any such actions, proceedings, claims or demands.
+	        <br/>
+    	</td>
+    </tr>
+    <tr>
+    	<td width="20">&nbsp;</td>
+    	<td width="20">2) </td>
+    	<td width="90%" style="font-size:12px; text-align:justify;" colspan="2">
+	        <br/>The Principal shall pay or cause to be paid to the Local Director in advance an annual fee or monthly fee of such sum as to be agreed upon from time to time.
+	        <br/>
+    	</td>
+    </tr>
+    <tr>
+    	<td width="20">&nbsp;</td>
+    	<td width="20">3) </td>
+    	<td width="90%" style="font-size:12px; text-align:justify;" colspan="2">
+	        <br/>The Principal shall not give to the Local Director or any of his/its directors or officers instructions or directions which are unlawful under the Laws of Singapore or any other place having jurisdiction over the Company or applicable in the place where such instructions are to be performed
+	        <br/>
+    	</td>
+    </tr>
+    <tr>
+    	<td width="20">&nbsp;</td>
+    	<td width="20">4) </td>
+    	<td width="90%" style="font-size:12px; text-align:justify;" colspan="2">
+	        <br/>The Principal undertake to inform the Local Director of any event or change in circumstances which may affect his/its position as my/our Local Director.
+	        <br/>
+    	</td>
+    </tr>
+    <tr>
+    	<td width="20">&nbsp;</td>
+    	<td width="20">5) </td>
+    	<td width="90%" style="font-size:12px; text-align:justify;" colspan="2">
+	        <br/>The Principal undertake to ratify and confirm whatever the Local Director may do or purport to do or may have done in the performance of its powers and duties as my/our Local Director who shall be instructed by the order of me/us.
+	        <br/>
+    	</td>
+    </tr>
+    <tr>
+    	<td width="20">&nbsp;</td>
+    	<td width="20">5) </td>
+    	<td width="90%" style="font-size:12px; text-align:justify;" colspan="2">
+	        <br/>The Principal undertake to ratify and confirm whatever the Local Director may do or purport to do or may have done in the performance of its powers and duties as my/our Local Director who shall be instructed by the order of me/us.
+	        <br/>
+    	</td>
+    </tr>
+    <tr>
+    	<td width="20">&nbsp;</td>
+    	<td width="20">6) </td>
+    	<td width="90%" style="font-size:12px; text-align:justify;" colspan="2">
+	        <br/>The Local Director may revoke the directorship and cease providing any services at any time by giving me/us notice in writing at the address last known to the Local Director and such notice shall take effect immediately.
+	        <br/>Upon receiving the notice, The Principal shall at once seek another person to replace the Local Director as a Director of the Company. If The Principal fail to do so within 7 days of the notice, the Local Director is at liberty to disclose my/our name and address to the government departments as the contacting person responsible for the Company.
+	        <br/>
+    	</td>
+    </tr>
+    <tr>
+    	<td width="20">&nbsp;</td>
+    	<td width="20">7) </td>
+    	<td width="90%" style="font-size:12px; text-align:justify;" colspan="2">
+	        <br/>All the provisions set out in this agreement shall have the same effect even if the Local Director may replace
+        myself with another person qualified as a resident in Singapore.
+	        <br/>
+    	</td>
+    </tr>
+    <tr>
+    	<td width="20">&nbsp;</td>
+    	<td width="20">8) </td>
+    	<td width="90%" style="font-size:12px; text-align:justify;" colspan="2">
+	        <br/>The undertakings and obligations on my/our part herein contained shall be binding on my/our executors, administrators and successors in title.
+	        <br/>
+    	</td>
+    </tr>
+	</table>
+	<br/>
+	<table border="0" width="100%" align="left">
+	 <tr>
+	 	<td class="tl" width="30%" height="20" valign="absmiddle"> Dated this: </td>
+	 	<td class="tl" width="70%" height="20" valign="absmiddle"> &nbsp;      </td>
+	 </tr>
+	 <tr>
+	 	<td class="tl" width="50%" height="20" align="right"> SIGNED by the said: </td>
+	 	<td class="tl" width="50%" height="20" align="left" style="border-bottom: solid 1px #000000;"> </td>
+	 </tr>
+	 <tr><td colspan="2" height="20"></td></tr>
+	 <tr>
+	 	<td class="tl" width="50%" height="20" align="right"> The Principal: </td>
+	 	<td class="tl" width="50%" height="20" align="center" style="border-bottom: solid 1px #000000;"> {{shareholder.full_name}} </td>
+	 </tr>
+	 <tr><td colspan="2" height="20"></td></tr>
+	 <tr>
+	 	<td class="tl" width="50%" height="20" align="right"> SIGNED by the said: </td>
+	 	<td class="tl" width="50%" height="20" align="left" style="border-bottom: solid 1px #000000;">  </td>
+	 </tr>
+	 <tr><td colspan="2" height="20"></td></tr>
+	 <tr>
+	 	<td class="tl" width="50%" height="20" align="right"> The Witness: </td>
+	 	<td class="tl" width="50%" height="20" align="center" style="border-bottom: solid 1px #000000;"> {{director.full_name}}</td>
+	 </tr>
+	</table>
+</body>
+</html>

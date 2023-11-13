@@ -1,0 +1,62 @@
+<html>
+<body style="font-family:'Times New Roman', Times, serif;">
+<h1 style="width:100%;text-align:center;">{{ datas.title }} {{ datas.field_company_type }}</h1>
+<div style="width:100%;text-align:center;font-size:14px;">
+  (Company Registration Number: {{ datas.field_application_id }})<br/>
+  (Incorporated in the Republic of Singapore)
+</div>
+<hr style="height: 1px">
+<div style="width:100%; height:5px;"></div>
+<div style="width:100%;text-align:center;font-size:14px; font-weight: bold"><br/>DIRECTORS RESOLUTION IN WRITING</div>
+<hr style="height: 1px">
+<div style="width:100%; height:5px;"></div>
+<div style="width:100%;text-align:left;font-size:14px; font-weight: bold">DORMANT COMPANY FOR THE FINANCIAL YEAR ENDED {{ datas.field_financial_year_end|date('d/m/Y') }}</div>
+<div style="width:100%;text-align:left;font-size:14px;">RESOLVED THAT the directors declare that the company has been dormant since the end of the previous financial
+  year and is exempt from preparing financial statements for the financial year ended above.
+</div>
+<div style="width:100%;text-align:left;font-size:14px; font-weight: bold">NON-HOLDING OF ANNUAL GENERAL MEETING</div>
+<div style="width:100%;text-align:left;font-size:14px;">RESOLVED THAT the Annual General Meeting of the company shall not be convened.</div>
+<div style="width:100%; height:5px;"></div>
+<div style="width:100%; height:5px;"></div>
+<div style="width:100%;text-align:left;font-size:14px;">Dated :
+  <br/>
+</div>
+<br/>
+<div style="width:100%;text-align:left;font-size:14px;font-weight: bold">DIRECTORS:</div>
+<div style="width:100%; height:5px;"></div>
+<div style="width:100%; height:5px;"></div>
+<table border="0" cellpadding=0 cellspacing=0 align="left">
+  <tr>
+    <td colspan="3" style="height:20px;"></td>
+  </tr>
+  {% for officer in datas.directors %}
+    {% if loop.index % 2 == 1 %}
+      <tr>
+      <td style="text-align:left;font-size:14px; line-height: 120%;">____<span style="color: white; font-size: 0.01px">**{{ officer.field_email_id }}**</span>_________________________
+        <br/>
+        <b>{{ officer.field_full_name }}</b>
+        <br/>
+        Director
+        <br/><br/><br/>
+      </td>
+      <td width="140"></td>
+    {% else %}
+      <td style="text-align:left;font-size:14px; line-height: 120%;">____<span style="color: white; font-size: 0.01px">**{{ officer.field_email_id }}**</span>_________________________
+        <br/><b>{{ officer.field_full_name }}</b>
+        <br/>
+        Director
+        <br/><br/><br/>
+      </td>
+      </tr>
+    {% endif %}
+    {% if loop.index % 2 == 1 and loop.index == loop.length %}
+      <td>
+        &nbsp;
+      </td>
+      </tr>
+    {% endif %}
+  {% endfor %}
+  <div style="width:100%; height:5px;"></div>
+</table>
+</body>
+</html>

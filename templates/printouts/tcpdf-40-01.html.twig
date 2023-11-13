@@ -1,0 +1,105 @@
+<style>
+
+  .tl { height:250px; line-height:20px; padding-left: 20px; }
+
+</style>
+
+<h1 style="width:100%;text-align:center;">{{ datas.title }} {{ datas.field_company_type }}</h1>
+<div style="width:100%;text-align:center;font-size:14px;">
+  (Incorporated in the Republic of Singapore)<br/>
+  (Company Registration NO.: {{ datas.field_application_id }})<br/>
+  (the “Company”)
+</div>
+<div style="width:100%;text-align:center;font-size:14px; font-weight: bold">
+  DIRECTORS’ RESOLUTIONS<br/> PASSED PURSUANT TO<br/> THE CONSTITUTION OF THE COMPANY
+</div>
+<hr>
+<div style="width:100%; height:5px;"></div>
+<div style="width:100%;text-align:left;font-size:14px; padding-left: 20px">RESIGNATION AND APPOINTMENT OF A DIRECTOR
+</div>
+<br/><br/>
+<table border="1" width="100%" style="padding-left: 10px; font-size:14px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px;">
+  <tr>
+    <td class="tl" width="10%" height="40" valign="absmiddle">  S/N</td>
+    <td class="tl" width="45%" height="40" valign="absmiddle" style="text-align: center">  RESOLUTION TABLED</td>
+    <td class="tl" width="45%" height="40" valign="absmiddle" style="text-align: center">  RESOLUTION PASSED</td>
+  </tr>
+  <tr>
+    <td class="tl" width="10%" height="40">1)
+      <div></div>
+      <div></div>
+      <div></div>
+      <br/>
+      2)</td>
+    <td class="tl" width="45%" height="40">To accept
+      <div style="width:100%;text-align:center;font-size:14px;">
+        <br/>
+        <b>LIN HUAYAN, LAWRENCE</b>
+      </div>
+      <br/>
+      resignation as a director of the Company
+      with immediate effect.
+      <br/>
+      <div>To appoint</div>
+      <div style="width:100%;text-align:center;font-size:14px; font-weight: bold">
+        <b>TAN KUAN HUI</b>
+      </div>
+      <br/>
+      as a director of the Company with
+      immediate effect.</td>
+    <td class="tl" width="45%" height="40">RESOLVED to accept
+      <div style="width:100%;text-align:center;font-size:14px;">
+        <br/>
+        <b>LIN HUAYAN, LAWRENCE</b>
+      </div>
+      <br/>
+      resignation as a director of the Company
+      with immediate effect.
+      <br/>
+      <div>RESOLVED to appoint</div>
+      <div style="width:100%;text-align:center;font-size:14px; font-weight: bold">
+        <b>TAN KUAN HUI</b>
+      </div>
+      <br/>
+      as a director of the Company with
+      immediate effect.</td>
+  </tr>
+</table>
+<br/>
+<br/>
+<div style="width:100%;font-size:14px;">Dated this: 26/04/2021</div>
+<br/>
+<br/>
+<table border="0" cellpadding=0 cellspacing=0 align="left">
+  <tr>
+    <td colspan="3" style="height:20px;"></td>
+  </tr>
+  {% for officer in datas.directors %}
+    {% if loop.index % 2 == 1 %}
+      <tr>
+      <td style="text-align:left;font-size:14px; line-height: 120%;">____<span style="color: white; font-size: 0.01px">{{ officer.signature }}</span>___________________
+        <br/>
+        <b>{{ officer.field_full_name }}</b>
+        <br/>
+        {{ officer.field_position_director }}
+        <br/><br/>
+      </td>
+      <td width="140"></td>
+    {% else %}
+      <td style="text-align:left;font-size:14px; line-height: 120%;">____<span style="color: black; font-size: 0.01px">{{ officer.signature }}</span>___________________
+        <br/><b>{{ officer.field_full_name }}</b>
+        <br/>
+        {{ officer.field_position_director }}
+        <br/><br/>
+      </td>
+      </tr>
+    {% endif %}
+    {% if loop.index % 2 == 1 and loop.index == loop.length %}
+      <td>
+        &nbsp;
+      </td>
+      </tr>
+    {% endif %}
+  {% endfor %}
+  <div style="width:100%; height:5px;"></div>
+</table>

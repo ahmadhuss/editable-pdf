@@ -1,0 +1,394 @@
+{#{{ kint(data) }}#}
+<!DOCTYPE HTML>
+<html>
+<body>
+<style>
+    .tl { height:20px; line-height:20px; padding-left: 20px; }
+</style>
+
+<br/>
+<br/>
+<table border="0" width="100%">
+    <tr>
+        <td align="center" width="80%" style="padding-top:20px;">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <table border="1" width="400" height="300" align="left">
+                <tr>
+                    <td align="center" style="font-size:13px;font-weight:bold;">
+
+                        <br/>
+                        <br/>
+                        <br/>THE COMPANIES ACT
+                        <br/>(CHAPTER 50)
+                        <br/>SECTION 63 (1)
+                        <br/>
+                        <br/>RETURN OF ALLOTMENT OF SHARES
+                        <br/>
+                        <br/>
+                        <br/>
+
+                    </td>
+                </tr>
+            </table>
+
+        </td>
+        <td class="tc" width="20%" height="40" align="center" style="border-left: solid 2px #000;border-bottom: solid 2px #000;">
+
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <span style="font-size:17px;"><b>FORM</b></span>
+            <br/>
+            <br/>
+            <br/>
+            <span style="font-size:30px;"><b>24</b></span>
+            <br/>
+            <br/>
+        </td>
+    </tr>
+</table>
+<br/>
+<br/>
+<br/>
+<table border="0" width="100%" >
+    <tr>
+        <td class="tl" width="20%" line-height="1rem" height="20px" valign="absmiddle"><b> Name of Company : </b></td>
+        <td class="tl" width="80%" line-height="1rem" height="20px" valign="absmiddle" style="border-bottom: solid 1px #000000;"><b>{{ datas.company_name }} {{ datas.field_company_type }}</b></td>
+    </tr>
+    <tr>
+        <td class="tl" width="20%" height="20" align="left"><b> Company No : </b></td>
+        <td class="tl" width="80%" height="20" align="left" style="border-bottom: solid 1px #000000;"><b>{{ datas.field_application_id }}</b></td>
+    </tr>
+    <tr >
+        <td width="96%" style="font-size:13px;">
+            <p>&nbsp;&nbsp;&nbsp;The issue of the shares referred to in this return was made pursuant to a resolution passed by the members of the company on . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</p>
+
+            <p>&nbsp;&nbsp;&nbsp;The shares referred to in this return were allotted, or are deemed to have been allotted under section 63 (6) of the Companies Act, to the allottees on the dates indicated.</p>
+
+        </td>
+    </tr>
+</table>
+<br/>
+<br/>
+1. Payable in cash
+<br/>
+<br/>
+<table border="1" width="100%">
+    <tr>
+        <td class="tl" width="45%" height="20" align="leftr" > <b> Class of shares </b></td>
+        <td class="tl" width="18%" height="20" align="center"> <b> Ordinary        </b></td>
+        <td class="tl" width="18%" height="20" align="center"> <b> Preference      </b></td>
+        <td class="tl" width="19%" height="20" align="center"> <b> Others          </b></td>
+    </tr>
+</table>
+<hr>
+<table border="1" width="100%">
+        <tr>
+            <td class="tl" width="45%" height="18"> Number of shares </td>
+{#            total new share allot #}
+            <td class="tl" width="18%" height="18" align="center"> {{ datas.field_capital_detail.field_number_of_share|number_format(0,'',',') }} </td>
+            <td class="tl" width="18%" height="18" align="center"> </td>
+            <td class="tl" width="19%" height="18" align="center"> </td>
+        </tr>
+        <tr>
+            <td class="tl" width="45%" height="18"> Nominal amount of each share </td>
+            <td class="tl" width="18%" height="18" align="center">{{ datas.field_capital_detail.field_currency }} {{ datas.field_capital_detail.field_each_share_price|number_format(0,'',',') }}</td>
+            <td class="tl" width="18%" height="18" align="center"></td>
+            <td class="tl" width="19%" height="18" align="center"></td>
+        </tr>
+        <tr>
+            <td class="tl" width="45%" height="18" width="45%" height="18"> Amount paid or due and payable on each share paid due and payable </td>
+            <td class="tl" width="18%" height="18" align="center"> {{ datas.field_capital_detail.field_currency }} </td>
+            <td class="tl" width="18%" height="18" align="center"> </td>
+            <td class="tl" width="19%" height="18" align="center"> </td>
+        </tr>
+
+        <tr>
+            <td class="tl" width="45%" height="18"> Amount of premium paid or payable on each Share</td>
+            <td class="tl" width="18%" height="18" align="center"> </td>
+            <td class="tl" width="18%" height="18" align="center"> </td>
+            <td class="tl" width="19%" height="18" align="center"> </td>
+        </tr>
+</table>
+<br/>
+<br/>
+2. For a consideration other than cash (*See Form 25/contract in writing)
+<br/>
+<br/>
+<table border="1" width="100%">
+    <tr>
+        <td class="tl" width="45%" height="20" align="leftr" > <b> Class of shares </b></td>
+        <td class="tl" width="18%" height="20" align="center"> <b> Ordinary        </b></td>
+        <td class="tl" width="18%" height="20" align="center"> <b> Preference      </b></td>
+        <td class="tl" width="19%" height="20" align="center"> <b> Others          </b></td>
+    </tr>
+</table>
+<hr>
+<table border="1" width="100%">
+{#    dont know what value can use #}
+    <tr>
+        <td class="tl" width="45%" height="18"> Number of shares </td>
+        <td class="tl" width="18%" height="18" align="center"> {{ datas.field_capital_detail.field_currency }}</td>
+        <td class="tl" width="18%" height="18" align="center"></td>
+        <td class="tl" width="19%" height="18" align="center"></td>
+    </tr>
+    <tr>
+        <td class="tl" width="45%" height="18"> Nominal amount of each share </td>
+        <td class="tl" width="18%" height="18" align="center"> {{ datas.field_capital_detail.field_currency }}</td>
+        <td class="tl" width="18%" height="18" align="center"></td>
+        <td class="tl" width="19%" height="18" align="center"></td>
+    </tr>
+    <tr>
+        <td class="tl" width="45%" height="18"> Amount to be treated as paid on each share </td>
+        <td class="tl" width="18%" height="18" align="center"> {{ datas.field_capital_detail.field_currency }}</td>
+        <td class="tl" width="18%" height="18" align="center"></td>
+        <td class="tl" width="19%" height="18" align="center"></td>
+    </tr>
+    <tr>
+        <td class="tl" align="center" colspan="4">
+            The consideration for which the shares have been so allotted is as follows:
+            <br/>
+            N/A
+        </td>
+    </tr>
+</table>
+<br/>
+<br/>
+
+<table border="0" width="100%" align="left" style="border-top: solid 1px #000000;">
+    <tr>
+        <td class="tl" width="65%" height="30" align="left"  colspan="2"><b>Lodged in the office of the Registrar of Companies and<br>Businesses by</b></td>
+        <td class="tl" width="35%" height="30" align="center" style="border-left: solid 1px #000000; border-bottom: solid 1px #000000;" valign="absmiddle"> <b>For Official Use</b></td>
+    </tr>
+    <tr>
+        <td class="tl" width="20%" height="30" align="left"  > Name:                          </td>
+        <td class="tl" width="45%" height="30" align="left"> <b>LEE KIM ALLIANCE PTE. LTD.</b></td>
+        <td class="tl" width="35%" height="30" align="left" rowspan="3" style="border-left: solid 1px #000000;">
+            Date of Registration:<br>
+            Receipt No.:<br>
+            Checked By:<br>
+        </td>
+    </tr>
+    <tr>
+        <td class="tl" width="20%" height="30" align="left"> Address:                        </td>
+        <td class="tl" width="45%" height="30" align="left"> <b>No 10 Anson Road, #23-14A,<br> International Plaza, Singapore 079903</b>
+        </td>
+    </tr>
+    <tr>
+        <td class="tl" width="20%" height="30" align="left"> Tel / Fax No.:                  </td>
+        <td class="tl" width="45%" height="30" align="left"> <b>T) 65 6950 1858 F) 65 6223 6430</b></td>
+    </tr>
+</table>
+
+<br pagebreak="true"/>
+<table border="0" width="100%">
+    <tr>
+        <td align="center" width="80%" style="padding-top:20px;">
+            <p style="text-align: left;font-style: italic;">Form 24 Countinuation Sheet 1</p>
+            <p style="text-align: left;font-style: italic;">(Please use continuation sheets if space provided is insufficient)</p>
+            <br/>
+            <br/>
+            <table border="0" width="100%" height="300" align="left">
+                <tr>
+                    <td class="tl" width="30%" height="25"><b> Name of Company : </b></td>
+                    <td class="tl" width="65%" height="25" style="border-bottom: solid 1px #000000;"><b>{{ datas.company_name }} {{ datas.field_company_type }}</b></td>
+                </tr>
+                <tr>
+                    <td class="tl" width="30%" height="25" align="left"><b> Company No : </b></td>
+                    <td class="tl" width="65%" height="25" align="left" style="border-bottom: solid 1px #000000;"><b>{{ datas.field_application_id }}</b></td>
+                </tr>
+            </table>
+
+        </td>
+        <td class="tc" width="20%" height="40" align="center" style="border-left: solid 2px #000;border-bottom: solid 2px #000;">
+
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <span style="font-size:17px;"><b>FORM</b></span>
+            <br/>
+            <br/>
+            <br/>
+            <span style="font-size:30px;"><b>24</b></span>
+            <br/>
+            <br/>
+
+        </td>
+    </tr>
+</table>
+<br/>
+<br/>
+<br/>
+
+
+<table border="0" width="100%">
+    <tr>
+        <td width="10"></td>
+        <td width="90%" style="font-size:13px;">
+
+{#              list of the allotees detail for new allot#}
+            <br/>3.	List of the allottees and an account of the shares allotted to them are as follows:
+	        <br/>
+	        <br/>&nbsp;&nbsp;(a) Name
+	        <br/>&nbsp;&nbsp;(b) Address
+	        <br/>&nbsp;&nbsp;(c) NRIC No. / Passport No. / Registration No.
+	        <br/>&nbsp;&nbsp;(d) Nationality/Country of Incorporation
+	        <br/>&nbsp;&nbsp;(e) No and class of shares allotted and consideration therefore / Date of allotment
+	        <br/>&nbsp;&nbsp;(f) &nbsp;Date of allotment
+            <br/>
+            {% for key, value in datas.shareholders %}
+
+                    <br/>&nbsp;&nbsp;(a) Name: <b>{{ value.full_name }}</b>
+                    <br/>&nbsp;&nbsp;(b) Address: <b>{{ value.field_address_line_1 }} {{ value.field_address_line_2 }} {{ value.field_postal_code }}</b>
+                    <br/>&nbsp;&nbsp;(c) {{ value.field_id_type }}: <b>{{ value.field_id_no }}</b>
+                    <br/>&nbsp;&nbsp;(d) Nationality: <b>{{ value.field_nationality }}</b>
+                    <br/>&nbsp;&nbsp;(e) <b>{{ value.field_shareholder_shares_allotte|number_format(0,'',',') }} Ordinary Shares of {{ datas.field_capital_detail.field_currency}}{{ datas.field_capital_detail.field_each_share_price|number_format(0,'',',')}} each / the date of incorporation</b>
+                    <br/>&nbsp;&nbsp;(f) &nbsp;Date of Allotment: <b>{{ value.field_date_effect_of_allotmen|date('d/m/Y') }}</b>
+
+            {% endfor %}
+	        <br/>
+
+
+        </td>
+    </tr>
+</table>
+
+
+<br pagebreak="true"/>.
+<table border="0" width="100%">
+    <tr>
+        <td align="center" width="80%" style="padding-top:20px;">
+            <p style="text-align: left;font-style: italic;">Form 24 Countinuation Sheet 2</p>
+            <br/>
+            <br/>
+            <table border="0" width="100%" align="left">
+                <tr>
+                    <td class="tl" width="30%" height="25"><b> Name of Company : </b></td>
+                    <td class="tl" width="65%" height="25" style="border-bottom: solid 1px #000000;"><b>{{ datas.company_name }} {{ datas.field_company_type }}</b></td>
+                </tr>
+                <tr>
+                    <td class="tl" width="30%" height="25" align="left"><b> Company No : </b></td>
+                    <td class="tl" width="65%" height="25" align="left" style="border-bottom: solid 1px #000000;"><b>{{ datas.field_application_id }}</b></td>
+                </tr>
+            </table>
+
+        </td>
+        <td class="tc" width="20%" height="40" align="center" style="border-left: solid 2px #000;border-bottom: solid 2px #000;">
+
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <span style="font-size:17px;"><b>FORM</b></span>
+            <br/>
+            <br/>
+            <br/>
+            <span style="font-size:30px;"><b>24</b></span>
+            <br/>
+            <br/>
+
+        </td>
+    </tr>
+</table>
+<br/>
+<br/>
+<br/>
+
+4. Upon the abovementioned allotment of shares, the position of the Share Capital is as follows:
+<br/>
+<br/>
+
+<table border="1" width="100%">
+    <tr>
+        <td class="tl" width="45%" height="30" align="leftr" > <br><br><b> &nbsp;          </b></td>
+        <td class="tc" width="18%" height="30" align="center"> <br><br><b> Ordinary        </b></td>
+        <td class="tc" width="18%" height="30" align="center"> <br><br><b> Preference      </b></td>
+        <td class="tc" width="19%" height="30" align="center"> <br><br><b> Others          </b></td>
+    </tr>
+</table>
+<hr>
+<table border="1" width="100%">
+    <tr>
+{#        total share capital after allot#}
+        <td class="tl" width="45%" height="30"> Issued Share Capital <br>  <b>( {{ datas.min_shares_allotte|number_format(0,'',',') }} Ordinary Share of {{ datas.field_capital_detail.field_currency}}{{ datas.field_capital_detail.field_each_share_price|number_format(0,'',',')}} each )</b><br></td>
+        <td class="tl" width="18%" height="30" align="center"><br><br> {{ datas.field_capital_detail.field_currency}}{{ datas.field_capital_detail.field_each_share_price|number_format(0,'',',')}} </td>
+        <td class="tl" width="18%" height="30" align="center"><br><br>  </td>
+        <td class="tl" width="19%" height="30" align="center"><br><br>  </td>
+    </tr>
+    <tr>
+        <td class="tl" width="45%" height="30"> Paid-up Share Capital <br>   Ordinary Share of {{ datas.field_capital_detail.field_currency}}  each <br></td>
+        <td class="tl" width="18%" height="30" align="center"><br><br> {{ datas.field_capital_detail.field_currency}} </td>
+        <td class="tl" width="18%" height="30" align="center"><br><br>  </td>
+        <td class="tl" width="19%" height="30" align="center"><br><br>  </td>
+    </tr>
+</table>
+<br/>
+<br/>
+
+<table border="0" width="100%">
+    <tr>
+        <td width="90%" style="font-size:13px;">
+            <img src="/themes/custom/zurblk/images/pdf/2016-04-05-02.PNG" width="698">
+        </td>
+    </tr>
+</table>
+
+{#
+<table border="0" width="100%">
+  <tr>
+    <td class="tl" align="center"> CERTIFICATE  </td>
+  </tr>
+</table>
+
+<pre>
+  I hereby certify, in relation to the abovenamed company, that—
+
+    (a) the company has more than 500 members;
+    (b) the company keeps its principal shares register at (address)	 . . . . . . . . . . . . . . . . . . . .
+          . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+    (c) the company provides reasonable accommodation and facilities for persons to inspect
+         and take copies of its list of members and its particulars of shares transferred;
+
+    (d) the shares referred to in this return were allotted for cash;
+
+    (e) the shares referred to in this return were allotted for a consideration other than cash
+         and the number of persons to whom the shares have been allotted exceeds 500.
+     Dated :
+</pre>
+#}
+<br/>
+<br/>
+<br/>
+
+<table border="0" width="100%">
+    {% for key,value in datas.directors %}
+
+                <tr style="border: 1px solid #ddd;">
+                    <td class="tl" width="50%" height="20" align="right">  Signature:  </td>
+                    <td class="tl" width="50%" height="20" align="center" colspan="2">
+                      <span style="color: white; font-size: 1px">{{ value.signature }}</span>
+                      <hr>
+                    </td>
+                </tr>
+                <tr><td colspan="3" height="5"></td></tr>
+                <tr style="padding-bottom: 0" >
+                    <td class="tl" width="50%" height="20" align="right" rowspan="2" >Name of {{ value.field_position }}:</td>
+                    <td class="tl" width="2px" height="20"></td>
+                    <td class="tl" width="50%" height="20" align="left"  style="border-bottom: solid 1px #000000; padding-bottom: 0">&nbsp;&nbsp;<b>{{ value.full_name }}</b></td>
+                </tr>
+                <tr><td colspan="2" height="20"></td></tr>
+
+    {% endfor %}
+</table>
+<br>
+<br>
+
+<span style="font-size:10px;">*Delete where inapplicable</span>
+<br>
+<span style="font-size:10px;">** This Certificate is not to be completed if paragraph 3 of this Form is completed.</span>
+
+</body>
+</html>
