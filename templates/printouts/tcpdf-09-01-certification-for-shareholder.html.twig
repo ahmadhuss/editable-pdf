@@ -1,0 +1,102 @@
+<table>
+    <tr>
+        <td width="70%">Certificate No. * {{datas.shareholder.certificate_number}} *</td>
+        <td width="30%">
+            <table>
+                <tr>
+                    <td style="width: 100px">No. of Shares </td>
+                    <td>: *{{ datas.shareholder.field_shareholder_shares_allotte|number_format(0,'',',') }}*</td>
+                </tr>
+                <tr>
+                    <td style="width: 100px">Amount Paid</td>
+                    {% if datas.shareholder.share_amount_paid > 0 %}
+                        <td>: <b>{{ datas.shareholder.share_amount_paid|number_format(0,'',',') }} ({{ datas.capital_detail.field_currency }})</b></td>
+                    {% else %}
+                        <td>: <b>Nil</b></td>
+                    {% endif %}
+                </tr>
+                <tr>
+                    <td style="width: 100px">Amount Unpaid</td>
+                    {% if datas.shareholder.share_amount_unpaid >= 0 %}
+                        <td>: <b>{{ datas.shareholder.share_amount_unpaid|number_format(0,'',',') }} ({{ datas.capital_detail.field_currency }})</b></td>
+                    {% else %}
+                        <td>: <b>Nil</b></td>
+                    {% endif %}
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+
+<style>
+    .ca{text-align: center;}
+</style>
+<table >
+    <tr><td class="ca" style="font-size: 30px"><b>{{ datas.company_name }} {{ datas.field_company_type }}</b></td></tr>
+    <tr><td class="ca" style="font-size: 11px"><br/><br/>Company Registration No. {{ datas.uen }}<br/>
+            (Incorporated in the Republic of Singapore under the Companies Act, Cap. 50)<br/>
+        </td></tr>
+
+</table>
+
+<table >
+    <tr><td width="10%"></td>
+        <td width="15%" style="font-size: 15px;">Registered Address : </td>
+        <td width="80%" style="font-size: 15px; text-align: left;">{{ datas.field_address_line_1 }} {{ datas.field_address_line_2 }} ({{ datas.field_postcode }})<br></td>
+    </tr>
+</table>
+
+
+<table>
+    <tr>
+        <td width="5%"></td>
+        <td width="30%" rowspan="2" style="font-size: 20px; font-style: italic; font-weight:bold;">This is to certify that,</td>
+        <td width="60%" style="font-size: 20px; font-style: italic; font-weight:bold;"><b>{{ datas.shareholder.full_name }}</b></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>{{ datas.shareholder.field_address_line_1 }} <br/>{{ datas.shareholder.field_address_line_2 }} {{ datas.shareholder.field_postcode }}<br></td>
+    </tr>
+</table>
+
+
+<table>
+    <tr>
+        <td width="5%"></td>
+        <td width="90%">is/are Registered Holder of &nbsp; <b>&nbsp;{{ datas.shareholder.field_shareholder_shares_allotte_by_word }}</b></td>
+    </tr>
+    <tr>
+        <td width="5%"></td>
+      {% if datas.shareholder.share_amount_paid %}
+        {% if datas.shareholder.field_shareholder_shares_allotte == datas.shareholder.share_amount_paid %}
+          <td>Ordinary shares fully paid in above Company subject to the Constitution of the Company<br></td>
+        {% else %}
+          <td>Ordinary shares partially paid {{ datas.shareholder.share_amount_paid|number_format(0,'',',') }} ({{ datas.capital_detail.field_currency }}) in above Company subject to the Constitution of the Company<br></td>
+        {% endif %}
+      {% else %}
+        <td>Ordinary shares unpaid in above Company subject to the Constitution of the Company<br></td>
+      {% endif %}
+    </tr>
+    <tr>
+        <td width="10%"></td>
+{#        <td width="50%">Issued this '.$ACS_SHAREHOLDER_REMARK.'</td>#}
+        <td width="50%">Issued this {{ datas.shareholder.field_date_effect_of_allotment|date('d F Y') }}</td>
+        <td width="35%">
+          <br/><br/><br/><br/>
+            <table >
+                {% if datas.directors|length %}
+                    <tr><td style="border-bottom:1px solid black">{{ datas.directors.0.full_name }}</td></tr>
+                    <tr><td style="font-size: 10px;">Director<br><br></td></tr>
+                {% endif %}
+                {% if datas.secretory|length %}
+                    <tr><td style="border-bottom:1px solid black">{{ datas.secretory.0.full_name }}</td></tr>
+                    <tr><td style="font-size: 10px;">Secretary<br><br></td></tr>
+                {% endif %}
+                <tr><td style="font-size: 8px;">No transfer of any portion of the Shares comprised in this</td></tr>
+                <tr><td style="font-size: 8px;">Certificate will be registered unless accompanied by this Certificate.</td></tr>
+            </table>
+        </td>
+    </tr>
+
+</table>

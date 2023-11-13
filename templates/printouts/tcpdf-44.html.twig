@@ -1,0 +1,101 @@
+<html>
+  <body>
+    {% if datas.shareholders|length > 0 %}
+      {% for shareholder in datas.shareholders %}
+        <h2 style="width:100%;text-align:center;">REGISTER OF TRANSFERS</h2>
+        <div style="width:100%; height:10px;"></div>
+        <table>
+          <tr>
+            <td style="text-align:left;font-size:11px; font-weight: bold;">Name of Company:&nbsp;&nbsp;&nbsp;&nbsp;{{ datas.company_name }} {{ datas.field_company_type }}</td>
+            <td style="text-align:right;font-size:11px;">Page {{ loop.index }}</td>
+          </tr>
+        </table>
+        <div style="width:100%; height:5px;"></div>
+        <table cellpadding="4" border="3" width="100%" cellspacing="0">
+          <tr style="text-align:center;font-size:11px; font-weight: bold;">
+            <td rowspan="3" width="7%" colspan="1" class="tl" style="border: 1px solid #111"><br/><br/>Date of transfer</td>
+            <td colspan="6" width="51%" class="tl" style="border: 1px solid #111">TRANSFEROR</td>
+            <td colspan="4" width="42%" class="tl" style="border: 1px solid #111">TRANSFEREE</td>
+          </tr>
+          <tr style="text-align:center;font-size:11px; font-weight: bold;">
+            <td class="tl" width="22%" rowspan="2" style="border: 1px solid #111"><br/><br/>Name & Address</td>
+            <td class="tl" width="7%"  rowspan="2" style="line-height:15px;border: 1px solid #111">Member's Register folio no</td>
+            <td class="tl" width="11%" colspan="2" style="border: 1px solid #111">Old Certificate</td>
+            <td class="tl" width="11%" colspan="2" style="border: 1px solid #111">Balance Certificate</td>
+            <td class="tl" width="22%" rowspan="2" style="border: 1px solid #111"><br/><br/>Name & Address</td>
+            <td class="tl" width="8%" rowspan="2" style="border: 1px solid #111"><br/><br/>No of shares acquired</td>
+            <td class="tl" width="5%" rowspan="2" style="border: 1px solid #111"><br/><br/>Cert No</td>
+            <td class="tl" width="7%" rowspan="2" style="line-height:15px;border: 1px solid #111">Member's Register folio no</td>
+          </tr>
+          <tr style="text-align:center;font-size:11px; font-weight: bold;">
+            <td class="tl" width="7%" style="border: 1px solid #111"><br/>No of shares</td>
+            <td class="tl" width="4%" style="border: 1px solid #111"><br/>Cert No</td>
+            <td class="tl" width="7%" style="border: 1px solid #111"><br/>No of shares</td>
+            <td class="tl" width="4%" style="border: 1px solid #111"><br/>Cert No</td>
+          </tr>
+            {% for office in shareholder %}
+              <tr style="font-size: 11px">
+                <td class="tl" style="text-align:center;border: 1px solid #111;">04/03/2021</td>
+                <td class="tl" style="text-align:left;border: 1px solid #111;">{{ office.field_full_name }}</td>
+                <td class="tl" style="text-align:center;border: 1px solid #111">{{ office.field_members_folio_no }}</td>
+                <td class="tl" style="text-align:center;border: 1px solid #111">{{ office.field_shareholder_shares_allotte }}</td>
+                <td class="tl" style="text-align:center; border: 1px solid #111">{{ office.field_shareholder_certificate_no }}</td>
+                <td class="tl" style="text-align:center; border: 1px solid #111"></td>
+                <td class="tl" style="text-align:center; border: 1px solid #111"></td>
+                <td class="tl" style="text-align:center; border: 1px solid #111"></td>
+                <td class="tl" style="text-align:center; border: 1px solid #111"></td>
+                <td class="tl" style="text-align:center; border: 1px solid #111"></td>
+                <td class="tl" style="text-align:center; border: 1px solid #111"></td>
+              </tr>
+              <tr style="font-size: 11px">
+                <td class="tl" style="border: 1px solid #111"></td>
+                <td class="tl" style="border: 1px solid #111">{{ office.field_address_line_1 }}</td>
+                <td class="tl" style="border: 1px solid #111"></td>
+                <td class="tl" style="border: 1px solid #111"></td>
+                <td class="tl" style="border: 1px solid #111"></td>
+                <td class="tl" style="border: 1px solid #111"></td>
+                <td class="tl" style="border: 1px solid #111"></td>
+                <td class="tl" style="border: 1px solid #111"></td>
+                <td class="tl" style="border: 1px solid #111"></td>
+                <td class="tl" style="border: 1px solid #111"></td>
+                <td class="tl" style="border: 1px solid #111"></td>
+              </tr>
+              <tr style="font-size: 11px">
+                <td class="tl" style="border: 1px solid #111"></td>
+                <td class="tl" style="border: 1px solid #111">{{ office.field_address_line_2 }} {% if office.field_postal_code %}({{ office.field_postal_code }}){% endif %}</td>
+                <td class="tl" style="border: 1px solid #111"></td>
+                <td class="tl" style="border: 1px solid #111"></td>
+                <td class="tl" style="border: 1px solid #111"></td>
+                <td class="tl" style="border: 1px solid #111"></td>
+                <td class="tl" style="border: 1px solid #111"></td>
+                <td class="tl" style="border: 1px solid #111"></td>
+                <td class="tl" style="border: 1px solid #111"></td>
+                <td class="tl" style="border: 1px solid #111"></td>
+                <td class="tl" style="border: 1px solid #111"></td>
+              </tr>
+              {% if loop.last %}
+              {% else %}
+                <tr>
+                  <td class="tl" style="border: 1px solid #111"></td>
+                  <td class="tl" style="border: 1px solid #111"></td>
+                  <td class="tl" style="border: 1px solid #111"></td>
+                  <td class="tl" style="border: 1px solid #111"></td>
+                  <td class="tl" style="border: 1px solid #111"></td>
+                  <td class="tl" style="border: 1px solid #111"></td>
+                  <td class="tl" style="border: 1px solid #111"></td>
+                  <td class="tl" style="border: 1px solid #111"></td>
+                  <td class="tl" style="border: 1px solid #111"></td>
+                  <td class="tl" style="border: 1px solid #111"></td>
+                  <td class="tl" style="border: 1px solid #111"></td>
+                </tr>
+              {% endif %}
+            {% endfor %}
+        </table>
+        {% if loop.last %}
+        {% else %}
+          <br pagebreak="true" />
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  </body>
+</html>

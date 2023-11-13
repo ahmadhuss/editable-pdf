@@ -1,0 +1,360 @@
+<html>
+<body>
+	<div style="width:100%; height:10px;"></div>
+	<h1 style="width:100%;text-align:center;">{{datas.title}} {{ datas.field_company_type }}</h1>
+	<div style="width:100%;text-align:center;font-size:14px;">
+	(Company Registration Number: {{ datas.field_application_id }})<br/>
+	(Incorporated in the Republic of Singapore)
+	</div>
+
+	<hr style="border:solid height:10px;">
+	<div style="width:100%; height:5px;"></div>
+
+	<div style="width:100%;text-align:center;font-size:14px;font-weight:bold;">
+		BOARD RESOLUTIONS
+	</div>
+
+	<hr style="border:solid height:10px;">
+	<div style="width:100%; height:5px;"></div>
+
+	<div style="width:100%; height:5px;"></div>
+
+	<div style="width:100%;text-align:left;font-size:14px;">
+	Pursuant to the Articles of Association of the Company we, being all the directors of <b>{{datas.title}} {{ datas.field_company_type }}</b> (“the Company”), do hereby certify the following resolutions of the Board of Directors;
+	</div>
+
+	</div>
+
+	<div style="width:100%;text-align:left;font-size:14px;">
+	<table><tr>
+	<td width="7%"></td>
+	<td width="80%">
+	<p style="margin-left: 40px; margin-right: 0px">
+	  	<br/>
+      <b><u>CHANGE OF BUSINESS ACTIVITY</u></b>
+  </p>
+  </td>
+  <td></td>
+  </tr></table>
+	</div>
+
+	<div style="width:80%;text-align:left;font-size:14px;padding-left:100px;">
+		<table>
+			{% set count = 1 %}
+			{% for key, value in datas.field_company_ssic %}
+				<tr>
+					<td width="10%" align="right" >
+						<p style="margin-left: 40px; margin-right: 0px"><br/>{{ count }})&nbsp;&nbsp;&nbsp;<br/></p>
+					</td>
+					<td width="80%">
+						<p style="margin-left: 40px; margin-right: 0px">
+							<br/>
+							{{ value.name }} ({{ value.id }})
+							<br/>
+						</p>
+					</td>
+					<td></td>
+				</tr>
+				{% set count = count + 1 %}
+			{% endfor %}
+		</table>
+	</div>
+
+	<div style="width:100%;text-align:left;font-size:14px;">
+	Resolved that the Company wants to change it’s activity as above described immediately, and is hereby approved by the directors of the Company.
+	<br/><br/>
+	Confirmed
+	</div>
+	</div>
+
+
+
+	<div style="width:100%;text-align:left;font-size:14px;font-weight:bold;">
+
+		<div style="width:100%;text-align:left;font-size:14px;">
+	Dated :
+	<br/><br/>
+	</div>
+	</div>
+		<div style="width:100%; height:5px;"></div>
+
+	<table border="0" cellpadding=0 cellspacing=0 width="90%" align="center">
+		<tr><td colspan="3" style="height:20px;"></td></tr>
+		{% for director in datas.directors %}
+			{% if loop.index % 2 == 1 %}
+				<tr>
+				<td style="width:40%; text-align:left;font-size:14px;">
+          <span style="color: white; font-size: 1px">_____________________________________________________________________
+            ___________________________________________{{ director.signature }}</span>
+          <hr>
+					<b>{{ director.full_name }}</b> <br/>
+					{{ director.field_position|upper }}
+					<br/><br/>
+					<br/><br/>
+				</td>
+				<td width="140"></td>
+			{% else %}
+				<td style="width:40%; text-align:left;font-size:14px;">
+          <span style="color: white; font-size: 1px">_____________________________________________________________________
+            ___________________________________________{{ director.signature }}</span>
+          <hr>
+					<b>{{ director.full_name }}</b> <br/>
+					{{ director.field_position|upper }}
+					<br/><br/>
+					<br/><br/>
+				</td>
+				</tr>
+			{% endif %}
+			{% if loop.index % 2 == 1 and loop.index == loop.length %}
+				<td>
+					&nbsp;
+				</td>
+				</tr>
+			{% endif %}
+		{% endfor %}
+	</table>
+
+<!--		<table border="0" cellpadding=0 cellspacing=0 width="98%" align="left">
+		<tr><td colspan="3" style="height:20px;"></td></tr>
+		'.$LOOP_SHAREHOLDER_AGM00.'
+       </table>  -->
+
+
+
+
+	<br pagebreak="true"/>
+
+
+	<div style="width:100%; height:10px;"></div>
+	<h1 style="width:100%;text-align:center;">{{datas.title}} {{ datas.field_company_type }}</h1>
+	<div style="width:100%;text-align:center;font-size:14px;">
+	(Company Registration Number: {{ datas.field_application_id }})<br/>
+	(Incorporated in the Republic of Singapore)
+	</div>
+
+	<hr style="border:solid height:10px;">
+	<div style="width:100%; height:5px;"></div>
+
+	<div style="width:100%;text-align:center;font-size:14px;font-weight:bold;">
+		EXTRAORDINARY GENERAL MEETING
+	</div>
+
+	<hr style="border:solid height:10px;">
+	<div style="width:100%; height:5px;"></div>
+
+	<div style="width:100%; height:5px;"></div>
+
+	<div style="width:100%;text-align:left;font-size:14px;">
+	NOTICE IS HEREBY GIVEN THAT an Extraordinary General Meeting of the Company will be held on                      at {{ datas.field_address_line_1 }} {{ datas.field_address_line_2 }} {{ datas.field_postcode }}, for the purpose of considering and,  if though fit, to pass the following resolution : -
+	</div>
+
+	</div>
+
+	<div style="width:100%;text-align:left;font-size:14px;">
+	<table><tr>
+	<td width="7%"></td>
+	<td width="80%">
+	<p style="margin-left: 40px; margin-right: 0px">
+	  	<br/>
+      <b><u>CHANGE OF BUSINESS ACTIVITY</u></b>
+  </p>
+  </td>
+  <td></td>
+  </tr></table>
+	</div>
+
+	<div style="width:80%;text-align:left;font-size:14px;padding-left:100px;">
+		<table>
+			{% set count = 1 %}
+			{% for key, value in datas.field_company_ssic %}
+				<tr>
+					<td width="10%" align="right" >
+						<p style="margin-left: 40px; margin-right: 0px"><br/>{{ count }})&nbsp;&nbsp;&nbsp;<br/></p>
+					</td>
+					<td width="80%">
+						<p style="margin-left: 40px; margin-right: 0px">
+							<br/>
+							{{ value.name }} ({{ value.id }})
+							<br/>
+						</p>
+					</td>
+					<td></td>
+				</tr>
+			{% endfor %}
+		</table>
+	</div>
+
+	<div style="width:100%;text-align:left;font-size:14px;">
+		Confirmed
+	</div>
+
+
+
+	<div style="width:100%;text-align:left;font-size:14px;font-weight:bold;">
+
+		<div style="width:100%;text-align:left;font-size:14px;">
+	Dated :
+	<br/><br/>
+	</div>
+	</div>
+		<div style="width:100%; height:5px;"></div>
+
+	<table border="0" cellpadding=0 cellspacing=0 width="90%" align="center">
+		<tr><td colspan="3" style="height:20px;"></td></tr>
+		{% for director in datas.directors %}
+			{% if loop.index % 2 == 1 %}
+				<tr>
+				<td style="width:40%; text-align:left;font-size:14px;">
+          <span style="color: white; font-size: 1px">_____________________________________________________________________
+            ___________________________________________{{ director.signature }}</span>
+          <hr>
+					<b>{{ director.full_name }}</b> <br/>
+					{{ director.field_position|upper }}
+					<br/><br/>
+					<br/><br/>
+				</td>
+				<td width="140"></td>
+			{% else %}
+				<td style="width:40%; text-align:left;font-size:14px;">
+          <span style="color: white; font-size: 1px">_____________________________________________________________________
+            ___________________________________________{{ director.signature }}</span>
+          <hr>
+					<b>{{ director.full_name }}</b> <br/>
+					{{ director.field_position|upper }}
+					<br/><br/>
+					<br/><br/>
+				</td>
+				</tr>
+			{% endif %}
+			{% if loop.index % 2 == 1 and loop.index == loop.length %}
+				<td>
+					&nbsp;
+				</td>
+				</tr>
+			{% endif %}
+		{% endfor %}
+	</table>
+
+<!--		<table border="0" cellpadding=0 cellspacing=0 width="98%" align="left">
+		<tr><td colspan="3" style="height:20px;"></td></tr>
+		'.$LOOP_SHAREHOLDER_AGM00.'
+  	</table> -->
+
+
+
+
+
+	<br pagebreak="true"/>
+
+	<div style="width:100%; height:10px;"></div>
+	<h1 style="width:100%;text-align:center;">{{datas.title}} {{ datas.field_company_type }}</h1>
+	<div style="width:100%;text-align:center;font-size:14px;">
+	(Incorporated in the Republic of Singapore)
+	</div>
+
+	<hr style="border:solid height:10px;">
+	<div style="width:100%; height:5px;"></div>
+
+	<div style="width:100%;text-align:center;font-size:14px;font-weight:bold;">
+		EXTRAORDINARY GENERAL MEETING
+	</div>
+
+	<hr style="border:solid height:10px;">
+	<div style="width:100%; height:5px;"></div>
+
+	<div style="width:100%; height:5px;"></div>
+
+	<div style="width:100%;text-align:left;font-size:14px;">
+	NOTICE IS HEREBY GIVEN THAT an Extraordinary General Meeting of the Company will be held on                      at {{ datas.field_address_line_1 }} {{ datas.field_address_line_2 }} {{ datas.field_postcode }}, for the purpose of considering and,  if though fit, to pass the following resolution : -
+	</div>
+
+	</div>
+
+	<div style="width:100%;text-align:left;font-size:14px;">
+	<table><tr>
+	<td width="7%"></td>
+	<td width="80%">
+	<p style="margin-left: 40px; margin-right: 0px">
+	  	<br/>
+      <b><u>CHANGE OF BUSINESS ACTIVITY</u></b>
+  </p>
+  </td>
+  <td></td>
+  </tr></table>
+	</div>
+
+	<div style="width:80%;text-align:left;font-size:14px;padding-left:100px;">
+	<table>
+	{% set count = 1 %}
+	{% for key, value in datas.field_company_ssic %}
+		<tr>
+			<td width="10%" align="right" >
+				<p style="margin-left: 40px; margin-right: 0px"><br/>{{ count }})&nbsp;&nbsp;&nbsp;<br/></p>
+			</td>
+			<td width="80%">
+				<p style="margin-left: 40px; margin-right: 0px">
+					<br/>
+					{{ value.name }} ({{ value.id }})
+					<br/>
+				</p>
+			</td>
+			<td></td>
+		</tr>
+	{% endfor %}
+	</table>
+	</div>
+
+	<div style="width:100%;text-align:left;font-size:14px;">
+		Confirmed
+	</div>
+
+
+
+	<div style="width:100%;text-align:left;font-size:14px;font-weight:bold;">
+
+		<div style="width:100%;text-align:left;font-size:14px;">
+	Dated :
+	<br/><br/>
+	</div>
+	</div>
+		<div style="width:100%; height:5px;"></div>
+
+<!--	<table border="0" cellpadding=0 cellspacing=0 width="98%" align="left">
+		<tr><td colspan="3" style="height:20px;"></td></tr>
+		'.$LOOP_DIRECTOR.'
+ 	</table> -->
+
+	<table border="0" cellpadding=0 cellspacing=0 width="98%" align="left">
+		<tr><td colspan="3" style="height:20px;"></td></tr>
+		{% for shareholder in datas.shareholders %}
+			{% if loop.index % 2 == 1 %}
+				<tr>
+				<td style="width:40%; text-align:left;font-size:14px;">
+          <span style="color: white; font-size: 1px">_____________________________________________________________________
+            ___________________________________________{{ shareholder.signature }}</span>
+          <hr>
+					<b>{{ shareholder.full_name }}<br/></b>
+					  MEMBER
+				</td>
+				<td width="140"></td>
+			{% else %}
+				<td style="width:40%; text-align:left;font-size:14px;">
+          <span style="color: white; font-size: 1px">_____________________________________________________________________
+            ___________________________________________{{ shareholder.signature }}</span>
+          <hr>
+					<b>{{ shareholder.full_name }}</b> <br/>
+					MEMBER
+				</td>
+				</tr>
+			{% endif %}
+			{% if loop.index % 2 == 1 and loop.index == loop.length %}
+				<td>
+					&nbsp;
+				</td>
+				</tr>
+			{% endif %}
+		{% endfor %}
+	</table>
+
+	</body>
+	</html>

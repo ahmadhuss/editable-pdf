@@ -1,0 +1,773 @@
+<style>
+
+  .bd { border: 1px solid black; }
+  .bdna { border: 1px solid black; vertical-align: middle; }
+  .ftd { width: 30%; border: 1px solid black; }
+  .std { width: 25%; border: 1px solid black; }
+  .ttd { width: 20%; border: 1px solid black; }
+  .fotd { width: 25%; border: 1px solid black; }
+  .cl2 { width: 35%; border: 1px solid black; }
+  .cl3 { border: 1px solid black;background-color: #D9D9D9; text-align: center; }
+  .toptd { border: 1px solid black;background-color: #BFBFBF; text-align: center; }
+  .p {padding: 5px;}
+  .cl4 { width: 43%; border: 1px solid black; }
+  .cl5 { width: 14%; border: 1px solid black;}
+  .input[type=checkbox] { zoom: 2;}
+
+</style>
+<table style="border-bottom:2px solid black;  font-size:120%; cellspacing:0; cellpadding:0;">
+  <tr>
+    <td align="left">CUSTOMER ACCEPTANCE FORM</td>
+    <td align="right">Annex C</td>
+  </tr>
+  <tr>
+    <td style="height:5px;"></td>
+  </tr>
+</table>
+
+<p style=" text-align: left; text-decoration: underline;  font-size:92%;">
+  PART 1 – INFORMATION ABOUT CUSTOMERS, AGENTS, BENEFICIAL OWNERS AND POLITICALLY EXPOSED PERSONS
+</p>
+<p style="text-align: left;">Section A – Information of customer and agent</p>
+<table cellpadding="3px">
+  <tr>
+    <td colspan="4" class="toptd">Individual customer’s information</td>
+  </tr>
+
+  {% if datas.officer.is_registration %}
+    <tr>
+      <td class="ftd">Full name (including any alias)</td>
+      <td class="std"> </td>
+      <td class="ttd">Unique identification number</td>
+      <td class="fotd"></td>
+    </tr>
+    <tr>
+      <td class="ftd">Address (residential / place of business / registered office)</td>
+      <td colspan="3" class="bd"><p style="padding-left: 3px;"></p></td>
+    </tr>
+    <tr>
+      <td class="ftd">Date of birth</td>
+      <td colspan="3" class="bd"></td>
+    </tr>
+    <tr>
+      <td class="ftd">Nationality</td>
+      <td colspan="3" class="bd"></td>
+    </tr>
+    <tr>
+      <td class="ftd">Contact number</td>
+      <td colspan="3" class="bd"></td>
+    </tr>
+    <tr>
+      <td class="ftd">Intended nature and purpose of business relationship</td>
+      <td colspan="3" class="bd"></td>
+    </tr>
+    <!------------------------------------------------------------------------------------------>
+    <tr>
+      <td colspan="4" class="toptd">Business entity’s information</td>
+    </tr>
+    <tr>
+      <td class="ftd">Name of entity</td>
+      <td class="std"> {{ datas.officer.field_full_name }}</td>
+      <td class="ttd">Incorporation/ registration number</td>
+      <td class="fotd"> {{ datas.officer.field_id_no }}</td>
+    </tr>
+    <tr>
+      <td class="ftd">Address (residential/ place of business/ registered office)</td>
+      <td colspan="3" class="bd"> {{ datas.officer.field_address_line_1 }} {{ datas.officer.field_address_line_2 }} {{ datas.officer.field_postal_code }}</td>
+    </tr>
+    <tr>
+      <td class="ftd">Place of registration/ incorporation</td>
+      <td colspan="3" class="bd"> {{ datas.officer.field_country_of_birth }}</td>
+    </tr>
+    <tr>
+      <td class="ftd">Date of registration/ incorporation</td>
+      <td colspan="3" class="bd"> {{ datas.officer.field_date_of_birth|date('d/m/Y') }}</td>
+    </tr>
+    <tr>
+      <td class="ftd">Contact number</td>
+      <td colspan="3" class="bd"> {{ datas.officer.field_mobile }}</td>
+    </tr>
+    <tr>
+      <td class="ftd">Intended nature and purpose of business relationship</td>
+      <td colspan="3" class="bd">{% for ssic in datas.field_company_ssic %} {{ ssic.getName() }} {% if loop.last != true %}<br/>{% endif %}{% endfor %}</td>
+    </tr>
+  {% else %}
+    <tr>
+      <td class="ftd">Full name (including any alias)</td>
+      <td class="std"> {{ datas.officer.field_full_name }}</td>
+      <td class="ttd">Unique identification number</td>
+      <td class="fotd"> {{ datas.officer.field_id_type }}: {{ datas.officer.field_id_no }}</td>
+    </tr>
+    <tr>
+      <td class="ftd">Address (residential / place of business / registered office)</td>
+      <td colspan="3" class="bd"><p
+          style="padding-left: 3px;"> {{ datas.officer.field_address_line_1 }} {{ datas.officer.field_address_line_2 }} {{ datas.officer.field_postal_code }}</p>
+      </td>
+    </tr>
+    <tr>
+      <td class="ftd">Date of birth</td>
+      <td colspan="3" class="bd"> {{ datas.officer.field_date_of_birth|date('d/m/Y') }}</td>
+    </tr>
+    <tr>
+      <td class="ftd">Nationality</td>
+      <td colspan="3" class="bd"> {{ datas.officer.field_nationality }}</td>
+    </tr>
+    <tr>
+      <td class="ftd">Contact number</td>
+      <td colspan="3" class="bd"> {{ datas.officer.field_mobile }}</td>
+    </tr>
+    <tr>
+      <td class="ftd">Intended nature and purpose of business relationship</td>
+      <td colspan="3"
+          class="bd">{% for ssic in datas.field_company_ssic %} {{ ssic.getName() }} {% if loop.last != true %}
+          <br/>{% endif %}{% endfor %}</td>
+    </tr>
+    <!------------------------------------------------------------------------------------------>
+    <tr>
+      <td colspan="4" class="toptd">Business entity’s information</td>
+    </tr>
+    <tr>
+      <td class="ftd">Name of entity</td>
+      <td class="std"></td>
+      <td class="ttd">Incorporation/ registration number</td>
+      <td class="fotd"></td>
+    </tr>
+    <tr>
+      <td class="ftd">Address (residential / place of business / registered office)</td>
+      <td colspan="3" class="bd"></td>
+    </tr>
+    <tr>
+      <td class="ftd">Place of registration / incorporation</td>
+      <td colspan="3" class="bd"></td>
+    </tr>
+    <tr>
+      <td class="ftd">Date of registration / incorporation</td>
+      <td colspan="3" class="bd"></td>
+    </tr>
+    <tr>
+      <td class="ftd">Contact number</td>
+      <td colspan="3" class="bd"></td>
+    </tr>
+    <tr>
+      <td class="ftd">Intended nature and purpose of business relationship</td>
+      <td colspan="3" class="bd"></td>
+    </tr>
+  {% endif %}
+
+  <!------------------------------------------------------------------------------------------>
+  <tr>
+    <td colspan="4" class="toptd">Proposed business entity’s information</td>
+  </tr>
+  <tr>
+    <td class="ftd">Proposed name of entity</td>
+    <td colspan="3" class="bd"> {{ datas.company_name }} {{ datas.field_company_type }}</td>
+  </tr>
+  <tr>
+    <td class="ftd">Entity type</td>
+    <td colspan="3" class="bd"> {{ datas.field_company_incorporate_type }}</td>
+  </tr>
+  <tr>
+    <td class="ftd">Proposed registered office address / address of place of business</td>
+    <td colspan="3"
+        class="bd"> {{ datas.field_address_line_1 }} {{ datas.field_address_line_2 }} {{ datas.field_postcode }}</td>
+  </tr>
+  <tr>
+    <td class="ftd">Proposed place of registration / incorporation</td>
+    <td colspan="3" class="bd"> SINGAPORE</td>
+  </tr>
+  <tr>
+    <td class="ftd">Proposed date of registration / incorporation</td>
+    <td colspan="3"
+        class="bd">{% if datas.field_company_effect_date is not null %} {{ datas.field_company_effect_date|date('d/m/Y') }}{% endif %}</td>
+  </tr>
+  <tr>
+    <td class="ftd">Intended nature and purpose of business relationship</td>
+    <td colspan="3" class="bd">{% for ssic in datas.field_company_ssic %} {{ ssic.getName() }}{% if loop.last != true %}
+        <br/>{% endif %}{% endfor %}</td>
+  </tr>
+  <!------------------------------------------------------------------------------------------>
+  <tr>
+    <td colspan="4" class="toptd">Agent’s information</td>
+  </tr>
+  <tr>
+    <td class="ftd"></td>
+    <td class="cl2 cl3">Individual’s particulars</td>
+    <td class="cl2 cl3">Entity’s particulars</td>
+  </tr>
+  <tr>
+    <td class="ftd">Full name (including any alias)</td>
+    <td class="cl2"></td>
+    <td class="cl2"></td>
+  </tr>
+  <tr>
+    <td class="ftd">Unique identification number or incorporation/ registration number</td>
+    <td class="cl2"></td>
+    <td class="cl2"></td>
+  </tr>
+  <tr>
+    <td class="ftd">Address (residential/ place of business/ registered office)</td>
+    <td class="cl2"></td>
+    <td class="cl2"></td>
+  </tr>
+  <tr>
+    <td class="ftd">Date of birth or date of registration / incorporation</td>
+    <td class="cl2"></td>
+    <td class="cl2"></td>
+  </tr>
+  <tr>
+    <td class="ftd">Nationality or place of registration / incorporation</td>
+    <td class="cl2"></td>
+    <td class="cl2"></td>
+  </tr>
+  <tr>
+    <td class="ftd">Contact number</td>
+    <td class="cl2"></td>
+    <td class="cl2"></td>
+  </tr>
+  <tr>
+    <td style="text-align: justify;" colspan="3"><br><br>
+      Note 1: A customer means a business entity on whose behalf a person instructs a registered filing agent to
+      carry out a transaction
+      with ACRA. In this context, a person may be an officer of a company, a partner of a partnership, or a sole
+      proprietor of
+      a sole proprietorship. Alternatively, the person may be an agent (individual or entity) who gives
+      instructions on behalf of
+      the customer (business entity).<br><br>
+      Note 2: Please obtain evidence of the agent’s authority to act on behalf of the customer.
+    </td>
+  </tr>
+</table>
+<!---------------------------------------------------------------------------->
+<p style="font-weight:bold; text-align: left;">Section B – Information of sole proprietors, directors, partners and
+  other persons with executive authority</p>
+<table cellpadding="3px">
+  <tr>
+    <td class="ftd">Information of sole proprietor/ director / partner (1)</td>
+    <td class="bd" width="70%"> {{ datas.officer.field_full_name }}</td>
+  </tr>
+  <tr>
+    <td class="ftd">Information of sole proprietor/ director / partner (2)</td>
+    <td class="bd" width="70%"></td>
+  </tr>
+  <tr>
+    <td class="ftd">Information of sole proprietor/ director / partner (3)</td>
+    <td class="bd" width="70%"></td>
+  </tr>
+</table>
+<!---------------------------------------------------------------------------->
+<p style="font-weight:bold; text-align: left;">Section C – Information of customer’s beneficial owner(s)</p>
+<table class="bd" cellpadding="4px">
+  <tr>
+    <td>The purpose of obtaining beneficial owners’ information is to: <br>
+      a)&nbsp; &nbsp; &nbsp; &nbsp; identify the natural persons (whether acting alone or together) who ultimately
+      own all the assets or undertakings of the customer; <br>
+      b)&nbsp; &nbsp;&nbsp; if there is doubt as to whether the natural persons who ultimately own all the assets
+      or undertakings of the customer are the beneficial owners or where no natural persons ultimately own all the
+      assets or undertakings of the customer, to then identify the natural persons (if any) who ultimately control
+      the customer or have ultimate effective control over the customer; and <br>
+      c)&nbsp; &nbsp;&nbsp; where no natural persons are identified above, to identify the natural persons having
+      executive authority in the customer, or in equivalent or similar positions.
+    </td>
+  </tr>
+</table>
+<br><br><br>
+<table cellpadding="3px">
+  {% if datas.officer.is_registration %}
+    <tr>
+      <td class="ftd">Full name (including any alias)</td>
+      <td class="std"></td>
+      <td class="ttd">Unique identification number</td>
+      <td class="fotd"></td>
+    </tr>
+    <tr>
+      <td class="ftd">Address (residential/ place of business/ registered office)</td>
+      <td colspan="3" class="bd"></td>
+    </tr>
+    <tr>
+      <td class="ftd">Date of birth</td>
+      <td colspan="3" class="bd"></td>
+    </tr>
+    <tr>
+        <td class="ftd">Place of registration/ incorporation</td>
+        <td colspan="3" class="bd"> </td>
+    </tr>
+    <tr>
+      <td class="ftd">Contact number</td>
+      <td colspan="3" class="bd"></td>
+    </tr>
+    <tr>
+      <td class="ftd">Provide information of nature of beneficial ownership (e.g. more than 25% of ownership of the
+        customer)
+      </td>
+      <td colspan="3" class="bd"></td>
+    </tr>
+    <tr>
+      <td class="ftd">Intended nature and purpose of business relationship</td>
+      <td colspan="3" class="bd"></td>
+    </tr>
+  {% else %}
+  <tr>
+    <td class="ftd">Full name (including any alias)</td>
+    <td class="std"> {{ datas.officer.field_full_name }}</td>
+    <td class="ttd">Unique identification number</td>
+    <td class="fotd"> {{ datas.officer.field_id_type }} {{ datas.officer.field_id_no }}</td>
+  </tr>
+  <tr>
+    <td class="ftd">Address (residential/ place of business/ registered office)</td>
+    <td colspan="3"
+        class="bd"> {{ datas.officer.field_address_line_1 }} {{ datas.officer.field_address_line_2 }} {{ datas.officer.field_postal_code }}
+    </td>
+  </tr>
+  <tr>
+    <td class="ftd">Date of birth</td>
+    <td colspan="3" class="bd"> {{ datas.officer.field_date_of_birth|date('d/m/Y') }}</td>
+  </tr>
+  <tr>
+    <td class="ftd">Nationality</td>
+    <td colspan="3" class="bd"> {{ datas.officer.field_nationality }}</td>
+  </tr>
+  <tr>
+    <td class="ftd">Contact number</td>
+    <td colspan="3" class="bd"> {{ datas.officer.field_mobile }}</td>
+  </tr>
+  <tr>
+    <td class="ftd">Provide information of nature of beneficial ownership (e.g. more than 25% of ownership of the
+      customer)
+    </td>
+    <td colspan="3" class="bd"></td>
+  </tr>
+  <tr>
+    <td class="ftd">Intended nature and purpose of business relationship</td>
+    <td colspan="3" class="bd"></td>
+  </tr>
+  {% endif %}
+  <tr>
+    <td style="text-align: justify;" colspan="4"><br><br>
+      Note 3: Unless the registered filing agent doubts the veracity of the customer due diligence information or
+      suspects
+      that the customer is carrying out or facilitating money laundering or the financing of terrorism, he is not
+      required to
+      inquire if there exists any beneficial owner for a customer who is <br>
+      (a) a Singapore government entity; <br>
+      (b) a foreign government entity; <br>
+      (c) an entity listed on the Singapore exchange or on a foreign stock exchange which is regulated by an
+      authority of a country or territory other than Singapore regulating the provision of financial services;
+      <br>
+      (d) a Singapore financial institution; <br>
+      (e) a financial institution incorporated or established outside Singapore and subject to and supervised for
+      AML/CFT requirements consistent with FATF standards; or <br>
+      (f) an investment vehicle the managers of which are Singapore financial institutions or financial
+      institutions incorporated or established outside of Singapore and subject to and supervised for AML/CFT
+      requirements consistent with FATF standards.<br>
+    </td>
+  </tr>
+</table>
+<!---------------------------------------------------------------------------->
+<p style="font-weight:bold; text-align: left;">Section D – Information of politically exposed persons, their immediate
+  family members and close associates</p>
+<table class="bd" cellpadding="4px">
+  <tr>
+    <td style="text-align: justify;"> Are any of the persons listed above a politically exposed person, that is, a
+      person who is or has been entrusted
+      with any prominent public function in Singapore, a country or territory outside Singapore, or by an
+      international organisation at present? <br><br>
+      Yes <input type="checkbox" name="yes1" value="1" checked=""/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      No <input type="checkbox" name="no1" value="1" checked="checked"/><br><br>
+
+      Are any of the persons listed above a politically exposed person that is, a person who has been entrusted
+      with any prominent public function in Singapore, a country or territory outside Singapore, or by an
+      international organisation who has stepped down from his prominent public function?<br><br>
+      Yes <input type="checkbox" name="yes2" value="1" checked=""/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      No <input type="checkbox" name="no2" value="1" checked="checked"/><br><br>
+
+      Are any of the persons listed above an immediate family member or a close associate of a politically exposed
+      person or a politically exposed person who has stepped down?<br><br>
+      Yes <input type="checkbox" name="yes3" value="1" checked=""/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      No <input type="checkbox" name="no3" value="1" checked="checked"/><br><br>
+    </td>
+  </tr>
+</table>
+<br><br>
+<table cellpadding="3px">
+  <tr>
+    <td style="text-align: justify;">Note 4: Please proceed to fill in the PEP form in Part 2 for each politically
+      exposed person, immediate family member or close associate identified
+    </td>
+  </tr>
+</table>
+<!---------------------------------------------------------------------------->
+<p style="font-weight:bold; text-align: left;">Section E – Customer’s/ Agent’s declaration</p>
+<br>
+<table cellpadding="3px">
+  <tr>
+    <td style="text-align: justify;">I declare that the information provided in this form is true and correct.
+      I am aware that I may be subject to prosecution and criminal sanctions under written law
+      if I am found to have made any false statement which I know to be false
+      or which I do not believe to be true, or if I have intentionally suppressed any material fact.<br><br>
+    </td>
+  </tr>
+</table>
+<table cellpadding="3px">
+  <tr>
+    <td class="ftd">Name of customer/ agent</td>
+    <td class="bd" width="40%"> {{ datas.officer.field_full_name }}</td>
+  </tr>
+  <tr>
+    <td class="ftd">Unique identification number</td>
+    <td class="bd" width="40%"> {{ datas.officer.field_id_type }} {{ datas.officer.field_id_no }}</td>
+  </tr>
+  <tr>
+    <td class="ftd">Date</td>
+{#    <td class="bd" width="40%">{% if datas.field_company_effect_date is not null %} {{ datas.field_company_effect_date|date('d/m/Y') }}{% endif %}</td>#}
+    <td class="bd" width="40%"></td>
+  </tr>
+  <tr>
+    <td class="ftd">Signature<br/><br/><br/><br/><br/></td>
+    <td class="bd" width="40%"><br/><br/><p></p><span style="text-align:center; color: white; font-size: 1px">{{ datas.signature }}
+        _______________________________________________________________________________________________________________________</span></td>
+  </tr>
+</table>
+<br pagebreak="true">
+<!---------------------------------------------------------------------------->
+<p style=" text-align: left; text-decoration: underline; font-weight:bold; font-size:92%;">PART 2 – FORM FOR POLITICALLY
+  EXPOSED PERSONS</p>
+<p style="font-weight:bold; text-align: left;">Section A – Information about politically exposed persons, their
+  immediate family members and close associates</p>
+<table cellpadding="3px">
+  <tr>
+    <td class="bd" width="45%">Name of politically exposed person and background/ purpose of any transaction that
+      that registered filing agent is required to carry out
+    </td>
+    <td class="bdna" width="55%"> N.A</td>
+  </tr>
+  <tr>
+    <td class="bd" width="45%">Describe nature of prominent public function that the person is
+      or has been entrusted with (for example, as a domestic politically exposed person,
+      a foreign politically exposed person, or a politically exposed person of
+      an international organisation)
+    </td>
+    <td class="bdna" width="55%"> N.A</td>
+  </tr>
+  <tr>
+    <td class="bd" width="45%">Period of time in which the person is/ was a politically exposed person</td>
+    <td class="bdna" width="55%"> N.A</td>
+  </tr>
+  <tr>
+    <td class="bd" width="45%">Provide information on the person’s source of wealth</td>
+    <td class="bdna" width="55%"> N.A</td>
+  </tr>
+  <tr>
+    <td class="bd" width="45%">Provide information on the person’s source of funds in the proposed business
+      relationship
+    </td>
+    <td class="bdna" width="55%"> N.A</td>
+  </tr>
+  <tr>
+    <td width="45%"></td>
+    <td width="55%"></td>
+  </tr>
+  <tr>
+    <td class="bd" width="45%">Name of person who is an immediate family member of a politically exposed person
+      and background/ purpose of any transaction that that registered filing agent is
+      required to carry out
+    </td>
+    <td class="bdna" width="55%"> N.A</td>
+  </tr>
+  <tr>
+    <td class="bd" width="45%">Describe nature of the person’s relationship with the politically exposed person</td>
+    <td class="bdna" width="55%"> N.A</td>
+  </tr>
+  <tr>
+    <td class="bd" width="45%">Provide information on the person’s source of wealth</td>
+    <td class="bdna" width="55%"> N.A</td>
+  </tr>
+  <tr>
+    <td class="bd" width="45%">Provide information on the person’s source of funds in the proposed business
+      relationship
+    </td>
+    <td class="bdna" width="55%"> N.A</td>
+  </tr>
+  <tr>
+    <td width="45%"></td>
+    <td width="55%"></td>
+  </tr>
+  <tr>
+    <td class="bd" width="45%">Name of person who is a close associate of a politically exposed person and
+      background/ purpose
+      of any transaction that that registered filing agent is required to carry out
+    </td>
+    <td class="bdna" width="55%"> N.A</td>
+  </tr>
+  <tr>
+    <td class="bd" width="45%">Describe nature of the person’s relationship with the politically exposed person</td>
+    <td class="bdna" width="55%"> N.A</td>
+  </tr>
+  <tr>
+    <td class="bd" width="45%">Provide information on the person’s source of wealth</td>
+    <td class="bdna" width="55%"> N.A</td>
+  </tr>
+  <tr>
+    <td class="bd" width="45%">Provide information on the person’s source of funds in the proposed business
+      relationship
+    </td>
+    <td class="bdna" width="55%"> N.A</td>
+  </tr>
+  <tr>
+    <td width="45%"></td>
+    <td width="55%"></td>
+  </tr>
+  <tr>
+    <td class="bd" colspan="2">Please attach all relevant supporting documents on screening and searches performed
+      for politically exposed persons,
+      their immediate family members and close associates:<br>
+      -&nbsp; &nbsp;&nbsp; &nbsp; Google searches <br>
+      -&nbsp; &nbsp;&nbsp; &nbsp; Compliance database search results
+    </td>
+  </tr>
+</table>
+<!---------------------------------------------------------------------------->
+<p style="font-weight:bold; text-align: left;">Section B – Customer’s / Agent’s declaration</p>
+<br>
+<table cellpadding="3px">
+  <tr>
+    <td style="text-align: justify;">I declare that the information provided in this form is true and correct.
+      I am aware that I may be subject to prosecution and criminal sanctions under written law
+      if I am found to have made any false statement which I know to be false
+      or which I do not believe to be true, or if I have intentionally suppressed any material fact.<br>
+    </td>
+  </tr>
+</table>
+<table cellpadding="3px">
+  <tr>
+    <td class="ftd">Name of customer / agent</td>
+    <td class="bd" width="40%"> {{ datas.officer.field_full_name }}</td>
+  </tr>
+  <tr>
+    <td class="ftd">Unique identification number</td>
+    <td class="bd" width="40%"> {{ datas.officer.field_id_type }} {{ datas.officer.field_id_no }}</td>
+  </tr>
+  <tr>
+    <td class="ftd">Date</td>
+{#    <td class="bd" width="40%">{% if datas.field_company_effect_date_10day is not null %} {{ datas.field_company_effect_date_10day }}{% endif %}</td>#}
+    <td class="bd" width="40%"></td>
+  </tr>
+  <tr>
+    <td class="ftd">Signature<br/><br/><br/><br/><br/></td>
+    <td class="bd" width="40%"><br/><br/><p></p><span style="text-align:center; color: white; font-size: 1px">{{ datas.signature }}_________________
+      ______________________________________________________________________________________________________</span></td>
+  </tr>
+</table>
+<br pagebreak="true">
+<!---------------------------------->
+<p style=" text-align: left; text-decoration: underline; font-weight:bold; font-size:92%;">PART 3 – RISK ASSESSMENT
+  FORM</p>
+<p style="font-weight:bold; text-align: left;">Section A – Nature of services required by customer</p>
+<table cellpadding="3px">
+  <tr>
+    <td class="toptd cl4">Services</td>
+    <td class="toptd cl5">Select where applicable</td>
+    <td class="toptd cl4">Details</td>
+  </tr>
+  <tr>
+    <td class="cl4">Formation of corporations or other legal persons</td>
+    <td class="cl5">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;<input type="checkbox" name="3a1" value="1"
+                                                                       checked="checked"/></td>
+    <td class="cl4"></td>
+  </tr>
+  <tr>
+    <td class="cl4">Acting, or arranging for another person to act as director or secretary of a corporation</td>
+    <td class="cl5">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;<input type="checkbox" name="3a2" value="1"
+                                                                       checked="checked"/></td>
+    <td class="cl4"></td>
+  </tr>
+  <tr>
+    <td class="cl4">Acting, or arranging for another person to act as a partner of a partnership</td>
+    <td class="cl5">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;<input type="checkbox" name="3a3" value="1"
+                                                                       checked=""/></td>
+    <td class="cl4"></td>
+  </tr>
+  <tr>
+    <td class="cl4">Acting, or arranging for another person to act in a position similar to the above in relation to
+      other legal persons
+    </td>
+    <td class="cl5">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;<input type="checkbox" name="3a4" value="1"
+                                                                       checked=""/></td>
+    <td class="cl4"></td>
+  </tr>
+  <tr>
+    <td class="cl4">Providing a registered office, business address or correspondence or administrative address or
+      other related services
+    </td>
+    <td class="cl5">&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;<input type="checkbox" name="3a5" value="1"
+                                                                       checked="checked"/></td>
+    <td class="cl4"></td>
+  </tr>
+  <tr>
+    <td class="cl4" style="text-align: justify;">Acting, or arranging for another person to act,as a shareholder on
+      behalf of any corporation
+      other than one whose securities are listed on a securities exchange under section 2(1)
+      or recognized securities exchange under section 283(1) of the Securities and Futures Act
+    </td>
+    <td class="cl5">&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;<input type="checkbox" name="3a6" value="1"
+                                                                       checked=""/></td>
+    <td class="cl4"></td>
+  </tr>
+</table>
+<br>
+<!---------------------------------------------------------------------------->
+<p style="font-weight:bold; text-align: left;">Section B - Risk assessment of customer</p>
+<table cellpadding="3px">
+  <tr>
+    <td>Note: The following are examples of factors that a registered filing agent may consider when performing
+      risk assessment.
+    </td>
+  </tr>
+  <tr>
+    <td>1.&nbsp; &nbsp;Is the customer a:<br>
+      &nbsp; &nbsp;&nbsp; &nbsp;New customer <input type="checkbox" name="3b1y" value="1" checked="checked"/>&nbsp;
+      &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+      &nbsp; &nbsp;&nbsp; &nbsp;Existing customer <input type="checkbox" name="3b1n" value="1" checked=""/><br>
+    </td>
+  </tr>
+  <tr>
+    <td>2.&nbsp; &nbsp;Is the customer physically present for identification purposes when establishing the business
+      relationship?<br>
+      &nbsp; &nbsp;&nbsp; &nbsp;Yes <input type="checkbox" name="3b2y" value="1" checked="checked"/>&nbsp; &nbsp;&nbsp;
+      &nbsp; &nbsp;&nbsp; &nbsp;
+      &nbsp; &nbsp;&nbsp; &nbsp;No <input type="checkbox" name="3b2n" value="1" checked=""/><br>
+    </td>
+  </tr>
+  <tr>
+    <td>3.&nbsp; &nbsp;Is the customer engaging the registered filing agent to perform complex or unusually large
+      transactions,
+      or unusual patterns of transactions that have no apparent or visible economic or lawful purpose?<br>
+      &nbsp; &nbsp;&nbsp; &nbsp;Yes <input type="checkbox" name="3b3y" value="1" checked=""/>&nbsp; &nbsp;&nbsp;
+      &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+      &nbsp; &nbsp;&nbsp; &nbsp;No <input type="checkbox" name="3b3n" value="1" checked="checked"/><br>
+    </td>
+  </tr>
+  <tr>
+    <td>4.&nbsp; &nbsp;Are any of the persons identified above a politically exposed person (at present or has
+      stepped down)
+      or immediate family member or a close associate of a politically exposed person (at present or has stepped
+      down)?<br>
+      &nbsp; &nbsp;&nbsp; &nbsp;Yes <input type="checkbox" name="3b4y" value="1" checked=""/>&nbsp; &nbsp;&nbsp;
+      &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+      &nbsp; &nbsp;&nbsp; &nbsp;No <input type="checkbox" name="3b4n" value="1" checked="checked"/><br>
+    </td>
+  </tr>
+  <tr>
+    <td>5.&nbsp; &nbsp;Are any of the persons identified above from or in countries and territories outside
+      Singapore known to have
+      inadequate measures for the prevention of money laundering or the financing of terrorism?<br>
+      &nbsp; &nbsp;&nbsp; &nbsp;Yes <input type="checkbox" name="3b5y" value="1" checked=""/>&nbsp; &nbsp;&nbsp;
+      &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+      &nbsp; &nbsp;&nbsp; &nbsp;No <input type="checkbox" name="3b5n" value="1" checked="checked"/><br>
+    </td>
+  </tr>
+  <tr>
+    <td>6.&nbsp; &nbsp;Are any of the persons identified above from countries or jurisdictions which the Financial
+      Action Task Force
+      has called for countermeasures including the application of enhanced customer due diligence measures?<br>
+      &nbsp; &nbsp;&nbsp; &nbsp;Yes <input type="checkbox" name="3b6y" value="1" checked=""/>&nbsp; &nbsp;&nbsp;
+      &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+      &nbsp; &nbsp;&nbsp; &nbsp;No <input type="checkbox" name="3b6n" value="1" checked="checked"/><br>
+    </td>
+  </tr>
+  <tr>
+    <td>7.&nbsp; &nbsp;Do any of the persons identified above fall into any other categories of customers which the
+      registered filing
+      agent considers may present a high risk of money laundering or the financing of terrorism, or which the
+      registered filing agent
+      suspects is committing or facilitating money laundering or the financing of terrorism?<br>
+      &nbsp; &nbsp;&nbsp; &nbsp;Yes <input type="checkbox" name="3b7y" value="1" checked=""/>&nbsp; &nbsp;&nbsp;
+      &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+      &nbsp; &nbsp;&nbsp; &nbsp;No <input type="checkbox" name="3b7n" value="1" checked="checked"/><br>
+    </td>
+  </tr>
+</table>
+<p style="font-weight:bold; text-align: left;">Please provide supporting information below.</p><br>
+<table class="bd">
+  <tr>
+    <td class="bd"><br><br><br><br><br><br><br><br><br></td>
+  </tr>
+</table>
+
+<!---------------------------------------------------------------------------->
+
+<p style="font-weight:bold; text-align: left;">Section C - Risk assessment</p>
+<table cellpadding="3px" class="bd">
+  <tr>
+    <td style="font-weight:bold; text-align: left;" colspan="3">Customer risk rating</td>
+  </tr>
+  <tr>
+    <td colspan="3">Low <input type="checkbox" name="3c1" value="1" checked=""/>&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+      &nbsp;
+      Medium <input type="checkbox" name="3c2" value="1" checked=""/>&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+      High <input type="checkbox" name="3c3" value="1" checked=""/><br><br>
+    </td>
+  </tr>
+  <tr>
+    <td style="font-weight:bold; text-align: left;" colspan="3">Recommendation for acceptance of customer</td>
+  </tr>
+  <tr>
+    <td colspan="3">Recommended <input type="checkbox" name="3c4" value="1" checked="checked"/>&nbsp; &nbsp;&nbsp;
+      Not Recommended <input type="checkbox" name="3c5" value="1" checked=""/> <br>
+    </td>
+  </tr>
+  <tr>
+    <td>Name of recommending officer:</td>
+    <td style="border:1px solid black;"> LIN HUAYAN LAWRENCE</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Date:</td>
+    <td style="border:1px solid black;">
+      {{ "now"|date("d/m/Y") }}</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Signature:<br><br><br><br><br></td>
+    <td style="border:1px solid black;"><p style="text-align:center;"><img
+          src="https://www.leekim.co/admin/manager/php/connector.minimal.php?cmd=file&target=l1_TGF3cmVuY2UucG5n"
+          style="height:80px;"></p></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><br></td>
+  </tr>
+</table>
+<br><br>
+<!---------------------------------------------------------------------------->
+<p style="font-weight:bold; text-align: left;">Section D – Approval</p>
+<table cellpadding="3px" class="bd">
+  <tr>
+    <td style="font-weight:bold; text-align: left;" colspan="3">Approval for acceptance of customer</td>
+  </tr>
+  <tr>
+    <td colspan="3">Approved <input type="checkbox" name="3c6" value="1" checked="checked"/>&nbsp; &nbsp;&nbsp;
+      Not Approved <input type="checkbox" name="3c7" value="1" checked=""/> <br>
+    </td>
+  </tr>
+  <tr>
+    <td>Name of approving officer:</td>
+    <td style="border:1px solid black;">LEE YOUNGSANG KEN</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Date:</td>
+    <td style="border:1px solid black;">
+      {{ "now"|date("d/m/Y") }}</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Signature:<br><br><br><br><br></td>
+    <td style="border:1px solid black;"><p style="text-align:center;"><img
+          src="https://www.leekim.co/admin/manager/php/connector.minimal.php?cmd=file&target=l1_S2VuTGVlLnBuZw"
+          style="height:80px;"></p></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><br></td>
+  </tr>
+</table>

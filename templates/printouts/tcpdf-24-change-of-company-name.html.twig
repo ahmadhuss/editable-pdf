@@ -1,0 +1,113 @@
+<html>
+<body>
+	<div style="width:100%; height:10px;"></div>
+{#	<h1 style="width:100%;text-align:center;">'.$Bank_Remark02.'</h1>#}
+	<div style="width:100%;text-align:center;font-size:14px;">
+	(Company Registration Number: {{ datas.field_application_id }})<br/>
+	(Incorporated in the Republic of Singapore)
+	</div>
+
+	<hr style="border:solid height:10px;">
+	<div style="width:100%; height:5px;"></div>
+
+	<div style="width:100%;text-align:center;font-size:14px;font-weight:bold;">
+		SPECIAL RESOLUTION ON CHANGE OF COMPANY NAME
+	</div>
+
+	<hr style="border:solid height:10px;">
+	<div style="width:100%; height:5px;"></div>
+
+	<div style="width:100%; height:5px;"></div>
+
+	<div style="width:100%;text-align:left;font-size:14px;">
+	Pursuant to the Articles of Association of the Company we, being all the directors and shareholders of <b>{#'.$Bank_Remark02.'#} </b> (“the Company”), do hereby certify the following special resolutions held in an Extraordinary General Meeting at :
+	</div>
+
+	</div>
+
+
+	<div style="width:80%;text-align:left;font-size:14px;padding-left:100px;">
+	<table><tr>
+	<td width="10%"></td>
+	<td width="80%">
+	<p style="margin-left: 40px; margin-right: 0px">
+	                   <br/>
+		{{ datas.field_address_line_1 }} <br/>
+		{{ datas.field_address_line_2 }} <br/>
+		{{ datas.field_postcode }} <br/>
+	  	               <br/><br/>
+	  	On the day of
+  </p>
+  </td>
+  <td></td>
+  </tr></table>
+	</div>
+
+	<div style="width:100%; height:5px;"></div>
+	<div style="width:100%;text-align:left;font-size:14px;">
+	The following Special Resolution was duly passed that the name of the Company be changed to:
+	</div>
+	</div>
+
+  <div style="width:100%;text-align:left;font-size:14px;">
+	<table><tr>
+	<td width="10%"></td>
+	<td width="80%">
+	<p style="margin-left: 40px; margin-right: 0px">
+	  	<br/>
+      <b>{{datas.title}} {{ datas.field_company_type }}</b>
+      <br/>
+  </p>
+  </td>
+  <td></td>
+  </tr></table>
+	</div>
+
+
+	<div style="width:100%;text-align:left;font-size:14px;font-weight:bold;">
+
+		<div style="width:100%;text-align:left;font-size:14px;">
+	Dated :
+	<br/><br/>
+	</div>
+	</div>
+		<div style="width:100%; height:5px;"></div>
+
+	<table border="0" cellpadding=0 cellspacing=0 width="98%" align="left">
+		<tr><td colspan="3" style="height:20px;"></td></tr>
+		{% for shareholder in datas.shareholders %}
+			{% if loop.index % 2 == 1 %}
+				<tr>
+				<td style="width:40%; text-align:left;font-size:14px;">
+          <span style="color: white; font-size: 1px">_____________________________________________________________________
+            ___________________________________________{{ shareholder.signature }}</span>
+          <hr>
+					<b>{{ shareholder.full_name }}</b> <br/>
+					{{shareholder.field_position}}
+					<br/><br/>
+					<br/><br/>
+				</td>
+				<td width="140"></td>
+			{% else %}
+				<td style="width:40%; text-align:left;font-size:14px;">
+          <span style="color: white; font-size: 1px">_____________________________________________________________________
+            ___________________________________________{{ shareholder.signature }}</span>
+          <hr>
+					<b>{{ shareholder.full_name }}</b> <br/>
+					{{shareholder.field_position}}
+					<br/><br/>
+					<br/><br/>
+				</td>
+				</tr>
+			{% endif %}
+			{% if loop.index % 2 == 1 and loop.index == loop.length %}
+				<td>
+					&nbsp;
+				</td>
+				</tr>
+			{% endif %}
+		{% endfor %}
+	</table>
+
+</body>
+</html>
