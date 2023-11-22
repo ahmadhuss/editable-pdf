@@ -1,242 +1,452 @@
 <html>
-  <style>
+<style>
 
-    * { font-size: 12px; }
+    * {
+        font-size: 12px;
+    }
 
-    .table_bl_border       { border-top:    1px solid #000000; border-right: 1px solid #000000; }
-    .table_bl_border tr td { border-bottom: 1px solid #000000; border-left : 1px solid #000000; }
-    .table_bl_border tr th { border-bottom: 1px solid #000000; border-left : 1px solid #000000; }
+    .table_bl_border {
+        border-top: 1px solid #000000;
+        border-right: 1px solid #000000;
+    }
 
-    .tl                    { height: 23px; line-height: 23px; padding-left: 10px; text-align:   left; border-top:    1px solid #000000; }
-    .tc                    { height: 23px; line-height: 23px; padding-left: 10px; text-align: center; border-top:    1px solid #000000; }
-    .tr                    { height: 23px; line-height: 23px; padding-left: 10px; text-align:  right; border-top:    1px solid #000000; }
-    .pl                    { height: 23px; line-height: 23px; padding-left: 10px; text-align:   left; background-color: #efefef; color: #333333; border-top:    1px solid #000000; }
-    .pc                    { height: 23px; line-height: 23px; padding-left: 10px; text-align: center; background-color: #efefef; color: #333333; border-top:    1px solid #000000; }
-    .pr                    { height: 23px; line-height: 23px; padding-left: 10px; text-align:  right; background-color: #efefef; color: #333333; border-top:    1px solid #000000; }
-    .x                     { width:25%; }
+    .table_bl_border tr td {
+        border-bottom: 1px solid #000000;
+        border-left: 1px solid #000000;
+    }
 
-    .bl                    { height: 23px; line-height: 23px; padding-left: 10px; text-align:   left; background-color: #cccccc; color: #333333; border-top:    1px solid #000000; }
+    .table_bl_border tr th {
+        border-bottom: 1px solid #000000;
+        border-left: 1px solid #000000;
+    }
 
-  </style>
-  <body>
-    <table border="0" cellspacing="0" cellpadding="0">
-      <tr>
-{#        <td align="left"  style="width:30%;"><img src="/{{ base_path ~ directory }}/images/FILE_20160211180023_0.png" style="height:40px;"></td>#}
-        <td align="left"  style="width:30%;"><img src="/themes/custom/zurblk/img/logo.png" style="height:40px;"></td>
-        <td align="right" style="width:70%;"><h1 style="font-size:18px;">{{ datas.title }} {{ datas.field_company_type }} &nbsp;</h1></td>
-      </tr>
-    </table>
-    <div style="height:20px;"></div>
-    <table border="0" cellpadding=0 cellspacing=0 width="100%" align="center" id="tbl_repeat" class="table_bl_border">
-      <tr class=N_1 style="display:view;">
-        <td class="pl" style="background:#cfcfcf;" colspan="4"> <b>The Following Are The Brief Paticulars of: </b></td>
-      </tr>
-      <tr class=N_1 style="display:view;">
-        <td class="pl x"> ID         </td><td class="tc"> {{ datas.id }} </td>
-        <td class="pl x"> Status     </td><td class="tc"> {{ datas.field_company_status }} </td>
-      </tr>
-      <tr class=N_1 style="display:view;">
-        <td class="pl x"> Company Name     </td><td class="tl" colspan="3"> {{ datas.title }} {{ datas.field_company_type }}  </td>
-      </tr>
-      <tr class=N_1 style="display:view;">
-        <td class="pl x"> Registration No.          </td><td class="tc"> {{ datas.field_application_id }}  </td>
-        <td class="pl x"> Incorporation Date        </td><td class="tc" colspan="3">
-          {% if  datas.field_company_effect_date is not null %}
-            {{ datas.field_company_effect_date|date('d/m/Y') }}
-          {% endif %}
+    .tl {
+        height: 23px;
+        line-height: 23px;
+        padding-left: 10px;
+        text-align: left;
+        border-top: 1px solid #000000;
+    }
+
+    .tc {
+        height: 23px;
+        line-height: 23px;
+        padding-left: 10px;
+        text-align: center;
+        border-top: 1px solid #000000;
+    }
+
+    .tr {
+        height: 23px;
+        line-height: 23px;
+        padding-left: 10px;
+        text-align: right;
+        border-top: 1px solid #000000;
+    }
+
+    .pl {
+        height: 23px;
+        line-height: 23px;
+        padding-left: 10px;
+        text-align: left;
+        background-color: #efefef;
+        color: #333333;
+        border-top: 1px solid #000000;
+    }
+
+    .pc {
+        height: 23px;
+        line-height: 23px;
+        padding-left: 10px;
+        text-align: center;
+        background-color: #efefef;
+        color: #333333;
+        border-top: 1px solid #000000;
+    }
+
+    .pr {
+        height: 23px;
+        line-height: 23px;
+        padding-left: 10px;
+        text-align: right;
+        background-color: #efefef;
+        color: #333333;
+        border-top: 1px solid #000000;
+    }
+
+    .x {
+        width: 25%;
+    }
+
+    .bl {
+        height: 23px;
+        line-height: 23px;
+        padding-left: 10px;
+        text-align: left;
+        background-color: #cccccc;
+        color: #333333;
+        border-top: 1px solid #000000;
+    }
+
+</style>
+<body>
+<table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        {#        <td align="left"  style="width:30%;"><img src="/{{ base_path ~ directory }}/images/FILE_20160211180023_0.png" style="height:40px;"></td> #}
+        <td align="left" style="width:30%;"><img
+                    src="../public/assets/printouts/logo.png"
+                    style="height:40px;"></td>
+        <td align="right" style="width:70%;"><h1
+                    style="font-size:18px;">{{ datas.title }} {{ datas.field_company_type }}
+                &nbsp;</h1></td>
+    </tr>
+</table>
+<div style="height:20px;"></div>
+<table border="0" cellpadding=0 cellspacing=0 width="100%" align="center"
+       id="tbl_repeat" class="table_bl_border">
+    <tr class=N_1 style="display:view;">
+        <td class="pl" style="background:#cfcfcf;" colspan="4"><b>The Following
+                Are The Brief Paticulars of: </b></td>
+    </tr>
+    <tr class=N_1 style="display:view;">
+        <td class="pl x"> ID</td>
+        <td class="tc"> {{ datas.id }} </td>
+        <td class="pl x"> Status</td>
+        <td class="tc"> {{ datas.field_company_status }} </td>
+    </tr>
+    <tr class=N_1 style="display:view;">
+        <td class="pl x"> Company Name</td>
+        <td class="tl"
+            colspan="3"> {{ datas.title }} {{ datas.field_company_type }}  </td>
+    </tr>
+    <tr class=N_1 style="display:view;">
+        <td class="pl x"> Registration No.</td>
+        <td class="tc"> {{ datas.field_application_id }}  </td>
+        <td class="pl x"> Incorporation Date</td>
+        <td class="tc" colspan="3">
+            {% if  datas.field_company_effect_date is not null %}
+                {{ datas.field_company_effect_date|date('d/m/Y') }}
+            {% endif %}
         </td>
-      </tr>
-      <tr class=N_1 style="display:view;">
-        <td class="pl x"> Incorporate Type      </td><td class="tl" >{{ datas.field_company_incorporate_type }} </td>
-        <td class="pl x"> Financial Year End  </td><td class="tc" > {{ datas.field_financial_year_end|date('t/m/Y')}}</td>
-      </tr>
-    </table>
-    <div style="height: 15px;"></div>
+    </tr>
+    <tr class=N_1 style="display:view;">
+        <td class="pl x"> Incorporate Type</td>
+        <td class="tl">{{ datas.field_company_incorporate_type }} </td>
+        <td class="pl x"> Financial Year End</td>
+        <td class="tc"> {{ datas.field_financial_year_end|date('t/m/Y') }}</td>
+    </tr>
+</table>
+<div style="height: 15px;"></div>
 
-    <table border="0" cellpadding=0 cellspacing=0 width="100%" align="center" id="tbl_repeat" class="table_bl_border">
-      <tr class=N_1 style="display:view;">
-        <td class="pl" style="background:#cfcfcf;" colspan="4"> <b>Principal Activities </b></td>
-      </tr>
-      {% set count = 1 %}
-      {% for key, value in datas.field_company_ssic %}
+<table border="0" cellpadding=0 cellspacing=0 width="100%" align="center"
+       id="tbl_repeat" class="table_bl_border">
+    <tr class=N_1 style="display:view;">
+        <td class="pl" style="background:#cfcfcf;" colspan="4"><b>Principal
+                Activities </b></td>
+    </tr>
+    {% set count = 1 %}
+    {% for key, value in datas.field_company_ssic %}
         <tr class=N_1 style="display:view;">
-          <td class="pl x"> Activities ({{ loop.index }})         </td><td class="tl" colspan="3"> {{ value.id }}   </td>
+            <td class="pl x"> Activities ({{ loop.index }})</td>
+            <td class="tl" colspan="3"> {{ value.id }}   </td>
         </tr>
         <tr class=N_1 style="display:view;">
-          <td class="pl x"> Description		         </td><td class="tl" colspan="3"> {{ value.name }} </td>
+            <td class="pl x"> Description</td>
+            <td class="tl" colspan="3"> {{ value.name }} </td>
         </tr>
-      {% endfor %}
+    {% endfor %}
 
-    </table>
-    <div style="height: 15px;"></div>
+</table>
+<div style="height: 15px;"></div>
 
-    <table border="0" cellpadding=0 cellspacing=0 width="100%" align="center" class="table_bl_border">
-      <tr class=N_1 style="display:view;">
-        <td class="pl" style="background:#cfcfcf;" colspan="4"> <b>Service Condition </b></td>
-      </tr>
-{#      <tr class=N_1 style="display:view;">#}
-{#        <td class="pl x"> Bookkeeping Needed  </td><td class="tc"> </td>#}
-{#        <td class="pl x"> Financial Year End  </td><td class="tc"> {{ datas.field_financial_year_end|date('M Y')}}</td>#}
-{#      </tr>#}
-{#      <tr class=N_1 style="display:view;">#}
-{#        <td class="pl x"> Value Of Taxation  </td><td class="tl" colspan="3">   </td>#}
-{#      </tr>#}
-{#      <tr class=N_1 style="display:view;">#}
-{#        <td class="pl x"> Comments by Director (Mr.Ken) </td><td class="tl" colspan="3">    </td>#}
-{#      </tr>#}
-      <tr class=N_1 style="display:view;">
-        <td class="pl x"> Transfer In        </td><td class="tc">  </td>
-        <td class="pl x"> Transfer Out       </td><td class="tc">   </td>
-      </tr>
-      <tr class=N_1 style="display:view;">
-        <td class="pl x"> Date of Striking Off </td><td class="tc"  colspan="3"> </td>
-      </tr>
-    </table>
-    <div style="height: 15px;"></div>
+<table border="0" cellpadding=0 cellspacing=0 width="100%" align="center"
+       class="table_bl_border">
+    <tr class=N_1 style="display:view;">
+        <td class="pl" style="background:#cfcfcf;" colspan="4"><b>Service
+                Condition </b></td>
+    </tr>
+    {#      <tr class=N_1 style="display:view;"> #}
+    {#        <td class="pl x"> Bookkeeping Needed  </td><td class="tc"> </td> #}
+    {#        <td class="pl x"> Financial Year End  </td><td class="tc"> {{ datas.field_financial_year_end|date('M Y')}}</td> #}
+    {#      </tr> #}
+    {#      <tr class=N_1 style="display:view;"> #}
+    {#        <td class="pl x"> Value Of Taxation  </td><td class="tl" colspan="3">   </td> #}
+    {#      </tr> #}
+    {#      <tr class=N_1 style="display:view;"> #}
+    {#        <td class="pl x"> Comments by Director (Mr.Ken) </td><td class="tl" colspan="3">    </td> #}
+    {#      </tr> #}
+    <tr class=N_1 style="display:view;">
+        <td class="pl x"> Transfer In</td>
+        <td class="tc"></td>
+        <td class="pl x"> Transfer Out</td>
+        <td class="tc"></td>
+    </tr>
+    <tr class=N_1 style="display:view;">
+        <td class="pl x"> Date of Striking Off</td>
+        <td class="tc" colspan="3"></td>
+    </tr>
+</table>
+<div style="height: 15px;"></div>
 
-    <table border="0" cellpadding=0 cellspacing=0 width="100%" align="center" class="table_bl_border">
-      <tr class=N_1 style="display:view;">
-        <td class="pl" style="background:#cfcfcf;" colspan="4"> <b>Registered Office Address </b></td>
-      </tr>
-      <tr><td class="pl x"> Address line 1        </td><td class="tl" colspan="3"> {{ datas.field_address_line_1 }} </td></tr>
-      <tr><td class="pl x"> Address line 2        </td><td class="tl" colspan="3"> {{ datas.field_address_line_2 }} </td></tr>
-      <tr><td class="pl x"> Postcode              </td><td class="tl" colspan="3"> {{ datas.field_postcode }} </td></tr>
-    </table>
-    <div style="height: 15px;"></div>
+<table border="0" cellpadding=0 cellspacing=0 width="100%" align="center"
+       class="table_bl_border">
+    <tr class=N_1 style="display:view;">
+        <td class="pl" style="background:#cfcfcf;" colspan="4"><b>Registered
+                Office Address </b></td>
+    </tr>
+    <tr>
+        <td class="pl x"> Address line 1</td>
+        <td class="tl" colspan="3"> {{ datas.field_address_line_1 }} </td>
+    </tr>
+    <tr>
+        <td class="pl x"> Address line 2</td>
+        <td class="tl" colspan="3"> {{ datas.field_address_line_2 }} </td>
+    </tr>
+    <tr>
+        <td class="pl x"> Postcode</td>
+        <td class="tl" colspan="3"> {{ datas.field_postcode }} </td>
+    </tr>
+</table>
+<div style="height: 15px;"></div>
 
-    <table border="0" cellpadding=0 cellspacing=0 width="100%" align="center" class="table_bl_border">
-      <tr><td class="pl x"> Name (PIC)						</td><td class="tl" colspan="3"> {{ datas.creator }} </td></tr>
-      <tr><td class="pl x"> Phone Number            </td><td class="tl" colspan="3"> {{ datas.creator_phonenumber }} </td></tr>
-      <tr><td class="pl x"> Work Phone          </td><td class="tl" colspan="3"> {{ datas.creator_worknumber }} </td></tr>
-      <tr><td class="pl x"> E-mailL               </td><td class="tl" colspan="3"> {{ datas.creator_email }} </td></tr>
-    </table>
-    <div style="height: 15px;"></div>
+<table border="0" cellpadding=0 cellspacing=0 width="100%" align="center"
+       class="table_bl_border">
+    <tr>
+        <td class="pl x"> Name (PIC)</td>
+        <td class="tl" colspan="3"> {{ datas.creator }} </td>
+    </tr>
+    <tr>
+        <td class="pl x"> Phone Number</td>
+        <td class="tl" colspan="3"> {{ datas.creator_phonenumber }} </td>
+    </tr>
+    <tr>
+        <td class="pl x"> Work Phone</td>
+        <td class="tl" colspan="3"> {{ datas.creator_worknumber }} </td>
+    </tr>
+    <tr>
+        <td class="pl x"> E-mailL</td>
+        <td class="tl" colspan="3"> {{ datas.creator_email }} </td>
+    </tr>
+</table>
+<div style="height: 15px;"></div>
 
 
-
-    <table border="0" cellpadding=0 cellspacing=0 width="100%" align="center" class="table_bl_border">
-      <tr class=N_1 style="display:view;">
-        <td class="pl x"> Memo               </td><td class="tl" colspan="3">     </td>
-      </tr>
-    </table>
-
-
-
+<table border="0" cellpadding=0 cellspacing=0 width="100%" align="center"
+       class="table_bl_border">
+    <tr class=N_1 style="display:view;">
+        <td class="pl x"> Memo</td>
+        <td class="tl" colspan="3"></td>
+    </tr>
+</table>
 
 
-    <table border="0" cellpadding=0 cellspacing=0 width="100%" align="center" class="table_bl_border">
-      {% set count = 1 %}
-      {% for key, value in datas.field_secratary %}
-        <tr><td class="bl" colspan="4"> Secretary Details {{ count }} - <b> </b></td></tr>
-        <tr><td style="width:25%;" class="pl"> Name                   </td><td style="width:75%;" class="tc"> {{ value.field_full_name }} </td></tr>
-        <tr><td style="width:25%;" class="pl"> Gender                 </td><td style="width:75%;" class="tc"> {{ value.field_gender }} </td></tr>
-        <tr><td style="width:25%;" class="pl"> ID Type                </td><td style="width:75%;" class="tc"> {{ value.field_id_type }} </td></tr>
-        <tr><td style="width:25%;" class="pl"> ID No.                 </td><td style="width:75%;" class="tc"> {{ value.field_id_no }} </td></tr>
-        <tr><td style="width:25%;" class="pl"> Nationality            </td><td style="width:75%;" class="tl"> {{ value.field_nationality }} </td></tr>
-        <tr><td style="width:25%;" class="pl"> Address (Add+Postcode) </td><td style="width:75%;" class="tl"> {{ value.field_address_line_1}} ({{ value.field_postal_code }}) </td></tr>
-        <tr><td style="width:25%;" class="pl"> Remark                 </td><td style="width:75%;" class="tl">  </td></tr>
+<table border="0" cellpadding=0 cellspacing=0 width="100%" align="center"
+       class="table_bl_border">
+    {% set count = 1 %}
+    {% for key, value in datas.field_secratary %}
+        <tr>
+            <td class="bl" colspan="4"> Secretary Details {{ count }} - <b> </b>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:25%;" class="pl"> Name</td>
+            <td style="width:75%;" class="tc"> {{ value.field_full_name }} </td>
+        </tr>
+        <tr>
+            <td style="width:25%;" class="pl"> Gender</td>
+            <td style="width:75%;" class="tc"> {{ value.field_gender }} </td>
+        </tr>
+        <tr>
+            <td style="width:25%;" class="pl"> ID Type</td>
+            <td style="width:75%;" class="tc"> {{ value.field_id_type }} </td>
+        </tr>
+        <tr>
+            <td style="width:25%;" class="pl"> ID No.</td>
+            <td style="width:75%;" class="tc"> {{ value.field_id_no }} </td>
+        </tr>
+        <tr>
+            <td style="width:25%;" class="pl"> Nationality</td>
+            <td style="width:75%;"
+                class="tl"> {{ value.field_nationality }} </td>
+        </tr>
+        <tr>
+            <td style="width:25%;" class="pl"> Address (Add+Postcode)</td>
+            <td style="width:75%;" class="tl"> {{ value.field_address_line_1 }}
+                ({{ value.field_postal_code }})
+            </td>
+        </tr>
+        <tr>
+            <td style="width:25%;" class="pl"> Remark</td>
+            <td style="width:75%;" class="tl"></td>
+        </tr>
         {% set count = count + 1 %}
-      {% endfor %}
+    {% endfor %}
 
 
-    </table>
-    <div style="height: 15px;"></div>
+</table>
+<div style="height: 15px;"></div>
 
-    <table border="0" cellpadding=0 cellspacing=0 width="100%" align="center" class="table_bl_border">
-      <tr class=N_1 style="display:view;">
-        <td class="pl" style="background:#cfcfcf;" colspan="4"> <b>Officers Information </b></td>
-      </tr>
-    </table>
-    <table border="0" cellpadding=0 cellspacing=0 width="100%" align="center" class="table_bl_border">
-      {% set count = 1 %}
-      {% for key, value in datas.field_director_shareholder %}
-        <tr><td class="bl" colspan="2"> Officer {{ count }} - <b>{{ value.field_full_name }}</b></td></tr>
-        <tr><td class="pl x"> Full Name          </td><td style="width:75%;" class="tl"> {{ value.field_full_name }}</td></tr>
-        <tr><td class="pl x"> Former Full Name   </td><td style="width:75%;" class="tl"> </td></tr>
-        <tr><td class="pl x"> Normal Designation </td><td style="width:75%;" class="tl"> {{ value.field_position|upper }}</td></tr>
+<table border="0" cellpadding=0 cellspacing=0 width="100%" align="center"
+       class="table_bl_border">
+    <tr class=N_1 style="display:view;">
+        <td class="pl" style="background:#cfcfcf;" colspan="4"><b>Officers
+                Information </b></td>
+    </tr>
+</table>
+<table border="0" cellpadding=0 cellspacing=0 width="100%" align="center"
+       class="table_bl_border">
+    {% set count = 1 %}
+    {% for key, value in datas.field_director_shareholder %}
         <tr>
-          <td class="pl x"> ID Type            </td><td style="width:25%;" class="tc"> {{ value.field_id_type }}</td>
-          <td class="pl x"> ID No.             </td><td style="width:25%;" class="tc"> {{ value.field_id_no }}</td>
+            <td class="bl" colspan="2"> Officer {{ count }} -
+                <b>{{ value.field_full_name }}</b></td>
         </tr>
         <tr>
-          <td class="pl x"> Sex                </td><td style="width:25%;" class="tc"> {{ value.field_gender }}</td>
-          <td class="pl x"> Birth              </td><td style="width:25%;" class="tc"> {{ value.field_date_of_birth | date('d/m/Y') }}</td>
+            <td class="pl x"> Full Name</td>
+            <td style="width:75%;" class="tl"> {{ value.field_full_name }}</td>
         </tr>
-        <tr >
-          <td class="pl x"> Nationality</td><td class="tc x"> {{ value.field_nationality }}</td>
-          <td class="pl x"> Country of Birth</td><td class="tc x"> {{ value.field_country_of_birth }}</td>
+        <tr>
+            <td class="pl x"> Former Full Name</td>
+            <td style="width:75%;" class="tl"></td>
         </tr>
-        <tr><td class="pl x"> Address Line 1              </td><td style="width:75%;" class="tl"> {{ value.field_address_line_1 }}</td></tr>
-        <tr><td class="pl x"> Address Line 2              </td><td style="width:75%;" class="tl"> {{ value.field_address_line_2 }}</td></tr>
-        <tr><td class="pl x"> Postal             </td><td style="width:75%;" class="tl"> {{ value.field_postal_code }}</td></tr>
-        <tr><td class="pl x"> Email              </td><td style="width:75%;" class="tl"> {{ value.field_email_id }}</td></tr>
-        <tr><td class="pl x"> Mobile             </td><td style="width:75%;" class="tl"> {{ value.field_mobile }}</td></tr>
-        <tr><td class="pl x"> Remark             </td><td style="width:75%;" class="tl"> </td></tr>
+        <tr>
+            <td class="pl x"> Normal Designation</td>
+            <td style="width:75%;"
+                class="tl"> {{ value.field_position|upper }}</td>
+        </tr>
+        <tr>
+            <td class="pl x"> ID Type</td>
+            <td style="width:25%;" class="tc"> {{ value.field_id_type }}</td>
+            <td class="pl x"> ID No.</td>
+            <td style="width:25%;" class="tc"> {{ value.field_id_no }}</td>
+        </tr>
+        <tr>
+            <td class="pl x"> Sex</td>
+            <td style="width:25%;" class="tc"> {{ value.field_gender }}</td>
+            <td class="pl x"> Birth</td>
+            <td style="width:25%;"
+                class="tc"> {{ value.field_date_of_birth | date('d/m/Y') }}</td>
+        </tr>
+        <tr>
+            <td class="pl x"> Nationality</td>
+            <td class="tc x"> {{ value.field_nationality }}</td>
+            <td class="pl x"> Country of Birth</td>
+            <td class="tc x"> {{ value.field_country_of_birth }}</td>
+        </tr>
+        <tr>
+            <td class="pl x"> Address Line 1</td>
+            <td style="width:75%;"
+                class="tl"> {{ value.field_address_line_1 }}</td>
+        </tr>
+        <tr>
+            <td class="pl x"> Address Line 2</td>
+            <td style="width:75%;"
+                class="tl"> {{ value.field_address_line_2 }}</td>
+        </tr>
+        <tr>
+            <td class="pl x"> Postal</td>
+            <td style="width:75%;"
+                class="tl"> {{ value.field_postal_code }}</td>
+        </tr>
+        <tr>
+            <td class="pl x"> Email</td>
+            <td style="width:75%;" class="tl"> {{ value.field_email_id }}</td>
+        </tr>
+        <tr>
+            <td class="pl x"> Mobile</td>
+            <td style="width:75%;" class="tl"> {{ value.field_mobile }}</td>
+        </tr>
+        <tr>
+            <td class="pl x"> Remark</td>
+            <td style="width:75%;" class="tl"></td>
+        </tr>
         <br>
         {% set count = count + 1 %}
-      {% endfor %}
-    </table>
-    <div style="height: 15px;"></div>
+    {% endfor %}
+</table>
+<div style="height: 15px;"></div>
 
-    <table border="0" cellpadding=0 cellspacing=0 width="100%" align="center" class="table_bl_border">
-      <tr class=N_1 style="display:view;">
-        <td class="pl" style="background:#cfcfcf;" colspan="4"> <b>Capital Information </b></td>
-      </tr>
-    </table>
+<table border="0" cellpadding=0 cellspacing=0 width="100%" align="center"
+       class="table_bl_border">
+    <tr class=N_1 style="display:view;">
+        <td class="pl" style="background:#cfcfcf;" colspan="4"><b>Capital
+                Information </b></td>
+    </tr>
+</table>
 
-    <table border="0" cellpadding=0 cellspacing=0 width="100%" align="center" class="table_bl_border">
-      <tr>
-        <td class="pl" colspan="2"> Used Currency              </td><td class="tr" colspan="2"> {{ datas.field_capital_detail.0.field_currency }} </td>
-      </tr>
-      <tr>
-        <td class="pl" colspan="2"> Start ~ End </td>
-        <td class="tr" colspan="3">  </td>
-      </tr>
+<table border="0" cellpadding=0 cellspacing=0 width="100%" align="center"
+       class="table_bl_border">
+    <tr>
+        <td class="pl" colspan="2"> Used Currency</td>
+        <td class="tr"
+            colspan="2"> {{ datas.field_capital_detail.0.field_currency }} </td>
+    </tr>
+    <tr>
+        <td class="pl" colspan="2"> Start ~ End</td>
+        <td class="tr" colspan="3"></td>
+    </tr>
+</table>
+<br/><br/>
+{% for key, value in datas.field_capital_detail %}
+    <table border="0" cellpadding=0 cellspacing=0 width="100%" align="center"
+           class="table_bl_border">
+        <tr>
+            <td class="tl" width="45%" height="20"><b> Class of shares </b></td>
+            <td class="tc" width="18%" height="20"><b> Ordinary </b></td>
+            <td class="tc" width="18%" height="20"><b> Preference </b></td>
+            <td class="tc" width="19%" height="20"><b> Others </b></td>
+        </tr>
+        <tr>
+            <td class="tl" width="45%" height="18"> Number of shares</td>
+            <td style="width:18%;"
+                class="tc">{{ value.field_number_of_share|number_format(0,'.',',') }}</td>
+            <td style="width:18%;" class="tc"></td>
+            <td style="width:18%;" class="tc"></td>
+        </tr>
+        <tr>
+            <td class="tl" width="45%" height="18"> Nominal amount of each
+                share
+            </td>
+            <td style="width:18%;"
+                class="tc">{{ value.field_each_share_price|number_format(1,'.',',') }}</td>
+            <td style="width:18%;" class="tc"></td>
+            <td style="width:18%;" class="tc"></td>
+        </tr>
+        <tr>
+            <td class="tl" width="45%" height="18"> Amount paid or due and
+                payable on each share paid due and payable
+            </td>
+            <td style="width:18%;"
+                class="tc"> {{ datas.paid_amount|number_format(0,'.',',') }} </td>
+            <td style="width:18%;"
+                class="tc"> {{ value.field_share_paid_due_and_payable.field_others }} </td>
+            <td style="width:18%;"
+                class="tc"> {{ value.field_share_paid_due_and_payable.field_preference }} </td>
+        </tr>
+        {#        <tr> #}
+        {#          <td style="width:18%;" class="tc"> {{ value.field_paid_or_due_on_each.field_ordinary }} </td> #}
+        {#          <td style="width:18%;" class="tc"> {{ value.field_paid_or_due_on_each.field_others }} </td> #}
+        {#          <td style="width:18%;" class="tc"> {{ value.field_paid_or_due_on_each.field_preference }} </td>          #}
+        {#        </tr> #}
+        <tr>
+            <td class="tl" width="45%" height="18"> Amount of premium paid or
+                payable on each Share
+            </td>
+            <td style="width:18%;"
+                class="tc"> {{ value.field_paid_or_due_on_each.field_ordinary }} </td>
+            <td style="width:18%;"
+                class="tc"> {{ value.field_paid_or_due_on_each.field_others }} </td>
+            <td style="width:18%;"
+                class="tc"> {{ value.field_paid_or_due_on_each.field_preference }} </td>
+        </tr>
+        <tr>
+            <td class="tc" colspan="4"> The consideration for which the shares
+                have been so allotted is as follows:<br/> N/A
+            </td>
+        </tr>
     </table>
     <br/><br/>
-    {% for key, value in datas.field_capital_detail %}
-      <table border="0" cellpadding=0 cellspacing=0 width="100%" align="center" class="table_bl_border">
-        <tr>
-          <td class="tl" width="45%" height="20"> <b> Class of shares </b></td>
-          <td class="tc" width="18%" height="20"> <b> Ordinary        </b></td>
-          <td class="tc" width="18%" height="20"> <b> Preference      </b></td>
-          <td class="tc" width="19%" height="20"> <b> Others          </b></td>
-        </tr>
-        <tr>
-          <td class="tl" width="45%" height="18"> Number of shares </td>
-          <td style="width:18%;" class="tc">{{ value.field_number_of_share|number_format(0,'.',',')}}</td>
-          <td style="width:18%;" class="tc"></td>
-          <td style="width:18%;" class="tc"></td>
-        </tr>
-        <tr>
-          <td class="tl" width="45%" height="18"> Nominal amount of each share </td>
-          <td style="width:18%;" class="tc">{{ value.field_each_share_price|number_format(1,'.',',') }}</td>
-          <td style="width:18%;" class="tc"></td>
-          <td style="width:18%;" class="tc"></td>
-        </tr>
-        <tr>
-          <td class="tl" width="45%" height="18" > Amount paid or due and payable on each share paid due and payable</td>
-          <td style="width:18%;" class="tc"> {{ datas.paid_amount|number_format(0,'.',',') }} </td>
-          <td style="width:18%;" class="tc"> {{ value.field_share_paid_due_and_payable.field_others }} </td>
-          <td style="width:18%;" class="tc"> {{ value.field_share_paid_due_and_payable.field_preference }} </td>
-        </tr>
-{#        <tr>#}
-{#          <td style="width:18%;" class="tc"> {{ value.field_paid_or_due_on_each.field_ordinary }} </td>#}
-{#          <td style="width:18%;" class="tc"> {{ value.field_paid_or_due_on_each.field_others }} </td>#}
-{#          <td style="width:18%;" class="tc"> {{ value.field_paid_or_due_on_each.field_preference }} </td>          #}
-{#        </tr>#}
-        <tr>
-          <td class="tl" width="45%" height="18"> Amount of premium paid or payable on each Share</td>
-          <td style="width:18%;" class="tc"> {{ value.field_paid_or_due_on_each.field_ordinary }} </td>
-          <td style="width:18%;" class="tc"> {{ value.field_paid_or_due_on_each.field_others }} </td>
-          <td style="width:18%;" class="tc"> {{ value.field_paid_or_due_on_each.field_preference }} </td>
-        </tr>
-        <tr>
-          <td class="tc" colspan="4">  The consideration for which the shares have been so allotted is as follows:<br/> N/A </td>
-        </tr>
-      </table>
-      <br/><br/>
-    {% endfor %}
-    <div style="height: 15px;"></div>
-  </body>
+{% endfor %}
+<div style="height: 15px;"></div>
+</body>
 </html>
