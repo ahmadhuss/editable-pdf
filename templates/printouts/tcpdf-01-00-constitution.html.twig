@@ -36,20 +36,16 @@
         <td style="text-align: center"><u><b>Currency </b></u><br></td>
         <td style="text-align: center"><u><b>Amount of Issued Share Capital</b></u></td>
     </tr>
-
-    {% for detail in company_capital_detail %}
-        <tr style="font-size:11px;">
-            <td width="5%"></td>
-            {% if datas.field_capital_detail.field_currency != 'SGD' %}
-                <td style="text-align: center"><b>{{ datas.field_capital_detail.field_currency }}</b></td>
-            {% else %}
-                <td style="text-align: center"><b>SINGAPORE DOLLARS (SGD)</b></td>
-            {% endif %}
-            <!-- <td><b>'.$ACC_CAPITAL_NUMBER_SHARES_ORD.'</b></td> -->
-            <td style="text-align: center"><b>{{ datas.field_capital_detail.amount_of_issued_shares_capital|number_format(0,'',',') }}</b></td>
-        </tr>
-    {% endfor %}
-    
+    <tr style="font-size:11px;">
+        <td width="5%"></td>
+        {% if datas.field_capital_detail.field_currency != 'SGD' %}
+            <td style="text-align: center"><b>{{ datas.field_capital_detail.field_currency }}</b></td>
+        {% else %}
+            <td style="text-align: center"><b>SINGAPORE DOLLARS (SGD)</b></td>
+        {% endif %}
+        <!-- <td><b>'.$ACC_CAPITAL_NUMBER_SHARES_ORD.'</b></td> -->
+        <td style="text-align: center"><b>{{ datas.field_capital_detail.amount_of_issued_shares_capital|number_format(0,'',',') }}</b></td>
+    </tr>
 </table>
 <br>
 <div>5. We, the persons whose names and occupations are set out in this Constitution, desire to form a company in

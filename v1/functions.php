@@ -6,91 +6,76 @@ use TCPDF;
 use TCPDF_FONTS;
 
 
-class PDF020 extends TCPDF
-{
-    public function Header()
-    {
-        $this->SetY(10);
-        $this->SetX(170);                                                                // Position at 15 mm from bottom
-        $this->SetFont('helvetica', 'I', 8);                        // Set font
-        $this->Cell(0, 10, 'Page ' . $this->getAliasNumPage() . ' of ' . $this->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');// Page number
+class PDF020 extends TCPDF {
+    public function Header() {
+      $this->SetY(10);
+      $this->SetX(170);																// Position at 15 mm from bottom
+      $this->SetFont('helvetica', 'I', 8);						// Set font
+      $this->Cell(0,10,'Page '.$this->getAliasNumPage().' of '.$this->getAliasNbPages(),0,false,'C',0,'', 0,false,'T','M');// Page number
     }
 }
 
-class PDF020Footer extends TCPDF
-{
-    public function Footer()
-    {
-        $this->SetY(-15);                                                                // Position at 15 mm from bottom
-        $this->SetFont('helvetica', 'I', 8);                        // Set font
-        $this->Cell(0, 10, 'Page ' . $this->getAliasNumPage() . '/' . $this->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');// Page number
+class PDF020Footer extends TCPDF {
+    public function Footer(){
+      $this->SetY(-15);																// Position at 15 mm from bottom
+      $this->SetFont('helvetica', 'I', 8);						// Set font
+      $this->Cell(0,10,'Page '.$this->getAliasNumPage().'/'.$this->getAliasNbPages(),0,false,'C',0,'', 0,false,'T','M');// Page number
     }
 }
 
-class PDFAGMFooter extends \TCPDF
-{
+class PDFAGMFooter extends \TCPDF {
     private $customFooterText = "";
     private $pageNumber = [];
-
     /**
      * @param string $customFooterText
      */
-    public function setCustomFooterText($customFooterText)
-    {
-        $this->customFooterText = $customFooterText;
+    public function setCustomFooterText($customFooterText) {
+      $this->customFooterText = $customFooterText;
     }
-
+  
     /**
      * @param string $pageNumber
      */
-    public function setpageNumber($pageNumber)
-    {
-        $this->pageNumber = $pageNumber;
+    public function setpageNumber($pageNumber) {
+      $this->pageNumber = $pageNumber;
     }
-
-    public function Footer()
-    {
-        if (in_array($this->page, $this->pageNumber) || in_array(-1, $this->pageNumber)) {
-            $this->SetY(-35);                                // Position at 15 mm from bottom
-            $this->SetFont('times', '', 8);
-            $this->writeHTML($this->customFooterText, false, true, false, true);
-        }
+  
+    public function Footer(){
+      if (in_array($this->page, $this->pageNumber) || in_array(-1, $this->pageNumber)) {
+        $this->SetY(-35);                                // Position at 15 mm from bottom
+        $this->SetFont('times', '', 8);
+        $this->writeHTML($this->customFooterText, false, true, false, true);
+      }
     }
 }
 
-class PDFSFA extends \TCPDF
-{
+class PDFSFA extends \TCPDF {
 
     private $customHeaderText = "";
-
     /**
      * @param string $customHeaderText
      */
-    public function setCustomHeaderText($customHeaderText)
-    {
-        $this->customHeaderText = $customHeaderText;
+    public function setCustomHeaderText($customHeaderText) {
+      $this->customHeaderText = $customHeaderText;
     }
-
     // Custom page header
-    public function Header()
-    {
-        $font_name = \TCPDF_FONTS::addTTFfont(getcwd() . '/static/font/malgunbd.ttf', 'TrueTypeUnicode', '', 32);
-        $this->SetFont($font_name, '', 10);
-        $this->writeHTML($this->customHeaderText, false, true, false, true);
+    public function Header() {
+      $font_name = \TCPDF_FONTS::addTTFfont(getcwd() . '/static/font/malgunbd.ttf', 'TrueTypeUnicode', '', 32);
+      $this->SetFont($font_name, '', 10);
+      $this->writeHTML($this->customHeaderText, false, true, false, true);
     }
-
+  
     // Custom page footer
-    public function Footer()
-    {
-        // Position at 15 mm from bottom
-        $this->SetY(-15);
-        $this->SetX(38);
-        // Set font
-        $this->SetFont('helvetica', 'B', 10);
-        // Page number
-        $this->Cell(0, 10, $this->getAliasNumPage() . ' / ' . $this->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');
+    public function Footer() {
+      // Position at 15 mm from bottom
+      $this->SetY(-15);
+      $this->SetX(38);
+      // Set font
+      $this->SetFont('helvetica', 'B', 10);
+      // Page number
+      $this->Cell(0, 10, $this->getAliasNumPage().' / '.$this->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');
     }
-}
+  }
 
 /**
  * Converts HTML content to a PDF using TCPDF library.
@@ -140,8 +125,7 @@ function convertHtmlToPdf(array $htmlContent, string $outputFilename)
 }
 
 
-function companyDetailInternalPdf($html_template, $pdf_name)
-{
+function companyDetailInternalPdf($html_template, $pdf_name) {
     // $html_template = [
     //   '#theme' => 'tcpdf_company_detail_html',
     //   '#datas' => DocumentWrapper::companyDetails($company),
@@ -192,23 +176,23 @@ function companyDetailInternalPdf($html_template, $pdf_name)
 
     return $tcpdf->Output($pdf_name, 'I');
 
-}
+  }
 
 
-function companyDetailCustomerPdf($html_template, $pdf_name)
-{
+
+function companyDetailCustomerPdf($html_template, $pdf_name) {
     // $datas = DocumentWrapper::companyDetails($company);
     // $html_template = [
     //   '#theme' => 'tcpdf_company_detail_html',
     //   '#datas' => $datas,
     // ];
     // $html = $this->renderer->render($html_template);
-
+    
     $helvetica = TCPDF_FONTS::addTTFfont(getcwd() . '/../Helvetica.ttf', 'TrueTypeUnicode', '', 32);
     ob_start();
 
     $tcpdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
-
+    
     $tcpdf->setPrintHeader(false);
     $tcpdf->setPrintFooter(false);
 
@@ -250,8 +234,7 @@ function companyDetailCustomerPdf($html_template, $pdf_name)
     return $tcpdf->Output($pdf_name, 'I');
 }
 
-function constitutionPdf($html_template, $pdf_name)
-{
+function constitutionPdf($html_template, $pdf_name) {
     // $datas = DocumentWrapper::constitution($company);
     // $html_template = [
     //   '#theme' => 'tcpdf_01_00_constitution',
@@ -310,8 +293,7 @@ function constitutionPdf($html_template, $pdf_name)
     return $tcpdf->Output($pdf_name, 'I');
 }
 
-function constitutionPdf_1($html_template, $pdf_name)
-{
+function constitutionPdf_1($html_template, $pdf_name) {
     // $datas = DocumentWrapper::constitution($company);
     // $html_template = [
     //   '#theme' => 'tcpdf_01_01_constitution',
@@ -365,8 +347,7 @@ function constitutionPdf_1($html_template, $pdf_name)
     return $tcpdf->Output($pdf_name, 'I');
 }
 
-function constitutionLimitedByGuaranteePdf($html_template, $pdf_name)
-{
+function constitutionLimitedByGuaranteePdf($html_template, $pdf_name) {
     // $datas = DocumentWrapper::constitution($company);
     // $html_template = [
     //   '#theme' => 'tcpdf_01_02_constitution',
@@ -375,39 +356,39 @@ function constitutionLimitedByGuaranteePdf($html_template, $pdf_name)
     // $html = $this->renderer->render($html_template);
     $helvetica = TCPDF_FONTS::addTTFfont(getcwd() . '/../Helvetica.ttf', 'TrueTypeUnicode', '', 32);
 
-
+    
     $tcpdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
-
+  
     $tcpdf->setPrintHeader(true);
     $tcpdf->setPrintFooter(false);
     // Set margins.
     $tcpdf->SetMargins(15, 17, 15);
     $tcpdf->SetHeaderMargin(PDF_MARGIN_HEADER);
     $tcpdf->SetFooterMargin(PDF_MARGIN_FOOTER);
-
+  
     $tcpdf->SetAutoPageBreak(true, PDF_MARGIN_BOTTOM);
     $tcpdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
-
+    
     // $author = \Drupal::currentUser()->getAccountName();
     // $tcpdf->SetCreator($author);
     // $tcpdf->SetAuthor($author);
     // $tcpdf->SetTitle('CONSTITUTION');
     // $tcpdf->SetSubject('CONSTITUTION');
     // $tcpdf->SetKeywords('CONSTITUTION');
-
+  
     $tcpdf->addPage();
     $tcpdf->SetFont($helvetica, '', 10);
     $tcpdf->writeHTML($html_template, true, 0, true, true);
     $tcpdf->Ln();
-
+    
     // Additional markup here if needed
-
+    
     $tcpdf->lastPage();
-
+  
     // $company_name = str_replace(' ', '_', $company->getTitle());
     // $company_type = str_replace(' ', '_', $company->get('field_company_type')->referencedEntities()[0]->getName());
     // $filename = 'GUARANTEE_CONSTITUTION_OF_' . $company_name . '_' . $company_type . '.pdf';
-
+  
     // if (empty($type)) {
     //   echo $tcpdf->Output($filename, 'I');
     // } else {
@@ -418,13 +399,12 @@ function constitutionLimitedByGuaranteePdf($html_template, $pdf_name)
     //   ];
     //   return $data;
     // }
-
+  
     return $tcpdf->Output($pdf_name, 'I');
-}
+  }
 
 
-function directorResolutionForIncorporationPdf($html_template, $pdf_name)
-{
+function directorResolutionForIncorporationPdf($html_template, $pdf_name) {
     // $datas = DocumentWrapper::directorResolution($company);
     // $html_template = [
     //   '#theme' => 'tcpdf_02_00_director_resolution',
@@ -454,7 +434,7 @@ function directorResolutionForIncorporationPdf($html_template, $pdf_name)
 
     $tcpdf->addPage();
     $tcpdf->SetFont($helvetica, '', 10);
-    $tcpdf->writeHTML($html_template, TRUE, 0, TRUE, FALSE);
+    $tcpdf->writeHTML($html, TRUE, 0, TRUE, FALSE);
     $tcpdf->Ln();
     $tcpdf->lastPage();
 
@@ -472,11 +452,10 @@ function directorResolutionForIncorporationPdf($html_template, $pdf_name)
     // }
 
     return $tcpdf->Output($pdf_name, 'I');
-}
+  }
 
 
-function directorResolutionLimitedByGuaranteePdf($html_template, $pdf_name, $author = 'Author')
-{
+function directorResolutionLimitedByGuaranteePdf($html_template, $pdf_name, $author = 'Author') {
     // Assuming the Helvetica font is placed correctly in the 'fonts' directory one level above.
     $helvetica = TCPDF_FONTS::addTTFfont(getcwd() . '/../Helvetica.ttf', 'TrueTypeUnicode', '', 32);
 
@@ -503,8 +482,7 @@ function directorResolutionLimitedByGuaranteePdf($html_template, $pdf_name, $aut
     return $tcpdf->Output($pdf_name, 'I'); // Use 'S' for returning the PDF as a string, 'F' for saving it to a file.
 }
 
-function formDirectorParticularPdf($html_template, $pdf_name, $author = 'Author', $subject_suffix = '')
-{
+function formDirectorParticularPdf($html_template, $pdf_name, $author = 'Author', $subject_suffix = '') {
     // Load the Helvetica font from the specified path.
     $helvetica = TCPDF_FONTS::addTTFfont(getcwd() . '/../Helvetica.ttf', 'TrueTypeUnicode', '', 32);
 
@@ -537,8 +515,7 @@ function formDirectorParticularPdf($html_template, $pdf_name, $author = 'Author'
 }
 
 
-function formCompanyParticularPdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I')
-{
+function formCompanyParticularPdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I') {
     // Load the Helvetica font from the specified path.
     $helvetica = TCPDF_FONTS::addTTFfont(getcwd() . '/../Helvetica.ttf', 'TrueTypeUnicode', '', 32);
 
@@ -578,8 +555,7 @@ function formCompanyParticularPdf($html_content, $pdf_name, $author_name, $subje
 
 // $pdfOutput = formCompanyParticularPdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type);
 
-function form45Pdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I')
-{
+function form45Pdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I') {
     // $datas = DocumentWrapper::directorParticular($company, $officer);
     // $html_template = [
     //   '#theme' => 'tcpdf_04_form_45',
@@ -631,12 +607,11 @@ function form45Pdf($html_content, $pdf_name, $author_name, $subject_suffix, $out
     //   return $data;
     // }
 
-    return $tcpdf->Output($pdf_name, $output_type);
-}
+    return $tcpdf->Output($filename, $output_type);
+  }
 
 
-function serviceIndemnityAgreementPdfTrustDeed($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I')
-{
+function serviceIndemnityAgreementPdfTrustDeed($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I') {
 
 
     // $datas = DocumentWrapper::serviceIndemnityAgreementTrustDeed($company, $officer);
@@ -645,7 +620,7 @@ function serviceIndemnityAgreementPdfTrustDeed($html_content, $pdf_name, $author
     //   '#datas' => $datas,
     // ];
     // $html = $this->renderer->render($html_template);
-
+    
     $helvetica = TCPDF_FONTS::addTTFfont(getcwd() . '/../Helvetica.ttf', 'TrueTypeUnicode', '', 32);
 
 
@@ -673,7 +648,7 @@ function serviceIndemnityAgreementPdfTrustDeed($html_content, $pdf_name, $author
 
     $tcpdf->addPage();
     $tcpdf->SetFont($helvetica, '', 10);
-    $tcpdf->writeHTML($html_content, TRUE, 0, TRUE, TRUE);
+    $tcpdf->writeHTML($html, TRUE, 0, TRUE, TRUE);
     $tcpdf->Ln();
     $tcpdf->lastPage();
 
@@ -693,12 +668,11 @@ function serviceIndemnityAgreementPdfTrustDeed($html_content, $pdf_name, $author
     //   return $data;
     // }
 
-    return $tcpdf->Output($pdf_name, $output_type);
+    return $tcpdf->Output($filename, $output_type);
 
-}
+  }
 
-function allotmentOfShareForm24Pdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I')
-{
+function allotmentOfShareForm24Pdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I') {
     // $datas = DocumentWrapper::form24($company);
     // $html_template = [
     //   '#theme' => 'tcpdf_06_form24',
@@ -739,8 +713,8 @@ function allotmentOfShareForm24Pdf($html_content, $pdf_name, $author_name, $subj
     return $tcpdf->Output($pdf_name, $output_type);
 }
 
-function applicationForSharesPdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I')
-{
+function applicationForSharesPdf($html_content, $pdf_name, $output_type = 'I') {
+    error_log("asdjasldkjalskdjalsdkajd");
     // $datas =  DocumentWrapper::applicationForShares($company, $officer);
     // $html_template = [
     //   '#theme' => 'tcpdf_07_application_for_shares',
@@ -795,13 +769,12 @@ function applicationForSharesPdf($html_content, $pdf_name, $author_name, $subjec
 
     return $tcpdf->Output($pdf_name, $output_type);
 
-}
+  }
 
-/**
- * 08.
- */
-function form45BPdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I')
-{
+  /**
+   * 08.
+   */
+function form45BPdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I') {
     // $datas = DocumentWrapper::applicationForShares($company, $officer);
     // $html_template = [
     //   '#theme' => 'tcpdf_08_form_54b',
@@ -834,11 +807,11 @@ function form45BPdf($html_content, $pdf_name, $author_name, $subject_suffix, $ou
 
     $tcpdf->addPage();
     $tcpdf->SetFont($helvetica, '', 10);
-    $tcpdf->writeHTML($html_content, TRUE, 0, TRUE, TRUE);
+    $tcpdf->writeHTML($html, TRUE, 0, TRUE, TRUE);
     $tcpdf->Ln();
     $tcpdf->lastPage();
 
-   // $full_name = str_replace(' ', '_', $full_name);
+    $full_name = str_replace(' ', '_', $full_name);
 
     // $filename = '08_FORM_45B-' . $full_name . '.pdf';
 
@@ -856,10 +829,9 @@ function form45BPdf($html_content, $pdf_name, $author_name, $subject_suffix, $ou
 
     return $tcpdf->Output($pdf_name, $output_type);
 
-}
+  }
 
-function certificateForSHolderCSealPdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I')
-{
+function certificateForSHolderCSealPdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I') {
     // $html_template = [
     //   '#theme' => 'tcpdf_09_certification_for_shareholder',
     //   '#datas' => DocumentWrapper::certificationForShareholder($company, $officer),
@@ -892,13 +864,13 @@ function certificateForSHolderCSealPdf($html_content, $pdf_name, $author_name, $
     $tcpdf->addPage('L', 'A4');
     $tcpdf->SetFont($font_name, '', 10);
     $tcpdf->setCellHeightRatio(1.7);
-    $tcpdf->writeHTML($html_content, TRUE, 0, TRUE, TRUE);
+    $tcpdf->writeHTML($html, TRUE, 0, TRUE, TRUE);
     $tcpdf->Ln();
     $tcpdf->lastPage();
     $tcpdf->SetLineStyle(['width' => 1, 'color' => [0, 0, 0]]);
     $tcpdf->Rect(5, 5, $tcpdf->getPageWidth() - 10, $tcpdf->getPageHeight() - 10);
 
-   // $full_name = str_replace(' ', '_', $company->getTitle());
+    $full_name = str_replace(' ', '_', $company->getTitle());
 
     // $filename = '09_Share_Certificate_' . $full_name . '.pdf';
 
@@ -915,13 +887,12 @@ function certificateForSHolderCSealPdf($html_content, $pdf_name, $author_name, $
     // }
     return $tcpdf->Output($pdf_name, $output_type);
 
-}
+  }
 
-/**
- * 09-01.
- */
-function certificateForSHolderPdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I')
-{
+  /**
+   * 09-01.
+   */
+function certificateForSHolderPdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I') {
     // $html_template = [
     //   '#theme' => 'tcpdf_09_01_certification_for_shareholder',
     //   '#datas' => DocumentWrapper::certificationForShareholder($company, $officer),
@@ -956,7 +927,7 @@ function certificateForSHolderPdf($html_content, $pdf_name, $author_name, $subje
     $tcpdf->addPage('L', 'A4');
     $tcpdf->SetFont($font_name, '', 10);
     $tcpdf->setCellHeightRatio(1.7);
-    $tcpdf->writeHTML($html_content, TRUE, 0, TRUE, TRUE);
+    $tcpdf->writeHTML($html, TRUE, 0, TRUE, TRUE);
     $tcpdf->Ln();
     $tcpdf->lastPage();
     $tcpdf->SetLineStyle(['width' => 1, 'color' => [0, 0, 0]]);
@@ -980,13 +951,12 @@ function certificateForSHolderPdf($html_content, $pdf_name, $author_name, $subje
 
     return $tcpdf->Output($pdf_name, $output_type);
 
-}
+  }
 
-/**
- * 10.
- */
-function changeOfOfficeAddressPdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I')
-{
+  /**
+   * 10.
+   */
+function changeOfOfficeAddressPdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I') {
     // $datas = DocumentWrapper::applicationForShares($company, $officer);
     // $html_template = [
     //   '#theme' => 'tcpdf_10_change_office_address',
@@ -1019,7 +989,7 @@ function changeOfOfficeAddressPdf($html_content, $pdf_name, $author_name, $subje
 
     $tcpdf->addPage();
     $tcpdf->SetFont($helvetica, '', 10);
-    $tcpdf->writeHTML($html_content, TRUE, 0, TRUE, TRUE);
+    $tcpdf->writeHTML($html, TRUE, 0, TRUE, TRUE);
     $tcpdf->Ln();
     $tcpdf->lastPage();
 
@@ -1041,13 +1011,12 @@ function changeOfOfficeAddressPdf($html_content, $pdf_name, $author_name, $subje
 
     return $tcpdf->Output($pdf_name, $output_type);
 
-}
+  }
 
-/**
- * 30.
- */
-function customerAcceptancePdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I')
-{
+  /**
+   * 30.
+   */
+function customerAcceptancePdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I') {
     // $datas = DocumentWrapper::customerAcceptance($company, $officer);
     // $html_template = [
     //   '#theme' => 'tcpdf_30_customer_acceptance_form',
@@ -1086,7 +1055,7 @@ function customerAcceptancePdf($html_content, $pdf_name, $author_name, $subject_
 
     $tcpdf->addPage();
     $tcpdf->SetFont($helvetica, '', 10);
-    $tcpdf->writeHTML($html_content, TRUE, 0, TRUE, TRUE);
+    $tcpdf->writeHTML($html, TRUE, 0, TRUE, TRUE);
     $tcpdf->Ln();
     $tcpdf->lastPage();
 
@@ -1110,14 +1079,13 @@ function customerAcceptancePdf($html_content, $pdf_name, $author_name, $subject_
 
     return $tcpdf->Output($pdf_name, $output_type);
 
-}
+  }
 
 
-/**
- * 30 Shareholder.
- */
-function customerAcceptanceShareholderPdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I')
-{
+  /**
+   * 30 Shareholder.
+   */
+function customerAcceptanceShareholderPdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I') {
     // $datas = DocumentWrapper::customerAcceptance($company, $officer);
     // $html_template = [
     //   '#theme' => 'tcpdf_30_customer_acceptance_shareholder_form',
@@ -1154,7 +1122,7 @@ function customerAcceptanceShareholderPdf($html_content, $pdf_name, $author_name
 
     $tcpdf->addPage();
     $tcpdf->SetFont($helvetica, '', 10);
-    $tcpdf->writeHTML($html_content, TRUE, 0, TRUE, TRUE);
+    $tcpdf->writeHTML($html, TRUE, 0, TRUE, TRUE);
     $tcpdf->Ln();
     $tcpdf->lastPage();
 
@@ -1178,13 +1146,12 @@ function customerAcceptanceShareholderPdf($html_content, $pdf_name, $author_name
 
     return $tcpdf->Output($pdf_name, $output_type);
 
-}
+  }
 
-/**
- * 30. Limited by Guarantee
- */
-function customerAcceptanceLimitedByGuaranteePdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I')
-{
+  /**
+   * 30. Limited by Guarantee
+   */
+function customerAcceptanceLimitedByGuaranteePdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I') {
     // $datas = DocumentWrapper::customerAcceptance($company, $officer);
     // $html_template = [
     //   '#theme' => 'tcpdf_30_customer_acceptance_limited_guarantee_form',
@@ -1221,7 +1188,7 @@ function customerAcceptanceLimitedByGuaranteePdf($html_content, $pdf_name, $auth
 
     $tcpdf->addPage();
     $tcpdf->SetFont($helvetica, '', 10);
-    $tcpdf->writeHTML($html_content, TRUE, 0, TRUE, TRUE);
+    $tcpdf->writeHTML($html, TRUE, 0, TRUE, TRUE);
     $tcpdf->Ln();
     $tcpdf->lastPage();
 
@@ -1244,13 +1211,12 @@ function customerAcceptanceLimitedByGuaranteePdf($html_content, $pdf_name, $auth
     // }
     return $tcpdf->Output($pdf_name, $output_type);
 
-}
+  }
 
-/**
- * 21.
- */
-function terminationOfCorporateSecretarialServicesPdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I')
-{
+  /**
+   * 21.
+   */
+function terminationOfCorporateSecretarialServicesPdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I') {
     // $datas = DocumentWrapper::resignationsAndAppointmentOfCompanySecretaryWrapper($company);
     // $html_template = [
     //   '#theme' => 'tcpdf_21_termination_of_corporate_secretarial_services',
@@ -1282,7 +1248,7 @@ function terminationOfCorporateSecretarialServicesPdf($html_content, $pdf_name, 
 
     $tcpdf->addPage();
     $tcpdf->SetFont($helvetica, '', 10);
-    $tcpdf->writeHTML($html_content, TRUE, 0, TRUE, TRUE);
+    $tcpdf->writeHTML($html, TRUE, 0, TRUE, TRUE);
     $tcpdf->Ln();
     $tcpdf->lastPage();
 
@@ -1302,13 +1268,12 @@ function terminationOfCorporateSecretarialServicesPdf($html_content, $pdf_name, 
 
     return $tcpdf->Output($pdf_name, $output_type);
 
-}
+  }
 
-/**
- * 22.
- */
-function resignationsAndAppointmentOfCompanySecretaryPdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I')
-{
+  /**
+   * 22.
+   */
+  function resignationsAndAppointmentOfCompanySecretaryPdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I') {
     // $datas = DocumentWrapper::resignationsAndAppointmentOfCompanySecretaryWrapper($company);
     // $html_template = [
     //   '#theme' => 'tcpdf_22_resignation_and_appointment_of_company_secrectary',
@@ -1340,7 +1305,7 @@ function resignationsAndAppointmentOfCompanySecretaryPdf($html_content, $pdf_nam
 
     $tcpdf->addPage();
     $tcpdf->SetFont($helvetica, '', 10);
-    $tcpdf->writeHTML($html_content, TRUE, 0, TRUE, TRUE);
+    $tcpdf->writeHTML($html, TRUE, 0, TRUE, TRUE);
     $tcpdf->Ln();
     $tcpdf->lastPage();
 
@@ -1360,13 +1325,12 @@ function resignationsAndAppointmentOfCompanySecretaryPdf($html_content, $pdf_nam
 
     return $tcpdf->Output($pdf_name, $output_type);
 
-}
+  }
 
-/**
- * 23.
- */
-function changeOfFinancialYearPdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I')
-{
+  /**
+   * 23.
+   */
+function changeOfFinancialYearPdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I') {
     // $datas = DocumentWrapper::resignationsAndAppointmentOfCompanySecretaryWrapper($company);
     // $html_template = [
     //   '#theme' => 'tcpdf_23_change_of_finance_year',
@@ -1398,7 +1362,7 @@ function changeOfFinancialYearPdf($html_content, $pdf_name, $author_name, $subje
 
     $tcpdf->addPage();
     $tcpdf->SetFont($helvetica, '', 10);
-    $tcpdf->writeHTML($html_content, TRUE, 0, TRUE, TRUE);
+    $tcpdf->writeHTML($html, TRUE, 0, TRUE, TRUE);
     $tcpdf->Ln();
     $tcpdf->lastPage();
 
@@ -1417,13 +1381,12 @@ function changeOfFinancialYearPdf($html_content, $pdf_name, $author_name, $subje
     // }
     return $tcpdf->Output($pdf_name, $output_type);
 
-}
+  }
 
-/**
- * 24.
- */
-function changeOfCompanyNamePdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I')
-{
+  /**
+   * 24.
+   */
+function changeOfCompanyNamePdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I') {
     // $datas = DocumentWrapper::resignationsAndAppointmentOfCompanySecretaryWrapper($company);
     // $html_template = [
     //   '#theme' => 'tcpdf_24_change_of_company_name',
@@ -1455,7 +1418,7 @@ function changeOfCompanyNamePdf($html_content, $pdf_name, $author_name, $subject
 
     $tcpdf->addPage();
     $tcpdf->SetFont($helvetica, '', 10);
-    $tcpdf->writeHTML($html_content, TRUE, 0, TRUE, TRUE);
+    $tcpdf->writeHTML($html, TRUE, 0, TRUE, TRUE);
     $tcpdf->Ln();
     $tcpdf->lastPage();
 
@@ -1475,13 +1438,12 @@ function changeOfCompanyNamePdf($html_content, $pdf_name, $author_name, $subject
 
     return $tcpdf->Output($pdf_name, $output_type);
 
-}
+  }
 
-/**
- * 25.
- */
-function changeOfBusinessActivityPdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I')
-{
+  /**
+   * 25.
+   */
+function changeOfBusinessActivityPdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I') {
     // $datas = DocumentWrapper::resignationsAndAppointmentOfCompanySecretaryWrapper($company);
     // $html_template = [
     //   '#theme' => 'tcpdf_25_change_of_business_activity',
@@ -1514,7 +1476,7 @@ function changeOfBusinessActivityPdf($html_content, $pdf_name, $author_name, $su
 
     $tcpdf->addPage();
     $tcpdf->SetFont($helvetica, '', 10);
-    $tcpdf->writeHTML($html_content, TRUE, 0, TRUE, TRUE);
+    $tcpdf->writeHTML($html, TRUE, 0, TRUE, TRUE);
     $tcpdf->Ln();
     $tcpdf->lastPage();
     $filename = '25_CHANGE_OF_BUSINESS_ACTIVITY.pdf';
@@ -1532,14 +1494,13 @@ function changeOfBusinessActivityPdf($html_content, $pdf_name, $author_name, $su
     // }
     return $tcpdf->Output($pdf_name, $output_type);
 
+    
+  }
 
-}
-
-/**
- * 26.
- */
-function certificateOfCorporateSealPdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I')
-{
+  /**
+   * 26.
+   */
+function certificateOfCorporateSealPdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I') {
     // $datas = DocumentWrapper::resignationsAndAppointmentOfCompanySecretaryWrapper($company);
     // $html_template = [
     //   '#theme' => 'tcpdf_26_certificate_of_corporate_seal',
@@ -1571,7 +1532,7 @@ function certificateOfCorporateSealPdf($html_content, $pdf_name, $author_name, $
 
     $tcpdf->addPage();
     $tcpdf->SetFont($helvetica, '', 10);
-    $tcpdf->writeHTML($html_content, TRUE, 0, TRUE, TRUE);
+    $tcpdf->writeHTML($html, TRUE, 0, TRUE, TRUE);
     $tcpdf->Ln();
     $tcpdf->lastPage();
 
@@ -1591,13 +1552,12 @@ function certificateOfCorporateSealPdf($html_content, $pdf_name, $author_name, $
 
     return $tcpdf->Output($pdf_name, $output_type);
 
-}
+  }
 
-/**
- * 27 and 28.
- */
-function changeOfRegisteredOfficeAddressPdf($html, $pdf_name, $output_type = "I")
-{
+  /**
+   * 27 and 28.
+   */
+function changeOfRegisteredOfficeAddressPdf($html, $pdf_name, $output_type="I") {
     // $datas = DocumentWrapper::resignationsAndAppointmentOfCompanySecretaryWrapper($company);
 
     // $html_template = [
@@ -1668,13 +1628,12 @@ function changeOfRegisteredOfficeAddressPdf($html, $pdf_name, $output_type = "I"
 
     return $tcpdf->Output($pdf_name, $output_type);
 
-}
+  }
 
 //   /**
 //    * 13A.
 //    */
-function noticeForControllerAPdf($html, $pdf_name, $output_type = "I")
-{
+function noticeForControllerAPdf($html, $pdf_name, $output_type="I") {
     // $html_template = [
     //   '#theme' => 'tcpdf_029a_annex_a',
     //   '#datas' => DocumentWrapper::noticeForControllerAnexA($company),
@@ -1727,13 +1686,12 @@ function noticeForControllerAPdf($html, $pdf_name, $output_type = "I")
     // }
     return $tcpdf->Output($pdf_name, $output_type);
 
-}
+  }
 
 //   /**
 //    * 029_BI.
 //    */
-function annexBIPdf($html, $pdf_name, $output_type = "I")
-{
+function annexBIPdf($html, $pdf_name, $output_type="I") {
     // $datas = DocumentWrapper::applicationForShares($company, $officer);
     // if (!empty($datas['directors'])) {
     //   if ($datas['incorporate_type'] && $datas['incorporate_type'] == 2719) {
@@ -1801,13 +1759,12 @@ function annexBIPdf($html, $pdf_name, $output_type = "I")
 
     return $tcpdf->Output($pdf_name, $output_type);
 
-}
+  }
 
 //   /**
 //    * 029_BE.
 //    */
-function annexBEPdf($html, $pdf_name, $output_type = "I")
-{
+function annexBEPdf($html, $pdf_name, $output_type="I") {
     // $datas = DocumentWrapper::applicationForShares($company, $officer);
     // $datas['position_dir'] = 1;
     // $html_template = [
@@ -1817,7 +1774,7 @@ function annexBEPdf($html, $pdf_name, $output_type = "I")
     // ob_start();
     // $html = $this->renderer->render($html_template);
 
-
+    
     $helvetica = TCPDF_FONTS::addTTFfont(getcwd() . '/../Helvetica.ttf', 'TrueTypeUnicode', '', 32);
 
     $tcpdf = new \TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, TRUE, 'UTF-8', FALSE);
@@ -1867,13 +1824,12 @@ function annexBEPdf($html, $pdf_name, $output_type = "I")
 
     return $tcpdf->Output($pdf_name, $output_type);
 
-}
+  }
 
 //   /**
 //    * 029_BIS.
 //    */
-function annexBISPdf($html, $pdf_name, $output_type = "I")
-{
+function annexBISPdf($html, $pdf_name, $output_type="I") {
     // $datas = DocumentWrapper::applicationForShares($company, $officer);
     // if (!empty($datas['directors'])) {
     //   if ($datas['incorporate_type'] && $datas['incorporate_type'] == 2719) {
@@ -1942,13 +1898,12 @@ function annexBISPdf($html, $pdf_name, $output_type = "I")
 
     return $tcpdf->Output($pdf_name, $output_type);
 
-}
+  }
 
 //   /**
 //    * 029_BES.
 //    */
-function annexBESPdf($html, $pdf_name, $output_type = "I")
-{
+function annexBESPdf($html, $pdf_name, $output_type="I") {
     // $datas = DocumentWrapper::applicationForShares($company, $officer);
     // $datas['position'] = 1;
     // $html_template = [
@@ -2008,13 +1963,12 @@ function annexBESPdf($html, $pdf_name, $output_type = "I")
 
     return $tcpdf->Output($pdf_name, $output_type);
 
-}
+  }
 
 //   /**
 //    * 31.
 //    */
-function registrationOfNomineeDirector($html, $pdf_name, $output_type = "I")
-{
+function registrationOfNomineeDirector($html, $pdf_name, $output_type="I") {
     // $html_template = [
     //   '#theme' => 'tcpdf_031',
     //   '#datas' => DocumentWrapper::applicationForShares($company, $officer),
@@ -2045,7 +1999,7 @@ function registrationOfNomineeDirector($html, $pdf_name, $output_type = "I")
     // $tcpdf->SetKeywords("030_Annex_D__" . $full_name);
 
     $tcpdf->addPage();
-    $tcpdf->SetFont($helvetica, '', 10);
+    $tcpdf->SetFont( $helvetica, '', 10);
     $tcpdf->writeHTML($html, TRUE, 0, TRUE, TRUE);
     $tcpdf->Ln();
     $tcpdf->lastPage();
@@ -2067,19 +2021,19 @@ function registrationOfNomineeDirector($html, $pdf_name, $output_type = "I")
     // }
     return $tcpdf->Output($pdf_name, $output_type);
 
-}
+  }
 
 //   /**
 //    * 31_S.
 //    */
-function registrationOfNomineeShareholder($html, $pdf_name, $output_type = "I")
-{
+function registrationOfNomineeShareholder($html, $pdf_name, $output_type="I")
+  {
     // $html_template = [
     //   '#theme' => 'tcpdf_031S',
     //   '#datas' => DocumentWrapper::nomineeShareholder($company, $officer),
     // ];
     // $html = $this->renderer->render($html_template);
-    $helvetica = TCPDF_FONTS::addTTFfont(getcwd() . '/../Helvetica.ttf', 'TrueTypeUnicode', '', 32);
+    // $helvetica = TCPDF_FONTS::addTTFfont(getcwd() . '/../Helvetica.ttf', 'TrueTypeUnicode', '', 32);
 
     $tcpdf = new \TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, TRUE, 'UTF-8', FALSE);
 
@@ -2130,13 +2084,13 @@ function registrationOfNomineeShareholder($html, $pdf_name, $output_type = "I")
 
     return $tcpdf->Output($pdf_name, $output_type);
 
-}
+  }
 
 //   /**
 //    * 31_S20.
 //    */
-function confirmationLetter($html, $pdf_name, $output_type = "I")
-{
+function confirmationLetter($html, $pdf_name, $output_type="I")
+  {
     // $datas = DocumentWrapper::companyDetailsConfirmationLetter($company);
     // $html_template = [
     //   '#theme' => 'tcpdf_031S20',
@@ -2189,13 +2143,13 @@ function confirmationLetter($html, $pdf_name, $output_type = "I")
 
     return $tcpdf->Output($pdf_name, $output_type);
 
-}
+  }
 
 //   /**
 //    * 31_S20B.
 //    */
-function confirmationLetterWithBlanks($html, $pdf_name, $output_type = "I")
-{
+ function confirmationLetterWithBlanks($html, $pdf_name, $output_type="I")
+  {
     // $datas = DocumentWrapper::companyDetailsConfirmationLetter($company);
     // $html_template = [
     //   '#theme' => 'tcpdf_031S20B',
@@ -2245,13 +2199,12 @@ function confirmationLetterWithBlanks($html, $pdf_name, $output_type = "I")
 
     return $tcpdf->Output($pdf_name, $output_type);
 
-}
+  }
 
 //   /**
 //    *
 //    */
-function certificateOfEmployment($html, $pdf_name, $output_type = "I")
-{
+function certificateOfEmployment($html, $pdf_name, $output_type="I") {
     // $html_template = [
     //   '#theme' => 'tcpdf_028',
     //   '#datas' => DocumentWrapper::applicationForShares($company, $officer),
@@ -2307,13 +2260,12 @@ function certificateOfEmployment($html, $pdf_name, $output_type = "I")
 
     return $tcpdf->Output($pdf_name, $output_type);
 
-}
+  }
 
 //   /**
 //    * Document 1st Director vs 2nd Director
 //    */
-function serviceIndemnityAgreement1D2D($html, $pdf_name, $output_type = "I")
-{
+ function serviceIndemnityAgreement1D2D($html, $pdf_name, $output_type="I") {
     // $datas = DocumentWrapper::serviceIndemnityCompanyDetails1D2D($company, $officer);
     // $html_template = [
     //   '#theme' => 'tcpdf_05',
@@ -2368,13 +2320,13 @@ function serviceIndemnityAgreement1D2D($html, $pdf_name, $output_type = "I")
     return $tcpdf->Output($pdf_name, $output_type);
 
 
-}
+
+  }
 
 //   /**
 //    *
 //    */
-function serviceIndemnityAgreement1D2S($html, $pdf_name, $output_type = "I")
-{
+function serviceIndemnityAgreement1D2S($html, $pdf_name, $output_type="I") {
     // $datas = DocumentWrapper::serviceIndemnityCompanyDetails1D1S($company, $officer);
     // $html_template = [
     //   '#theme' => 'tcpdf_05_1d_1s',
@@ -2428,13 +2380,12 @@ function serviceIndemnityAgreement1D2S($html, $pdf_name, $output_type = "I")
 
     return $tcpdf->Output($pdf_name, $output_type);
 
-}
+  }
 
 //   /**
 //    *
 //    */
-function serviceIndemnityAgreement3($html, $pdf_name, $output_type = "I")
-{
+function serviceIndemnityAgreement3($html, $pdf_name, $output_type="I") {
     // TODO: Implement ServiceIndemnityAgreement3() method.
     // TODO: Implement ServiceIndemnityAgreement1() method.
     // $html_template = [
@@ -2489,13 +2440,12 @@ function serviceIndemnityAgreement3($html, $pdf_name, $output_type = "I")
 
     return $tcpdf->Output($pdf_name, $output_type);
 
-}
+  }
 
 //   /**
 //    *
 //    */
-function serviceIndemnityAgreement4($html, $pdf_name, $output_type = "I")
-{
+function serviceIndemnityAgreement4($html, $pdf_name, $output_type="I") {
     // $html_template = [
     //   '#theme' => 'tcpdf_05_1d_1d',
     //   '#datas' => DocumentWrapper::serviceIndemnityCompanyDetails($company),
@@ -2548,13 +2498,12 @@ function serviceIndemnityAgreement4($html, $pdf_name, $output_type = "I")
 
     return $tcpdf->Output($pdf_name, $output_type);
 
-}
+  }
 
 //   /**
 //    * 00_00.
 //    */
-function agmPdf($html, $pdf_name, $output_type = "I")
-{
+function agmPdf($html, $pdf_name, $output_type="I") {
     // if (!in_array($document_id, ['00', '01', '02'])) {
     //   throw new NotFoundHttpException();
     // }
@@ -2653,7 +2602,7 @@ function agmPdf($html, $pdf_name, $output_type = "I")
 
     return $tcpdf->Output($pdf_name, $output_type);
 
-}
+  }
 
 //   /**
 //    * @param $company
@@ -2661,8 +2610,7 @@ function agmPdf($html, $pdf_name, $output_type = "I")
 //    * @return array
 //    * @throws \Exception
 //    */
-function agmPdf04($html, $pdf_name, $output_type = "I")
-{
+function agmPdf04($html, $pdf_name, $output_type="I") {
     // $datas = DocumentWrapper::agmDormant($company);
     // $html_template = [
     //   '#theme' => 'agm_pdf_03',
@@ -2673,6 +2621,7 @@ function agmPdf04($html, $pdf_name, $output_type = "I")
 
     ob_start();
     // $html = $this->renderer->render($html_template);
+
 
 
     $tcpdf = new \TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, TRUE, 'UTF-8', FALSE);
@@ -2719,13 +2668,12 @@ function agmPdf04($html, $pdf_name, $output_type = "I")
 
     return $tcpdf->Output($pdf_name, $output_type);
 
-}
+  }
 
 //   /**
 //    * Allotment of Shares.
 //    */
-function drAllotmentOfShares($html, $pdf_name, $output_type = "I")
-{
+function drAllotmentOfShares($html, $pdf_name, $output_type="I") {
     // $datas = DocumentWrapper::drAllotment($company, $officer);
 
     // $html_template = [
@@ -2782,13 +2730,12 @@ function drAllotmentOfShares($html, $pdf_name, $output_type = "I")
 
     return $tcpdf->Output($pdf_name, $output_type);
 
-}
+  }
 
 //   /**
 //    * Transfer of Shares.
 //    */
-function drTransferOfShares($html, $pdf_name, $output_type = "I")
-{
+  function drTransferOfShares($html, $pdf_name, $output_type="I") {
     // $datas = DocumentWrapper::drAllotment($company, $officer);
 
     // $html_template = [
@@ -2823,7 +2770,7 @@ function drTransferOfShares($html, $pdf_name, $output_type = "I")
     $tcpdf->SetKeywords("DR Transfer of Shares");
 
     $tcpdf->addPage();
-    $tcpdf->SetFont($helvetica, '', 10);
+    $tcpdf->SetFont($helvetica , '', 10);
     $tcpdf->writeHTML($html, TRUE, 0, TRUE, TRUE);
     $tcpdf->Ln();
     $tcpdf->lastPage();
@@ -2845,13 +2792,12 @@ function drTransferOfShares($html, $pdf_name, $output_type = "I")
 
     return $tcpdf->Output($pdf_name, $output_type);
 
-}
+  }
 
 //   /**
 //    * Dr interim Dividends.
 //    */
-function interimDividends($html, $pdf_name, $output_type = "I")
-{
+function interimDividends($html, $pdf_name, $output_type="I") {
     // $datas = DocumentWrapper::drInterimDividends($company, $officer);
     // $html_template = [
     //   '#theme' => 'tcpdf_35_dr_interim_dividends',
@@ -2891,6 +2837,7 @@ function interimDividends($html, $pdf_name, $output_type = "I")
     $tcpdf->lastPage();
     // ob_end_clean();
 
+    
 
     // $filename = $company->getTitle() . " Dr interim Dividends.pdf";
 
@@ -2908,14 +2855,13 @@ function interimDividends($html, $pdf_name, $output_type = "I")
 
     return $tcpdf->Output($pdf_name, $output_type);
 
-}
+  }
 
 
 //   /**
 //    * Dividends Statement.
 //    */
-function dividendsStatement($html, $pdf_name, $output_type = "I")
-{
+function dividendsStatement($html, $pdf_name, $output_type="I") {
     // $datas = DocumentWrapper::drInterimDividends($company, $officer);
     // $html_template = [
     //   '#theme' => 'tcpdf_35_dividends_statement',
@@ -2949,7 +2895,7 @@ function dividendsStatement($html, $pdf_name, $output_type = "I")
     $tcpdf->SetKeywords("Dividends Statement");
 
     $tcpdf->addPage();
-    $tcpdf->SetLineStyle(array('width' => 0.5, 'color' => array(0, 0, 0)));
+    $tcpdf->SetLineStyle( array( 'width' => 0.5, 'color' => array(0,0,0)));
     $tcpdf->Rect(10, 10, $tcpdf->getPageWidth() - 20, $tcpdf->getPageHeight() - 20);
 
     $tcpdf->SetFont($helvetica, '', 10);
@@ -2975,13 +2921,13 @@ function dividendsStatement($html, $pdf_name, $output_type = "I")
     return $tcpdf->Output($pdf_name, $output_type);
 
 
-}
+
+  }
 
 //   /**
 //    * DR Writing off of Investment.
 //   */
-function drWritingOffOfInvestment($html, $pdf_name, $output_type = "I")
-{
+function drWritingOffOfInvestment($html, $pdf_name, $output_type="I") {
     // $datas = DocumentWrapper::drWritingOffInvestment($company);
     // $html_template = [
     //   '#theme' => 'tcpdf_36_dr_writing_off_of_investment',
@@ -3035,13 +2981,12 @@ function drWritingOffOfInvestment($html, $pdf_name, $output_type = "I")
 
     return $tcpdf->Output($pdf_name, $output_type);
 
-}
+  }
 
 //   /**
 //    * DR Striking Off.
 //   */
-function drStrikingOff($html, $pdf_name, $output_type = "I")
-{
+function drStrikingOff($html, $pdf_name, $output_type="I") {
     // $datas = DocumentWrapper::drStriking($company);
     // $html_template = [
     //   '#theme' => 'tcpdf_36_dr_striking_off',
@@ -3070,11 +3015,11 @@ function drStrikingOff($html, $pdf_name, $output_type = "I")
     // $tcpdf->SetCreator($author);
     // $tcpdf->SetAuthor($author);
     $tcpdf->SetTitle("DR Striking Off");
-    $tcpdf->SetSubject("DR Striking Off");
+    $tcpdf->SetSubject("DR Striking Off" );
     $tcpdf->SetKeywords("DR Striking Off");
 
     $tcpdf->addPage();
-    $tcpdf->SetFont($helvetica, '', 10);
+    $tcpdf->SetFont( $helvetica , '', 10);
     $tcpdf->writeHTML($html, TRUE, 0, TRUE, TRUE, '');
     $tcpdf->Ln();
     $tcpdf->lastPage();
@@ -3095,13 +3040,12 @@ function drStrikingOff($html, $pdf_name, $output_type = "I")
 
     return $tcpdf->Output($pdf_name, $output_type);
 
-}
+  }
 
 //   /**
 //    * DR Divestment.
 //   */
-function drDivestment($html, $pdf_name, $output_type = "I")
-{
+function drDivestment($html, $pdf_name, $output_type="I") {
     // $datas = DocumentWrapper::drStriking($company);
     // $html_template = [
     //   '#theme' => 'tcpdf_36_dr_divestment',
@@ -3130,7 +3074,7 @@ function drDivestment($html, $pdf_name, $output_type = "I")
     // $tcpdf->SetCreator($author);
     // $tcpdf->SetAuthor($author);
     $tcpdf->SetTitle("DR Divestment");
-    $tcpdf->SetSubject("DR Divestment");
+    $tcpdf->SetSubject("DR Divestment" );
     $tcpdf->SetKeywords("DR Divestment");
 
     $tcpdf->addPage();
@@ -3155,7 +3099,7 @@ function drDivestment($html, $pdf_name, $output_type = "I")
 
     return $tcpdf->Output($pdf_name, $output_type);
 
-}
+  }
 
 //   /**
 //    * @param Node $company
@@ -3164,8 +3108,7 @@ function drDivestment($html, $pdf_name, $output_type = "I")
 //    * @return array
 //    * @throws \Exception
 //    */
-function changeOfDirectors($html, $pdf_name, $output_type = "I")
-{
+function changeOfDirectors($html, $pdf_name, $output_type="I") {
     // $datas = DocumentWrapper::serviceIndemnityCompany($company, $officer);
     // $html_template = [
     //   '#theme' => 'tcpdf_40_00',
@@ -3220,7 +3163,7 @@ function changeOfDirectors($html, $pdf_name, $output_type = "I")
 
     return $tcpdf->Output($pdf_name, $output_type);
 
-}
+  }
 
 //   /**
 //    * @param Node $company
@@ -3229,8 +3172,7 @@ function changeOfDirectors($html, $pdf_name, $output_type = "I")
 //    * @return array
 //    * @throws \Exception
 //    */
-function drChangeOfDirectors($html, $pdf_name, $output_type = "I")
-{
+function drChangeOfDirectors($html, $pdf_name, $output_type="I") {
     // $datas = DocumentWrapper::directorsResolutions($company);
     // $html_template = [
     //   '#theme' => 'tcpdf_40_01',
@@ -3284,7 +3226,7 @@ function drChangeOfDirectors($html, $pdf_name, $output_type = "I")
     return $tcpdf->Output($pdf_name, $output_type);
 
 
-}
+  }
 
 //   /**
 //    * @param Node $company
@@ -3293,8 +3235,7 @@ function drChangeOfDirectors($html, $pdf_name, $output_type = "I")
 //    * @return array
 //    * @throws \Exception
 //    */
-function form45ChangeOfDirectors($html, $pdf_name, $output_type = "I")
-{
+function form45ChangeOfDirectors($html, $pdf_name, $output_type="I") {
     // $datas = DocumentWrapper::form45directorsResolutions($company);
     // $html_template = [
     //   '#theme' => 'tcpdf_40_02',
@@ -3347,7 +3288,7 @@ function form45ChangeOfDirectors($html, $pdf_name, $output_type = "I")
 
     return $tcpdf->Output($pdf_name, $output_type);
 
-}
+  }
 
 //   /**
 //    * @param Node $company
@@ -3355,8 +3296,7 @@ function form45ChangeOfDirectors($html, $pdf_name, $output_type = "I")
 //    * @return array
 //    * @throws \Exception
 //    */
-function formParticularChangeOfDirectors($html, $pdf_name, $output_type = "I")
-{
+function formParticularChangeOfDirectors($html, $pdf_name, $output_type="I") {
     // $datas = DocumentWrapper::formChangeOfDirectors($company);
     // $html_template = [
     //   '#theme' => 'tcpdf_40_03',
@@ -3409,13 +3349,12 @@ function formParticularChangeOfDirectors($html, $pdf_name, $output_type = "I")
 
     return $tcpdf->Output($pdf_name, $output_type);
 
-}
+  }
 
 //   /**
 //    * Resignation of Director - LIN HUAYAN, LAWRENCE.pdf
 //    */
-function resignationChangeOfDirectors($html, $pdf_name, $output_type = "I")
-{
+function resignationChangeOfDirectors($html, $pdf_name, $output_type="I") {
     // $datas = DocumentWrapper::resignationDirectors($company);
     // $html_template = [
     //   '#theme' => 'tcpdf_40_04',
@@ -3468,13 +3407,12 @@ function resignationChangeOfDirectors($html, $pdf_name, $output_type = "I")
 
     return $tcpdf->Output($pdf_name, $output_type);
 
-}
+  }
 
 //   /**
 //    * Register of Director.
 //    */
-function registerOfDirectors($html, $pdf_name, $output_type = "I")
-{
+function registerOfDirectors($html, $pdf_name, $output_type="I") {
     // $datas = DocumentWrapper::register($company);
     // $html_template = [
     //   '#theme' => 'tcpdf_41',
@@ -3513,13 +3451,12 @@ function registerOfDirectors($html, $pdf_name, $output_type = "I")
 
     return $tcpdf->Output($pdf_name, $output_type);
 
-}
+  }
 
 //   /**
 //    * Register of Secretaries.
 //    */
-function registerOfSecretaries($html, $pdf_name, $output_type = "I")
-{
+ function registerOfSecretaries($html, $pdf_name, $output_type="I") {
     // $datas = DocumentWrapper::register($company);
     // $html_template = [
     //   '#theme' => 'tcpdf_42',
@@ -3558,13 +3495,12 @@ function registerOfSecretaries($html, $pdf_name, $output_type = "I")
     $filename = "Secretaries - Manager";
 
     return $tcpdf->Output($pdf_name, $output_type);
-}
+  }
 
 //   /**
 //    * Register of Applications.
 //    */
-function registerOfApplications($html, $pdf_name, $output_type = "I")
-{
+function registerOfApplications($html, $pdf_name, $output_type="I") {
     // $datas = DocumentWrapper::registerApplications($company);
     // $html_template = [
     //   '#theme' => 'tcpdf_43',
@@ -3604,13 +3540,11 @@ function registerOfApplications($html, $pdf_name, $output_type = "I")
     // $filename = "Register of Applications and Allotments Ordinary";
 
     return $tcpdf->Output($pdf_name, $output_type);
-}
-
+  }
 //   /**
 //    * Register of Transfers.
 //    */
-function registerOfTransfers($html, $pdf_name, $output_type = "I")
-{
+  function registerOfTransfers($html, $pdf_name, $output_type="I") {
     // $datas = DocumentWrapper::registerTransfers($company);
     // $html_template = [
     //   '#theme' => 'tcpdf_44',
@@ -3650,13 +3584,12 @@ function registerOfTransfers($html, $pdf_name, $output_type = "I")
     // $filename = "Register of Transfers";
 
     return $tcpdf->Output($pdf_name, $output_type);
-}
+  }
 
 //   /**
 //    * Register of Members.
 //    */
-function registerOfMembers($html, $pdf_name, $output_type = "I")
-{
+function registerOfMembers($html, $pdf_name, $output_type="I") {
     // $datas = DocumentWrapper::registerMember($company, $officer);
     // $html_template = [
     //   '#theme' => 'tcpdf_45',
@@ -3696,120 +3629,119 @@ function registerOfMembers($html, $pdf_name, $output_type = "I")
     // $filename = "Register of Members";
 
     return $tcpdf->Output($pdf_name, $output_type);
-}
+  }
 
-// function serviceIndemnityAgreementSFA ($company, $id, $group_id, $type = NULL) {
-//   $datas = DocumentWrapper::serviceIndemnitySFA($company, $id);
-//   $template = 'tcpdf_05_service_fee_agreement';
-//   $title = $group_id. '_Service_Fee_Agreement';
-//   $title_name = '법인 유지 비용 계약서';
-//   if ($id == '03') {
-//     $template = 'tcpdf_05_service_fee_agreement_03';
-//     $title = $group_id . '_Service_Fee_Agreement_2nd/BlkChn';
-//   }
-//   if ($id == '02') {
-//     $template = 'tcpdf_05_service_fee_agreement_principal';
-//     $title = $group_id . '_Service_Fee_Agreement_2nd_Principal';
-//   }
-//   if ($id == '04') {
-//     $template = 'tcpdf_05_service_fee_agreement_principal_04';
-//     $title = $group_id . '_Service_Fee_Agreement_2nd_Principal/BlkChn';
-//   }
-//   if ($id == '1st') {
-//     $title_name = '법인 설립 및 유지 비용 계약서';
-//     $template = 'tcpdf_05_service_fee_agreement_1st';
-//     $title = $group_id . '_Service_Fee_Agreement_(1st)';
-//   }
-//   if ($id == '3st') {
-//     $title_name = '법인 설립 및 유지 비용 계약서';
-//     $template = 'tcpdf_05_service_fee_agreement_3st';
-//     $title = $group_id . '_Service_Fee_Agreement_(1st/BlkChn)';
-//   }
-//   if ($id == '2st') {
-//     $title_name = '법인 설립 및 유지 비용 계약서';
-//     $template = 'tcpdf_05_service_fee_agreement_1st_principal';
-//     $title = $group_id . '_Service_Fee_Agreement_1st_Principal';
-//   }
-//   if ($id == '4st') {
-//     $title_name = '법인 설립 및 유지 비용 계약서';
-//     $template = 'tcpdf_05_service_fee_agreement_4st_principal';
-//     $title = $group_id . '_Service_Fee_Agreement_1st_Principal/BlkChn';
-//   }
-//   $html_template = [
-//     '#theme' => $template,
-//     '#datas' => $datas,
-//   ];
-//   $html = $this->renderer->render($html_template);
-//   ob_start();
-//   $tcpdf = new PDFSFA(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, TRUE, 'UTF-8', FALSE);
+  function serviceIndemnityAgreementSFA($company, $id, $group_id, $type = NULL) {
+    // $datas = DocumentWrapper::serviceIndemnitySFA($company, $id);
+    // $template = 'tcpdf_05_service_fee_agreement';
+    $title = $group_id. '_Service_Fee_Agreement';
+    $title_name = '법인 유지 비용 계약서';
+    if ($id == '03') {
+      $template = 'tcpdf_05_service_fee_agreement_03';
+      $title = $group_id . '_Service_Fee_Agreement_2nd/BlkChn';
+    }
+    if ($id == '02') {
+      $template = 'tcpdf_05_service_fee_agreement_principal';
+      $title = $group_id . '_Service_Fee_Agreement_2nd_Principal';
+    }
+    if ($id == '04') {
+      $template = 'tcpdf_05_service_fee_agreement_principal_04';
+      $title = $group_id . '_Service_Fee_Agreement_2nd_Principal/BlkChn';
+    }
+    if ($id == '1st') {
+      $title_name = '법인 설립 및 유지 비용 계약서';
+      $template = 'tcpdf_05_service_fee_agreement_1st';
+      $title = $group_id . '_Service_Fee_Agreement_(1st)';
+    }
+    if ($id == '3st') {
+      $title_name = '법인 설립 및 유지 비용 계약서';
+      $template = 'tcpdf_05_service_fee_agreement_3st';
+      $title = $group_id . '_Service_Fee_Agreement_(1st/BlkChn)';
+    }
+    if ($id == '2st') {
+      $title_name = '법인 설립 및 유지 비용 계약서';
+      $template = 'tcpdf_05_service_fee_agreement_1st_principal';
+      $title = $group_id . '_Service_Fee_Agreement_1st_Principal';
+    }
+    if ($id == '4st') {
+      $title_name = '법인 설립 및 유지 비용 계약서';
+      $template = 'tcpdf_05_service_fee_agreement_4st_principal';
+      $title = $group_id . '_Service_Fee_Agreement_1st_Principal/BlkChn';
+    }
+    $html_template = [
+      '#theme' => $template,
+      '#datas' => $datas,
+    ];
+    $html = $this->renderer->render($html_template);
+    ob_start();
+    $tcpdf = new PDFSFA(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, TRUE, 'UTF-8', FALSE);
 
-//   $tcpdf->setCustomHeaderText('
-//     <style>
-//       span {font-size: 11px;font-weight: normal;font-family: Arial, Helvetica, sans-serif;}
-//     </style>
-//     <table border="0" cellspacing="0" cellpadding="0">
-//       <tr>
-//         <td align="left"  style="width:50%;"><img src="/themes/custom/zurblk/img/pdf_logo.png"></td>
-//         <td align="right" style="width:50%;"><br><br>
-//           <strong>LEE KIM ALLIANCE PTE. LTD.</strong><br>
-//           <span>111 Somerset, #06-07L</span><br>
-//           <span>111 Somerset, Singapore 238164</span><br>
-//           <span>TEL: (65) 6633-5051 / FAX: (65) 6826-4170</span>
-//         </td>
-//       </tr>
-//     </table>
-//     <h1 style="width:100%;text-align:center;">'. $title_name .'</h1>
-//   ');
-//   // Set default monospaced font.
-//   $tcpdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+    $tcpdf->setCustomHeaderText('
+      <style>
+        span {font-size: 11px;font-weight: normal;font-family: Arial, Helvetica, sans-serif;}
+      </style>
+      <table border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td align="left"  style="width:50%;"><img src="/themes/custom/zurblk/img/pdf_logo.png"></td>
+          <td align="right" style="width:50%;"><br><br>
+            <strong>LEE KIM ALLIANCE PTE. LTD.</strong><br>
+            <span>111 Somerset, #06-07L</span><br>
+            <span>111 Somerset, Singapore 238164</span><br>
+            <span>TEL: (65) 6633-5051 / FAX: (65) 6826-4170</span>
+          </td>
+        </tr>
+      </table>
+      <h1 style="width:100%;text-align:center;">'. $title_name .'</h1>
+    ');
+    // Set default monospaced font.
+    $tcpdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
 
-//   // Set margins.
-//   if (in_array($id, ['1st', '2st', '3st', '4st'])) {
-//     $tcpdf->SetMargins(18, 50, 18);
-//   } else {
-//     $tcpdf->SetMargins(20, 50, 20);
-//   }
-//   $tcpdf->SetHeaderMargin(PDF_MARGIN_FOOTER);
-//   $tcpdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+    // Set margins.
+    if (in_array($id, ['1st', '2st', '3st', '4st'])) {
+      $tcpdf->SetMargins(18, 50, 18);
+    } else {
+      $tcpdf->SetMargins(20, 50, 20);
+    }
+    $tcpdf->SetHeaderMargin(PDF_MARGIN_FOOTER);
+    $tcpdf->SetFooterMargin(PDF_MARGIN_FOOTER);
 
 
-//   $tcpdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
-//   $tcpdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+    $tcpdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+    $tcpdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
-//   $author = \Drupal::currentUser()->getAccountName();
-//   $tcpdf->SetCreator($author);
-//   $tcpdf->SetAuthor($author);
-//   $tcpdf->SetTitle($title);
-//   $tcpdf->SetSubject($title);
-//   $tcpdf->SetKeywords($title);
+    $author = \Drupal::currentUser()->getAccountName();
+    $tcpdf->SetCreator($author);
+    $tcpdf->SetAuthor($author);
+    $tcpdf->SetTitle($title);
+    $tcpdf->SetSubject($title);
+    $tcpdf->SetKeywords($title);
 
-//   $tcpdf->addPage();
-//   $font_name = \TCPDF_FONTS::addTTFfont(getcwd() . '/static/font/malgun.ttf', 'TrueTypeUnicode', '', 32);
-//   $tcpdf->SetFont($font_name, '', 9);
-//   $tcpdf->writeHTML($html, TRUE, 0, TRUE, TRUE);
-//   $tcpdf->Ln();
-//   $tcpdf->lastPage();
-//   // Clean any content of the output buffer.
-//   ob_end_clean();
-//   $filename = $title . '.pdf';
-//   if (empty($type)) {
-//     echo $tcpdf->Output($filename, 'I');
-//   }
-//   else {
-//     $data = [
-//       'client' => $datas['client'],
-//       'title' => $title,
-//       'pdf_string' => $tcpdf->Output($filename, $type),
-//     ];
-//     return $data;
-//   }
-// }
+    $tcpdf->addPage();
+    $font_name = \TCPDF_FONTS::addTTFfont(getcwd() . '/static/font/malgun.ttf', 'TrueTypeUnicode', '', 32);
+    $tcpdf->SetFont($font_name, '', 9);
+    $tcpdf->writeHTML($html, TRUE, 0, TRUE, TRUE);
+    $tcpdf->Ln();
+    $tcpdf->lastPage();
+    // Clean any content of the output buffer.
+    ob_end_clean();
+    $filename = $title . '.pdf';
+    if (empty($type)) {
+      echo $tcpdf->Output($filename, 'I');
+    }
+    else {
+      $data = [
+        'client' => $datas['client'],
+        'title' => $title,
+        'pdf_string' => $tcpdf->Output($filename, $type),
+      ];
+      return $data;
+    }
+  }
 
 //   /**
 //    * Appointment of Auditors
 //    */
-function appointmentOfAuditors($html, $pdf_name, $output_type = "I")
-{
+  function appointmentOfAuditors($html, $pdf_name, $output_type="I") {
     // $datas = DocumentWrapper::appointmentOfAuditors($company);
     // $html_template = [
     //   '#theme' => 'tcpdf_46_01_appointment_of_auditors',
@@ -3887,13 +3819,12 @@ function appointmentOfAuditors($html, $pdf_name, $output_type = "I")
 
     return $tcpdf->Output($pdf_name, $output_type);
 
-}
+  }
 
 //   /**
 //    * Consent to act
 //    */
-function consentToAct($html, $pdf_name, $output_type = "I")
-{
+ function consentToAct($html, $pdf_name, $output_type="I") {
     // $datas = DocumentWrapper::appointmentOfAuditors($company);
     // $html_template = [
     //   '#theme' => 'tcpdf_46_02_consent_to_act',
@@ -3965,13 +3896,12 @@ function consentToAct($html, $pdf_name, $output_type = "I")
 
     return $tcpdf->Output($pdf_name, $output_type);
 
-}
+  }
 
 //   /**
 //    * Engagement letter
 //    */
-function engagementLetter($html, $pdf_name, $output_type = "I")
-{
+function engagementLetter($html, $pdf_name, $output_type="I") {
     // $datas = DocumentWrapper::appointmentOfAuditors($company);
     // $html_template = [
     //   '#theme' => 'tcpdf_46_03_engagement_letter',
@@ -4044,4 +3974,4 @@ function engagementLetter($html, $pdf_name, $output_type = "I")
 
     return $tcpdf->Output($pdf_name, $output_type);
 
-}
+  }

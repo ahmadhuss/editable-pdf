@@ -11,8 +11,6 @@ use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 
-
-
 function generateDocument($group_id, $document_id, $data, $htmlContentPage , $pdfFilename) {
     // $docs_ids = explode("_", $document_id);
     // $group_id = $docs_ids[0];
@@ -107,7 +105,7 @@ function generateDocument($group_id, $document_id, $data, $htmlContentPage , $pd
       case 7:
         // $officers = $node->get('field_director_shareholder')
         //   ->referencedEntities();
-        $pdf = applicationForSharesPdf($node, $officers[$doc_id], $type);
+        $pdf = applicationForSharesPdf($htmlContentPage, $pdfFilename);
         break;
 
       case 8:
@@ -319,17 +317,19 @@ function generateDocument($group_id, $document_id, $data, $htmlContentPage , $pd
 $request = Request::createFromGlobals();
 if ($request->isMethod('POST')) {
 
-    error_log($request->request->get('template_name'));
+    $content = json_decode($request->getContent(), true);
 
-    $template_name =  $request->request->get('template_name');
-    $group_id =  $request->request->get('group_id');
-    $document_id =  $request->request->get('document_id');
+    $template_name =  $content['template_name'];
+    $group_id =  $content['group_id'];
+    $document_id =  $content['document_id'];
 
+    // $officer = json_decode($request->request->get('officer'), true);
+   
     $data = [
-        'company_capital_details' => [
-          "capital_currency", "ahmad"
-        ]
+        'app' => $content["app"],
+        'officer' => $content["officer"]
     ];
+
 
     // Load Twig
     $loader = new FilesystemLoader(__DIR__ . '/../templates/printouts'); // Adjust the path to your templates directory
