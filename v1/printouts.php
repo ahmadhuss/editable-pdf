@@ -7,7 +7,6 @@ require_once __DIR__ . '/../vendor/autoload.php'; // Load Composer autoload
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Twig\Environment;
@@ -309,22 +308,18 @@ if ($request->isMethod('POST')) {
     // Get the raw JSON content from the request
     $json = $request->getContent();
     // Decode the JSON data
-    $data = json_decode($json, true);
+    $content = json_decode($json, true);
     // Check if the JSON decoding was successful
     if (json_last_error() === JSON_ERROR_NONE) {
         // Access individual parameters
-        $templateName = $data['template_name'];
-        $groupId = $data['group_id'];
-        $documentId = $data['document_id'];
+        $templateName = $content['template_name'];
+        $groupId = $content['group_id'];
+        $documentId = $content['document_id'];
 
-        // Check if $data has a 'data' key before accessing it
-        $optionalData = $data['data'] ?? null;
-
-//        $optionalData = [
-//            'company_capital_details' => [
-//                "capital_currency", "ahmad"
-//            ]
-//        ];
+        $data = [
+            'app' => $content["app"] ?? null,
+            'officer' => $content["officer"] ?? null
+        ];
 
         // Load Twig
         $loader = new FilesystemLoader(__DIR__ . '/../templates/printouts'); // Adjust the path to your templates directory
@@ -337,7 +332,7 @@ if ($request->isMethod('POST')) {
         $pdfFilename = getcwd() . '/output_' . time() . '.pdf';
 
 
-        generateDocument($groupId, $documentId, $optionalData, $htmlContentPage, $pdfFilename);
+        generateDocument($groupId, $documentId, $data, $htmlContentPage, $pdfFilename);
 
         // Create a BinaryFileResponse to send the PDF
         $response = new BinaryFileResponse($pdfFilename);
