@@ -4,27 +4,27 @@
             THE COMPANIES ACT (CHAPTER 50)<br>
             A PRIVATE COMPANY LIMITED BY SHARES<br>
             CONSTITUTION OF <br>
-            {{ datas.company_name }} {{ datas.field_company_type }}
+            {{ app.company_name }}
             <br>
         </td>
     </tr>
 </table>
 <br>
-<div>1. The name of the company is {{ datas.company_name }} {{ datas.field_company_type }}</div>
+<div>1. The name of the company is {{ app.company_name }} </div>
 <div>2. The registered office of the company is situated in the Republic of Singapore.<br>
     <br>
     <table style="padding-left: 5px;">
         <tr style="font-size:11px">
             <td width="5%"></td>
-            <td width="50%"><b>{{ datas.field_address_line_1 }}</b></td>
+            <td width="50%"><b>{{ app.addr_1 }}</b></td>
         </tr>
         <tr style="font-size:11px">
             <td width="5%"></td>
-            <td width="50%"><b>{{ datas.field_address_line_2 }}</b></td>
+            <td width="50%"><b>{{ app.addr_2 }}</b></td>
         </tr>
         <tr style="font-size:11px">
             <td width="5%"></td>
-            <td width="50%"><b>{{ datas.field_postcode }}</b></td>
+            <td width="50%"><b>{{ app.postcode }}</b></td>
         </tr>
     </table>
 </div>
@@ -37,16 +37,16 @@
         <td style="text-align: center"><u><b>Amount of Issued Share Capital</b></u></td>
     </tr>
 
-    {% for detail in company_capital_detail %}
+    {% for detail in app.capital_details %}
         <tr style="font-size:11px;">
             <td width="5%"></td>
-            {% if datas.field_capital_detail.field_currency != 'SGD' %}
-                <td style="text-align: center"><b>{{ datas.field_capital_detail.field_currency }}</b></td>
+            {% if detail.capital_currency != 'SGD' %}
+                <td style="text-align: center"><b>{{ detail.capital_currency }}</b></td>
             {% else %}
                 <td style="text-align: center"><b>SINGAPORE DOLLARS (SGD)</b></td>
             {% endif %}
             <!-- <td><b>'.$ACC_CAPITAL_NUMBER_SHARES_ORD.'</b></td> -->
-            <td style="text-align: center"><b>{{ datas.field_capital_detail.amount_of_issued_shares_capital|number_format(0,'',',') }}</b></td>
+            <td style="text-align: center"><b>{{ detail.no_issue_share }}</b></td>
         </tr>
     {% endfor %}
     
@@ -66,15 +66,15 @@
         <td style="text-align: center"><u><b>Class of shares</b></u></td>
         <td style="text-align: center"><u><b>Currency</b></u></td>
     </tr>
-    {% for key, value in datas.shareholders %}
+    {% for key, value in app.officers_shareholders %}
     <tr style="font-size:11px">
         <td></td>
         <td>{{ value.full_name }}<br><br><br><br></td>
         <td></td>
-        <td style="text-align: right;">{{ value.field_shareholder_shares_allotte|number_format(0,'',',') }}</td>
+        <td style="text-align: right;">{{ value.share_details_json.shares_allotted }}</td>
         <td style="text-align: center">Ordinary</td>
-        {% if datas.field_capital_detail.field_currency != 'SGD' %}
-            <td style="text-align: center">{{ datas.field_capital_detail.field_currency }}</td>
+        {% if value.share_details_json.currency != 'SGD' %}
+            <td style="text-align: center">{{ value.share_details_json.currency }}</td>
         {% else %}
             <td>SINGAPORE DOLLARS (SGD)</td>
         {% endif %}
@@ -82,6 +82,6 @@
     {% endfor %}
 </table>
 <br><br>
-<div> Date this: {% if datas.field_company_effect_date %} {{ datas.field_company_effect_date|date("d/m/Y") }} {% else %} {{ "now"|date("d/m/Y") }} {% endif %}</div>
+<div> Date this: {% if app.effect_date %} {{ app.effect_date }} {% else %} {{ "now"|date("d/m/Y") }} {% endif %}</div>
 
 

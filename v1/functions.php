@@ -262,7 +262,7 @@ function constitutionPdf($html_template, $pdf_name)
     $helvetica = TCPDF_FONTS::addTTFfont(getcwd() . '/../Helvetica.ttf', 'TrueTypeUnicode', '', 32);
 
 
-    $tcpdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, TRUE, 'UTF-8', FALSE);
+    $tcpdf = new PDF020(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, TRUE, 'UTF-8', FALSE);
 
     $tcpdf->setPrintHeader(TRUE);
     $tcpdf->setPrintFooter(FALSE);
@@ -739,7 +739,7 @@ function allotmentOfShareForm24Pdf($html_content, $pdf_name, $author_name, $subj
     return $tcpdf->Output($pdf_name, $output_type);
 }
 
-function applicationForSharesPdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I')
+function applicationForSharesPdf($html_content, $pdf_name, $output_type = 'I')
 {
     // $datas =  DocumentWrapper::applicationForShares($company, $officer);
     // $html_template = [
@@ -858,10 +858,10 @@ function form45BPdf($html_content, $pdf_name, $author_name, $subject_suffix, $ou
 
 }
 
-function certificateForSHolderCSealPdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I')
+function certificateForSHolderCSealPdf($html_content, $pdf_name, $output_type = 'I')
 {
     // $html_template = [
-    //   '#theme' => 'tcpdf_09_certification_for_shareholder',
+    //   '#theme' => 'tcpdf-09-certification-for-shareholder',
     //   '#datas' => DocumentWrapper::certificationForShareholder($company, $officer),
     // ];
     // $html = $this->renderer->render($html_template);

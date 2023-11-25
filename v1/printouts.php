@@ -29,7 +29,6 @@ function generateDocument($group_id, $document_id, $data, $htmlContentPage, $pdf
 
         case 1:
             if ($doc_id == '00') {
-                error_log('yahan to aata hai@!!!');
                 $pdf = constitutionPdf($htmlContentPage, $pdfFilename);
             } elseif ($doc_id == '01') {
                 $pdf = constitutionPdf_1($htmlContentPage, $pdfFilename);
@@ -104,7 +103,7 @@ function generateDocument($group_id, $document_id, $data, $htmlContentPage, $pdf
         case 7:
             // $officers = $node->get('field_director_shareholder')
             //   ->referencedEntities();
-            $pdf = applicationForSharesPdf($node, $officers[$doc_id], $type);
+            $pdf = applicationForSharesPdf($htmlContentPage, $pdfFilename);
             break;
 
         case 8:
@@ -117,7 +116,7 @@ function generateDocument($group_id, $document_id, $data, $htmlContentPage, $pdf
             // $officers = $node->get('field_director_shareholder')
             //   ->referencedEntities();
             if ($doc_id == '00') {
-                $pdf = certificateForSHolderCSealPdf($node, $officers[$docs_ids[2]], $type);
+                $pdf = certificateForSHolderCSealPdf($htmlContentPage, $pdfFilename);
             } elseif ($doc_id == '01') {
                 $pdf = certificateForSHolderPdf($node, $officers[$docs_ids[2]], $type);
             }
