@@ -97,7 +97,7 @@
                     src="../public/assets/printouts/logo.png"
                     style="height:40px;"></td>
         <td align="right" style="width:70%;"><h1
-                    style="font-size:18px;">{{ datas.title }} {{ datas.field_company_type }}
+                    style="font-size:18px;">{{ app.company_name }}
                 &nbsp;</h1></td>
     </tr>
 </table>
@@ -110,30 +110,30 @@
     </tr>
     <tr class=N_1 style="display:view;">
         <td class="pl x"> ID</td>
-        <td class="tc"> {{ datas.id }} </td>
+        <td class="tc"> {{ app.name }} </td>
         <td class="pl x"> Status</td>
-        <td class="tc"> {{ datas.field_company_status }} </td>
+        <td class="tc"> {{ app.company_status }} </td>
     </tr>
     <tr class=N_1 style="display:view;">
         <td class="pl x"> Company Name</td>
         <td class="tl"
-            colspan="3"> {{ datas.title }} {{ datas.field_company_type }}  </td>
+            colspan="3"> {{ app.company_name }}  </td>
     </tr>
     <tr class=N_1 style="display:view;">
         <td class="pl x"> Registration No.</td>
-        <td class="tc"> {{ datas.field_application_id }}  </td>
+        <td class="tc"> {{ app.uen }}  </td>
         <td class="pl x"> Incorporation Date</td>
         <td class="tc" colspan="3">
-            {% if  datas.field_company_effect_date is not null %}
-                {{ datas.field_company_effect_date|date('d/m/Y') }}
+            {% if  app.effect_date is not null %}
+                {{ app.effect_date }}
             {% endif %}
         </td>
     </tr>
     <tr class=N_1 style="display:view;">
         <td class="pl x"> Incorporate Type</td>
-        <td class="tl">{{ datas.field_company_incorporate_type }} </td>
+        <td class="tl">{{ app.incorporate_type }} </td>
         <td class="pl x"> Financial Year End</td>
-        <td class="tc"> {{ datas.field_financial_year_end|date('t/m/Y') }}</td>
+        <td class="tc"> {{ app.financial_year_end }}</td>
     </tr>
 </table>
 <div style="height: 15px;"></div>
@@ -144,17 +144,27 @@
         <td class="pl" style="background:#cfcfcf;" colspan="4"><b>Principal
                 Activities </b></td>
     </tr>
-    {% set count = 1 %}
-    {% for key, value in datas.field_company_ssic %}
-        <tr class=N_1 style="display:view;">
-            <td class="pl x"> Activities ({{ loop.index }})</td>
-            <td class="tl" colspan="3"> {{ value.id }}   </td>
-        </tr>
-        <tr class=N_1 style="display:view;">
-            <td class="pl x"> Description</td>
-            <td class="tl" colspan="3"> {{ value.name }} </td>
-        </tr>
-    {% endfor %}
+    {#    {% set count = 1 %} #}
+    {#    {% for key, value in datas.field_company_ssic %} #}
+    <tr class=N_1 style="display:view;">
+        <td class="pl x"> Activities (1)</td>
+        <td class="tl" colspan="3"> {{ app.pri_activity }}   </td>
+    </tr>
+    <tr class=N_1 style="display:view;">
+        <td class="pl x"> Description</td>
+        <td class="tl" colspan="3"> {{ app.primary_activity_name|upper }} </td>
+    </tr>
+
+    <tr class=N_1 style="display:view;">
+        <td class="pl x"> Activities (2)</td>
+        <td class="tl" colspan="3"> {{ app.sec_activity }}   </td>
+    </tr>
+    <tr class=N_1 style="display:view;">
+        <td class="pl x"> Description</td>
+        <td class="tl"
+            colspan="3"> {{ app.secondary_activity_name|upper }} </td>
+    </tr>
+    {#    {% endfor %} #}
 
 </table>
 <div style="height: 15px;"></div>
@@ -196,15 +206,15 @@
     </tr>
     <tr>
         <td class="pl x"> Address line 1</td>
-        <td class="tl" colspan="3"> {{ datas.field_address_line_1 }} </td>
+        <td class="tl" colspan="3"> {{ app.addr_1 }} </td>
     </tr>
     <tr>
         <td class="pl x"> Address line 2</td>
-        <td class="tl" colspan="3"> {{ datas.field_address_line_2 }} </td>
+        <td class="tl" colspan="3"> {{ app.addr_2 }} </td>
     </tr>
     <tr>
         <td class="pl x"> Postcode</td>
-        <td class="tl" colspan="3"> {{ datas.field_postcode }} </td>
+        <td class="tl" colspan="3"> {{ app.postcode }} </td>
     </tr>
 </table>
 <div style="height: 15px;"></div>
@@ -213,19 +223,19 @@
        class="table_bl_border">
     <tr>
         <td class="pl x"> Name (PIC)</td>
-        <td class="tl" colspan="3"> {{ datas.creator }} </td>
+        <td class="tl" colspan="3"> {{ app.email }} </td>
     </tr>
     <tr>
         <td class="pl x"> Phone Number</td>
-        <td class="tl" colspan="3"> {{ datas.creator_phonenumber }} </td>
+        <td class="tl" colspan="3"> {{ app.phone }} </td>
     </tr>
     <tr>
         <td class="pl x"> Work Phone</td>
-        <td class="tl" colspan="3"> {{ datas.creator_worknumber }} </td>
+        <td class="tl" colspan="3"> {{ app.work_phone }} </td>
     </tr>
     <tr>
         <td class="pl x"> E-mailL</td>
-        <td class="tl" colspan="3"> {{ datas.creator_email }} </td>
+        <td class="tl" colspan="3"> {{ app.email }} </td>
     </tr>
 </table>
 <div style="height: 15px;"></div>
@@ -240,50 +250,50 @@
 </table>
 
 
-<table border="0" cellpadding=0 cellspacing=0 width="100%" align="center"
-       class="table_bl_border">
-    {% set count = 1 %}
-    {% for key, value in datas.field_secratary %}
-        <tr>
-            <td class="bl" colspan="4"> Secretary Details {{ count }} - <b> </b>
-            </td>
-        </tr>
-        <tr>
-            <td style="width:25%;" class="pl"> Name</td>
-            <td style="width:75%;" class="tc"> {{ value.field_full_name }} </td>
-        </tr>
-        <tr>
-            <td style="width:25%;" class="pl"> Gender</td>
-            <td style="width:75%;" class="tc"> {{ value.field_gender }} </td>
-        </tr>
-        <tr>
-            <td style="width:25%;" class="pl"> ID Type</td>
-            <td style="width:75%;" class="tc"> {{ value.field_id_type }} </td>
-        </tr>
-        <tr>
-            <td style="width:25%;" class="pl"> ID No.</td>
-            <td style="width:75%;" class="tc"> {{ value.field_id_no }} </td>
-        </tr>
-        <tr>
-            <td style="width:25%;" class="pl"> Nationality</td>
-            <td style="width:75%;"
-                class="tl"> {{ value.field_nationality }} </td>
-        </tr>
-        <tr>
-            <td style="width:25%;" class="pl"> Address (Add+Postcode)</td>
-            <td style="width:75%;" class="tl"> {{ value.field_address_line_1 }}
-                ({{ value.field_postal_code }})
-            </td>
-        </tr>
-        <tr>
-            <td style="width:25%;" class="pl"> Remark</td>
-            <td style="width:75%;" class="tl"></td>
-        </tr>
-        {% set count = count + 1 %}
-    {% endfor %}
+{# <table border="0" cellpadding=0 cellspacing=0 width="100%" align="center" #}
+{#       class="table_bl_border"> #}
+{#    {% set count = 1 %} #}
+{#    {% for key, value in datas.field_secratary %} #}
+{#        <tr> #}
+{#            <td class="bl" colspan="4"> Secretary Details {{ count }} - <b> </b> #}
+{#            </td> #}
+{#        </tr> #}
+{#        <tr> #}
+{#            <td style="width:25%;" class="pl"> Name</td> #}
+{#            <td style="width:75%;" class="tc"> {{ value.field_full_name }} </td> #}
+{#        </tr> #}
+{#        <tr> #}
+{#            <td style="width:25%;" class="pl"> Gender</td> #}
+{#            <td style="width:75%;" class="tc"> {{ value.field_gender }} </td> #}
+{#        </tr> #}
+{#        <tr> #}
+{#            <td style="width:25%;" class="pl"> ID Type</td> #}
+{#            <td style="width:75%;" class="tc"> {{ value.field_id_type }} </td> #}
+{#        </tr> #}
+{#        <tr> #}
+{#            <td style="width:25%;" class="pl"> ID No.</td> #}
+{#            <td style="width:75%;" class="tc"> {{ value.field_id_no }} </td> #}
+{#        </tr> #}
+{#        <tr> #}
+{#            <td style="width:25%;" class="pl"> Nationality</td> #}
+{#            <td style="width:75%;" #}
+{#                class="tl"> {{ value.field_nationality }} </td> #}
+{#        </tr> #}
+{#        <tr> #}
+{#            <td style="width:25%;" class="pl"> Address (Add+Postcode)</td> #}
+{#            <td style="width:75%;" class="tl"> {{ value.field_address_line_1 }} #}
+{#                ({{ value.field_postal_code }}) #}
+{#            </td> #}
+{#        </tr> #}
+{#        <tr> #}
+{#            <td style="width:25%;" class="pl"> Remark</td> #}
+{#            <td style="width:75%;" class="tl"></td> #}
+{#        </tr> #}
+{#        {% set count = count + 1 %} #}
+{#    {% endfor %} #}
 
 
-</table>
+{# </table> #}
 <div style="height: 15px;"></div>
 
 <table border="0" cellpadding=0 cellspacing=0 width="100%" align="center"
@@ -296,14 +306,14 @@
 <table border="0" cellpadding=0 cellspacing=0 width="100%" align="center"
        class="table_bl_border">
     {% set count = 1 %}
-    {% for key, value in datas.field_director_shareholder %}
+    {% for key, value in app.officers %}
         <tr>
             <td class="bl" colspan="2"> Officer {{ count }} -
-                <b>{{ value.field_full_name }}</b></td>
+                <b>{{ value.full_name|upper }}</b></td>
         </tr>
         <tr>
             <td class="pl x"> Full Name</td>
-            <td style="width:75%;" class="tl"> {{ value.field_full_name }}</td>
+            <td style="width:75%;" class="tl"> {{ value.full_name|upper }}</td>
         </tr>
         <tr>
             <td class="pl x"> Former Full Name</td>
@@ -312,49 +322,49 @@
         <tr>
             <td class="pl x"> Normal Designation</td>
             <td style="width:75%;"
-                class="tl"> {{ value.field_position|upper }}</td>
+                class="tl"> {{ value.designation|upper }}</td>
         </tr>
         <tr>
             <td class="pl x"> ID Type</td>
-            <td style="width:25%;" class="tc"> {{ value.field_id_type }}</td>
+            <td style="width:25%;" class="tc"> {{ value.id_type }}</td>
             <td class="pl x"> ID No.</td>
-            <td style="width:25%;" class="tc"> {{ value.field_id_no }}</td>
+            <td style="width:25%;" class="tc"> {{ value.id_number }}</td>
         </tr>
         <tr>
             <td class="pl x"> Sex</td>
-            <td style="width:25%;" class="tc"> {{ value.field_gender }}</td>
+            <td style="width:25%;" class="tc"> {{ value.gender }}</td>
             <td class="pl x"> Birth</td>
             <td style="width:25%;"
-                class="tc"> {{ value.field_date_of_birth | date('d/m/Y') }}</td>
+                class="tc"> {{ value.dob }}</td>
         </tr>
         <tr>
             <td class="pl x"> Nationality</td>
-            <td class="tc x"> {{ value.field_nationality }}</td>
+            <td class="tc x"> {{ value.nationality }}</td>
             <td class="pl x"> Country of Birth</td>
-            <td class="tc x"> {{ value.field_country_of_birth }}</td>
+            <td class="tc x"> {{ value.country_birth }}</td>
         </tr>
         <tr>
             <td class="pl x"> Address Line 1</td>
             <td style="width:75%;"
-                class="tl"> {{ value.field_address_line_1 }}</td>
+                class="tl"> {{ value.address_1 }}</td>
         </tr>
         <tr>
             <td class="pl x"> Address Line 2</td>
             <td style="width:75%;"
-                class="tl"> {{ value.field_address_line_2 }}</td>
+                class="tl"> {{ value.address_2 }}</td>
         </tr>
         <tr>
             <td class="pl x"> Postal</td>
             <td style="width:75%;"
-                class="tl"> {{ value.field_postal_code }}</td>
+                class="tl"> {{ value.postal_code }}</td>
         </tr>
         <tr>
             <td class="pl x"> Email</td>
-            <td style="width:75%;" class="tl"> {{ value.field_email_id }}</td>
+            <td style="width:75%;" class="tl"> {{ value.email }}</td>
         </tr>
         <tr>
             <td class="pl x"> Mobile</td>
-            <td style="width:75%;" class="tl"> {{ value.field_mobile }}</td>
+            <td style="width:75%;" class="tl"> {{ value.work_phone }}</td>
         </tr>
         <tr>
             <td class="pl x"> Remark</td>
@@ -379,7 +389,7 @@
     <tr>
         <td class="pl" colspan="2"> Used Currency</td>
         <td class="tr"
-            colspan="2"> {{ datas.field_capital_detail.0.field_currency }} </td>
+            colspan="2"> {{ app.capital_currency }} </td>
     </tr>
     <tr>
         <td class="pl" colspan="2"> Start ~ End</td>
@@ -387,7 +397,7 @@
     </tr>
 </table>
 <br/><br/>
-{% for key, value in datas.field_capital_detail %}
+{% for key, value in app.capital_details %}
     <table border="0" cellpadding=0 cellspacing=0 width="100%" align="center"
            class="table_bl_border">
         <tr>
@@ -398,26 +408,67 @@
         </tr>
         <tr>
             <td class="tl" width="45%" height="18"> Number of shares</td>
-            <td style="width:18%;"
-                class="tc">{{ value.field_number_of_share|number_format(0,'.',',') }}</td>
-            <td style="width:18%;" class="tc"></td>
-            <td style="width:18%;" class="tc"></td>
+
+
+            {% if value.shares_class == "Ordinary" %}
+                <td style="width:18%;"
+                    class="tc">{{ value.no_issue_share|number_format(0,'.',',') }}</td>
+            {% else %}
+                <td style="width:18%;" class="tc"></td>
+            {% endif %}
+
+            {% if value.shares_class == "Preference" %}
+                <td style="width:18%;"
+                    class="tc">{{ value.no_issue_share|number_format(0,'.',',') }}</td>
+            {% else %}
+                <td style="width:18%;" class="tc"></td>
+            {% endif %}
+
+
+            {% if value.shares_class == "Others" %}
+                <td style="width:18%;"
+                    class="tc">{{ value.no_issue_share|number_format(0,'.',',') }}</td>
+            {% else %}
+                <td style="width:18%;" class="tc"></td>
+            {% endif %}
         </tr>
         <tr>
             <td class="tl" width="45%" height="18"> Nominal amount of each
                 share
             </td>
-            <td style="width:18%;"
-                class="tc">{{ value.field_each_share_price|number_format(1,'.',',') }}</td>
-            <td style="width:18%;" class="tc"></td>
-            <td style="width:18%;" class="tc"></td>
+
+
+            {% if value.shares_class == "Ordinary" %}
+                <td style="width:18%;"
+                    class="tc">{{ value.each_share_price|number_format(1,'.',',') }}</td>
+            {% else %}
+                <td style="width:18%;" class="tc"></td>
+            {% endif %}
+
+            {% if value.shares_class == "Preference" %}
+                <td style="width:18%;"
+                    class="tc">{{ value.each_share_price|number_format(1,'.',',') }}</td>
+            {% else %}
+                <td style="width:18%;" class="tc"></td>
+            {% endif %}
+
+            {% if value.shares_class == "Others" %}
+                <td style="width:18%;"
+                    class="tc">{{ value.each_share_price|number_format(1,'.',',') }}</td>
+            {% else %}
+                <td style="width:18%;" class="tc"></td>
+            {% endif %}
+
         </tr>
         <tr>
             <td class="tl" width="45%" height="18"> Amount paid or due and
                 payable on each share paid due and payable
             </td>
+
             <td style="width:18%;"
-                class="tc"> {{ datas.paid_amount|number_format(0,'.',',') }} </td>
+                class="tc"></td>
+            {#            <td style="width:18%;" #}
+            {#                class="tc"> {{ datas.paid_amount|number_format(0,'.',',') }} </td> #}
             <td style="width:18%;"
                 class="tc"> {{ value.field_share_paid_due_and_payable.field_others }} </td>
             <td style="width:18%;"
