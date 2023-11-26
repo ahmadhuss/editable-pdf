@@ -28,7 +28,7 @@
 </table>
 
 <p
-  style=" text-align: left; text-decoration: underline; font-weight:bold; font-size:100%;">{{ datas.company_name }} {{ datas.field_company_type }}  (UEN: {{ datas.uen }})</p>
+  style=" text-align: left; text-decoration: underline; font-weight:bold; font-size:100%;">{{ app.company_name or "" }} {{ app.company_type or "" }}  (UEN: {{ app.uen or "" }})</p>
 <!-- <p style="font-weight:bold; text-align: left;">Section B – Information of customer and agent</p> -->
 
 <table cellpadding="3px">
@@ -39,75 +39,65 @@
     <td class="cl2 cl3" width="10%"> Remark<br>Notes</td>
   </tr>
 
-  {% for officer in datas.officers %}
-    {% if officer.field_date_appointed_registrable is not null %}
+  {% for officer in app.officers %}
+    {% if officer.date_appointed %}
       {% if officer.is_company %}
         {% if officer.is_korea and officer.shareholder_percent >= 25 %}
           <tr nobr="true">
             <td class="bd" width="15%" style="text-align:center;"><br/><br/>
-              <center>{% if officer.field_date_of_entry_update is not null %}{{ officer.field_date_of_entry_update|date('d/m/Y') }}{% endif %}</center>
+              <center>{{ officer.date_entry or "" }}</center>
             </td>
-            <td class="bd" width="25%"><br/><br/> {{ officer.field_full_name }}</td>
+            <td class="bd" width="25%"><br/><br/> {{ officer.full_name or "" }}</td>
             <td class="bd" width="50%"><br/><br/>
-              Company Name: {{ officer.field_full_name }} <br/><br/>
-              Address of registered office: {{ officer.field_address_line_1 }} {{ officer.field_address_line_2 }} {{ officer.field_postal_code }}
+              Company Name: {{ officer.full_name or "" }} <br/><br/>
+              Address of registered office: {{ officer.address_1 or "" }} {{ officer.address_2 or "" }} {{ officer.postal_code or "" }}
               <br/><br/>
-              Country of Incorporation: {{ officer.field_country_of_birth }} <br/><br/>
+              Country of Incorporation: {{ officer.country_birth or "" }} <br/><br/>
               Registration No:
-              {% if officer.field_id_no %}
-                {{ officer.field_id_no }}
-              {% else %}
-                {{ datas.uen }}
-              {% endif %}
+              {{ officer.id_number or app.uen }}
               <br/><br/>
-              Date of Incorporation: {{ officer.field_date_of_birth|date('d/m/Y') }}<br/><br/>
-              Date appointed as registrable controller: {% if officer.field_date_appointed_registrable is not null %}{{ officer.field_date_appointed_registrable|date('d/m/Y') }}{% endif %}<br/><br/>
-              Date ceased as registrable controller: {% if officer.field_date_ceased_as_registrable is not null %}{{ officer.field_date_ceased_as_registrable|date('d/m/Y') }}{% endif %}<br/></td>
+              Date of Incorporation: {{ officer.dob }}<br/><br/>
+              Date appointed as registrable controller: {{ officer.date_appointed }}<br/><br/>
+              Date ceased as registrable controller: {{ officer.date_ceased or "" }}<br/></td>
             <td class="bd" width="10%"><br/><br/></td>
           </tr>
         {% elseif officer.is_singapore and officer.shareholder_percent >= 25 %}
           <tr nobr="true">
             <td class="bd" width="15%" style="text-align:center;"><br/><br/>
-              <center>{% if officer.field_date_of_entry_update is not null %}{{ officer.field_date_of_entry_update|date('d/m/Y') }}{% endif %}</center>
+              <center>{{ officer.date_entry or "" }}</center>
             </td>
-            <td class="bd" width="25%"><br/><br/> {{ officer.field_full_name }}</td>
+            <td class="bd" width="25%"><br/><br/> {{ officer.full_name or "" }}</td>
             <td class="bd" width="50%"><br/><br/>
-              Company Name: {{ officer.field_full_name }} <br/><br/>
-              Address of registered office: {{ officer.field_address_line_1 }} {{ officer.field_address_line_2 }} {{ officer.field_postal_code }}
+              Company Name: {{ officer.full_name or "" }} <br/><br/>
+              Address of registered office: {{ officer.address_1 or "" }} {{ officer.address_2 or "" }} {{ officer.postal_code or "" }}
               <br/><br/>
-              Country of Incorporation: {{ officer.field_country_of_birth }}<br/><br/>
+              Country of Incorporation: {{ officer.country_birth or "" }}<br/><br/>
               Registration No:
-              {% if officer.field_id_no %}
-                {{ officer.field_id_no }}
-              {% else %}
-                {{ datas.uen }}
-              {% endif %}
+              {{ if officer.id_number or app.uen }}
               <br/><br/>
-              Date of Incorporation: {{ officer.field_date_of_birth|date('d/m/Y') }}<br/><br/>
-              Date appointed as registrable controller: {% if officer.field_date_appointed_registrable is not null %}{{ officer.field_date_appointed_registrable|date('d/m/Y') }}{% endif %}<br/><br/>
-              Date ceased as registrable controller: {% if officer.field_date_ceased_as_registrable is not null %}{{ officer.field_date_ceased_as_registrable|date('d/m/Y') }}{% endif %}<br/></td>
+              Date of Incorporation: {{ officer.dob or "" }}<br/><br/>
+              Date appointed as registrable controller: {{ officer.date_appointed or "" }}<br/><br/>
+              Date ceased as registrable controller: {{ officer.date_ceased or "" }}<br/></td>
             <td class="bd" width="10%"><br/><br/></td>
           </tr>
         {% else %}
           {% if officer.shareholder_percent >= 25 %}
             <tr nobr="true">
               <td class="bd" width="15%" style="text-align:center;"><br/><br/>
-                <center>{% if officer.field_date_of_entry_update is not null %}{{ officer.field_date_of_entry_update|date('d/m/Y') }}{% endif %}</center>
+                <center>{{ officer.date_entry or "" }}</center>
               </td>
-              <td class="bd" width="25%"><br/><br/> {{ officer.field_full_name }}</td>
+              <td class="bd" width="25%"><br/><br/> {{ officer.full_name or "" }}</td>
               <td class="bd" width="50%"><br/><br/>
-                Company Name: {{ officer.field_full_name }} <br/><br/>
-                Address of registered office: {{ officer.field_address_line_1 }} {{ officer.field_address_line_2 }} {{ officer.field_postal_code }}
+                Company Name: {{ officer.full_name or "" }} <br/><br/>
+                Address of registered office: {{ officer.address_1 or "" }} {{ officer.address_2 or "" }} {{ officer.postal_code or "" }}
                 <br/><br/>
-                Country of Incorporation: {{ officer.field_country_of_birth }}<br/><br/>
+                Country of Incorporation: {{ officer.country_birth or "" }}<br/><br/>
                 Registration No:
-                {% if officer.field_id_no %}
-                  {{ officer.field_id_no }}
-                {% endif %}
+                {{ officer.id_number or "" }}
                 <br/><br/>
-                Date of Incorporation: {{ officer.field_date_of_birth|date('d/m/Y') }}<br/><br/>
-                Date appointed as registrable controller: {% if officer.field_date_appointed_registrable is not null %}{{ officer.field_date_appointed_registrable|date('d/m/Y') }}{% endif %}<br/><br/>
-                Date ceased as registrable controller: {% if officer.field_date_ceased_as_registrable is not null %}{{ officer.field_date_ceased_as_registrable|date('d/m/Y') }}{% endif %}<br/></td>
+                Date of Incorporation: {{ officer.dob or "" }}<br/><br/>
+                Date appointed as registrable controller: {{ officer.date_appointed or "" }}<br/><br/>
+                Date ceased as registrable controller: {{ officer.date_ceased or "" }}<br/></td>
               <td class="bd" width="10%"><br/><br/></td>
             </tr>
           {% endif %}
@@ -116,20 +106,20 @@
         {% if officer.shareholder_percent >= 25 %}
           <tr nobr="true">
             <td class="bd" width="15%" style="text-align:center;"><br/><br/>
-              <center>{% if officer.field_date_of_entry_update is not null %}{{ officer.field_date_of_entry_update|date('d/m/Y') }}{% endif %}</center>
+              <center>{{ officer.date_entry or "" }}</center>
             </td>
-            <td class="bd" width="25%"><br/><br/> {{ officer.field_full_name }}</td>
+            <td class="bd" width="25%"><br/><br/> {{ officer.full_name or "" }}</td>
             <td class="bd" width="50%"><br/><br/>
-              Full Name: {{ officer.field_full_name }} <br/><br/>
+              Full Name: {{ officer.full_name or "" }} <br/><br/>
               Residential
-              Address: {{ officer.field_address_line_1 }} {{ officer.field_address_line_2 }} {{ officer.field_postal_code }}
+              Address: {{ officer.address_1 or "" }} {{ officer.address_2 or "" }} {{ officer.postal_code or "" }}
               <br/><br/>
-              Nationality: {{ officer.field_nationality }} <br/><br/>
-              {{ officer.field_id_type }} : {{ officer.field_id_no }}<br/><br/>
-              Date of Birth: {{ officer.field_date_of_birth|date('d/m/Y') }} <br/><br/>
+              Nationality: {{ officer.nationality or "" }} <br/><br/>
+              {{ officer.id_type or "" }} : {{ officer.id_number or "" }}<br/><br/>
+              Date of Birth: {{ officer.dob or "" }} <br/><br/>
 
-              Date appointed as registrable controller: {% if officer.field_date_appointed_registrable is not null %}{{ officer.field_date_appointed_registrable|date('d/m/Y') }}{% endif %}<br/><br/>
-              Date ceased as registrable controller: {% if officer.field_date_ceased_as_registrable is not null %}{{ officer.field_date_ceased_as_registrable|date('d/m/Y') }}{% endif %}<br/></td>
+              Date appointed as registrable controller: {{ officer.date_appointed or "" }}<br/><br/>
+              Date ceased as registrable controller: {{ officer.date_ceased or "" }}<br/></td>
             <td class="bd" width="10%"><br/><br/></td>
           </tr>
         {% endif %}
