@@ -2,9 +2,9 @@
 <body>
 {#		<div style="width:100%; height:10px;"></div>#}
 <div>
-		<h1 style="width:100%;text-align:center;">{{datas.company_name}} {{ datas.field_company_type }}   </h1>
+		<h1 style="width:100%;text-align:center;">{{ app.company_name or "" }} {{ app.company_type or "" }}   </h1>
 		<div style="width:100%;text-align:center;font-size:14px;">
-			(Company Registration Number: {{ datas.field_application_id }})<br/>
+			(Company Registration Number: {{ app.uen or "" }})<br/>
 			(Incorporated in the Republic of Singapore)
 		</div>
 
@@ -29,7 +29,7 @@
 					<p style="margin-left: 40px; margin-right: 0px">Company Name: <br/></p>
 				</td>
 				<td width="75%">
-					<p style="margin-left: 40px; margin-right: 0px">{{datas.company_name}} {{ datas.field_company_type }}</p>
+					<p style="margin-left: 40px; margin-right: 0px">{{app.company_name or ""}} {{ app.company_type or "" }}</p>
 				</td>
 
 			</tr>
@@ -39,7 +39,7 @@
 				</td>
 				<td width="75%">
 					<p style="margin-left: 40px; margin-right: 0px">
-						{{ datas.field_application_id }}  <br/>
+						{{ app.uen or "" }}  <br/>
 					</p>
 				</td>
 			</tr>
@@ -49,7 +49,7 @@
 				</td>
 				<td width="75%">
 					<p style="margin-left: 40px; margin-right: 0px">
-						{{ datas.field_address_line_1 }} {{ datas.field_address_line_2 }} {{ datas.field_postcode }}
+						{{ app.addr_1 or "" }} {{ app.addr_2 or "" }} {{ app.postcode or "" }}
 					</p>
 				</td>
 			</tr>
@@ -59,34 +59,34 @@
 		<table border="1" width="100%" style="padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px;">
 			<tr>
 				<td class="tl" width="40%" height="40" valign="absmiddle">  1. Name in full</td>
-				<td class="tl" width="60%" height="40" valign="absmiddle"><b>{{datas.officer.field_full_name}}</b></td>
+				<td class="tl" width="60%" height="40" valign="absmiddle"><b>{{officer.full_name or ""}}</b></td>
 			</tr>
 			<tr>
 				<td class="tl" width="40%" height="40">  2. Date / Country of Birth</td>
-				<td class="tl" width="60%" height="40">{{datas.officer.field_date_of_birth}} / {{ datas.officer.field_country_of_birth }}</td>
+				<td class="tl" width="60%" height="40">{{officer.dob or ""}} / {{ officer.country_birth or "" }}</td>
 			</tr>
 			<tr>
 				<td class="tl" width="40%" height="40">  3. Nationality / Citizenship</td>
-				<td class="tl" width="60%" height="40">{{ datas.officer.field_nationality }}</td>
+				<td class="tl" width="60%" height="40">{{ officer.nationality or "" }}</td>
 			</tr>
 			<tr>
-				<td class="tl" width="40%" height="20"  style="line-height:120%;word-wrap:break-word">  4. Type of ID ({{datas.officer.field_id_type}})</td>
-				<td class="tl" width="60%" height="20">{{datas.officer.field_id_type}} {{datas.officer.field_id_no}}</td>
+				<td class="tl" width="40%" height="20"  style="line-height:120%;word-wrap:break-word">  4. Type of ID ({{officer.id_type}})</td>
+				<td class="tl" width="60%" height="20">{{officer.id_type or ""}} {{officer.id_number or ""}}</td>
 			</tr>
 			<tr>
 				<td class="tl" width="40%" height="40">  5. Business Occupation</td>
-				<td class="tl" width="60%" height="40">{{datas.officer.field_position}}</td>
+				<td class="tl" width="60%" height="40">{{officer.designation or ""}}</td>
 			</tr>
 			<tr>
 				<td class="tl" width="40%" height="40">  6. Residential Address</td>
-				<td class="tl" width="60%" height="40" style="line-height:16px;word-wrap:break-word">{{datas.officer.field_address_line_1}} {{datas.officer.field_address_line_2}} {{datas.officer.field_postal_code}}</td>
+				<td class="tl" width="60%" height="40" style="line-height:16px;word-wrap:break-word">{{officer.address_1 or ""}} {{officer.address_2 or ""}} {{officer.postal_code or ""}}</td>
 			</tr>
 		</table>
 	</div>
 	<div style="width:100%;text-align:left;font-size:14px;font-weight:bold;">
 		<div style="width:100%;text-align:left;font-size:14px;">
 			This is certifying that the above statements are correct and true.<br/>
-			Dated : {{datas.today}}
+			Dated : {{ frappe.utils.formatdate(frappe.utils.today(), 'dd/MM/YYYY') }}
 		</div>
 	</div>
 	<table border="0" cellpadding=0 cellspacing=0 width="98%" align="left">
@@ -99,7 +99,7 @@
 		 </tr>
 		 <tr><td height="5"></td></tr>
 		 <tr>
-		 	<td class="tl" width="50%" height="20" align="right">  Name of {{datas.officer.field_position}}: </td>
+		 	<td class="tl" width="50%" height="20" align="right">  Name of {{officer.designation or ""}}: </td>
 		 	<td class="tl" width="50%" height="20" align="left" style="border-bottom: solid 1px #000000;"> &nbsp; &nbsp;  () </td>
 {#		 	<td class="tl" width="50%" height="20" align="left" style="border-bottom: solid 1px #000000;"> &nbsp; &nbsp; '.$DIRECTOR_FULL_NAME[2].' ('.$DIRECTOR_ID_NO[2].') </td>#}
 		 </tr>

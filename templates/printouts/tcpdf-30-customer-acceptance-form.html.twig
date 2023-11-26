@@ -34,7 +34,7 @@
     <td colspan="4" class="toptd">Individual customer’s information</td>
   </tr>
 
-  {% if datas.officer.is_registration %}
+  {% if officer.is_registration %}
     <tr>
       <td class="ftd">Full name (including any alias)</td>
       <td class="std"> </td>
@@ -67,60 +67,58 @@
     </tr>
     <tr>
       <td class="ftd">Name of entity</td>
-      <td class="std"> {{ datas.officer.field_full_name }}</td>
+      <td class="std"> {{ officer.full_name or "" }}</td>
       <td class="ttd">Incorporation/ registration number</td>
-      <td class="fotd"> {{ datas.officer.field_id_no }}</td>
+      <td class="fotd"> {{ officer.id_number or "" }}</td>
     </tr>
     <tr>
       <td class="ftd">Address (residential/ place of business/ registered office)</td>
-      <td colspan="3" class="bd"> {{ datas.officer.field_address_line_1 }} {{ datas.officer.field_address_line_2 }} {{ datas.officer.field_postal_code }}</td>
+      <td colspan="3" class="bd"> {{ officer.address_1 or "" }} {{ officer.address_2 or "" }} {{ officer.postal_code or "" }}</td>
     </tr>
     <tr>
       <td class="ftd">Place of registration/ incorporation</td>
-      <td colspan="3" class="bd"> {{ datas.officer.field_country_of_birth }}</td>
+      <td colspan="3" class="bd"> {{ officer.country_birth or "" }}</td>
     </tr>
     <tr>
       <td class="ftd">Date of registration/ incorporation</td>
-      <td colspan="3" class="bd"> {{ datas.officer.field_date_of_birth|date('d/m/Y') }}</td>
+      <td colspan="3" class="bd"> {{ officer.dob or "" }}</td>
     </tr>
     <tr>
       <td class="ftd">Contact number</td>
-      <td colspan="3" class="bd"> {{datas.officer.field_mobile}}</td>
+      <td colspan="3" class="bd"> {{ officer.mobile or "" }}</td>
     </tr>
     <tr>
       <td class="ftd">Intended nature and purpose of business relationship</td>
-      <td colspan="3" class="bd">{% for ssic in datas.field_company_ssic %} {{ ssic.getName() }} {% if loop.last != true %}<br/>{% endif %}{% endfor %}</td>
+      <td colspan="3" class="bd">{{ app.pri_activity or "" }}<br/>{{ app.sec_activity or "" }}</td>
     </tr>
   {% else %}
     <tr>
       <td class="ftd">Full name (including any alias)</td>
-      <td class="std"> {{ datas.officer.field_full_name }}</td>
+      <td class="std"> {{ officer.full_name or "" }}</td>
       <td class="ttd">Unique identification number</td>
-      <td class="fotd"> {{ datas.officer.field_id_type }}: {{ datas.officer.field_id_no }}</td>
+      <td class="fotd"> {{ officer.id_type or "" }}: {{ officer.id_number or "" }}</td>
     </tr>
     <tr>
       <td class="ftd">Address (residential/ place of business/ registered office)</td>
       <td colspan="3" class="bd"><p
-          style="padding-left: 3px;"> {{ datas.officer.field_address_line_1 }} {{ datas.officer.field_address_line_2 }} {{ datas.officer.field_postal_code }}</p>
+          style="padding-left: 3px;"> {{ officer.address_1 or "" }} {{ officer.address_2 or "" }} {{ officer.postal_code or "" }}</p>
       </td>
     </tr>
     <tr>
       <td class="ftd">Date of birth</td>
-      <td colspan="3" class="bd"> {{ datas.officer.field_date_of_birth|date('d/m/Y') }}</td>
+      <td colspan="3" class="bd"> {{ officer.dob or "" }}</td>
     </tr>
     <tr>
       <td class="ftd">Nationality</td>
-      <td colspan="3" class="bd"> {{ datas.officer.field_nationality }}</td>
+      <td colspan="3" class="bd"> {{ officer.nationality or "" }}</td>
     </tr>
     <tr>
       <td class="ftd">Contact number</td>
-      <td colspan="3" class="bd"> {{ datas.officer.field_mobile }}</td>
+      <td colspan="3" class="bd"> {{ officer.mobile or "" }}</td>
     </tr>
     <tr>
       <td class="ftd">Intended nature and purpose of business relationship</td>
-      <td colspan="3"
-          class="bd">{% for ssic in datas.field_company_ssic %} {{ ssic.getName() }} {% if loop.last != true %}
-          <br/>{% endif %}{% endfor %}</td>
+      <td colspan="3" class="bd">{{ app.pri_activity or "" }}<br/>{{ app.sec_activity or "" }}</td>
     </tr>
     <!------------------------------------------------------------------------------------------>
     <tr>
@@ -160,16 +158,16 @@
   </tr>
   <tr>
     <td class="ftd">Proposed name of entity</td>
-    <td colspan="3" class="bd"> {{ datas.company_name }} {{ datas.field_company_type }}</td>
+    <td colspan="3" class="bd"> {{ app.company_name or "" }} {{ app.company_type or "" }}</td>
   </tr>
   <tr>
     <td class="ftd">Entity type</td>
-    <td colspan="3" class="bd"> {{ datas.field_company_incorporate_type }}</td>
+    <td colspan="3" class="bd"> {{ app.incorporate_type or "" }}</td>
   </tr>
   <tr>
     <td class="ftd">Proposed registered office address/ address of place of business</td>
     <td colspan="3"
-        class="bd"> {{ datas.field_address_line_1 }} {{ datas.field_address_line_2 }} {{ datas.field_postcode }}</td>
+        class="bd"> {{ app.addr_1 or "" }} {{ app.addr_2 or "" }} {{ app.postcode or "" }}</td>
   </tr>
   <tr>
     <td class="ftd">Proposed place of registration/ incorporation</td>
@@ -178,12 +176,11 @@
   <tr>
     <td class="ftd">Proposed date of registration/ incorporation</td>
     <td colspan="3"
-        class="bd">{% if datas.field_company_effect_date is not null %} {{ datas.field_company_effect_date|date('d/m/Y') }}{% endif %}</td>
+        class="bd">{{ app.effect_date or "" }}</td>
   </tr>
   <tr>
     <td class="ftd">Intended nature and purpose of business relationship</td>
-    <td colspan="3" class="bd">{% for ssic in datas.field_company_ssic %} {{ ssic.getName() }}{% if loop.last != true %}
-        <br/>{% endif %}{% endfor %}</td>
+    <td colspan="3" class="bd">{{ app.pri_activity or "" }}<br/>{{ app.sec_activity or "" }}</td>
   </tr>
   <!------------------------------------------------------------------------------------------>
   <tr>
@@ -245,7 +242,7 @@
 <table cellpadding="3px">
   <tr>
     <td class="ftd">Information of sole proprietor/ director / partner (1)</td>
-    <td class="bd" width="70%"> {{ datas.officer.field_full_name }}</td>
+    <td class="bd" width="70%"> {{ officer.full_name or "" }}</td>
   </tr>
   <tr>
     <td class="ftd">Information of sole proprietor/ director / partner (2)</td>
@@ -277,27 +274,27 @@
 <table cellpadding="3px">
   <tr>
     <td class="ftd">Full name (including any alias)</td>
-    <td class="std"> {{ datas.officer.field_full_name }}</td>
+    <td class="std"> {{ officer.full_name or "" }}</td>
     <td class="ttd">Unique identification number</td>
-    <td class="fotd"> {{ datas.officer.field_id_type }} {{ datas.officer.field_id_no }}</td>
+    <td class="fotd"> {{ officer.id_type or "" }} {{ officer.id_number or "" }}</td>
   </tr>
   <tr>
     <td class="ftd">Address (residential/ place of business/ registered office)</td>
     <td colspan="3"
-        class="bd"> {{ datas.officer.field_address_line_1 }} {{ datas.officer.field_address_line_2 }} {{ datas.officer.field_postal_code }}
+        class="bd"> {{ officer.address_1 or "" }} {{ officer.address_2 or "" }} {{ officer.postal_code or "" }}
     </td>
   </tr>
   <tr>
     <td class="ftd">Date of birth</td>
-    <td colspan="3" class="bd">{% if datas.officer.field_date_of_birth is not null %} {{ datas.officer.field_date_of_birth|date('d/m/Y') }}{% endif %}</td>
+    <td colspan="3" class="bd">{{ officer.dob or "" }}{% endif %}</td>
   </tr>
   <tr>
     <td class="ftd">Nationality</td>
-    <td colspan="3" class="bd"> {{ datas.officer.field_nationality }}</td>
+    <td colspan="3" class="bd"> {{ officer.nationality or "" }}</td>
   </tr>
   <tr>
     <td class="ftd">Contact number</td>
-    <td colspan="3" class="bd"> {{ datas.officer.field_mobile }}</td>
+    <td colspan="3" class="bd"> {{ officer.mobile or "" }}</td>
   </tr>
   <tr>
     <td class="ftd">Provide information of nature of beneficial ownership (e.g. more than 25% of ownership of the
@@ -379,22 +376,22 @@
 <table cellpadding="3px">
   <tr>
     <td class="ftd">Name of customer/ agent</td>
-    <td class="bd" width="40%"> {{ datas.officer.field_full_name }}</td>
+    <td class="bd" width="40%"> {{ officer.full_name or "" }}</td>
   </tr>
   <tr>
     <td class="ftd">Unique identification number</td>
-    <td class="bd" width="40%"> {{ datas.officer.field_id_type }} {{ datas.officer.field_id_no }}</td>
+    <td class="bd" width="40%"> {{ officer.id_type or "" }} {{ officer.id_number or "" }}</td>
   </tr>
   <tr>
     <td class="ftd">Date</td>
-{#    <td class="bd" width="40%">{% if datas.field_company_effect_date is not null %} {{ datas.field_company_effect_date|date('d/m/Y') }}{% endif %}</td>#}
+{#    <td class="bd" width="40%">{{ app.effect_date or "" }}</td>#}
     <td class="bd" width="40%"></td>
   </tr>
   <tr>
     <td class="ftd">Signature<br><br><br><br><br></td>
     <td class="bd" width="40%" align="center">
       <br/><br/><p></p>
-      <span style="color: white; font-size: 1px">{{ datas.signature }}
+      <span style="color: white; font-size: 1px">{{ app.signature or "" }}
       _______________________________________________________________________________________________________________________</span>
     </td>
   </tr>
@@ -512,22 +509,22 @@
 <table cellpadding="3px">
   <tr>
     <td class="ftd">Name of customer/ agent</td>
-    <td class="bd" width="40%"> {{ datas.officer.field_full_name }}</td>
+    <td class="bd" width="40%"> {{ officer.full_name or "" }}</td>
   </tr>
   <tr>
     <td class="ftd">Unique identification number</td>
-    <td class="bd" width="40%"> {{ datas.officer.field_id_type }} {{ datas.officer.field_id_no }}</td>
+    <td class="bd" width="40%"> {{ officer.id_type or "" }} {{ officer.id_number or "" }}</td>
   </tr>
   <tr>
     <td class="ftd">Date</td>
-{#    <td class="bd" width="40%">{% if datas.field_company_effect_date_10day is not null %} {{ datas.field_company_effect_date_10day }}{% endif %}</td>#}
+{#    <td class="bd" width="40%">{{ app.effect_date or "" }}</td>#}
     <td class="bd" width="40%"></td>
   </tr>
   <tr>
     <td class="ftd">Signature<br><br><br><br><br></td>
     <td class="bd" width="40%" align="center">
       <br/><br/><p></p>
-      <span style="color: white; font-size: 1px">{{ datas.signature }}
+      <span style="color: white; font-size: 1px">{{ app.signature or "" }}
       _______________________________________________________________________________________________________________________</span>
     </td>
   </tr>
@@ -698,7 +695,7 @@
   <tr>
     <td>Date:</td>
     <td style="border:1px solid black;">
-      {{ "now"|date("d/m/Y") }}</td>
+      {{ frappe.utils.formatdate(frappe.utils.today(), "d/m/Y") }}</td>
     <td></td>
   </tr>
   <tr>
@@ -732,7 +729,7 @@
   <tr>
     <td>Date:</td>
     <td style="border:1px solid black;">
-      {{ "now"|date("d/m/Y") }}</td>
+      {{ frappe.utils.formatdate(frappe.utils.today(), "d/m/Y") }}</td>
     <td></td>
   </tr>
   <tr>
