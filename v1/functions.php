@@ -537,7 +537,7 @@ function formDirectorParticularPdf($html_template, $pdf_name, $author = 'Author'
 }
 
 
-function formCompanyParticularPdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I')
+function formCompanyParticularPdf($html_content, $pdf_name, $output_type = 'I')
 {
     // Load the Helvetica font from the specified path.
     $helvetica = TCPDF_FONTS::addTTFfont(getcwd() . '/../Helvetica.ttf', 'TrueTypeUnicode', '', 32);
@@ -576,9 +576,9 @@ function formCompanyParticularPdf($html_content, $pdf_name, $author_name, $subje
 // $subject_suffix = ... // The full name of the officer
 // $output_type = 'I'; // or 'D', 'F', etc., depending on the desired output
 
-// $pdfOutput = formCompanyParticularPdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type);
+// $pdfOutput = formCompanyParticularPdf($html_content, $pdf_name, $output_type);
 
-function form45Pdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I')
+function form45Pdf($html_content, $pdf_name, $output_type = 'I')
 {
     // $datas = DocumentWrapper::directorParticular($company, $officer);
     // $html_template = [
@@ -635,7 +635,7 @@ function form45Pdf($html_content, $pdf_name, $author_name, $subject_suffix, $out
 }
 
 
-function serviceIndemnityAgreementPdfTrustDeed($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I')
+function serviceIndemnityAgreementPdfTrustDeed($html_content, $pdf_name, $output_type = 'I')
 {
 
 
@@ -697,7 +697,7 @@ function serviceIndemnityAgreementPdfTrustDeed($html_content, $pdf_name, $author
 
 }
 
-function allotmentOfShareForm24Pdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I')
+function allotmentOfShareForm24Pdf($html_content, $pdf_name, $output_type = 'I')
 {
     // $datas = DocumentWrapper::form24($company);
     // $html_template = [
@@ -800,7 +800,7 @@ function applicationForSharesPdf($html_content, $pdf_name, $output_type = 'I')
 /**
  * 08.
  */
-function form45BPdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I')
+function form45BPdf($html_content, $pdf_name, $output_type = 'I')
 {
     // $datas = DocumentWrapper::applicationForShares($company, $officer);
     // $html_template = [
@@ -984,7 +984,7 @@ function certificateForSHolderPdf($html_content, $pdf_name, $output_type = 'I') 
 /**
  * 10.
  */
-function changeOfOfficeAddressPdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I')
+function changeOfOfficeAddressPdf($html_content, $pdf_name, $output_type = 'I')
 {
     // $datas = DocumentWrapper::applicationForShares($company, $officer);
     // $html_template = [
@@ -1045,7 +1045,7 @@ function changeOfOfficeAddressPdf($html_content, $pdf_name, $author_name, $subje
 /**
  * 30.
  */
-function customerAcceptancePdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I')
+function customerAcceptancePdf($html_content, $pdf_name, $output_type = 'I')
 {
     // $datas = DocumentWrapper::customerAcceptance($company, $officer);
     // $html_template = [
@@ -1115,7 +1115,7 @@ function customerAcceptancePdf($html_content, $pdf_name, $author_name, $subject_
 /**
  * 30 Shareholder.
  */
-function customerAcceptanceShareholderPdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I')
+function customerAcceptanceShareholderPdf($html_content, $pdf_name, $output_type = 'I')
 {
     // $datas = DocumentWrapper::customerAcceptance($company, $officer);
     // $html_template = [
@@ -1182,7 +1182,7 @@ function customerAcceptanceShareholderPdf($html_content, $pdf_name, $author_name
 /**
  * 30. Limited by Guarantee
  */
-function customerAcceptanceLimitedByGuaranteePdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I')
+function customerAcceptanceLimitedByGuaranteePdf($html_content, $pdf_name, $output_type = 'I')
 {
     // $datas = DocumentWrapper::customerAcceptance($company, $officer);
     // $html_template = [
@@ -1248,7 +1248,7 @@ function customerAcceptanceLimitedByGuaranteePdf($html_content, $pdf_name, $auth
 /**
  * 21.
  */
-function terminationOfCorporateSecretarialServicesPdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I')
+function terminationOfCorporateSecretarialServicesPdf($html_content, $pdf_name, $output_type = 'I')
 {
     // $datas = DocumentWrapper::resignationsAndAppointmentOfCompanySecretaryWrapper($company);
     // $html_template = [
@@ -1306,7 +1306,7 @@ function terminationOfCorporateSecretarialServicesPdf($html_content, $pdf_name, 
 /**
  * 22.
  */
-function resignationsAndAppointmentOfCompanySecretaryPdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I')
+function resignationsAndAppointmentOfCompanySecretaryPdf($html_content, $pdf_name, $output_type = 'I')
 {
     // $datas = DocumentWrapper::resignationsAndAppointmentOfCompanySecretaryWrapper($company);
     // $html_template = [
@@ -1364,7 +1364,7 @@ function resignationsAndAppointmentOfCompanySecretaryPdf($html_content, $pdf_nam
 /**
  * 23.
  */
-function changeOfFinancialYearPdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I')
+function changeOfFinancialYearPdf($html_content, $pdf_name, $output_type = 'I')
 {
     // $datas = DocumentWrapper::resignationsAndAppointmentOfCompanySecretaryWrapper($company);
     // $html_template = [
@@ -1421,7 +1421,7 @@ function changeOfFinancialYearPdf($html_content, $pdf_name, $author_name, $subje
 /**
  * 24.
  */
-function changeOfCompanyNamePdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I')
+function changeOfCompanyNamePdf($html_content, $pdf_name, $output_type = 'I')
 {
     // $datas = DocumentWrapper::resignationsAndAppointmentOfCompanySecretaryWrapper($company);
     // $html_template = [
@@ -1479,7 +1479,7 @@ function changeOfCompanyNamePdf($html_content, $pdf_name, $author_name, $subject
 /**
  * 25.
  */
-function changeOfBusinessActivityPdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I')
+function changeOfBusinessActivityPdf($html_content, $pdf_name, $output_type = 'I')
 {
     // $datas = DocumentWrapper::resignationsAndAppointmentOfCompanySecretaryWrapper($company);
     // $html_template = [
@@ -1537,7 +1537,7 @@ function changeOfBusinessActivityPdf($html_content, $pdf_name, $author_name, $su
 /**
  * 26.
  */
-function certificateOfCorporateSealPdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I')
+function certificateOfCorporateSealPdf($html_content, $pdf_name, $output_type = 'I')
 {
     // $datas = DocumentWrapper::resignationsAndAppointmentOfCompanySecretaryWrapper($company);
     // $html_template = [
