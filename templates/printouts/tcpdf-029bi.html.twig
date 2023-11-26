@@ -29,18 +29,18 @@
 
 		<!-- <td width="52">&nbsp;</td> -->
 
-		<p style=" text-align: left; text-decoration: underline; font-weight:bold; font-size:100%;">Date of Notice: <b>{{ app.effect_date or "" }}</b><br/><br/></p>
-		<p style="font-weight:bold; text-align: left;">Dear {{ officer.full_name or "" }}</p>
+		<p style=" text-align: left; text-decoration: underline; font-weight:bold; font-size:100%;">Date of Notice: <b>{{ app.effect_date }}</b><br/><br/></p>
+		<p style="font-weight:bold; text-align: left;">Dear {{ officer.full_name }}</p>
 
-		<p style=" text-align:justify; text-indent:  8em;"> We know or have reasonable grounds to believe that you are a registrable controller of <b>{{ app.company_name or "" }} {{ app.company_type or "" }}</b></p>
+		<p style=" text-align:justify; text-indent:  8em;"> We know or have reasonable grounds to believe that you are a registrable controller of <b>{{ app.company_name }} {{ app.company_type }}</b></p>
 
 		<p style="text-align:justify; text-indent:  8em;"> This notice is sent under section 386AG(2)(a) of the Companies Act (Cap. 50) and requires you to
 provide the following information within 30 days after the date of this notice.</p>
 
-    <p style=" text-align:justify; text-indent:  8em;"> Please send your reply to {{ app.addr_1 or "" }} {{ app.addr_2 or "" }} {{ app.postcode or "" }}. Failure to provide the information required by this
+    <p style=" text-align:justify; text-indent:  8em;"> Please send your reply to {{ app.addr_1 }} {{ app.addr_2 }} {{ app.postcode }}. Failure to provide the information required by this
 notice may be an offence.</p>
 
-    <p style="text-align:justify; text-indent:  8em;"> 1. Are you a registrable controller of <b>{{ app.company_name or "" }} {{ app.company_type or "" }}</b>?</p>
+    <p style="text-align:justify; text-indent:  8em;"> 1. Are you a registrable controller of <b>{{ app.company_name }} {{ app.company_type }}</b>?</p>
     <p style="text-align:justify; text-indent:  14em;"> Your reply: Yes / <del>No</del> </p>
     <p style="text-align:justify; text-indent:  8em;"> * Delete as appropriate. If your reply is yes and you are an individual, please provide the particulars in sub-paragraph
       (a). If your reply is yes and you are a legal entity, please provide the particulars in sub-paragraph (b).
@@ -54,32 +54,32 @@ notice may be an offence.</p>
 			</tr>
 			<tr>
 				<td colspan="2" class="bd">Full name (including any alias)</td>
-				<td colspan="3" class="bd">{{ officer.full_name or "" }} </td>
+				<td colspan="3" class="bd">{{ officer.full_name }} </td>
 			</tr>
 			<tr >
 				<td colspan="2" class="bd">Address (residential/ place of business/ registered office)</td>
-				<td colspan="3" class="bd">{{ officer.address_1 or "" }} {{ officer.address_2 or "" }} {{ officer.postal_code or "" }}  </td>
+				<td colspan="3" class="bd">{{ officer.address_1 }} {{ officer.address_2 }} {{ officer.postal_code }}  </td>
 			</tr>
 			<tr>
 				<td colspan="2" class="bd">Nationality</td>
-				<td colspan="3" class="bd">{{ officer.nationality or "" }} </td>
+				<td colspan="3" class="bd">{{ officer.nationality }} </td>
 			</tr>
 			<tr>
 			  <td colspan="2" class="bd">ID / Passport Number</td>
-				<td colspan="3" class="bd">{{ officer.id_type or "" }} {{ officer.id_number or "" }} </td>
+				<td colspan="3" class="bd">{{ officer.id_type }} {{ officer.id_number }} </td>
 			</tr>
 			<tr>
 				<td colspan="2" class="bd">Date of Birth</td>
-				<td colspan="3" class="bd">{{ officer.dob or "" }} </td>
+				<td colspan="3" class="bd">{{ officer.dob }} </td>
 			</tr>
 
 			<tr>
 				<td colspan="2" class="bd">Contact number</td>
-				<td colspan="3" class="bd">{{ officer.mobile or "" }} </td>
+				<td colspan="3" class="bd">{{ officer.mobile }} </td>
 			</tr>
 			<tr>
 				<td colspan="2" class="bd">The date on which you become an individual controller</td>
-				<td colspan="3" class="bd">{{ officer.date_appointed or "" }}</td>
+				<td colspan="3" class="bd">{{ officer.date_appointed }}</td>
 			</tr>
 		</table>
 
@@ -125,7 +125,7 @@ notice may be an offence.</p>
     <br/>
 		<p style="text-align: left;"><br/>
 		<p style="text-align:justify; text-indent:  8em;"> 2. Do you know or have reasonable grounds to believe that any other person is a registrable
-controller of <b>{{ app.company_name or "" }} {{ app.company_type or "" }}</b> or is likely to have that knowledge?
+controller of <b>{{ app.company_name }} {{ app.company_type }}</b> or is likely to have that knowledge?
     </p>
     <p style="text-align:justify; text-indent:  14em;"> Your reply: <del>Yes</del> / No </p>
 
@@ -145,8 +145,8 @@ Act (Cap. 201); “registrable” has the meaning given to it in section 386AC o
           <tr>
           <td style="width:40%; text-align:left;font-size:14px;">
             <span style="color: white; font-size: 0.1px">_____________________________________________________________________
-                ___________________________________________{{ secretories.signature or "" }}</span>
-            <hr><b>{{ secretories.full_name or "" }}</b> <br/>
+                ___________________________________________{{ secretories.signature }}</span>
+            <hr><b>{{ secretories.full_name }}</b> <br/>
             SECRETARY
             <br/><br/>
             <br/><br/>
@@ -177,8 +177,8 @@ Act (Cap. 201); “registrable” has the meaning given to it in section 386AC o
       <tr>
         <td style="width:40%; text-align:left;font-size:14px;">
           <span style="color: white; font-size: 1px">_____________________________________________________________________
-          ___________________________________________{{ officer.signature or "" }}</span>
-          <hr><b>{{ officer.full_name or "" }}</b> <br/>
+          ___________________________________________{{ officer.signature }}</span>
+          <hr><b>{{ officer.full_name }}</b> <br/>
           CONTROLLER
           <br/>Date:<br/>
           <br/><br/>

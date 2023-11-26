@@ -1,16 +1,16 @@
 <html>
   <body style="font-family:'Times New Roman', Times, serif;">
-    <h1 style="width:100%;text-align:center;">{{ app.company_name or "" }} {{ app.company_type or "" }}</h1>
+    <h1 style="width:100%;text-align:center;">{{ app.company_name }} {{ app.company_type }}</h1>
     <div style="width:100%;text-align:center;font-size:14px;">
-      (Company Registration Number: {{ app.uen or "" }})<br/>
+      (Company Registration Number: {{ app.uen }})<br/>
       (Incorporated in the Republic of Singapore)
     </div>
     <hr style="height: 1px">
     <div style="width:100%;text-align:center;font-size:14px; font-weight: bold">NOTICE OF ANNUAL GENERAL MEETING</div>
     <hr style="height: 1px">
     <div style="width:100%;text-align:left;font-size:14px;">NOTICE IS HEREBY GIVEN that the Annual General Meeting of the company will be held at
-      <b>{{ app.addr_1 or "" }} {{ app.addr_2 or "" }}
-        {{ app.postcode or "" }} </b> on <b> ___ / ___ / _______</b> at 3.00 pm the following purposes:
+      <b>{{ app.addr_1 }} {{ app.addr_2 }}
+        {{ app.postcode }} </b> on <b> ___ / ___ / _______</b> at 3.00 pm the following purposes:
     </div>
     <div style="width:100%;text-align:left;font-size:14px;">
       <div style="font-weight:bold;text-align:center;">
@@ -18,7 +18,7 @@
       </div>
       <ol>
         <li>Adoption of declaration of dormant company for the financial year ended
-          <b>{{ app.financial_year_end or "" }}</b>;<br/></li>
+          <b>{{ app.financial_year_end }}</b>;<br/></li>
         <li>Election of Directors retired by rotation;<br/></li>
         <li>Any other business.</li>
       </ol>
@@ -35,19 +35,19 @@
       {% for officer in app.officers_directors %}
         {% if loop.index % 2 == 1 %}
           <tr>
-          <td style="text-align:left;font-size:14px; line-height: 120%;">____<span style="color: white; font-size: 0.01px">**{{ officer.email or "" }}**</span>_________________________
+          <td style="text-align:left;font-size:14px; line-height: 120%;">____<span style="color: white; font-size: 0.01px">**{{ officer.email }}**</span>_________________________
             <br/>
-            <b>{{ officer.full_name or "" }}</b>
+            <b>{{ officer.full_name }}</b>
             <br/>
-            {{ officer.designation or "" }}
+            {{ officer.designation }}
             <br/><br/>
           </td>
           <td width="140"></td>
         {% else %}
-          <td style="text-align:left;font-size:14px; line-height: 120%;">____<span style="color: white; font-size: 0.01px">**{{ officer.email or "" }}**</span>_________________________
-            <br/><b>{{ officer.full_name or "" }}</b>
+          <td style="text-align:left;font-size:14px; line-height: 120%;">____<span style="color: white; font-size: 0.01px">**{{ officer.email }}**</span>_________________________
+            <br/><b>{{ officer.full_name }}</b>
             <br/>
-            {{ officer.designation or "" }}
+            {{ officer.designation }}
             <br/><br/>
           </td>
           </tr>
@@ -62,16 +62,16 @@
       <div style="width:100%; height:5px;"></div>
     </table>
     <br pagebreak="true" />
-    <h1 style="width:100%;text-align:center;">{{ app.company_name or "" }} {{ app.company_type or "" }}</h1>
+    <h1 style="width:100%;text-align:center;">{{ app.company_name }} {{ app.company_type }}</h1>
     <div style="width:100%;text-align:center;font-size:14px;">
-      (Company Registration Number: {{ app.uen or "" }})<br/>
+      (Company Registration Number: {{ app.uen }})<br/>
       (Incorporated in the Republic of Singapore)
     </div>
 
     <hr style="height: 1px">
     <div style="width:100%;text-align:left;font-size:14px;">MINUTES OF THE ANNUAL GENERAL MEETING OF THE COMPANY HELD AT
-      <b>{{ app.addr_1  or "" }} {{ app.addr_2  or "" }}
-        {{ app.postcode  or "" }}</b> on <b>
+      <b>{{ app.addr_1  }} {{ app.addr_2  }}
+        {{ app.postcode  }}</b> on <b>
         ___ / ___ / _______</b> at 3.00 pm.
     </div>
     <div style="width:100%; height:2px;"></div>
@@ -84,7 +84,7 @@
       <br/>
       {% for officer in app.officers_shareholders %}
         <tr>
-          <td style="width:40%; height:20px" class="pc">{% if officer.behalf %} On Behalf Of <br/> {% endif %}{{ officer.full_name or "" }}</td>
+          <td style="width:40%; height:20px" class="pc">{% if officer.behalf %} On Behalf Of <br/> {% endif %}{{ officer.full_name }}</td>
           <td style="width:20%; height:20px" class="pc"></td>
           <td style="width:40%; height:20px" class="pc">{% if app.incorporate_type == 2719 %}Member{% else %}Shareholder{% endif %}</td>
         </tr>
@@ -92,7 +92,7 @@
       {% endfor %}
     </table>
     <div style="width:100%; height:5px;"></div>
-    <div style="width:100%;text-align:left;font-size:14px; font-weight: bold">DORMANT COMPANY FOR THE FINANCIAL YEAR ENDED {{ app.financial_year_end or "" }}
+    <div style="width:100%;text-align:left;font-size:14px; font-weight: bold">DORMANT COMPANY FOR THE FINANCIAL YEAR ENDED {{ app.financial_year_end }}
     </div>
     <div style="width:100%;text-align:left;font-size:13px;">Resolved that the declaration of the dormant company exempt from preparing financial statements <br/> for the financial year ended above be received and adopted.
     </div>
@@ -118,15 +118,15 @@
       {% for officer in app.officers_shareholders %}
         {% if loop.index % 2 == 1 %}
           <tr nobr="true">
-          <td style="text-align:left;font-size:14px; line-height: 120%;">____<span style="color: white; font-size: 0.01px">**{{ officer.email or "" }}**</span>_________________________
-            <br/>{% if officer.behalf %}<b>On Behalf Of</b><br/>{% endif %}<b>{{ officer.full_name or "" }}</b><br/>
+          <td style="text-align:left;font-size:14px; line-height: 120%;">____<span style="color: white; font-size: 0.01px">**{{ officer.email }}**</span>_________________________
+            <br/>{% if officer.behalf %}<b>On Behalf Of</b><br/>{% endif %}<b>{{ officer.full_name }}</b><br/>
             {% if app.incorporate_type == 2719 %}Member{% else %}Shareholder{% endif %}
             <br/><br/>
           </td>
           <td width="140"></td>
         {% else %}
-          <td style="text-align:left;font-size:14px; line-height: 120%;">____<span style="color: white; font-size: 0.01px">**{{ officer.email_id or "" }}**</span>_________________________
-            <br/>{% if officer.behalf %}<b>On Behalf Of</b><br/>{% endif %}<b>{{ officer.full_name or "" }}</b><br/>
+          <td style="text-align:left;font-size:14px; line-height: 120%;">____<span style="color: white; font-size: 0.01px">**{{ officer.email_id }}**</span>_________________________
+            <br/>{% if officer.behalf %}<b>On Behalf Of</b><br/>{% endif %}<b>{{ officer.full_name }}</b><br/>
             {% if app.incorporate_type == 2719 %}Member{% else %}Shareholder{% endif %}
             <br/><br/>
           </td>
@@ -144,9 +144,9 @@
       </div>
     </table>
     <br pagebreak="true" />
-    <h1 style="width:100%;text-align:center;">{{ app.company_name or "" }} {{ app.company_type or "" }}</h1>
+    <h1 style="width:100%;text-align:center;">{{ app.company_name }} {{ app.company_type }}</h1>
     <div style="width:100%;text-align:center;font-size:14px;">
-      (Company Registration Number: {{ app.uen or "" }})<br/>
+      (Company Registration Number: {{ app.uen }})<br/>
       (Incorporated in the Republic of Singapore)
     </div>
     <hr style="height: 1px">
@@ -157,8 +157,8 @@
     <div style="width:100%;text-align:left;font-size:14px;text-align:justify;">Pursuant to Section 177(3)(a) of the Companies Act, Cap. 50, we, the undersigned, being all the members for the time
       being of the Company,
       entitled to attend and vote at the Annual General Meeting of the Company to be held at
-      <b>{{ app.addr_1 or "" }} {{ app.addr_2 or "" }}
-        {{ app.postcode or "" }} </b> on <b>___ / ___ / _______ at 3.00 pm.</b>
+      <b>{{ app.addr_1 }} {{ app.addr_2 }}
+        {{ app.postcode }} </b> on <b>___ / ___ / _______ at 3.00 pm.</b>
     </div>
     <br/>
     <div style="width:100%;text-align:left;font-size:14px;">
@@ -185,16 +185,16 @@
       {% for officer in app.officers_shareholders %}
         {% if loop.index % 2 == 1 %}
           <tr nobr="true">
-          <td style="text-align:left;font-size:14px; line-height: 120%;">____<span style="color: white; font-size: 0.01px">**{{ officer.email or "" }}**</span>_________________________
-            <br/>{% if officer.behalf %}<b>On Behalf Of</b><br/>{% endif %}<b>{{ officer.full_name or "" }}</b><br/>
+          <td style="text-align:left;font-size:14px; line-height: 120%;">____<span style="color: white; font-size: 0.01px">**{{ officer.email }}**</span>_________________________
+            <br/>{% if officer.behalf %}<b>On Behalf Of</b><br/>{% endif %}<b>{{ officer.full_name }}</b><br/>
             {% if app.incorporate_type == 2719 %}Member{% else %}Shareholder{% endif %}
             <br/><br/>
           </td>
           <td width="140">
           </td>
         {% else %}
-          <td style="text-align:left;font-size:14px; line-height: 120%;">____<span style="color: white; font-size: 0.01px">**{{ officer.email or "" }}**</span>_________________________
-            <br/>{% if officer.behalf %}<b>On Behalf Of</b><br/>{% endif %}<b>{{ officer.full_name or "" }}</b><br/>
+          <td style="text-align:left;font-size:14px; line-height: 120%;">____<span style="color: white; font-size: 0.01px">**{{ officer.email }}**</span>_________________________
+            <br/>{% if officer.behalf %}<b>On Behalf Of</b><br/>{% endif %}<b>{{ officer.full_name }}</b><br/>
             {% if app.incorporate_type == 2719 %}Member{% else %}Shareholder{% endif %}
             <br/><br/>
           </td>
@@ -212,9 +212,9 @@
       </div>
     </table>
     <br pagebreak="true" />
-    <h1 style="width:100%;text-align:center;">{{ app.company_name or "" }} {{ app.company_type or "" }}</h1>
+    <h1 style="width:100%;text-align:center;">{{ app.company_name }} {{ app.company_type }}</h1>
     <div style="width:100%;text-align:center;font-size:14px;">
-      (Company Registration Number: {{ app.uen or "" }})<br/>
+      (Company Registration Number: {{ app.uen }})<br/>
       (Incorporated in the Republic of Singapore)
     </div>
     <hr style="height: 1px">
@@ -222,7 +222,7 @@
     </div>
 
     <hr style="height: 1px">
-    <div style="width:100%;text-align:left;font-size:14px;"><b>DORMANT COMPANY FOR THE FINANCIAL YEAR ENDED {{ app.financial_year_end or "" }}</b>
+    <div style="width:100%;text-align:left;font-size:14px;"><b>DORMANT COMPANY FOR THE FINANCIAL YEAR ENDED {{ app.financial_year_end }}</b>
     </div>
 
     <div style="width:100%;text-align:left;font-size:14px;text-align:justify;">Resolved that the directors declare that the company has been dormant since the end of the previous
@@ -248,18 +248,18 @@
       {% for officer in app.officers_directors %}
         {% if loop.index % 2 == 1 %}
           <tr>
-          <td style="text-align:left;font-size:14px; line-height: 120%;">____<span style="color: white; font-size: 0.01px">**{{ officer.email or "" }}**</span>_________________________
-            <br/><b>{{ officer.full_name or "" }}</b>
+          <td style="text-align:left;font-size:14px; line-height: 120%;">____<span style="color: white; font-size: 0.01px">**{{ officer.email }}**</span>_________________________
+            <br/><b>{{ officer.full_name }}</b>
             <br/>
-            {{ officer.designation or "" }}
+            {{ officer.designation }}
             <br/><br/>
           </td>
           <td width="140"></td>
         {% else %}
-          <td style="text-align:left;font-size:14px; line-height: 120%;">____<span style="color: white; font-size: 0.01px">**{{ officer.email or "" }}**</span>_________________________
-            <br/><b>{{ officer.full_name or "" }}</b>
+          <td style="text-align:left;font-size:14px; line-height: 120%;">____<span style="color: white; font-size: 0.01px">**{{ officer.email }}**</span>_________________________
+            <br/><b>{{ officer.full_name }}</b>
             <br/>
-            {{ officer.designation or "" }}
+            {{ officer.designation }}
             <br/><br/>
           </td>
           </tr>

@@ -6,8 +6,8 @@
         <div style="width:100%; height:10px;"></div>
         <table>
           <tr>
-            <td style="text-align:left;font-size:11px; font-weight: bold;">Name of Company:&nbsp;&nbsp;&nbsp;&nbsp;{{ app.company_name or "" }} {{ app.company_type or "" }}</td>
-            <td style="text-align:right;font-size:11px;">Page {{ loop.index or "" }}</td>
+            <td style="text-align:left;font-size:11px; font-weight: bold;">Name of Company:&nbsp;&nbsp;&nbsp;&nbsp;{{ app.company_name }} {{ app.company_type }}</td>
+            <td style="text-align:right;font-size:11px;">Page {{ loop.index }}</td>
           </tr>
         </table>
         <div style="width:100%; height:5px;"></div>
@@ -23,17 +23,17 @@
           </tr>
             {% for office in shareholder %}
               <tr style="font-size: 11px">
-                <td class="tl" width="10%" style="text-align:center;border: 1px solid #111;">{% if office.date_allotment %}{{ office.date_allotment|date('d/m/Y') or "" }}{% endif %}</td>
-                <td class="tl" width="35%" style="text-align:left;border: 1px solid #111;">{{ office.full_name or "" }}</td>
-                <td class="tl" width="10%" style="text-align:center;border: 1px solid #111">{{ office.shareholder_shares_allotte or "" }}</td>
-                <td class="tl" width="10%" style="text-align:center; border: 1px solid #111">{% if office.share_amount_paid %}${{ office.share_amount_paid or "" }}{% endif %}</td>
-                <td class="tl" width="15%" style="text-align:center; border: 1px solid #111">{{ office.allotted_for_consideration or "" }}</td>
-                <td class="tl" width="10%" style="text-align:center; border: 1px solid #111">{{ office.shareholder_certificate_no or "" }}</td>
-                <td class="tl" width="10%" style="text-align:center; border: 1px solid #111">{{ office.members_folio_no or "" }}</td>
+                <td class="tl" width="10%" style="text-align:center;border: 1px solid #111;">{% if office.date_allotment %}{{ office.date_allotment|date('d/m/Y') }}{% endif %}</td>
+                <td class="tl" width="35%" style="text-align:left;border: 1px solid #111;">{{ office.full_name }}</td>
+                <td class="tl" width="10%" style="text-align:center;border: 1px solid #111">{{ office.shareholder_shares_allotte }}</td>
+                <td class="tl" width="10%" style="text-align:center; border: 1px solid #111">{% if office.share_amount_paid %}${{ office.share_amount_paid }}{% endif %}</td>
+                <td class="tl" width="15%" style="text-align:center; border: 1px solid #111">{{ office.allotted_for_consideration }}</td>
+                <td class="tl" width="10%" style="text-align:center; border: 1px solid #111">{{ office.shareholder_certificate_no }}</td>
+                <td class="tl" width="10%" style="text-align:center; border: 1px solid #111">{{ office.members_folio_no }}</td>
               </tr>
               <tr style="font-size: 11px">
                 <td class="tl" style="border: 1px solid #111"></td>
-                <td class="tl" style="border: 1px solid #111">{{ office.address_line_1 or "" }}</td>
+                <td class="tl" style="border: 1px solid #111">{{ office.address_line_1 }}</td>
                 <td class="tl" style="border: 1px solid #111"></td>
                 <td class="tl" style="border: 1px solid #111"></td>
                 <td class="tl" style="border: 1px solid #111"></td>
@@ -42,7 +42,7 @@
               </tr>
               <tr>
                 <td class="tl" style="border: 1px solid #111"></td>
-                <td class="tl" style="border: 1px solid #111">{{ office.address_line_2 or "" }} {% if office.postal_code %}({{ office.postal_code or "" }}){% endif %}</td>
+                <td class="tl" style="border: 1px solid #111">{{ office.address_line_2 }} {% if office.postal_code %}({{ office.postal_code }}){% endif %}</td>
                 <td class="tl" style="border: 1px solid #111"></td>
                 <td class="tl" style="border: 1px solid #111"></td>
                 <td class="tl" style="border: 1px solid #111"></td>
