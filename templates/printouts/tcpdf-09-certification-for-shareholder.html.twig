@@ -1,24 +1,24 @@
 <table>
     <tr>
-        <td width="70%">Certificate No. * {{app.shareholder.certificate_number}} *</td>
+        <td width="70%">Certificate No. * {{ officer.share_details_json[0].certificate_no }} *</td>
         <td width="30%">
             <table>
                 <tr>
                     <td style="width: 100px">No. of Shares</td>
-                    <td>: *{{ datas.shareholder.field_shareholder_shares_allotte|number_format(0,'',',') }}*</td>
+                    <td>: *{{officer.share_details_json[0].shares_allotted }}*</td>
                 </tr>
                 <tr>
                     <td style="width: 100px">Amount Paid</td>
-                    {% if datas.shareholder.share_amount_paid > 0 %}
-                        <td>: <b>{{ datas.shareholder.share_amount_paid|number_format(0,'',',') }} ({{ datas.capital_detail.field_currency }})</b></td>
+                    {% if officer.share_details_json[0].share_amount_paid > 0 %}
+                        <td>: <b>{{ officer.share_details_json[0].share_amount_paid|number_format(0,'',',') }} ({{ officer.share_details_json[0].currency }})</b></td>
                     {% else %}
                         <td>: <b>Nil</b></td>
                     {% endif %}
                 </tr>
                 <tr>
                     <td style="width: 100px">Amount Unpaid</td>
-                    {% if datas.shareholder.share_amount_unpaid > 0 %}
-                        <td>: <b>{{ datas.shareholder.share_amount_unpaid|number_format(0,'',',') }} ({{ datas.capital_detail.field_currency }})</b></td>
+                    {% if officer.share_details_json[0].share_amount_unpaid > 0 %}
+                        <td>: <b>{{ officer.share_details_json[0].share_amount_unpaid|number_format(0,'',',') }} ({{ officer.share_details_json[0].currency }})</b></td>
                     {% else %}
                         <td>: <b>Nil</b></td>
                     {% endif %}
@@ -33,8 +33,8 @@
     .ca{text-align: center;}
 </style>
 <table >
-    <tr><td class="ca" style="font-size: 30px"><b>{{ datas.company_name }} {{ datas.field_company_type }}</b></td></tr>
-    <tr><td class="ca" style="font-size: 11px"><br/><br/>Company Registration No. {{ datas.uen }}<br/>
+    <tr><td class="ca" style="font-size: 30px"><b>{{ app.company_name|upper }}</b></td></tr>
+    <tr><td class="ca" style="font-size: 11px"><br/><br/>Company Registration No. {{ app.uen }}<br/>
             (Incorporated in the Republic of Singapore under the Companies Act, Cap. 50)<br/>
         </td></tr>
 
@@ -43,7 +43,7 @@
 <table >
     <tr><td width="10%"></td>
         <td width="15%" style="font-size: 15px;">Registered Address : </td>
-        <td width="80%" style="font-size: 15px; text-align: left;">{{ datas.field_address_line_1 }} {{ datas.field_address_line_2 }} ({{ datas.field_postcode }})</td>
+        <td width="80%" style="font-size: 15px; text-align: left;">{{ app.addr_1 }} {{ app.addr_2 }} ({{ app.postcode }})</td>
     </tr>
 </table>
 
@@ -54,11 +54,11 @@
     <tr>
         <td width="5%"></td>
         <td width="30%" rowspan="2" style="font-size: 20px; font-style: italic"><b><i>This is to certify that,</i></b></td>
-        <td width="60%" style="font-size: 20px"><b>{{ datas.officer.full_name }}</b></td>
+        <td width="60%" style="font-size: 20px"><b>{{ officer.full_name }}</b></td>
     </tr>
     <tr>
         <td></td>
-        <td>{{ datas.shareholder.field_address_line_1 }} {{ datas.shareholder.field_address_line_2 }} {{ datas.shareholder.field_postcode }}<br></td>
+        <td>{{ officer.addr_1 }} {{ officer.addr_2 }} {{ officer.postcode }}<br></td>
     </tr>
 </table>
 
@@ -66,15 +66,15 @@
 <table>
     <tr>
         <td width="5%"></td>
-        <td width="90%">is/are Registered Holder of &nbsp; <b>{{ datas.shareholder.field_shareholder_shares_allotte_by_word }}</b></td>
+        <td width="90%">is/are Registered Holder of &nbsp; <b>*{{ officer.share_details_json[0].share_amount_in_words|upper }} {{'ONLY'}}*</b></td>
     </tr>
     <tr>
         <td width="5%"></td>
-      {% if datas.shareholder.share_amount_paid %}
-        {% if datas.shareholder.field_shareholder_shares_allotte == datas.shareholder.share_amount_paid %}
+      {% if officer.share_details_json[0].share_amount_paid %}
+        {% if officer.share_details_json[0].total_share_price == officer.share_details_json[0].share_amount_paid %}
           <td>Ordinary shares fully paid in above Company subject to the Constitution of the Company<br></td>
         {% else %}
-          <td>Ordinary shares partially paid {{ datas.shareholder.share_amount_paid|number_format(0,'',',') }} ({{ datas.capital_detail.field_currency }}) in above Company subject to the Constitution of the Company<br></td>
+          <td>Ordinary shares partially paid {{ officer.share_details_json[0].share_amount_paid|number_format(0,'',',') }} ({{ officer.share_details_json[0].currency }}) in above Company subject to the Constitution of the Company<br></td>
         {% endif %}
       {% else %}
         <td>Ordinary shares unpaid in above Company subject to the Constitution of the Company<br></td>
@@ -82,19 +82,19 @@
     </tr>
     <tr>
         <td width="10%"></td>
-        <td style="font-size: 11px">Given under the Common Seal of the Company this {{ datas.shareholder.field_date_effect_of_allotment|date('d F Y') }}<br><br> <br></td>
+        <td style="font-size: 11px">Given under the Common Seal of the Company this {{ officer.share_details_json[0].date_of_allotment|date('d F Y') }}<br><br> <br></td>
     </tr>
     <tr>
         <td width="10%"></td>
         <td width="50%"></td>
         <td width="35%">
             <table >
-                {% if datas.directors|length %}
-                    <tr><td style="border-bottom:1px solid black">{{ datas.directors.0.full_name }}</td></tr>
+                {% if app.officers_directors|length %}
+                    <tr><td style="border-bottom:1px solid black">{{ app.officers_directors[0].full_name }}</td></tr>
                     <tr><td style="font-size: 10px;">Director<br><br></td></tr>
                 {% endif %}
-                {% if datas.secretory|length %}
-                    <tr><td style="border-bottom:1px solid black">{{ datas.secretory.0.full_name }}</td></tr>
+                {% if app.officers_secretaries|length %}
+                    <tr><td style="border-bottom:1px solid black">{{ app.officers_secretaries[0].full_name }}</td></tr>
                     <tr><td style="font-size: 10px;">Secretary<br><br></td></tr>
                 {% endif %}
                 <tr><td style="font-size: 8px;">No transfer of any portion of the Shares comprised in this</td></tr>

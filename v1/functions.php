@@ -920,8 +920,7 @@ function certificateForSHolderCSealPdf($html_content, $pdf_name, $output_type = 
 /**
  * 09-01.
  */
-function certificateForSHolderPdf($html_content, $pdf_name, $author_name, $subject_suffix, $output_type = 'I')
-{
+function certificateForSHolderPdf($html_content, $pdf_name, $output_type = 'I') {
     // $html_template = [
     //   '#theme' => 'tcpdf_09_01_certification_for_shareholder',
     //   '#datas' => DocumentWrapper::certificationForShareholder($company, $officer),

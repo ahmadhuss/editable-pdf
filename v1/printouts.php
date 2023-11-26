@@ -118,7 +118,7 @@ function generateDocument($group_id, $document_id, $data, $htmlContentPage, $pdf
             if ($doc_id == '00') {
                 $pdf = certificateForSHolderCSealPdf($htmlContentPage, $pdfFilename);
             } elseif ($doc_id == '01') {
-                $pdf = certificateForSHolderPdf($node, $officers[$docs_ids[2]], $type);
+                $pdf = certificateForSHolderPdf($htmlContentPage, $pdfFilename);
             }
             break;
 
@@ -227,8 +227,8 @@ function generateDocument($group_id, $document_id, $data, $htmlContentPage, $pdf
         case 34:
             // $officers = $node->get('field_director_shareholder')
             //   ->referencedEntities();
-            if ($group_id == '34a') {
-                $pdf = drAllotmentOfShares($node, $officers[$doc_id], $type);
+            if ($doc_id == '01') {
+                $pdf = drAllotmentOfShares($htmlContentPage, $pdfFilename);
             } else {
                 $pdf = drTransferOfShares($node, $officers[$doc_id], $type);
             }
@@ -246,7 +246,7 @@ function generateDocument($group_id, $document_id, $data, $htmlContentPage, $pdf
             if ($doc_id == '00') {
                 $pdf = drWritingOffOfInvestment($node, $type);
             } elseif ($doc_id == '01') {
-                $pdf = drStrikingOff($node, $type);
+                $pdf = drStrikingOff($htmlContentPage, $pdfFilename);
             } else {
                 $pdf = drDivestment($node, $type);
             }
@@ -306,18 +306,21 @@ $request = Request::createFromGlobals();
 if ($request->isMethod('POST')) {
     // Get the raw JSON content from the request
     $json = $request->getContent();
+
     // Decode the JSON data
     $content = json_decode($json, true);
+    $final_content = json_decode($content, true);
+
     // Check if the JSON decoding was successful
-    if (json_last_error() === JSON_ERROR_NONE) {
+    // if (json_last_error() === JSON_ERROR_NONE) {
         // Access individual parameters
-        $templateName = $content['template_name'];
-        $groupId = $content['group_id'];
-        $documentId = $content['document_id'];
+        $templateName = $final_content['template_name'];
+        $groupId = $final_content['group_id'];
+        $documentId = $final_content['document_id'];
 
         $data = [
-            'app' => $content["app"] ?? null,
-            'officer' => $content["officer"] ?? null
+            'app' => $final_content["app"] ?? null,
+            'officer' => $final_content["officer"] ?? null
         ];
 
         // Load Twig
@@ -345,14 +348,14 @@ if ($request->isMethod('POST')) {
 
         // Optionally, remove the file after sending
         // $response->deleteFileAfterSend(true);
-    } else {
-        // Handle JSON decoding error
-        $errorMessage = 'Error decoding JSON: ' . json_last_error_msg();
-        // Return an error response
-        $response = new Response($errorMessage, Response::HTTP_BAD_REQUEST);
-        // Return the response
-        return $response;
-    }
+    // } else {
+    //     // Handle JSON decoding error
+    //     $errorMessage = 'Error decoding JSON: ' . json_last_error_msg();
+    //     // Return an error response
+    //     $response = new Response($errorMessage, Response::HTTP_BAD_REQUEST);
+    //     // Return the response
+    //     return $response;
+    // }
 } else {
     $response = new Response('Invalid request method', Response::HTTP_BAD_REQUEST);
 }
