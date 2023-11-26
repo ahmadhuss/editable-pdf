@@ -73,7 +73,7 @@
               <br/><br/>
               Country of Incorporation: {{ officer.country_birth }}<br/><br/>
               Registration No:
-              {{ if officer.id_number or app.uen }}
+              {{ officer.id_number or app.uen }}
               <br/><br/>
               Date of Incorporation: {{ officer.dob }}<br/><br/>
               Date appointed as registrable controller: {{ officer.date_appointed }}<br/><br/>
