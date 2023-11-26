@@ -161,11 +161,11 @@ function generateDocument($group_id, $document_id, $data, $htmlContentPage, $pdf
             } elseif ($doc_id == '26') {
                 $pdf = certificateOfCorporateSealPdf($htmlContentPage , $pdfFilename);
             } elseif ($doc_id == '27') {
-                $pdf = changeOfRegisteredOfficeAddressPdf($node, $doc_id, $type);
+                $pdf = changeOfRegisteredOfficeAddressPdf($htmlContentPage , $pdfFilename);
             } elseif ($doc_id == '28') {
-                $pdf = changeOfRegisteredOfficeAddressPdf($node, $doc_id, $type);
+                $pdf = changeOfRegisteredOfficeAddressPdf($htmlContentPage , $pdfFilename);
             } elseif ($doc_id == '29') {
-                $pdf = changeOfRegisteredOfficeAddressPdf($node, $doc_id, $type);
+                $pdf = changeOfRegisteredOfficeAddressPdf($htmlContentPage , $pdfFilename);
             }
             break;
 
@@ -221,7 +221,7 @@ function generateDocument($group_id, $document_id, $data, $htmlContentPage, $pdf
             if ($group_id == '33' && $doc_id == '04') {
                 $pdf = agmPdf04($htmlContentPage , $pdfFilename);
             } else {
-                $pdf = agmPdf($node, $doc_id, $type);
+                $pdf = agmPdf($htmlContentPage , $pdfFilename);
             }
             break;
         case 34:
