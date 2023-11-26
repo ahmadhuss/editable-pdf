@@ -67,59 +67,59 @@
     </tr>
     <tr>
       <td class="ftd">Name of entity</td>
-      <td class="std"> {{ officer.full_name or "" }}</td>
+      <td class="std"> {{ officer.full_name }}</td>
       <td class="ttd">Incorporation/ registration number</td>
-      <td class="fotd"> {{ officer.id_number or "" }}</td>
+      <td class="fotd"> {{ officer.id_number }}</td>
     </tr>
     <tr>
       <td class="ftd">Address (residential/ place of business/ registered office)</td>
-      <td colspan="3" class="bd"> {{ officer.address_1 or "" }} {{ officer.address_2 or "" }} {{ officer.postal_code or "" }}</td>
+      <td colspan="3" class="bd"> {{ officer.address_1 }} {{ officer.address_2 }} {{ officer.postal_code }}</td>
     </tr>
     <tr>
       <td class="ftd">Place of registration/ incorporation</td>
-      <td colspan="3" class="bd"> {{ officer.country_birth or "" }}</td>
+      <td colspan="3" class="bd"> {{ officer.country_birth }}</td>
     </tr>
     <tr>
       <td class="ftd">Date of registration/ incorporation</td>
-      <td colspan="3" class="bd"> {{ officer.dob or "" }}</td>
+      <td colspan="3" class="bd"> {{ officer.dob }}</td>
     </tr>
     <tr>
       <td class="ftd">Contact number</td>
-      <td colspan="3" class="bd"> {{ officer.mobile or "" }}</td>
+      <td colspan="3" class="bd"> {{ officer.mobile }}</td>
     </tr>
     <tr>
       <td class="ftd">Intended nature and purpose of business relationship</td>
-      <td colspan="3" class="bd">{{ app.pri_activity or "" }}<br/>{{ sec.pri_activity or "" }}</td>
+      <td colspan="3" class="bd">{{ app.pri_activity }}<br/>{{ sec.pri_activity }}</td>
     </tr>
   {% else %}
     <tr>
       <td class="ftd">Full name (including any alias)</td>
-      <td class="std"> {{ officer.full_name or "" }}</td>
+      <td class="std"> {{ officer.full_name }}</td>
       <td class="ttd">Unique identification number</td>
-      <td class="fotd"> {{ officer.id_type or "" }}: {{ officer.id_number or "" }}</td>
+      <td class="fotd"> {{ officer.id_type }}: {{ officer.id_number }}</td>
     </tr>
     <tr>
       <td class="ftd">Address (residential/ place of business/ registered office)</td>
       <td colspan="3" class="bd"><p
-          style="padding-left: 3px;"> {{ officer.address_1 or "" }} {{ officer.address_2 or "" }} {{ officer.postal_code or "" }}</p>
+          style="padding-left: 3px;"> {{ officer.address_1 }} {{ officer.address_2 }} {{ officer.postal_code }}</p>
       </td>
     </tr>
     <tr>
       <td class="ftd">Date of birth</td>
-      <td colspan="3" class="bd"> {{ officer.dob or "" }}</td>
+      <td colspan="3" class="bd"> {{ officer.dob }}</td>
     </tr>
     <tr>
       <td class="ftd">Nationality</td>
-      <td colspan="3" class="bd"> {{ officer.nationality or "" }}</td>
+      <td colspan="3" class="bd"> {{ officer.nationality }}</td>
     </tr>
     <tr>
       <td class="ftd">Contact number</td>
-      <td colspan="3" class="bd"> {{ officer.mobile or "" }}</td>
+      <td colspan="3" class="bd"> {{ officer.mobile }}</td>
     </tr>
     <tr>
       <td class="ftd">Intended nature and purpose of business relationship</td>
       <td colspan="3"
-          class="bd">{{ app.pri_activity or "" }}<br/>{{ sec.pri_activity or "" }}</td>
+          class="bd">{{ app.pri_activity }}<br/>{{ sec.pri_activity }}</td>
     </tr>
     <!------------------------------------------------------------------------------------------>
     <tr>
@@ -159,16 +159,16 @@
   </tr>
   <tr>
     <td class="ftd">Proposed name of entity</td>
-    <td colspan="3" class="bd"> {{ app.company_name or "" }} {{ app.company_type or "" }}</td>
+    <td colspan="3" class="bd"> {{ app.company_name }} {{ app.company_type }}</td>
   </tr>
   <tr>
     <td class="ftd">Entity type</td>
-    <td colspan="3" class="bd"> {{ app.incorporate_type or "" }}</td>
+    <td colspan="3" class="bd"> {{ app.incorporate_type }}</td>
   </tr>
   <tr>
     <td class="ftd">Proposed registered office address/ address of place of business</td>
     <td colspan="3"
-        class="bd"> {{ app.address_1 or "" }} {{ app.address_2 or "" }} {{ app.postcode or "" }}</td>
+        class="bd"> {{ app.address_1 }} {{ app.address_2 }} {{ app.postcode }}</td>
   </tr>
   <tr>
     <td class="ftd">Proposed place of registration/ incorporation</td>
@@ -177,11 +177,11 @@
   <tr>
     <td class="ftd">Proposed date of registration/ incorporation</td>
     <td colspan="3"
-        class="bd">{{ app.effect_date or "" }}</td>
+        class="bd">{{ app.effect_date }}</td>
   </tr>
   <tr>
     <td class="ftd">Intended nature and purpose of business relationship</td>
-    <td colspan="3" class="bd">{{ app.pri_activity or "" }}<br/>{{ sec.pri_activity or "" }}</td>
+    <td colspan="3" class="bd">{{ app.pri_activity }}<br/>{{ sec.pri_activity }}</td>
   </tr>
   <!------------------------------------------------------------------------------------------>
   <tr>
@@ -243,7 +243,7 @@
 <table cellpadding="3px">
   <tr>
     <td class="ftd">Information of sole proprietor/ director / partner (1)</td>
-    <td class="bd" width="70%"> {{ officer.full_name or "" }}</td>
+    <td class="bd" width="70%"> {{ officer.full_name }}</td>
   </tr>
   <tr>
     <td class="ftd">Information of sole proprietor/ director / partner (2)</td>
@@ -276,36 +276,36 @@
   <tr>
     <td class="ftd">Full name (including any alias)</td>
     <td class="std">
-{#      {{ officer.full_name or "" }}#}
+{#      {{ officer.full_name }}#}
     </td>
     <td class="ttd">Unique identification number</td>
     <td class="fotd">
-{#      {{ officer.id_type or "" }} {{ officer.id_number or "" }}#}
+{#      {{ officer.id_type }} {{ officer.id_number }}#}
     </td>
   </tr>
   <tr>
     <td class="ftd">Address (residential/ place of business/ registered office)</td>
     <td colspan="3"
         class="bd">
-{#      {{ officer.address_1 or "" }} {{ officer.address_2 or "" }} {{ officer.postal_code or "" }}#}
+{#      {{ officer.address_1 }} {{ officer.address_2 }} {{ officer.postal_code }}#}
     </td>
   </tr>
   <tr>
     <td class="ftd">Date of birth</td>
     <td colspan="3" class="bd">
-{#      {{ officer.dob or "" }}#}
+{#      {{ officer.dob }}#}
     </td>
   </tr>
   <tr>
     <td class="ftd">Nationality</td>
     <td colspan="3" class="bd">
-{#      {{ officer.nationality or "" }}#}
+{#      {{ officer.nationality }}#}
     </td>
   </tr>
   <tr>
     <td class="ftd">Contact number</td>
     <td colspan="3" class="bd">
-{#      {{ officer.mobile or "" }}#}
+{#      {{ officer.mobile }}#}
     </td>
   </tr>
   <tr>
@@ -388,20 +388,20 @@
 <table cellpadding="3px">
   <tr>
     <td class="ftd">Name of customer/ agent</td>
-    <td class="bd" width="40%"> {{ officer.full_name or "" }}</td>
+    <td class="bd" width="40%"> {{ officer.full_name }}</td>
   </tr>
   <tr>
     <td class="ftd">Unique identification number</td>
-    <td class="bd" width="40%"> {{ officer.id_type or "" }} {{ officer.id_number or "" }}</td>
+    <td class="bd" width="40%"> {{ officer.id_type }} {{ officer.id_number }}</td>
   </tr>
   <tr>
     <td class="ftd">Date</td>
-{#    <td class="bd" width="40%">{{ app.effect_date or "" }}</td>#}
+{#    <td class="bd" width="40%">{{ app.effect_date }}</td>#}
     <td class="bd" width="40%"></td>
   </tr>
   <tr>
     <td class="ftd">Signature<br/><br/><br/><br/><br/></td>
-    <td class="bd" width="40%"><br/><br/><p></p><span style="text-align:center; color: white; font-size: 1px">{{ officer.signature or "" }}
+    <td class="bd" width="40%"><br/><br/><p></p><span style="text-align:center; color: white; font-size: 1px">{{ officer.signature }}
       _______________________________________________________________________________________________________________________</span></td>
   </tr>
 </table>
@@ -518,20 +518,20 @@
 <table cellpadding="3px">
   <tr>
     <td class="ftd">Name of customer/ agent</td>
-    <td class="bd" width="40%"> {{ officer.full_name or "" }}</td>
+    <td class="bd" width="40%"> {{ officer.full_name }}</td>
   </tr>
   <tr>
     <td class="ftd">Unique identification number</td>
-    <td class="bd" width="40%"> {{ officer.id_type or "" }} {{ officer.id_number or "" }}</td>
+    <td class="bd" width="40%"> {{ officer.id_type }} {{ officer.id_number }}</td>
   </tr>
   <tr>
     <td class="ftd">Date</td>
-{#    <td class="bd" width="40%">{{ app.effect_date or "" }}</td>#}
+{#    <td class="bd" width="40%">{{ app.effect_date }}</td>#}
     <td class="bd" width="40%"></td>
   </tr>
   <tr>
     <td class="ftd">Signature<br/><br/><br/><br/><br/></td>
-    <td class="bd" width="40%"><br/><br/><p></p><span style="text-align:center; color: white; font-size: 1px">{{ officer.signature or "" }}
+    <td class="bd" width="40%"><br/><br/><p></p><span style="text-align:center; color: white; font-size: 1px">{{ officer.signature }}
       _______________________________________________________________________________________________________________________</span></td>
   </tr>
 </table>

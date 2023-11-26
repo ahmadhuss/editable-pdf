@@ -6,8 +6,8 @@
         <div style="width:100%; height:10px;"></div>
         <table>
           <tr>
-            <td style="text-align:left;font-size:11px; font-weight: bold;">Name of Company:&nbsp;&nbsp;&nbsp;&nbsp;{{ app.company_name or "" }} {{ app.company_type or "" }}</td>
-            <td style="text-align:right;font-size:11px;">Page {{ loop.index or "" }}</td>
+            <td style="text-align:left;font-size:11px; font-weight: bold;">Name of Company:&nbsp;&nbsp;&nbsp;&nbsp;{{ app.company_name }} {{ app.company_type }}</td>
+            <td style="text-align:right;font-size:11px;">Page {{ loop.index }}</td>
           </tr>
         </table>
         <div style="width:100%; height:5px;"></div>
@@ -26,20 +26,20 @@
           {% if app.officers_secretaries %}
             {% for office in app.officers_secretaries %}
               <tr style="font-size: 11px">
-                <td class="tl" width="20%" style="text-align:left;border: 1px solid #111;">{{ office.full_name or "" }}</td>
-                <td class="tl" width="35%" style="border: 1px solid #111">{{ office.address_1 or "" }}</td>
-                <td class="tl" width="10%" style="text-align:center; border: 1px solid #111">{{ office.id_number or "" }}</td>
-                <td class="tl" width="15%" style="text-align:center; border: 1px solid #111">{{ office.nationality or "" }}</td>
+                <td class="tl" width="20%" style="text-align:left;border: 1px solid #111;">{{ office.full_name }}</td>
+                <td class="tl" width="35%" style="border: 1px solid #111">{{ office.address_1 }}</td>
+                <td class="tl" width="10%" style="text-align:center; border: 1px solid #111">{{ office.id_number }}</td>
+                <td class="tl" width="15%" style="text-align:center; border: 1px solid #111">{{ office.nationality }}</td>
                 <td class="tl" width="10%" style="text-align:center; border: 1px solid #111">
-                  {{ office.date_appointed or "" }}
+                  {{ office.date_appointed }}
                 </td>
                 <td class="tl" width="10%" style="text-align:center; border: 1px solid #111">
-                    {{ office.date_ceased or "" }}
+                    {{ office.date_ceased }}
                 </td>
               </tr>
               <tr style="font-size: 11px">
                 <td class="tl" style="border: 1px solid #111"></td>
-                <td class="tl" style="border: 1px solid #111">{{ office.address_2 or "" }} {% if office.postal_code %}({{ office.postal_code or "" }}){% endif %}</td>
+                <td class="tl" style="border: 1px solid #111">{{ office.address_2 }} {% if office.postal_code %}({{ office.postal_code }}){% endif %}</td>
                 <td class="tl" style="border: 1px solid #111"></td>
                 <td class="tl" style="border: 1px solid #111"></td>
                 <td class="tl" style="border: 1px solid #111"></td>
@@ -78,20 +78,20 @@
           {% if officers_secretaries %}
             {% for office in officers_secretaries %}
               <tr style="font-size: 11px">
-                <td class="tl" width="20%" style="text-align:left;border: 1px solid #111;">{{ office.full_name or "" }}</td>
-                <td class="tl" width="35%" style="border: 1px solid #111">{{ office.address_1 or "" }}</td>
-                <td class="tl" width="10%" style="text-align:center; border: 1px solid #111">{{ office.id_number or "" }}</td>
-                <td class="tl" width="15%" style="text-align:center; border: 1px solid #111">{{ office.nationality or "" }}</td>
+                <td class="tl" width="20%" style="text-align:left;border: 1px solid #111;">{{ office.full_name }}</td>
+                <td class="tl" width="35%" style="border: 1px solid #111">{{ office.address_1 }}</td>
+                <td class="tl" width="10%" style="text-align:center; border: 1px solid #111">{{ office.id_number }}</td>
+                <td class="tl" width="15%" style="text-align:center; border: 1px solid #111">{{ office.nationality }}</td>
                 <td class="tl" width="10%" style="text-align:center; border: 1px solid #111">
-                  {{ office.date_appointed or "" }}
+                  {{ office.date_appointed }}
                 </td>
                 <td class="tl" width="10%" style="text-align:center; border: 1px solid #111">
-                  {{ office.date_ceased or "" }}
+                  {{ office.date_ceased }}
                 </td>
               </tr>
               <tr style="font-size: 11px">
                 <td class="tl" style="border: 1px solid #111"></td>
-                <td class="tl" style="border: 1px solid #111">{{ office.address_2 or "" }} {% if office.postal_code %}({{ office.postal_code or "" }}){% endif %}</td>
+                <td class="tl" style="border: 1px solid #111">{{ office.address_2 }} {% if office.postal_code %}({{ office.postal_code }}){% endif %}</td>
                 <td class="tl" style="border: 1px solid #111"></td>
                 <td class="tl" style="border: 1px solid #111"></td>
                 <td class="tl" style="border: 1px solid #111"></td>

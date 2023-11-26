@@ -2,9 +2,9 @@
 <body>
 {#		<div style="width:100%; height:10px;"></div>#}
 <div>
-		<h1 style="width:100%;text-align:center;">{{ app.company_name or "" }} {{ app.company_type or "" }}   </h1>
+		<h1 style="width:100%;text-align:center;">{{ app.company_name }} {{ app.company_type }}   </h1>
 		<div style="width:100%;text-align:center;font-size:14px;">
-			(Company Registration Number: {{ app.uen or "" }})<br/>
+			(Company Registration Number: {{ app.uen }})<br/>
 			(Incorporated in the Republic of Singapore)
 		</div>
 
@@ -29,7 +29,7 @@
 					<p style="margin-left: 40px; margin-right: 0px">Company Name: <br/></p>
 				</td>
 				<td width="75%">
-					<p style="margin-left: 40px; margin-right: 0px">{{app.company_name or ""}} {{ app.company_type or "" }}</p>
+					<p style="margin-left: 40px; margin-right: 0px">{{app.company_name}} {{ app.company_type }}</p>
 				</td>
 
 			</tr>
@@ -39,7 +39,7 @@
 				</td>
 				<td width="75%">
 					<p style="margin-left: 40px; margin-right: 0px">
-						{{ app.uen or "" }}  <br/>
+						{{ app.uen }}  <br/>
 					</p>
 				</td>
 			</tr>
@@ -49,7 +49,7 @@
 				</td>
 				<td width="75%">
 					<p style="margin-left: 40px; margin-right: 0px">
-						{{ app.addr_1 or "" }} {{ app.addr_2 or "" }} {{ app.postcode or "" }}
+						{{ app.addr_1 }} {{ app.addr_2 }} {{ app.postcode }}
 					</p>
 				</td>
 			</tr>
@@ -59,27 +59,27 @@
 		<table border="1" width="100%" style="padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px;">
 			<tr>
 				<td class="tl" width="40%" height="40" valign="absmiddle">  1. Name in full</td>
-				<td class="tl" width="60%" height="40" valign="absmiddle"><b>{{officer.full_name or ""}}</b></td>
+				<td class="tl" width="60%" height="40" valign="absmiddle"><b>{{officer.full_name}}</b></td>
 			</tr>
 			<tr>
 				<td class="tl" width="40%" height="40">  2. Date / Country of Birth</td>
-				<td class="tl" width="60%" height="40">{{officer.dob or ""}} / {{ officer.country_birth or "" }}</td>
+				<td class="tl" width="60%" height="40">{{officer.dob}} / {{ officer.country_birth }}</td>
 			</tr>
 			<tr>
 				<td class="tl" width="40%" height="40">  3. Nationality / Citizenship</td>
-				<td class="tl" width="60%" height="40">{{ officer.nationality or "" }}</td>
+				<td class="tl" width="60%" height="40">{{ officer.nationality }}</td>
 			</tr>
 			<tr>
 				<td class="tl" width="40%" height="20"  style="line-height:120%;word-wrap:break-word">  4. Type of ID ({{officer.id_type}})</td>
-				<td class="tl" width="60%" height="20">{{officer.id_type or ""}} {{officer.id_number or ""}}</td>
+				<td class="tl" width="60%" height="20">{{officer.id_type}} {{officer.id_number}}</td>
 			</tr>
 			<tr>
 				<td class="tl" width="40%" height="40">  5. Business Occupation</td>
-				<td class="tl" width="60%" height="40">{{officer.designation or ""}}</td>
+				<td class="tl" width="60%" height="40">{{officer.designation}}</td>
 			</tr>
 			<tr>
 				<td class="tl" width="40%" height="40">  6. Residential Address</td>
-				<td class="tl" width="60%" height="40" style="line-height:16px;word-wrap:break-word">{{officer.address_1 or ""}} {{officer.address_2 or ""}} {{officer.postal_code or ""}}</td>
+				<td class="tl" width="60%" height="40" style="line-height:16px;word-wrap:break-word">{{officer.address_1}} {{officer.address_2}} {{officer.postal_code}}</td>
 			</tr>
 		</table>
 	</div>
@@ -99,7 +99,7 @@
 		 </tr>
 		 <tr><td height="5"></td></tr>
 		 <tr>
-		 	<td class="tl" width="50%" height="20" align="right">  Name of {{officer.designation or ""}}: </td>
+		 	<td class="tl" width="50%" height="20" align="right">  Name of {{officer.designation}}: </td>
 		 	<td class="tl" width="50%" height="20" align="left" style="border-bottom: solid 1px #000000;"> &nbsp; &nbsp;  () </td>
 {#		 	<td class="tl" width="50%" height="20" align="left" style="border-bottom: solid 1px #000000;"> &nbsp; &nbsp; '.$DIRECTOR_FULL_NAME[2].' ('.$DIRECTOR_ID_NO[2].') </td>#}
 		 </tr>
