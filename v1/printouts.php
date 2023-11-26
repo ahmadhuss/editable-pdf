@@ -170,7 +170,7 @@ function generateDocument($group_id, $document_id, $data, $htmlContentPage, $pdf
             break;
 
         case '29A':
-            $pdf = noticeForControllerAPdf($node, $type);
+            $pdf = noticeForControllerAPdf($htmlContentPage , $pdfFilename);
             break;
 
         case '13BI':
