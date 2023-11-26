@@ -48,19 +48,19 @@ function generateDocument($group_id, $document_id, $data, $htmlContentPage, $pdf
         case '3':
             // $officers = $node->get('field_director_shareholder')
             //   ->referencedEntities();
-            $pdf = formDirectorParticularPdf($node, $officers[$doc_id], $type);
+            $pdf = formDirectorParticularPdf($htmlContentPage , $pdfFilename);
             break;
 
         case '03S':
             // $officers = $node->get('field_director_shareholder')
             //   ->referencedEntities();
-            $pdf = formShareholderParticularPdf($node, $officers[$doc_id], $type);
+            $pdf = formShareholderParticularPdf($htmlContentPage , $pdfFilename);
             break;
 
         case '03C':
             // $officers = $node->get('field_director_shareholder')
             //   ->referencedEntities();
-            $pdf = formCompanyParticularPdf($node, $officers[$doc_id], $type);
+            $pdf = formCompanyParticularPdf($htmlContentPage , $pdfFilename);
             break;
 
         case 4:
@@ -70,7 +70,7 @@ function generateDocument($group_id, $document_id, $data, $htmlContentPage, $pdf
                 $pdf = serviceIndemnityAgreementSFA($node, $docs_ids[2], $group_id, $type);
                 break;
             } else {
-                $pdf = form45Pdf($node, $officers[$doc_id], $type);
+                $pdf = form45Pdf($htmlContentPage , $pdfFilename);
                 break;
             }
         case 5:
@@ -109,7 +109,7 @@ function generateDocument($group_id, $document_id, $data, $htmlContentPage, $pdf
         case 8:
             // $officers = $node->get('field_director_shareholder')
             //   ->referencedEntities();
-            $pdf = form45BPdf($node, $officers[$doc_id], $type);
+            $pdf = form45BPdf($htmlContentPage , $pdfFilename);
             break;
 
         case 9:
@@ -125,26 +125,26 @@ function generateDocument($group_id, $document_id, $data, $htmlContentPage, $pdf
         case 10:
             // $officers = $node->get('field_director_shareholder')
             //   ->referencedEntities();
-            $pdf = changeOfOfficeAddressPdf($node, $officers[$doc_id], $type);
+            $pdf = changeOfOfficeAddressPdf($htmlContentPage , $pdfFilename);
             break;
 
         case '30':
             // $officers = $node->get('field_director_shareholder')
             //   ->referencedEntities();
-            $pdf = customerAcceptancePdf($node, $officers[$doc_id], $type);
+            $pdf = customerAcceptancePdf($htmlContentPage , $pdfFilename);
             break;
 
         case '30S':
             // $officers = $node->get('field_director_shareholder')
             //   ->referencedEntities();
-            $pdf = customerAcceptanceShareholderPdf($node, $officers[$doc_id], $type);
+            $pdf = customerAcceptanceShareholderPdf($htmlContentPage , $pdfFilename);
             break;
 
         case '30f':
         case '30Sf':
             // $officers = $node->get('field_director_shareholder')
             //   ->referencedEntities();
-            $pdf = customerAcceptanceLimitedByGuaranteePdf($node, $officers[$doc_id], $type);
+            $pdf = customerAcceptanceLimitedByGuaranteePdf($htmlContentPage , $pdfFilename);
             break;
 
         case 12:
@@ -176,31 +176,31 @@ function generateDocument($group_id, $document_id, $data, $htmlContentPage, $pdf
         case '13BI':
             // $officers = $node->get('field_director_shareholder')
             //   ->referencedEntities();
-            $pdf = annexBIPdf($node, $officers[$doc_id], $type);
+            $pdf = annexBIPdf($htmlContentPage , $pdfFilename);
             break;
 
         case '13BE':
             // $officers = $node->get('field_director_shareholder')
             //   ->referencedEntities();
-            $pdf = annexBEPdf($node, $officers[$doc_id], $type);
+            $pdf = annexBEPdf($htmlContentPage , $pdfFilename);
             break;
 
         case '13BIS':
             // $officers = $node->get('field_director_shareholder')
             //   ->referencedEntities();
-            $pdf = annexBISPdf($node, $officers[$doc_id], $type);
+            $pdf = annexBISPdf($htmlContentPage , $pdfFilename);
             break;
 
         case '13BES':
             // $officers = $node->get('field_director_shareholder')
             //   ->referencedEntities();
-            $pdf = annexBeSPdf($node, $officers[$doc_id], $type);
+            $pdf = annexBeSPdf($htmlContentPage , $pdfFilename);
             break;
 
         case 28:
             // $officers = $node->get('field_director_shareholder')
             //   ->referencedEntities();
-            $pdf = certificateOfEmployment($node, $officers[$doc_id], $type);
+            $pdf = certificateOfEmployment($htmlContentPage , $pdfFilename);
             break;
         case 31:
             if ($doc_id == 'S') {
@@ -230,16 +230,16 @@ function generateDocument($group_id, $document_id, $data, $htmlContentPage, $pdf
             if ($doc_id == '01') {
                 $pdf = drAllotmentOfShares($htmlContentPage, $pdfFilename);
             } else {
-                $pdf = drTransferOfShares($node, $officers[$doc_id], $type);
+                $pdf = drTransferOfShares($htmlContentPage , $pdfFilename);
             }
             break;
         case 35:
             // $officers = $node->get('field_director_shareholder')
             //   ->referencedEntities();
             if ($group_id == '35i') {
-                $pdf = interimDividends($node, $officers[$doc_id], $type);
+                $pdf = interimDividends($htmlContentPage , $pdfFilename);
             } else {
-                $pdf = dividendsStatement($node, $officers[$doc_id], $type);
+                $pdf = dividendsStatement($htmlContentPage , $pdfFilename);
             }
             break;
         case 36:
@@ -281,7 +281,7 @@ function generateDocument($group_id, $document_id, $data, $htmlContentPage, $pdf
         case 45:
             // $officers = $node->get('field_director_shareholder')
             //   ->referencedEntities();
-            $pdf = registerOfMembers($node, $officers[$doc_id], $type);
+            $pdf = registerOfMembers($htmlContentPage , $pdfFilename);
             break;
         case 46:
             if ($doc_id == 01) {
