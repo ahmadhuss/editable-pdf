@@ -39,9 +39,9 @@ function generateDocument($group_id, $document_id, $data, $htmlContentPage, $pdf
 
         case 2:
             if ($doc_id == '00') {
-                $pdf = directorResolutionForIncorporationPdf($node, $type);
+                $pdf = directorResolutionForIncorporationPdf($htmlContentPage , $pdfFilename);
             } elseif ($doc_id == '01') {
-                $pdf = directorResolutionLimitedByGuaranteePdf($node, $type);
+                $pdf = directorResolutionLimitedByGuaranteePdf($htmlContentPage , $pdfFilename);
             }
             break;
 
@@ -97,7 +97,7 @@ function generateDocument($group_id, $document_id, $data, $htmlContentPage, $pdf
                 break;
             }
         case 6:
-            $pdf = allotmentOfShareForm24Pdf($node, $type);
+            $pdf = allotmentOfShareForm24Pdf($htmlContentPage , $pdfFilename);
             break;
 
         case 7:
@@ -149,17 +149,17 @@ function generateDocument($group_id, $document_id, $data, $htmlContentPage, $pdf
 
         case 12:
             if ($doc_id == '21') {
-                $pdf = terminationOfCorporateSecretarialServicesPdf($node, $type);
+                $pdf = terminationOfCorporateSecretarialServicesPdf($htmlContentPage , $pdfFilename);
             } elseif ($doc_id == '22') {
-                $pdf = resignationsAndAppointmentOfCompanySecretaryPdf($node, $type);
+                $pdf = resignationsAndAppointmentOfCompanySecretaryPdf($htmlContentPage , $pdfFilename);
             } elseif ($doc_id == '23') {
-                $pdf = changeOfFinancialYearPdf($node, $type);
+                $pdf = changeOfFinancialYearPdf($htmlContentPage , $pdfFilename);
             } elseif ($doc_id == '24') {
-                $pdf = changeOfCompanyNamePdf($node, $type);
+                $pdf = changeOfCompanyNamePdf($htmlContentPage , $pdfFilename);
             } elseif ($doc_id == '25') {
-                $pdf = changeOfBusinessActivityPdf($node, $type);
+                $pdf = changeOfBusinessActivityPdf($htmlContentPage , $pdfFilename);
             } elseif ($doc_id == '26') {
-                $pdf = certificateOfCorporateSealPdf($node, $type);
+                $pdf = certificateOfCorporateSealPdf($htmlContentPage , $pdfFilename);
             } elseif ($doc_id == '27') {
                 $pdf = changeOfRegisteredOfficeAddressPdf($node, $doc_id, $type);
             } elseif ($doc_id == '28') {
@@ -208,9 +208,9 @@ function generateDocument($group_id, $document_id, $data, $htmlContentPage, $pdf
                 //   $officer = $officers[$docs_ids[2]] ?? null;
                 $pdf = registrationOfNomineeShareholder($node, $officer, $type);
             } else if ($doc_id == 'S20') {
-                $pdf = confirmationLetter($node, $type);
+                $pdf = confirmationLetter($htmlContentPage , $pdfFilename);
             } else if ($doc_id == 'S20B') {
-                $pdf = confirmationLetterWithBlanks($node, $type);
+                $pdf = confirmationLetterWithBlanks($htmlContentPage , $pdfFilename);
             } else {
                 $officers = $node->get('field_director_shareholder')->referencedEntities();
                 $pdf = registrationOfNomineeDirector($node, $officers[$docs_ids[1]], $type);
@@ -219,7 +219,7 @@ function generateDocument($group_id, $document_id, $data, $htmlContentPage, $pdf
 
         case 33:
             if ($group_id == '33' && $doc_id == '04') {
-                $pdf = agmPdf04($node, $type);
+                $pdf = agmPdf04($htmlContentPage , $pdfFilename);
             } else {
                 $pdf = agmPdf($node, $doc_id, $type);
             }
@@ -244,11 +244,11 @@ function generateDocument($group_id, $document_id, $data, $htmlContentPage, $pdf
             break;
         case 36:
             if ($doc_id == '00') {
-                $pdf = drWritingOffOfInvestment($node, $type);
+                $pdf = drWritingOffOfInvestment($htmlContentPage , $pdfFilename);
             } elseif ($doc_id == '01') {
                 $pdf = drStrikingOff($htmlContentPage, $pdfFilename);
             } else {
-                $pdf = drDivestment($node, $type);
+                $pdf = drDivestment($htmlContentPage , $pdfFilename);
             }
             break;
         case 40:
@@ -257,26 +257,26 @@ function generateDocument($group_id, $document_id, $data, $htmlContentPage, $pdf
             if ($doc_id == '00') {
                 $pdf = changeOfDirectors($node, $officers[$docs_ids[2]], $type);
             } elseif ($doc_id == '01') {
-                $pdf = drChangeOfDirectors($node, $type);
+                $pdf = drChangeOfDirectors($htmlContentPage , $pdfFilename);
             } elseif ($doc_id == '02') {
-                $pdf = form45ChangeOfDirectors($node, $type);
+                $pdf = form45ChangeOfDirectors($htmlContentPage , $pdfFilename);
             } elseif ($doc_id == '03') {
-                $pdf = formParticularChangeOfDirectors($node, $type);
+                $pdf = formParticularChangeOfDirectors($htmlContentPage , $pdfFilename);
             } else {
-                $pdf = resignationChangeOfDirectors($node, $type);
+                $pdf = resignationChangeOfDirectors($htmlContentPage , $pdfFilename);
             }
             break;
         case 41:
-            $pdf = registerOfDirectors($node, $type);
+            $pdf = registerOfDirectors($htmlContentPage , $pdfFilename);
             break;
         case 42:
-            $pdf = registerOfSecretaries($node, $type);
+            $pdf = registerOfSecretaries($htmlContentPage , $pdfFilename);
             break;
         case 43:
-            $pdf = registerOfApplications($node, $type);
+            $pdf = registerOfApplications($htmlContentPage , $pdfFilename);
             break;
         case 44:
-            $pdf = registerOfTransfers($node, $type);
+            $pdf = registerOfTransfers($htmlContentPage , $pdfFilename);
             break;
         case 45:
             // $officers = $node->get('field_director_shareholder')
@@ -285,11 +285,11 @@ function generateDocument($group_id, $document_id, $data, $htmlContentPage, $pdf
             break;
         case 46:
             if ($doc_id == 01) {
-                $pdf = appointmentOfAuditors($node, $type);
+                $pdf = appointmentOfAuditors($htmlContentPage , $pdfFilename);
             } elseif ($doc_id == 02) {
-                $pdf = consentToAct($node, $type);
+                $pdf = consentToAct($htmlContentPage , $pdfFilename);
             } elseif ($doc_id == 03) {
-                $pdf = engagementLetter($node, $type);
+                $pdf = engagementLetter($htmlContentPage , $pdfFilename);
             }
             break;
     }

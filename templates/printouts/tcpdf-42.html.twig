@@ -1,7 +1,6 @@
 <html>
   <body>
-    {% if app.secretaries|length > 0 %}
-      {% for secretarie in app.secretaries %}
+      {% for secretarie in app.officers_secretaries %}
         <h2 style="width:100%;text-align:center;">REGISTER OF SECRETARIES AND MANAGERS</h2>
         <div style="width:100%; height:10px;"></div>
         <table>
@@ -122,6 +121,5 @@
           <br pagebreak="true" />
         {% endif %}
       {% endfor %}
-    {% endif %}
   </body>
 </html>
