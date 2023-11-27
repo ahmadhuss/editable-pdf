@@ -160,7 +160,7 @@
             <td align="left" style="font-size:10px;">{{ value.full_name }}
                 <br>{{ value.address_1 }}
                 <br>{{ value.address_2 }} {{ value.postal_code }}</td>
-            <td align="right"><br/><br/>{{ value.field_shareholder_shares_allotte|number_format(0,'',',') }}</td>
+            <td align="right"><br/><br/>{{ value.share_details_json[0].shares_allotted|number_format(0,'',',') }}</td>
             <td style="width:10.0%; text-align:  left;font-size:13px;"></td>
         </tr>
         {% if loop.last == false %}

@@ -187,7 +187,7 @@
                 &nbsp;{{- value.postal_code -}}
             </td>
             <td align="right">
-                <br/><br/>{{ value.field_shareholder_shares_allotte|number_format(0,'',',') }}
+                <br/><br/>{{ value.share_details_json[0].shares_allotted|number_format(0,'',',') }}
             </td>
             <td align="center">
                 <br/><br/>{{ value.field_shareholder_shares_certificate_number }}
