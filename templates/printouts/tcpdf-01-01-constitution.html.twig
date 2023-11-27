@@ -82,10 +82,10 @@
             <td></td>
             <td>{{ value.full_name }}<br><br><br><br></td>
             <td></td>
-            <td style="text-align: right;">{{ value.share_details_json.shares_allotted }}</td>
+            <td style="text-align: right;">{{ value.share_details_json[0].shares_allotted }}</td>
             <td style="text-align: center">Ordinary</td>
-            {% if value.share_details_json.currency != 'SGD' %}
-                <td style="text-align: center">{{ value.share_details_json.currency }}</td>
+            {% if value.share_details_json[0].currency != 'SGD' %}
+                <td style="text-align: center">{{ value.share_details_json[0].currency }}</td>
             {% else %}
                 <td>SINGAPORE DOLLARS (SGD)</td>
             {% endif %}
