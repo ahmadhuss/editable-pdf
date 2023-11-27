@@ -81,9 +81,9 @@ function generateDocument($group_id, $document_id, $data, $htmlContentPage, $pdf
                 break;
             }
             if ($doc_id == '00') {
-                //   $officers = $node->get('field_director_shareholder')
+                //   $officers = $node->get('field_director_shareholder')$content
                 //     ->referencedEntities();
-                $pdf = serviceIndemnityAgreement1D2D($node, $officers[$docs_ids[2]], $type);
+                $pdf = serviceIndemnityAgreement1D2D($htmlContentPage , $pdfFilename);
                 break;
             }
             if ($doc_id == '1D1S') {
