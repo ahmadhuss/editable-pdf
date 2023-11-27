@@ -81,7 +81,7 @@
         <tr style="font-size:11px">
             <td></td>
             <td>{{ value.full_name }}<br><br><br><br></td>
-            <td></td>
+            <td>{{ value.designation }}</td>
             <td style="text-align: right;">{{ value.share_details_json[0].shares_allotted }}</td>
             <td style="text-align: center">Ordinary</td>
             {% if value.share_details_json[0].currency != 'SGD' %}
