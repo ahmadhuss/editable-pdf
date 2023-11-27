@@ -77,7 +77,7 @@ function generateDocument($group_id, $document_id, $data, $htmlContentPage, $pdf
             if ($doc_id == '1I1D') {
                 //   $officers = $node->get('field_director_shareholder')
                 //     ->referencedEntities();
-                $pdf = serviceIndemnityAgreementPdfTrustDeed($node, $officers[$docs_ids[2]], $type);
+                $pdf = serviceIndemnityAgreementPdfTrustDeed($htmlContentPage , $pdfFilename);
                 break;
             }
             if ($doc_id == '00') {
@@ -89,11 +89,11 @@ function generateDocument($group_id, $document_id, $data, $htmlContentPage, $pdf
             if ($doc_id == '1D1S') {
                 //   $officers = $node->get('field_director_shareholder')
                 //     ->referencedEntities();
-                $pdf = serviceIndemnityAgreement1D2S($node, $officers[$docs_ids[2]], $type);
+                $pdf = serviceIndemnityAgreement1D2S($htmlContentPage , $pdfFilename);
                 break;
             }
             if ($doc_id == 'SFA') {
-                $pdf = serviceIndemnityAgreementSFA($node, $docs_ids[2], $group_id, $type);
+                $pdf = serviceIndemnityAgreementSFA($htmlContentPage , $pdfFilename);
                 break;
             }
         case 6:
