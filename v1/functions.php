@@ -3697,6 +3697,65 @@ function registerOfMembers($html, $pdf_name, $output_type = "I")
     return $tcpdf->Output($pdf_name, $output_type);
 }
 
+function serviceIndemnityAgreementSFA($html_content, $pdf_name, $output_type = 'I'){
+
+
+    // $datas = DocumentWrapper::serviceIndemnityAgreementTrustDeed($company, $officer);
+    // $html_template = [
+    //   '#theme' => 'tcpdf_05_trust_deed',
+    //   '#datas' => $datas,
+    // ];
+    // $html = $this->renderer->render($html_template);
+
+    $helvetica = TCPDF_FONTS::addTTFfont(getcwd() . '/../Helvetica.ttf', 'TrueTypeUnicode', '', 32);
+
+
+    $tcpdf = new \TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, TRUE, 'UTF-8', FALSE);
+
+    $tcpdf->setPrintHeader(FALSE);
+    $tcpdf->setPrintFooter(FALSE);
+
+    // Set default monospaced font.
+    $tcpdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+
+    // Set margins.
+    $tcpdf->SetMargins(10, 10, 10);
+
+    $tcpdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+    $tcpdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+
+    // $author = \Drupal::currentUser()->getAccountName();
+    // $full_name = $officer->get('field_full_name')->value;
+    // $tcpdf->SetCreator($author);
+    // $tcpdf->SetAuthor($author);
+    // $tcpdf->SetTitle("TRUST DEED - " . $full_name);
+    // $tcpdf->SetSubject("TRUST DEED - " . $full_name);
+    // $tcpdf->SetKeywords("TRUST DEED - " . $full_name);
+
+    $tcpdf->addPage();
+    $tcpdf->SetFont($helvetica, '', 10);
+    $tcpdf->writeHTML($html_content, TRUE, 0, TRUE, TRUE);
+    $tcpdf->Ln();
+    $tcpdf->lastPage();
+
+    // $full_name = str_replace(' ', '_', $full_name);
+
+    // $filename = '05_TRUST_DEED--' . $full_name . '.pdf';
+
+    // if (empty($type)) {
+    //   print $tcpdf->Output($filename, 'I');
+    // }
+    // else {
+    //   $data = [
+    //     'client' => array_merge($datas['shareholder']['client'], $datas['nominee']['client'], $datas['secretary']['client']),
+    //     'title' => '05_TRUST_DEED--' . $full_name,
+    //     'pdf_string' => $tcpdf->Output($filename, $type),
+    //   ];
+    //   return $data;
+    // }
+
+    return $tcpdf->Output($pdf_name, $output_type);
+}
 // function serviceIndemnityAgreementSFA ($company, $id, $group_id, $type = NULL) {
 //   $datas = DocumentWrapper::serviceIndemnitySFA($company, $id);
 //   $template = 'tcpdf_05_service_fee_agreement';
