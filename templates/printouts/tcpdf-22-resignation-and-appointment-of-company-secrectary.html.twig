@@ -1,14 +1,14 @@
 <html>
 <body>
-<h1 style="width:100%;text-align:center;">{{ datas.title }} {{ datas.field_company_type }}</h1>
+<h1 style="width:100%;text-align:center;">{{ app.company_name }} {{ app.company_type }}</h1>
 
 <div style="width:100%;text-align:center;font-size:14px;line-height: 120%;">
-  (Company Registration Number: {{ datas.field_application_id }})
+  (Company Registration Number: {{ app.uen }})
   <br/>(Incorporated the Republic of Singapore)
 </div>
 
 <div style="width:100%;text-align:center;font-size:14px;">
-  {{ datas.field_address_line_1 }} {{ datas.field_address_line_2 }} {{ datas.field_postcode }}
+  {{ app.addr_1 }} {{ app.addr_2 }} {{ app.postal_code }}
 </div>
 
 <hr height="3"></hr>
@@ -86,7 +86,7 @@
     <td width="52">&nbsp;</td>
     <td width="530" style="text-align: justify;">
       <br/>RESOLVED that subject to
-      {% for person in datas.secretory %}
+      {% for person in app.officers_secretaries %}
         {% if loop.index < loop.length %}
           <b>{{ person.full_name }}</b> and
         {% else %}
@@ -154,7 +154,7 @@
   <tr>
     <td colspan="3" style="height:20px;"></td>
   </tr>
-  {% for director in datas.directors %}
+  {% for director in app.officers_directors %}
     {% if loop.index % 2 == 1 %}
       <tr>
       <td style="width:40%; text-align:left;font-size:14px;">

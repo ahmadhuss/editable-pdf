@@ -1,5 +1,5 @@
 <div>
-  <div style="line-height: 20px">고객인 <span style="font-family: malgunbd">{{ datas.title }} {{ datas.field_company_type }}</strong> 
+  <div style="line-height: 20px">고객인 <span style="font-family: malgunbd">{{ app.company_name }} {{ app.company_type }}</strong> 
     (이하 "의뢰인") 와 컨설팅 회사인 <span style="font-family: malgunbd">LEE KIM ALLIANCE PTE. LTD. (UEN: 200908319R)</strong>
     (이하&quot;대행사&quot;) 는 다음과 같이 법인 설립 및 유지 비용에 대한 계약을 체결한다.
   </div>
@@ -81,19 +81,19 @@
     <div style="line-height: 25px; text-align: center">{{ "now"|date('Y') }}년 {{ "now"|date('m') }}월 {{ "now"|date('d') }}일</div>
   </div>
 </div>
-<h4 style="font-family: malgunbd">{{ datas.title }} {{ datas.field_company_type }}</h4>
+<h4 style="font-family: malgunbd">{{ app.company_name }} {{ app.company_type }}</h4>
 <div></div>
 <div></div>
 <table border="0" cellpadding=0 cellspacing=0 width="98%" align="left">
   <tr><td colspan="3" style="height:20px;"></td></tr>
-  {% for director in datas.directors %}
+  {% for officer in app.officers_directors %}
     {% if loop.index % 2 == 1 %}
       <tr>
       <td style="width:40%; text-align:left;font-size:12px;">
         <div>
-        <span style="color: white; font-size: 1px">_____________________________________________________________________{{ director.signature }}</span>
-        <hr><b style="font-family: malgunbd">{{ director.full_name }}</b> <br/>
-        {{director.field_position}}
+        <span style="color: white; font-size: 1px">_____________________________________________________________________{{ officer.signature }}</span>
+        <hr><b style="font-family: malgunbd">{{ officer.full_name }}</b> <br/>
+        {{officer.designation}}
 
           <br/><br/>
           <br/><br/>
@@ -103,9 +103,9 @@
     {% else %}
       <td style="width:40%; text-align:left;font-size:12px;">
         <div>
-        <span style="color: white; font-size: 1px">_____________________________________________________________________{{ director.signature }}</span>
-        <hr><b style="font-family: malgunbd">{{ director.full_name }}</b> <br/>
-        {{director.field_position}}
+        <span style="color: white; font-size: 1px">_____________________________________________________________________{{ officer.signature }}</span>
+        <hr><b style="font-family: malgunbd">{{ officer.full_name }}</b> <br/>
+        {{officer.designation}}
 
           <br/><br/>
           <br/><br/>
