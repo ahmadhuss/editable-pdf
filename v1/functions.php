@@ -376,7 +376,7 @@ function constitutionLimitedByGuaranteePdf($html_template, $pdf_name)
     $helvetica = TCPDF_FONTS::addTTFfont(getcwd() . '/../Helvetica.ttf', 'TrueTypeUnicode', '', 32);
 
 
-    $tcpdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+    $tcpdf = new PDF020(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, TRUE, 'UTF-8', FALSE);
 
     $tcpdf->setPrintHeader(true);
     $tcpdf->setPrintFooter(false);
@@ -549,6 +549,8 @@ function formCompanyParticularPdf($html_content, $pdf_name, $output_type = 'I')
     $tcpdf->SetAutoPageBreak(true, PDF_MARGIN_BOTTOM);
     $tcpdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
+    $author_name = '';
+    $subject_suffix = '';
     $tcpdf->SetCreator($author_name);
     $tcpdf->SetAuthor($author_name);
     $title = "FORM OF PARTICULARS-" . $subject_suffix;
@@ -838,7 +840,7 @@ function form45BPdf($html_content, $pdf_name, $output_type = 'I')
     $tcpdf->Ln();
     $tcpdf->lastPage();
 
-   // $full_name = str_replace(' ', '_', $full_name);
+    // $full_name = str_replace(' ', '_', $full_name);
 
     // $filename = '08_FORM_45B-' . $full_name . '.pdf';
 
@@ -898,7 +900,7 @@ function certificateForSHolderCSealPdf($html_content, $pdf_name, $output_type = 
     $tcpdf->SetLineStyle(['width' => 1, 'color' => [0, 0, 0]]);
     $tcpdf->Rect(5, 5, $tcpdf->getPageWidth() - 10, $tcpdf->getPageHeight() - 10);
 
-   // $full_name = str_replace(' ', '_', $company->getTitle());
+    // $full_name = str_replace(' ', '_', $company->getTitle());
 
     // $filename = '09_Share_Certificate_' . $full_name . '.pdf';
 
@@ -920,7 +922,8 @@ function certificateForSHolderCSealPdf($html_content, $pdf_name, $output_type = 
 /**
  * 09-01.
  */
-function certificateForSHolderPdf($html_content, $pdf_name, $output_type = 'I') {
+function certificateForSHolderPdf($html_content, $pdf_name, $output_type = 'I')
+{
     // $html_template = [
     //   '#theme' => 'tcpdf_09_01_certification_for_shareholder',
     //   '#datas' => DocumentWrapper::certificationForShareholder($company, $officer),
@@ -3697,7 +3700,8 @@ function registerOfMembers($html, $pdf_name, $output_type = "I")
     return $tcpdf->Output($pdf_name, $output_type);
 }
 
-function serviceIndemnityAgreementSFA($html_content, $pdf_name, $output_type = 'I'){
+function serviceIndemnityAgreementSFA($html_content, $pdf_name, $output_type = 'I')
+{
 
 
     // $datas = DocumentWrapper::serviceIndemnityAgreementTrustDeed($company, $officer);
@@ -3756,6 +3760,7 @@ function serviceIndemnityAgreementSFA($html_content, $pdf_name, $output_type = '
 
     return $tcpdf->Output($pdf_name, $output_type);
 }
+
 // function serviceIndemnityAgreementSFA ($company, $id, $group_id, $type = NULL) {
 //   $datas = DocumentWrapper::serviceIndemnitySFA($company, $id);
 //   $template = 'tcpdf_05_service_fee_agreement';
