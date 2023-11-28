@@ -537,6 +537,40 @@ function formDirectorParticularPdf($html_template, $pdf_name, $author = 'Author'
 }
 
 
+function formShareholderParticularPdf($html_template, $pdf_name, $author = 'Author', $subject_suffix = '')
+{
+    // Load the Helvetica font from the specified path.
+    $helvetica = TCPDF_FONTS::addTTFfont(getcwd() . '/../Helvetica.ttf', 'TrueTypeUnicode', '', 32);
+
+    $tcpdf = new \TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, TRUE, 'UTF-8', FALSE);
+    $tcpdf->setPrintHeader(FALSE);
+    $tcpdf->setPrintFooter(FALSE);
+    $tcpdf->SetMargins(10, 10, 10);
+    $tcpdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+    $tcpdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+
+    $tcpdf->SetCreator($author);
+    $tcpdf->SetAuthor($author);
+    $title = "FORM OF PARTICULARS-" . $subject_suffix;
+    $tcpdf->SetTitle($title);
+    $tcpdf->SetSubject($title);
+    $tcpdf->SetKeywords($title);
+
+    $tcpdf->addPage();
+    $tcpdf->SetFont($helvetica, '', 10);
+    $tcpdf->writeHTML($html_template, TRUE, 0, TRUE, TRUE);
+    $tcpdf->Ln();
+    $tcpdf->lastPage();
+
+    // Replace spaces with underscores for the filename.
+    $subject_suffix = str_replace(' ', '_', $subject_suffix);
+    $filename = $pdf_name . '---' . $subject_suffix . '.pdf';
+
+    // Output the PDF by specified type: 'I' for inline, 'D' for download, 'F' for saving on the server, etc.
+    return $tcpdf->Output($filename, 'I'); // Change 'I' to the appropriate destination as needed.
+}
+
+
 function formCompanyParticularPdf($html_content, $pdf_name, $output_type = 'I')
 {
     // Load the Helvetica font from the specified path.
