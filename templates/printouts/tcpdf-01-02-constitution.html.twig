@@ -4,42 +4,53 @@
             THE COMPANIES ACT (CHAPTER 50)<br>
             A COMPANY LIMITED BY GUARANTEE<br>
             CONSTITUTION OF <br>
-            {{ datas.company_name }} {{ datas.field_company_type }}
+            {{ app.company_name }}
             <br>
         </td>
     </tr>
 </table>
 <br>
-<div>1. The name of the company is {{ datas.company_name }} {{ datas.field_company_type }}</div>
-<div>2. The registered office of the company is situated in the Republic of Singapore.</div>
+<div>1. The name of the company
+    is {{ app.company_name }}</div>
+<div>2. The registered office of the company is situated in the Republic of
+    Singapore.
+</div>
 <br>
 <table style="padding-left: 5px;">
     <tr style="font-size:11px">
         <td width="5%" height="17px"></td>
-        <td width="50%"><b>{{ datas.field_address_line_1 }}</b></td>
+        <td width="50%"><b>{{ app.addr_1 }}</b></td>
     </tr>
     <tr style="font-size:11px">
         <td width="5%" height="17px"></td>
-        <td width="50%"><b>{{ datas.field_address_line_2 }}</b></td>
+        <td width="50%"><b>{{ app.addr_2 }}</b></td>
     </tr>
     <tr style="font-size:11px">
         <td width="5%" height="17px"></td>
-        <td width="50%"><b> {{ datas.field_postcode }}</b></td>
+        <td width="50%"><b> {{ app.post_code }}</b></td>
     </tr>
 </table>
 <br>
 <div>3. The liability of the members is limited.</div>
-<div style="text-align: justify;">4. Each member of the company undertakes to contribute to the assets of the company in
-    the event of it being wound up while he or she is a member, or within one year after he or she ceases to be a
-    member, for payment of the debts and liabilities of the company contracted before he or she ceases to be a member,
-    and the costs, charges, and expenses of winding up and for the adjustment of the rights of the contributors among
-    themselves, such amount as may be required not exceeding the amounts shown in paragraph 6.
+<div style="text-align: justify;">4. Each member of the company undertakes to
+    contribute to the assets of the company in
+    the event of it being wound up while he or she is a member, or within one
+    year after he or she ceases to be a
+    member, for payment of the debts and liabilities of the company contracted
+    before he or she ceases to be a member,
+    and the costs, charges, and expenses of winding up and for the adjustment of
+    the rights of the contributors among
+    themselves, such amount as may be required not exceeding the amounts shown
+    in paragraph 6.
 </div>
-<div style="text-align: justify;">5. The number of members with which the company is applying to be registered
-    is {{ datas.shareholders|length }}
+<div style="text-align: justify;">5. The number of members with which the
+    company is applying to be registered
+    is {{ app.officers_shareholders|length }}
 </div>
-<div style="text-align: justify;">6. We, the persons whose names and occupations are set out in this Constitution,
-    desire to form a company in pursuance of this Constitution and we each agree to take the number of shares in the
+<div style="text-align: justify;">6. We, the persons whose names and occupations
+    are set out in this Constitution,
+    desire to form a company in pursuance of this Constitution and we each agree
+    to take the number of shares in the
     capital of the company set out against our respective names.
 </div>
 <br>
@@ -51,17 +62,18 @@
         <td width="20%"><u><b>Amount Guaranteed</b></u></td>
         <td width="20%"></td>
     </tr>
-    {% for key, value in datas.shareholders %}
+    {% for key, value in app.officers_shareholders %}
         <tr style="font-size:11px">
 
             <td><br><br><br><br></td>
             <td>{{ value.full_name }}</td>
-            <td></td>
-            <td style="text-align: right;">{{ value.field_shareholder_shares_allotte|number_format(0,'',',') }}</td>
+            <td>{{ value.designation }}</td>
+            <td style="text-align: right;">{{ value.share_details_json[0].shares_allotted|number_format(0,'',',') }}</td>
             <td width="20%"></td>
         </tr>
     {% endfor %}
 </table>
 
 <br><br>
-<div> Date this: {{ datas.field_company_effect_date|date("d/m/Y") }}</div>
+<div> Date
+    this: {% if app.effect_date %} {{ app.effect_date }} {% else %} {{ "now"|date("d/m/Y") }} {% endif %}</div>

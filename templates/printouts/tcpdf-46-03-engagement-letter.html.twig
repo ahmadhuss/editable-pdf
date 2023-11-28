@@ -10,10 +10,10 @@
 <br/>
 <br/>
 
-<span>{{ datas.company_name }} {{ datas.field_company_type }}</span><br/>
-<span>{{ datas.address }}</span><br/><br/>
+<span>{{ app.company_name }} </span><br/>
+<span>{{ app.addr_1 }}{{ app.addr_2 }}{{ app.postal_code }}</span><br/><br/>
 <span>Attention:&nbsp;
-  {%- for director in datas.directors %}
+  {%- for director in app.officers_directors %}
     {%- if loop.first -%}<span>{{- director.full_name -}}</span>
         {%- elseif loop.last -%}&nbsp;and&nbsp;<span>{{- director.full_name -}}</span>
         {%- else -%}, <span>{{- director.full_name -}}</span>
@@ -31,7 +31,7 @@
 <i>The objective and scope of the audit</i>
 <br/>
 <br/>
-<span>You have requested that we audit the financial statements of {{ datas.company_name }} {{ datas.field_company_type }} (the “Company”) which comprise the statement of financial position of the Company as at {{ datas.field_financial_year_end|date('d/m/Y') }} and the statement of profit or loss and other comprehensive income, statement of changes in equity and statement of cash flows for the year ended, and notes to the financial statements, including a summary of significant accounting policies. We are pleased to confirm our acceptance and our understanding of this audit engagement by means of this letter.</span>
+<span>You have requested that we audit the financial statements of {{ app.company_name }}  (the “Company”) which comprise the statement of financial position of the Company as at {{ app.financial_year_end|date('d/m/Y') }} and the statement of profit or loss and other comprehensive income, statement of changes in equity and statement of cash flows for the year ended, and notes to the financial statements, including a summary of significant accounting policies. We are pleased to confirm our acceptance and our understanding of this audit engagement by means of this letter.</span>
 <br/>
 <br/>
 <span>The objectives of our audit are to obtain reasonable assurance about whether the financial statements as a whole are free from material misstatement, whether due to fraud or error, and to issue an auditor’s report that includes our opinion. Reasonable assurance is a high level of assurance, but is not a guarantee that an audit conducted in accordance with Singapore Standards on Auditing (SSAs) will always detect a material misstatement when it exists. Misstatements can arise from fraud or error and are considered material if, individually or in the aggregate, they could reasonably be expected to influence the economic decisions of users taken on the basis of these financial statements.</span>
@@ -108,14 +108,14 @@
 <b>LEE KIM AUDIT PAC</b><br/>
 <br/>
 <br/>
-<span>Acknowledged and agreed on behalf of <b>{{ datas.company_name }} {{ datas.field_company_type }} by</b></span>
+<span>Acknowledged and agreed on behalf of <b>{{ app.company_name }}  by</b></span>
 <br>
 
 <table border="0" cellpadding=0 cellspacing=0 align="left">
   <tr>
     <td colspan="3" style="height:20px;"></td>
   </tr>
-  {% for officer in datas.directors %}
+  {% for officer in app.officers_directors %}
     {% if loop.index % 2 == 1 %}
       <tr>
       <td style="text-align:left;font-size:14px; line-height: 120%;">
@@ -125,7 +125,7 @@
         <br/>
         <b>{{ officer.full_name }}</b>
         <br/>
-        {{ officer.position_str }}
+        {{ officer.designation }}
       </td>
       <td width="140"></td>
     {% else %}
@@ -136,7 +136,7 @@
         <br/>
         <b>{{ officer.full_name }}</b>
         <br/>
-        {{ officer.position_str }}
+        {{ officer.designation }}
       </td>
       </tr>
     {% endif %}

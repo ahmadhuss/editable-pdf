@@ -1,9 +1,9 @@
 <html>
 <body>
 	<div style="width:100%; height:10px;"></div>
-	<h1 style="width:100%;text-align:center;">{{datas.title}} {{ datas.field_company_type }}</h1>
+	<h1 style="width:100%;text-align:center;">{{app.company_name}} </h1>
 	<div style="width:100%;text-align:center;font-size:14px;">
-	(Company Registration Number: {{ datas.field_application_id }})<br/>
+	(Company Registration Number: {{ app.uen }})<br/>
 	(Incorporated in the Republic of Singapore)
 	</div>
 
@@ -20,7 +20,7 @@
 	<div style="width:100%; height:5px;"></div>
 
 	<div style="width:100%;text-align:left;font-size:14px;">
-	Pursuant to the Articles of Association of the Company we, being all the directors of <b>{{datas.title}} {{ datas.field_company_type }}</b> (“the Company”), do hereby certify the following resolutions of the Board of Directors;
+	Pursuant to the Articles of Association of the Company we, being all the directors of <b>{{app.company_name}} </b> (“the Company”), do hereby certify the following resolutions of the Board of Directors;
 	</div>
 
 	</div>
@@ -35,7 +35,7 @@
 	<p dir="ltr" style="margin-left: 20px; margin-right: 0px">
 
 
-	  	RESOLVED that the financial year of the company be changed to <b>{{ datas.field_financial_year_end|date('t/m/Y') }}</b> and that the next financial year shall end at <b>{{ datas.field_financial_year_end_next_year|date('t/m/Y') }}</b>.<br/>
+	  	RESOLVED that the financial year of the company be changed to <b>{{ app.financial_year_end|date('t/m/Y') }}</b> and that the next financial year shall end at <b>{{ app.first_financial_year_end|date('t/m/Y') }}</b>.<br/>
 
 
   </p>
@@ -52,7 +52,7 @@
 
 	<table border="0" cellpadding=0 cellspacing=0 width="90%" align="center">
 		<tr><td colspan="3" style="height:20px;"></td></tr>
-		{% for director in datas.directors %}
+		{% for director in app.officers_directors %}
 			{% if loop.index % 2 == 1 %}
 				<tr>
 				<td style="width:40%; text-align:left;font-size:14px;">

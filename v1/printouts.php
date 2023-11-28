@@ -77,23 +77,23 @@ function generateDocument($group_id, $document_id, $data, $htmlContentPage, $pdf
             if ($doc_id == '1I1D') {
                 //   $officers = $node->get('field_director_shareholder')
                 //     ->referencedEntities();
-                $pdf = serviceIndemnityAgreementPdfTrustDeed($node, $officers[$docs_ids[2]], $type);
+                $pdf = serviceIndemnityAgreementPdfTrustDeed($htmlContentPage , $pdfFilename);
                 break;
             }
             if ($doc_id == '00') {
-                //   $officers = $node->get('field_director_shareholder')
+                //   $officers = $node->get('field_director_shareholder')$content
                 //     ->referencedEntities();
-                $pdf = serviceIndemnityAgreement1D2D($node, $officers[$docs_ids[2]], $type);
+                $pdf = serviceIndemnityAgreement1D2D($htmlContentPage , $pdfFilename);
                 break;
             }
             if ($doc_id == '1D1S') {
                 //   $officers = $node->get('field_director_shareholder')
                 //     ->referencedEntities();
-                $pdf = serviceIndemnityAgreement1D2S($node, $officers[$docs_ids[2]], $type);
+                $pdf = serviceIndemnityAgreement1D2S($htmlContentPage , $pdfFilename);
                 break;
             }
             if ($doc_id == 'SFA') {
-                $pdf = serviceIndemnityAgreementSFA($node, $docs_ids[2], $group_id, $type);
+                $pdf = serviceIndemnityAgreementSFA($htmlContentPage , $pdfFilename);
                 break;
             }
         case 6:
@@ -161,11 +161,11 @@ function generateDocument($group_id, $document_id, $data, $htmlContentPage, $pdf
             } elseif ($doc_id == '26') {
                 $pdf = certificateOfCorporateSealPdf($htmlContentPage , $pdfFilename);
             } elseif ($doc_id == '27') {
-                $pdf = changeOfRegisteredOfficeAddressPdf($node, $doc_id, $type);
+                $pdf = changeOfRegisteredOfficeAddressPdf($htmlContentPage , $pdfFilename);
             } elseif ($doc_id == '28') {
-                $pdf = changeOfRegisteredOfficeAddressPdf($node, $doc_id, $type);
+                $pdf = changeOfRegisteredOfficeAddressPdf($htmlContentPage , $pdfFilename);
             } elseif ($doc_id == '29') {
-                $pdf = changeOfRegisteredOfficeAddressPdf($node, $doc_id, $type);
+                $pdf = changeOfRegisteredOfficeAddressPdf($htmlContentPage , $pdfFilename);
             }
             break;
 
@@ -221,7 +221,7 @@ function generateDocument($group_id, $document_id, $data, $htmlContentPage, $pdf
             if ($group_id == '33' && $doc_id == '04') {
                 $pdf = agmPdf04($htmlContentPage , $pdfFilename);
             } else {
-                $pdf = agmPdf($node, $doc_id, $type);
+                $pdf = agmPdf($htmlContentPage , $pdfFilename);
             }
             break;
         case 34:

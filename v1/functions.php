@@ -376,7 +376,7 @@ function constitutionLimitedByGuaranteePdf($html_template, $pdf_name)
     $helvetica = TCPDF_FONTS::addTTFfont(getcwd() . '/../Helvetica.ttf', 'TrueTypeUnicode', '', 32);
 
 
-    $tcpdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+    $tcpdf = new PDF020(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, TRUE, 'UTF-8', FALSE);
 
     $tcpdf->setPrintHeader(true);
     $tcpdf->setPrintFooter(false);
@@ -537,6 +537,40 @@ function formDirectorParticularPdf($html_template, $pdf_name, $author = 'Author'
 }
 
 
+function formShareholderParticularPdf($html_template, $pdf_name, $author = 'Author', $subject_suffix = '')
+{
+    // Load the Helvetica font from the specified path.
+    $helvetica = TCPDF_FONTS::addTTFfont(getcwd() . '/../Helvetica.ttf', 'TrueTypeUnicode', '', 32);
+
+    $tcpdf = new \TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, TRUE, 'UTF-8', FALSE);
+    $tcpdf->setPrintHeader(FALSE);
+    $tcpdf->setPrintFooter(FALSE);
+    $tcpdf->SetMargins(10, 10, 10);
+    $tcpdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+    $tcpdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+
+    $tcpdf->SetCreator($author);
+    $tcpdf->SetAuthor($author);
+    $title = "FORM OF PARTICULARS-" . $subject_suffix;
+    $tcpdf->SetTitle($title);
+    $tcpdf->SetSubject($title);
+    $tcpdf->SetKeywords($title);
+
+    $tcpdf->addPage();
+    $tcpdf->SetFont($helvetica, '', 10);
+    $tcpdf->writeHTML($html_template, TRUE, 0, TRUE, TRUE);
+    $tcpdf->Ln();
+    $tcpdf->lastPage();
+
+    // Replace spaces with underscores for the filename.
+    $subject_suffix = str_replace(' ', '_', $subject_suffix);
+    $filename = $pdf_name . '---' . $subject_suffix . '.pdf';
+
+    // Output the PDF by specified type: 'I' for inline, 'D' for download, 'F' for saving on the server, etc.
+    return $tcpdf->Output($filename, 'I'); // Change 'I' to the appropriate destination as needed.
+}
+
+
 function formCompanyParticularPdf($html_content, $pdf_name, $output_type = 'I')
 {
     // Load the Helvetica font from the specified path.
@@ -549,6 +583,8 @@ function formCompanyParticularPdf($html_content, $pdf_name, $output_type = 'I')
     $tcpdf->SetAutoPageBreak(true, PDF_MARGIN_BOTTOM);
     $tcpdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
+    $author_name = '';
+    $subject_suffix = '';
     $tcpdf->SetCreator($author_name);
     $tcpdf->SetAuthor($author_name);
     $title = "FORM OF PARTICULARS-" . $subject_suffix;
@@ -838,7 +874,7 @@ function form45BPdf($html_content, $pdf_name, $output_type = 'I')
     $tcpdf->Ln();
     $tcpdf->lastPage();
 
-   // $full_name = str_replace(' ', '_', $full_name);
+    // $full_name = str_replace(' ', '_', $full_name);
 
     // $filename = '08_FORM_45B-' . $full_name . '.pdf';
 
@@ -898,7 +934,7 @@ function certificateForSHolderCSealPdf($html_content, $pdf_name, $output_type = 
     $tcpdf->SetLineStyle(['width' => 1, 'color' => [0, 0, 0]]);
     $tcpdf->Rect(5, 5, $tcpdf->getPageWidth() - 10, $tcpdf->getPageHeight() - 10);
 
-   // $full_name = str_replace(' ', '_', $company->getTitle());
+    // $full_name = str_replace(' ', '_', $company->getTitle());
 
     // $filename = '09_Share_Certificate_' . $full_name . '.pdf';
 
@@ -920,7 +956,8 @@ function certificateForSHolderCSealPdf($html_content, $pdf_name, $output_type = 
 /**
  * 09-01.
  */
-function certificateForSHolderPdf($html_content, $pdf_name, $output_type = 'I') {
+function certificateForSHolderPdf($html_content, $pdf_name, $output_type = 'I')
+{
     // $html_template = [
     //   '#theme' => 'tcpdf_09_01_certification_for_shareholder',
     //   '#datas' => DocumentWrapper::certificationForShareholder($company, $officer),
@@ -3693,6 +3730,67 @@ function registerOfMembers($html, $pdf_name, $output_type = "I")
     // Clean any content of the output buffer.
     // ob_end_clean();
     // $filename = "Register of Members";
+
+    return $tcpdf->Output($pdf_name, $output_type);
+}
+
+function serviceIndemnityAgreementSFA($html_content, $pdf_name, $output_type = 'I')
+{
+
+
+    // $datas = DocumentWrapper::serviceIndemnityAgreementTrustDeed($company, $officer);
+    // $html_template = [
+    //   '#theme' => 'tcpdf_05_trust_deed',
+    //   '#datas' => $datas,
+    // ];
+    // $html = $this->renderer->render($html_template);
+
+    $helvetica = TCPDF_FONTS::addTTFfont(getcwd() . '/../Helvetica.ttf', 'TrueTypeUnicode', '', 32);
+
+
+    $tcpdf = new \TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, TRUE, 'UTF-8', FALSE);
+
+    $tcpdf->setPrintHeader(FALSE);
+    $tcpdf->setPrintFooter(FALSE);
+
+    // Set default monospaced font.
+    $tcpdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+
+    // Set margins.
+    $tcpdf->SetMargins(10, 10, 10);
+
+    $tcpdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+    $tcpdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+
+    // $author = \Drupal::currentUser()->getAccountName();
+    // $full_name = $officer->get('field_full_name')->value;
+    // $tcpdf->SetCreator($author);
+    // $tcpdf->SetAuthor($author);
+    // $tcpdf->SetTitle("TRUST DEED - " . $full_name);
+    // $tcpdf->SetSubject("TRUST DEED - " . $full_name);
+    // $tcpdf->SetKeywords("TRUST DEED - " . $full_name);
+
+    $tcpdf->addPage();
+    $tcpdf->SetFont($helvetica, '', 10);
+    $tcpdf->writeHTML($html_content, TRUE, 0, TRUE, TRUE);
+    $tcpdf->Ln();
+    $tcpdf->lastPage();
+
+    // $full_name = str_replace(' ', '_', $full_name);
+
+    // $filename = '05_TRUST_DEED--' . $full_name . '.pdf';
+
+    // if (empty($type)) {
+    //   print $tcpdf->Output($filename, 'I');
+    // }
+    // else {
+    //   $data = [
+    //     'client' => array_merge($datas['shareholder']['client'], $datas['nominee']['client'], $datas['secretary']['client']),
+    //     'title' => '05_TRUST_DEED--' . $full_name,
+    //     'pdf_string' => $tcpdf->Output($filename, $type),
+    //   ];
+    //   return $data;
+    // }
 
     return $tcpdf->Output($pdf_name, $output_type);
 }

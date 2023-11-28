@@ -54,11 +54,11 @@
 <table border="0" width="100%" >
     <tr>
         <td class="tl" width="20%" line-height="1rem" height="20px" valign="absmiddle"><b> Name of Company : </b></td>
-        <td class="tl" width="80%" line-height="1rem" height="20px" valign="absmiddle" style="border-bottom: solid 1px #000000;"><b>{{ datas.company_name }} {{ datas.field_company_type }}</b></td>
+        <td class="tl" width="80%" line-height="1rem" height="20px" valign="absmiddle" style="border-bottom: solid 1px #000000;"><b>{{ app.company_name }} </b></td>
     </tr>
     <tr>
         <td class="tl" width="20%" height="20" align="left"><b> Company No : </b></td>
-        <td class="tl" width="80%" height="20" align="left" style="border-bottom: solid 1px #000000;"><b>{{ datas.field_application_id }}</b></td>
+        <td class="tl" width="80%" height="20" align="left" style="border-bottom: solid 1px #000000;"><b>{{ app.uen }}</b></td>
     </tr>
     <tr >
         <td width="96%" style="font-size:13px;">
@@ -84,22 +84,23 @@
 </table>
 <hr>
 <table border="1" width="100%">
+    {% for detail in app.capital_details %}
         <tr>
             <td class="tl" width="45%" height="18"> Number of shares </td>
 {#            total new share allot #}
-            <td class="tl" width="18%" height="18" align="center"> {{ datas.field_capital_detail.field_number_of_share|number_format(0,'',',') }} </td>
+            <td class="tl" width="18%" height="18" align="center"> {{ detail.no_issue_share |number_format(0,'',',') }} </td>
             <td class="tl" width="18%" height="18" align="center"> </td>
             <td class="tl" width="19%" height="18" align="center"> </td>
         </tr>
         <tr>
             <td class="tl" width="45%" height="18"> Nominal amount of each share </td>
-            <td class="tl" width="18%" height="18" align="center">{{ datas.field_capital_detail.field_currency }} {{ datas.field_capital_detail.field_each_share_price|number_format(0,'',',') }}</td>
+            <td class="tl" width="18%" height="18" align="center">{{ detail.capital_currency }} {{ detail.each_share_price|number_format(0,'',',') }}</td>
             <td class="tl" width="18%" height="18" align="center"></td>
             <td class="tl" width="19%" height="18" align="center"></td>
         </tr>
         <tr>
             <td class="tl" width="45%" height="18" width="45%" height="18"> Amount paid or due and payable on each share paid due and payable </td>
-            <td class="tl" width="18%" height="18" align="center"> {{ datas.field_capital_detail.field_currency }} </td>
+            <td class="tl" width="18%" height="18" align="center"> {{ detail.capital_currency  }} </td>
             <td class="tl" width="18%" height="18" align="center"> </td>
             <td class="tl" width="19%" height="18" align="center"> </td>
         </tr>
@@ -110,6 +111,7 @@
             <td class="tl" width="18%" height="18" align="center"> </td>
             <td class="tl" width="19%" height="18" align="center"> </td>
         </tr>
+    {% endfor %}
 </table>
 <br/>
 <br/>
@@ -129,19 +131,19 @@
 {#    dont know what value can use #}
     <tr>
         <td class="tl" width="45%" height="18"> Number of shares </td>
-        <td class="tl" width="18%" height="18" align="center"> {{ datas.field_capital_detail.field_currency }}</td>
+        <td class="tl" width="18%" height="18" align="center"> {{ detail.capital_currency }}</td>
         <td class="tl" width="18%" height="18" align="center"></td>
         <td class="tl" width="19%" height="18" align="center"></td>
     </tr>
     <tr>
         <td class="tl" width="45%" height="18"> Nominal amount of each share </td>
-        <td class="tl" width="18%" height="18" align="center"> {{ datas.field_capital_detail.field_currency }}</td>
+        <td class="tl" width="18%" height="18" align="center"> {{ detail.capital_currency }}</td>
         <td class="tl" width="18%" height="18" align="center"></td>
         <td class="tl" width="19%" height="18" align="center"></td>
     </tr>
     <tr>
         <td class="tl" width="45%" height="18"> Amount to be treated as paid on each share </td>
-        <td class="tl" width="18%" height="18" align="center"> {{ datas.field_capital_detail.field_currency }}</td>
+        <td class="tl" width="18%" height="18" align="center"> {{ detail.capital_currency }}</td>
         <td class="tl" width="18%" height="18" align="center"></td>
         <td class="tl" width="19%" height="18" align="center"></td>
     </tr>
@@ -192,11 +194,11 @@
             <table border="0" width="100%" height="300" align="left">
                 <tr>
                     <td class="tl" width="30%" height="25"><b> Name of Company : </b></td>
-                    <td class="tl" width="65%" height="25" style="border-bottom: solid 1px #000000;"><b>{{ datas.company_name }} {{ datas.field_company_type }}</b></td>
+                    <td class="tl" width="65%" height="25" style="border-bottom: solid 1px #000000;"><b>{{ app.company_name }}</b></td>
                 </tr>
                 <tr>
                     <td class="tl" width="30%" height="25" align="left"><b> Company No : </b></td>
-                    <td class="tl" width="65%" height="25" align="left" style="border-bottom: solid 1px #000000;"><b>{{ datas.field_application_id }}</b></td>
+                    <td class="tl" width="65%" height="25" align="left" style="border-bottom: solid 1px #000000;"><b>{{ app.uen }}</b></td>
                 </tr>
             </table>
 
@@ -238,14 +240,14 @@
 	        <br/>&nbsp;&nbsp;(e) No and class of shares allotted and consideration therefore / Date of allotment
 	        <br/>&nbsp;&nbsp;(f) &nbsp;Date of allotment
             <br/>
-            {% for key, value in datas.shareholders %}
+            {% for key, value in app.officers_shareholders %}
 
                     <br/>&nbsp;&nbsp;(a) Name: <b>{{ value.full_name }}</b>
-                    <br/>&nbsp;&nbsp;(b) Address: <b>{{ value.field_address_line_1 }} {{ value.field_address_line_2 }} {{ value.field_postal_code }}</b>
-                    <br/>&nbsp;&nbsp;(c) {{ value.field_id_type }}: <b>{{ value.field_id_no }}</b>
-                    <br/>&nbsp;&nbsp;(d) Nationality: <b>{{ value.field_nationality }}</b>
-                    <br/>&nbsp;&nbsp;(e) <b>{{ value.field_shareholder_shares_allotte|number_format(0,'',',') }} Ordinary Shares of {{ datas.field_capital_detail.field_currency}}{{ datas.field_capital_detail.field_each_share_price|number_format(0,'',',')}} each / the date of incorporation</b>
-                    <br/>&nbsp;&nbsp;(f) &nbsp;Date of Allotment: <b>{{ value.field_date_effect_of_allotmen|date('d/m/Y') }}</b>
+                    <br/>&nbsp;&nbsp;(b) Address: <b>{{ value.address_1 }} {{ value.address_2 }} {{ value.postal_code }}</b>
+                    <br/>&nbsp;&nbsp;(c) {{ value.id_type }}: <b>{{ value.id_number }}</b>
+                    <br/>&nbsp;&nbsp;(d) Nationality: <b>{{ value.nationality }}</b>
+                    <br/>&nbsp;&nbsp;(e) <b>{{ value.shares_allotted|number_format(0,'',',') }} Ordinary Shares of {{ value.currency}}{{ value.price_of_each_share|number_format(0,'',',')}} each / the date of incorporation</b>
+                    <br/>&nbsp;&nbsp;(f) &nbsp;Date of Allotment: <b>{{ value.date_of_allotment|date('d/m/Y') }}</b>
 
             {% endfor %}
 	        <br/>
@@ -266,11 +268,11 @@
             <table border="0" width="100%" align="left">
                 <tr>
                     <td class="tl" width="30%" height="25"><b> Name of Company : </b></td>
-                    <td class="tl" width="65%" height="25" style="border-bottom: solid 1px #000000;"><b>{{ datas.company_name }} {{ datas.field_company_type }}</b></td>
+                    <td class="tl" width="65%" height="25" style="border-bottom: solid 1px #000000;"><b>{{ app.company_name }} </b></td>
                 </tr>
                 <tr>
                     <td class="tl" width="30%" height="25" align="left"><b> Company No : </b></td>
-                    <td class="tl" width="65%" height="25" align="left" style="border-bottom: solid 1px #000000;"><b>{{ datas.field_application_id }}</b></td>
+                    <td class="tl" width="65%" height="25" align="left" style="border-bottom: solid 1px #000000;"><b>{{ app.uen }}</b></td>
                 </tr>
             </table>
 
@@ -310,19 +312,22 @@
 </table>
 <hr>
 <table border="1" width="100%">
+    {% for detail in app.capital_details %}
+
     <tr>
 {#        total share capital after allot#}
-        <td class="tl" width="45%" height="30"> Issued Share Capital <br>  <b>( {{ datas.min_shares_allotte|number_format(0,'',',') }} Ordinary Share of {{ datas.field_capital_detail.field_currency}}{{ datas.field_capital_detail.field_each_share_price|number_format(0,'',',')}} each )</b><br></td>
-        <td class="tl" width="18%" height="30" align="center"><br><br> {{ datas.field_capital_detail.field_currency}}{{ datas.field_capital_detail.field_each_share_price|number_format(0,'',',')}} </td>
+        <td class="tl" width="45%" height="30"> Issued Share Capital <br>  <b>( {{ detail.min_shares_allotte|number_format(0,'',',') }} Ordinary Share of {{ detail.capital_currency}}{{ detail.each_share_price|number_format(0,'',',')}} each )</b><br></td>
+        <td class="tl" width="18%" height="30" align="center"><br><br> {{ detail.capital_currency}}{{ detail.each_share_price|number_format(0,'',',')}} </td>
         <td class="tl" width="18%" height="30" align="center"><br><br>  </td>
         <td class="tl" width="19%" height="30" align="center"><br><br>  </td>
     </tr>
     <tr>
-        <td class="tl" width="45%" height="30"> Paid-up Share Capital <br>   Ordinary Share of {{ datas.field_capital_detail.field_currency}}  each <br></td>
-        <td class="tl" width="18%" height="30" align="center"><br><br> {{ datas.field_capital_detail.field_currency}} </td>
+        <td class="tl" width="45%" height="30"> Paid-up Share Capital <br>   Ordinary Share of {{ detail.capital_currency}}  each <br></td>
+        <td class="tl" width="18%" height="30" align="center"><br><br> {{ detail.capital_currency}} </td>
         <td class="tl" width="18%" height="30" align="center"><br><br>  </td>
         <td class="tl" width="19%" height="30" align="center"><br><br>  </td>
     </tr>
+    {% endfor %}
 </table>
 <br/>
 <br/>
@@ -364,7 +369,7 @@
 <br/>
 
 <table border="0" width="100%">
-    {% for key,value in datas.directors %}
+    {% for key,value in app.officers_directors %}
 
                 <tr style="border: 1px solid #ddd;">
                     <td class="tl" width="50%" height="20" align="right">  Signature:  </td>
@@ -375,7 +380,7 @@
                 </tr>
                 <tr><td colspan="3" height="5"></td></tr>
                 <tr style="padding-bottom: 0" >
-                    <td class="tl" width="50%" height="20" align="right" rowspan="2" >Name of {{ value.field_position }}:</td>
+                    <td class="tl" width="50%" height="20" align="right" rowspan="2" >Name of {{ value.designation }}:</td>
                     <td class="tl" width="2px" height="20"></td>
                     <td class="tl" width="50%" height="20" align="left"  style="border-bottom: solid 1px #000000; padding-bottom: 0">&nbsp;&nbsp;<b>{{ value.full_name }}</b></td>
                 </tr>
