@@ -37,13 +37,13 @@
 <table border="0" width="100%">
   <tr>
     <td class="tl" width="24%" height="20" valign="absmiddle"><b> Name of Company : </b></td>
-    <td class="tl" width="76%" height="20" valign="absmiddle" style="border-bottom: solid 1px #000000;"><b>{{ datas.company_name }} {{ datas.field_company_type }}</b>
+    <td class="tl" width="76%" height="20" valign="absmiddle" style="border-bottom: solid 1px #000000;"><b>{{ app.company_name }} </b>
     </td>
   </tr>
   <tr><td height="5"></td></tr>
   <tr>
     <td class="tl" width="24%" height="20" align="left"><b> Company No : </b></td>
-    <td class="tl" width="76%" height="20" align="left" style="border-bottom: solid 1px #000000;"><b>{{ datas.field_application_id }}</b></td>
+    <td class="tl" width="76%" height="20" align="left" style="border-bottom: solid 1px #000000;"><b>{{ app.uen }}</b></td>
   </tr>
 </table>
 <div style="font-size: 13px; line-height: 18px">
@@ -129,7 +129,7 @@
     <tr>
         <td width="20"></td>
         <td width="90%" style="font-size:13px;">
-            <img src="/themes/custom/zurblk/images/pdf/2016-04-05-01.PNG">
+            <img src="../public/assets/printouts/04_form45.jpg">
         </td>
     </tr>
 </table>
@@ -140,7 +140,7 @@
         <td class="tl" width="5%" height="20" valign="absmiddle"> &nbsp;</td>
         <td class="tl" width="15%" height="20" valign="absmiddle">Name:</td>
         <td class="tl" width="80%" height="20" valign="absmiddle" style="border-bottom: solid 1px #000000;">
-            {{ datas.officer.field_full_name }}
+            {{ officer.full_name }}
         </td>
     </tr>
     <tr>
@@ -150,7 +150,7 @@
         <td class="tl" width="5%"  height="20" valign="absmiddle"> &nbsp;</td>
         <td class="tl" width="15%" height="20" valign="absmiddle">Address:</td>
         <td class="tl" width="80%" height="20" valign="absmiddle" style="border-bottom: solid 1px #000000;">
-            {{ datas.officer.field_address_line_1 }}
+            {{ officer.address_1 }}
         </td>
     </tr>
     <tr>
@@ -160,7 +160,7 @@
         <td class="tl" width="5%"  height="20" valign="absmiddle"> &nbsp;</td>
         <td class="tl" width="15%" height="20" valign="absmiddle"></td>
         <td class="tl" width="80%" height="20" valign="absmiddle" style="border-bottom: solid 1px #000000;">
-            {{ datas.officer.field_address_line_2 }} {{ datas.officer.field_postal_code }}
+            {{ officer.address_2 }} {{ officer.postal_code }}
         </td>
     </tr>
     <tr>
@@ -171,10 +171,10 @@
 <table border="0" width="100%" align="left" style="font-size: 13px">
     <tr>
         <td class="tl" width="5%" height="20"> &nbsp;</td>
-        <td class="tl" width="15%" height="20" align="left"> {{ datas.officer.field_id_type }}</td>
-        <td class="tl" width="20%" align="center" style="border-bottom: solid 1px #000000;">{{ datas.officer.field_id_no }}</td>
+        <td class="tl" width="15%" height="20" align="left"> {{ officer.id_type|title }}</td>
+        <td class="tl" width="20%" align="center" style="border-bottom: solid 1px #000000;">{{ officer.id_number }}</td>
         <td class="tl" width="15%" align="center">Nationality:</td>
-        <td class="tl" width="45%" style="border-bottom: solid 1px #000000;">{{ datas.officer.field_nationality }}</td>
+        <td class="tl" width="45%" style="border-bottom: solid 1px #000000;">{{ officer.nationality }}</td>
     </tr>
     <tr>
         <td colspan="5" height="30"></td>
@@ -184,7 +184,7 @@
     <tr>
         <td class="tl" width="5%" height="30" valign="absmiddle"> &nbsp;</td>
         <td class="tl" width="50%" height="30" align="left"> &nbsp;</td>
-        <td class="tl" width="45%" height="30" align="left"> Signature ______<span style="color: white; font-size: 0.1px">{{ datas.signature }}</span>____________________</td>
+        <td class="tl" width="45%" height="30" align="left"> Signature ______<span style="color: white; font-size: 0.1px">{{ officer.signature }}</span>____________________</td>
     </tr>
     <tr>
         <td class="tl" width="5%" height="30" valign="absmiddle"> &nbsp;</td>
