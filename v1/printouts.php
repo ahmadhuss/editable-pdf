@@ -255,7 +255,7 @@ function generateDocument($group_id, $document_id, $data, $htmlContentPage, $pdf
             // $officers = $node->get('field_director_shareholder')
             //   ->referencedEntities();
             if ($doc_id == '00') {
-                $pdf = changeOfDirectors($node, $officers[$docs_ids[2]], $type);
+                $pdf = changeOfDirectors($htmlContentPage, $pdfFilename);
             } elseif ($doc_id == '01') {
                 $pdf = drChangeOfDirectors($htmlContentPage , $pdfFilename);
             } elseif ($doc_id == '02') {

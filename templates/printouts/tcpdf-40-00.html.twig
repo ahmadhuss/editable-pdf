@@ -14,8 +14,8 @@
     <td width="100%" style="font-size:14px;font-weight:bold; text-align:justify;" colspan="2"><br/>
       In consideration of TAN KUAN HUI (NRIC No.: S1853117H) of 483 RIVER VALLEY ROAD #13-08
       VALLEY PARK SINGAPORE (248368) ('the Local Director') agreeing at my/our request to act as a Director
-      of {{ datas.title }} {{ datas.field_company_type }} ('the Company')
-      of {{ datas.field_address_line_1 }} {{ datas.field_address_line_2 }} {{ datas.field_postal_code }}
+      of {{ app.company_name }} ('the Company')
+      of {{ app.addr_1 }} {{ app.addr_2 }} {{ app.postcode }}
 
       {% if datas.shareholder.field_id_type_key == 2563 %}
         We,
@@ -23,9 +23,9 @@
         I,
       {% endif %}
 
-      {{ datas.shareholder.full_name }} ("{{ datas.shareholder.field_id_type }}: {{ datas.shareholder.field_id_no }}") ('The Principal')
+      {{ officer.full_name }} ("{{ officer.id_type|upper }}: {{ officer.id_number|upper }}") ('The Principal')
       of
-      {{ datas.shareholder.field_address_line_1 }} {{ datas.shareholder.field_address_line_2 }} {{ datas.shareholder.field_postal_code }}
+      {{ officer.address_1 }} {{ officer.address_2 }} {{ officer.postal_code }}
       hereby agree as follows:-
       <br/>
     </td>
@@ -121,28 +121,28 @@
   </tr>
   <tr>
     <td class="tl" width="50%" height="30" align="right"> SIGNED by the said:</td>
-    <td class="tl" width="50%" height="30" align="left">_________________<span style="color: white; font-size: 0.01px">{{ datas.shareholder.signature }}</span>______________________________</td>
+    <td class="tl" width="50%" height="30" align="left">_________________<span style="color: white; font-size: 0.01px">{{ officer.signature }}</span>______________________________</td>
   </tr>
   <tr>
     <td colspan="2" height="20"></td>
   </tr>
   <tr>
     <td class="tl" width="50%" height="30" align="right"> The Principal:</td>
-    <td class="tl" width="50%" height="30" align="center"> {{ datas.shareholder.full_name }} <hr></td>
+    <td class="tl" width="50%" height="30" align="center"> {{ officer.full_name }} <hr></td>
   </tr>
   <tr>
     <td colspan="2" height="20"></td>
   </tr>
   <tr>
     <td class="tl" width="50%" height="30" align="right"> SIGNED by the said:</td>
-    <td class="tl" width="50%" height="30" align="left">_________________<span style="color: white; font-size: 0.01px">{{ datas.witness.signature }}</span>______________________________</td>
+    <td class="tl" width="50%" height="30" align="left">_________________<span style="color: white; font-size: 0.01px">{{ officer.signature }}</span>______________________________</td>
   </tr>
   <tr>
     <td colspan="2" height="20"></td>
   </tr>
   <tr>
     <td class="tl" width="50%" height="30" align="right"> The Witness:</td>
-    <td class="tl" width="50%" height="30" align="center"> {{ datas.witness.full_name }} <hr></td>
+    <td class="tl" width="50%" height="30" align="center"> {{ officer.signature }} <hr></td>
   </tr>
 </table>
 </body>

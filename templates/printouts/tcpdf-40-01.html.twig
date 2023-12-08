@@ -4,10 +4,10 @@
 
 </style>
 
-<h1 style="width:100%;text-align:center;">{{ datas.title }} {{ datas.field_company_type }}</h1>
+<h1 style="width:100%;text-align:center;">{{ app.company_name }}</h1>
 <div style="width:100%;text-align:center;font-size:14px;">
   (Incorporated in the Republic of Singapore)<br/>
-  (Company Registration NO.: {{ datas.field_application_id }})<br/>
+  (Company Registration NO.: {{ app.uen }})<br/>
   (the “Company”)
 </div>
 <div style="width:100%;text-align:center;font-size:14px; font-weight: bold">
@@ -74,22 +74,22 @@
   <tr>
     <td colspan="3" style="height:20px;"></td>
   </tr>
-  {% for officer in datas.directors %}
+  {% for officer in app.officers_directors %}
     {% if loop.index % 2 == 1 %}
       <tr>
       <td style="text-align:left;font-size:14px; line-height: 120%;">____<span style="color: white; font-size: 0.01px">{{ officer.signature }}</span>___________________
         <br/>
-        <b>{{ officer.field_full_name }}</b>
+        <b>{{ officer.full_name }}</b>
         <br/>
-        {{ officer.field_position_director }}
+        {{ officer.designation|title }}
         <br/><br/>
       </td>
       <td width="140"></td>
     {% else %}
       <td style="text-align:left;font-size:14px; line-height: 120%;">____<span style="color: black; font-size: 0.01px">{{ officer.signature }}</span>___________________
-        <br/><b>{{ officer.field_full_name }}</b>
+        <br/><b>{{ officer.full_name }}</b>
         <br/>
-        {{ officer.field_position_director }}
+        {{ officer.designation|title }}
         <br/><br/>
       </td>
       </tr>
