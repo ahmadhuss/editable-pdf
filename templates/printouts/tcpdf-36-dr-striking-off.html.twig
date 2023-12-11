@@ -1,9 +1,9 @@
 <html>
 <body>
 <div style="width:100%; height:10px;"></div>
-<h1 style="width:100%;text-align:center;">{{datas.title}} {{ datas.field_company_type }}</h1>
+<h1 style="width:100%;text-align:center;">{{app.company_name}}</h1>
 <div style="width:100%;text-align:center;font-size:14px;">
-  (Unique Entity Number: {{ datas.field_application_id }})<br/>
+  (Unique Entity Number: {{ app.uen }})<br/>
   (Incorporated in the Republic of Singapore)<br/>(the “Company”)
 </div>
 <div style="width:100%; height:5px;"></div>
@@ -39,7 +39,7 @@
 <br/>
 <table border="0" cellpadding=0 cellspacing=0 width="98%" align="left">
   <tr><td colspan="3" style="height:20px;"></td></tr>
-  {% for director in datas.directors %}
+  {% for director in app.officers_directors %}
     {% if loop.index % 2 == 1 %}
       <tr>
       <td style="width:40%; text-align:left;font-size:14px;">
@@ -72,9 +72,9 @@
 </table>
 <br pagebreak="true" />
 <div style="width:100%; height:10px;"></div>
-<h1 style="width:100%;text-align:center;">{{datas.title}} {{ datas.field_company_type }}</h1>
+<h1 style="width:100%;text-align:center;">{{app.company_name}}</h1>
 <div style="width:100%;text-align:center;font-size:14px;">
-  UEN: {{ datas.field_application_id }})<br/>
+  UEN: {{ app.uen }})<br/>
 </div>
 <div style="width:100%; height:5px;"></div>
 <div style="width:100%;text-align:center;font-size:14px;font-weight:bold;">MEMBERS CONSENT</div>
