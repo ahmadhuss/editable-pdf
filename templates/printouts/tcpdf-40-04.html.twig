@@ -10,20 +10,13 @@
   <br/>
   <div>The Directors and The Shareholders of</div>
 
-
-  <p><strong>{{ app.company_name }} {{ app.company_type }}</strong><br/>
-    {{ app.address_1}}<br/>
-    {% if app.address_1%}
-    {{ app.address_1 }}<br/>
-    {% endif %}
-    {{ app.address_2 }}<br/> 
-    {{ app.address_2 }} ({{ app.postal_code }})</p>
-
-
-
+  <p><strong>{{ app.company_name }}</strong><br/>
+    {{ app.addr_1 }}<br/>
+    {{ app.addr_2  }}<br/>
+    ({{ app.postcode }})</p>
 
   <br/>
-  <div>Dear Sir</div>
+  <div>Dear Sirs</div>
   <br/>
 
   <div style="font-weight: bold">RESIGNATION AS A COMPANY DIRECTOR</div>
