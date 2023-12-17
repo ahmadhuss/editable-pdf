@@ -1,5 +1,5 @@
 <div>
-  <div style="line-height: 20px">고객인 <span style="font-family: malgunbd">{{ datas.title }} {{ datas.field_company_type }} (UEN: {{ datas.field_application_id }})</span> 
+  <div style="line-height: 20px">고객인 <span style="font-family: malgunbd">{{ app.company_name }} (UEN: {{ app.uen }})</span> 
     (이하 &quot;의뢰인&quot;) 와 컨설팅 회사인 <span style="font-family: malgunbd">LEE KIM ALLIANCE PTE. LTD. (UEN: 200908319R)</span> (이하
     &quot;대행사&quot;) 는 다음과 같이 법인 유지 비용에 대한 계약을 체결한다.
   </div>
@@ -56,15 +56,15 @@
   <div style="line-height: 20px; text-align: center">2021년 {{ "now"|date('m') }}월 {{ "now"|date('d') }}일</div>
 </div>
 <div></div>
-<h4 style="font-family: malgunbd">{{ datas.title }} {{ datas.field_company_type }}</h4>
+<h4 style="font-family: malgunbd">{{ app.company_name }}</h4>
 <div></div>
 <div></div>
 <div></div>
 <table border="0" cellpadding=0 cellspacing=0>
   <tr>
     <td style="width:40%; text-align:left;font-size:12px;">
-      <span style="color: white; font-size: 1px">______________________{{ datas.signature }}</span>
-      <hr><b style="font-family: malgunbd">{{ datas.full_name }}</b> <br/>Principal
+      <span style="color: white; font-size: 1px">______________________{{ app.signature }}</span>
+      <hr><b style="font-family: malgunbd">{{ app.full_name }}</b> <br/>Principal
       <br/><br/>
       <br/><br/>
     </td>

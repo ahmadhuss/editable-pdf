@@ -30,7 +30,7 @@
     </tr>
     <tr>
         <td class="tl" width="20%" height="20"> &nbsp;        </td>
-        <td class="tl" width="80%" height="20">{{ app.addr_2 or 0}} {{ app.postcode or 0 }} </td>
+        <td class="tl" width="80%" height="20">{{ app.addr_2 or 0}} {{ app.postcode }} </td>
     </tr>
 </table>
 <br/>
@@ -45,7 +45,7 @@
 <table border="0" width="100%">
     <tr style="border-top: solid 1px #000000;">
         <td height="40" align="left" style="padding:10px; font-size:15px; text-align: justify; ">
-            {% set nominal_total_amount = datas.officer.field_shareholder_shares_allotte * datas.capital_detail.field_each_share_price  %}
+            <!-- {% set nominal_total_amount = datas.officer.field_shareholder_shares_allotte * datas.capital_detail.field_each_share_price  %} -->
             &nbsp;&nbsp; I / (We) {{ officer.full_name }} hereby apply for and request you to allot  {{ officer.share_details_json.shares_allotted }} {{ officer.share_details_json.shares_class }} Share(s) in the {{ app.company_name }}, for which the sum of {{ officer.share_details_json.currency }} {{ officer.share_details_json.total_share_price }}  cash or cash equivalent is due and payable on allotment.
         </td>
     </tr>
@@ -89,7 +89,7 @@
         <td class="tl" width="20%" height="60" align="center"> <br><br>{{ officer.share_details_json.certificate_no }}</td>
         <td class="tl" width="50%" height="60" align="left"  > <br><br>{{ officer.full_name }} </td>
         <td class="tl" width="30%" height="60" align="center"> <br><br>
-          <span style="color: white; font-size: 1px">{{ datas.signature }}</span>
+          <span style="color: white; font-size: 1px">{{ app.signature }}</span>
           <hr>
         </td>
     </tr>
