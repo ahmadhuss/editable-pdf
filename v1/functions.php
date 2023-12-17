@@ -74,7 +74,7 @@ class PDFSFA extends \TCPDF
     // Custom page header
     public function Header()
     {
-        $font_name = \TCPDF_FONTS::addTTFfont(getcwd() . '/static/font/malgunbd.ttf', 'TrueTypeUnicode', '', 32);
+        $font_name = \TCPDF_FONTS::addTTFfont(getcwd() . '/../malgunbd.ttf', 'TrueTypeUnicode', '', 32);
         $this->SetFont($font_name, '', 10);
         $this->writeHTML($this->customHeaderText, false, true, false, true);
     }
@@ -3744,20 +3744,42 @@ function serviceIndemnityAgreementSFA($html_content, $pdf_name, $output_type = '
     //   '#datas' => $datas,
     // ];
     // $html = $this->renderer->render($html_template);
+    $id = '1st';
+    $title_name = '법인 설립 및 유지 비용 계약서';
 
-    $helvetica = TCPDF_FONTS::addTTFfont(getcwd() . '/../Helvetica.ttf', 'TrueTypeUnicode', '', 32);
+    $tcpdf = new PDFSFA(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, TRUE, 'UTF-8', FALSE);
 
 
-    $tcpdf = new \TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, TRUE, 'UTF-8', FALSE);
-
-    $tcpdf->setPrintHeader(FALSE);
-    $tcpdf->setPrintFooter(FALSE);
-
+    $tcpdf->setCustomHeaderText('
+     <style>
+       span {font-size: 11px;font-weight: normal;font-family: Arial, Helvetica, sans-serif;}
+     </style>
+     <table border="0" cellspacing="0" cellpadding="0">
+       <tr>
+         <td align="left"  style="width:50%;"><img src="../public/assets/printouts/korean_logo.png"></td>
+         <td align="right" style="width:50%;"><br><br>
+           <strong>LEE KIM ALLIANCE PTE. LTD.</strong><br>
+           <span>111 Somerset, #06-07L</span><br>
+           <span>111 Somerset, Singapore 238164</span><br>
+           <span>TEL: (65) 6633-5051 / FAX: (65) 6826-4170</span>
+         </td>
+       </tr>
+     </table>
+     <h1 style="width:100%;text-align:center;">'. $title_name .'</h1>
+   ');
     // Set default monospaced font.
     $tcpdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
 
     // Set margins.
-    $tcpdf->SetMargins(10, 10, 10);
+    // Set margins.
+    if (in_array($id, ['1st', '2st', '3st', '4st'])) {
+        $tcpdf->SetMargins(18, 50, 18);
+    } else {
+        $tcpdf->SetMargins(20, 50, 20);
+    }
+
+    $tcpdf->SetHeaderMargin(PDF_MARGIN_FOOTER);
+    $tcpdf->SetFooterMargin(PDF_MARGIN_FOOTER);
 
     $tcpdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
     $tcpdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
@@ -3771,7 +3793,8 @@ function serviceIndemnityAgreementSFA($html_content, $pdf_name, $output_type = '
     // $tcpdf->SetKeywords("TRUST DEED - " . $full_name);
 
     $tcpdf->addPage();
-    $tcpdf->SetFont($helvetica, '', 10);
+    $font_name = TCPDF_FONTS::addTTFfont(getcwd() . '/../malgun.ttf', 'TrueTypeUnicode', '', 32);
+    $tcpdf->SetFont($font_name, '', 9);
     $tcpdf->writeHTML($html_content, TRUE, 0, TRUE, TRUE);
     $tcpdf->Ln();
     $tcpdf->lastPage();
