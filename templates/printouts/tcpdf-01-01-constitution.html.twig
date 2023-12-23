@@ -24,7 +24,7 @@
         </tr>
         <tr style="font-size:11px">
             <td width="5%"></td>
-            <td width="50%"><b>{{ app.addr_1 }}</b></td>
+            <td width="50%"><b>{{ app.addr_2 }}</b></td>
         </tr>
         <tr style="font-size:11px">
             <td width="5%"></td>
@@ -45,9 +45,9 @@
     {% for detail in app.capital_details %}
         <tr style="font-size:11px;">
             <td width="5%"></td>
-            {% if detail.capital_currency != 'SGD' %}
+            {% if detail.capital_currency == 'USD' %}
                 <td style="text-align: center">
-                    <b>{{ detail.capital_currency }}</b></td>
+                    <b>UNITED STATES OF AMERICA DOLLARS (USD)</b></td>
             {% else %}
                 <td style="text-align: center"><b>SINGAPORE DOLLARS (SGD)</b>
                 </td>
