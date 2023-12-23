@@ -4,6 +4,8 @@ namespace Leekim;
 
 use TCPDF;
 use TCPDF_FONTS;
+use Twig\Environment;
+use Twig\Loader\FilesystemLoader;
 
 
 class PDF020 extends TCPDF
@@ -400,8 +402,19 @@ function constitutionLimitedByGuaranteePdf($html_template, $pdf_name)
     $tcpdf->writeHTML($html_template, true, 0, true, true);
     $tcpdf->Ln();
 
-    // Additional markup here if needed
-
+    // Add markup.
+    $tcpdf->addPage();
+    // Load Twig
+    $loader = new FilesystemLoader(__DIR__ . '/../templates/printouts/constitution'); // Adjust the path to your templates directory
+    $twig = new Environment($loader);
+    // Render the first Twig template to generate HTML content
+    $partialEnd = $twig->load('constitution-limited-by-guarantee.html.twig');
+    $markup = $partialEnd->render();
+    $tcpdf->setCellHeightRatio(1.7);
+    // 본문 글자 크기.
+    $tcpdf->SetFont('freeserif', '', 11);
+    $tcpdf->writeHTML($markup, TRUE, 0, TRUE, TRUE);
+    $tcpdf->Ln();
     $tcpdf->lastPage();
 
     // $company_name = str_replace(' ', '_', $company->getTitle());
@@ -3734,7 +3747,7 @@ function registerOfMembers($html, $pdf_name, $output_type = "I")
     return $tcpdf->Output($pdf_name, $output_type);
 }
 
-function serviceIndemnityAgreementSFA($html_content, $pdf_name, $output_type = 'I')
+function serviceIndemnityAgreementSFA($html_content, $pdf_name, $templateName, $output_type = 'I')
 {
 
 
@@ -3745,7 +3758,18 @@ function serviceIndemnityAgreementSFA($html_content, $pdf_name, $output_type = '
     // ];
     // $html = $this->renderer->render($html_template);
     $id = '1st';
-    $title_name = '법인 설립 및 유지 비용 계약서';
+    if (in_array($templateName,
+        ['tcpdf-05-service-fee-agreement.html.twig',
+        'tcpdf-05-service-fee-agreement-principal-03.html.twig',
+        'tcpdf-05-service-fee-agreement-principal.html.twig',
+        'tcpdf-05-service-fee-agreement-principal-04.html.twig'])
+    ) {
+        // For 2nd, 2nd/BlkChn, 2nd-Principal and 2nd-Principal/BlkChn documents
+        $title_name = '법인 유지 비용 계약서';
+    } else {
+        $title_name = '법인 설립 및 유지 비용 계약서';
+    }
+
 
     $tcpdf = new PDFSFA(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, TRUE, 'UTF-8', FALSE);
 
@@ -3756,7 +3780,7 @@ function serviceIndemnityAgreementSFA($html_content, $pdf_name, $output_type = '
      </style>
      <table border="0" cellspacing="0" cellpadding="0">
        <tr>
-         <td align="left"  style="width:50%;"><img src="../public/assets/printouts/korean_logo.png"></td>
+         <td align="left"  style="width:50%;"><img src="../public/assets/printouts/leekim-service.png"></td>
          <td align="right" style="width:50%;"><br><br>
            <strong>LEE KIM ALLIANCE PTE. LTD.</strong><br>
            <span>111 Somerset, #06-07L</span><br>
