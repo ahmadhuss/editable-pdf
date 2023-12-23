@@ -13,7 +13,7 @@ use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 
 
-function generateDocument($group_id, $document_id, $data, $htmlContentPage, $pdfFilename)
+function generateDocument($group_id, $document_id, $templateName, $data, $htmlContentPage, $pdfFilename)
 {
     // $docs_ids = explode("_", $document_id);
     // $group_id = $docs_ids[0];
@@ -93,7 +93,7 @@ function generateDocument($group_id, $document_id, $data, $htmlContentPage, $pdf
                 break;
             }
             if ($doc_id == 'SFA') {
-                $pdf = serviceIndemnityAgreementSFA($htmlContentPage , $pdfFilename);
+                $pdf = serviceIndemnityAgreementSFA($htmlContentPage , $pdfFilename, $templateName);
                 break;
             }
         case 6:
@@ -334,7 +334,7 @@ if ($request->isMethod('POST')) {
         $pdfFilename = getcwd() . '/output_' . time() . '.pdf';
 
 
-        generateDocument($groupId, $documentId, $data, $htmlContentPage, $pdfFilename);
+        generateDocument($groupId, $documentId, $templateName, $data, $htmlContentPage, $pdfFilename);
 
         // Create a BinaryFileResponse to send the PDF
         $response = new BinaryFileResponse($pdfFilename);
