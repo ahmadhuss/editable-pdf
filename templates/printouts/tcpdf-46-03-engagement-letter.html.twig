@@ -13,12 +13,12 @@
 <span>{{ app.company_name }} </span><br/>
 <span>{{ app.addr_1 }}{{ app.addr_2 }}{{ app.postal_code }}</span><br/><br/>
 <span>Attention:&nbsp;
-  {%- for director in app.officers_directors %}
-    {%- if loop.first -%}<span>{{- director.full_name -}}</span>
-        {%- elseif loop.last -%}&nbsp;and&nbsp;<span>{{- director.full_name -}}</span>
-        {%- else -%}, <span>{{- director.full_name -}}</span>
-    {%- endif -%}
-  {% endfor -%}
+  {% for director in app.officers_directors %}
+    {% if loop.first %}<span>{{ director.full_name }}</span>
+        {% elseif loop.last %}&nbsp;and&nbsp;<span>{{ director.full_name }}</span>
+        {% else %}, <span>{{ director.full_name }}</span>
+    {% endif %}
+  {% endfor %}
 </span>
 <br/>
 <br/>
