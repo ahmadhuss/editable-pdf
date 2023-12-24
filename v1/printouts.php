@@ -13,7 +13,7 @@ use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 
 
-function generateDocument($group_id, $document_id, $templateName, $data, $htmlContentPage, $pdfFilename)
+function generateDocument($group_id, $document_id, $data, $htmlContentPage, $pdfFilename)
 {
     // $docs_ids = explode("_", $document_id);
     // $group_id = $docs_ids[0];
@@ -93,7 +93,7 @@ function generateDocument($group_id, $document_id, $templateName, $data, $htmlCo
                 break;
             }
             if ($doc_id == 'SFA') {
-                $pdf = serviceIndemnityAgreementSFA($htmlContentPage , $pdfFilename, $templateName);
+                $pdf = serviceIndemnityAgreementSFA($htmlContentPage , $pdfFilename);
                 break;
             }
         case 6:
@@ -284,12 +284,12 @@ function generateDocument($group_id, $document_id, $templateName, $data, $htmlCo
             $pdf = registerOfMembers($htmlContentPage , $pdfFilename);
             break;
         case 46:
-            if ($doc_id == 1) {
-                $pdf = appointmentOfAuditors($htmlContentPage, $pdfFilename);
-            } elseif ($doc_id == '02') {
-                $pdf = consentToAct($htmlContentPage, $pdfFilename);
-            } elseif ($doc_id == '03') {
-                $pdf = engagementLetter($htmlContentPage, $pdfFilename);
+            if ($doc_id == 01) {
+                $pdf = appointmentOfAuditors($htmlContentPage , $pdfFilename);
+            } elseif ($doc_id == 02) {
+                $pdf = consentToAct($htmlContentPage , $pdfFilename);
+            } elseif ($doc_id == 03) {
+                $pdf = engagementLetter($htmlContentPage , $pdfFilename);
             }
             break;
     }
@@ -334,7 +334,7 @@ if ($request->isMethod('POST')) {
         $pdfFilename = getcwd() . '/output_' . time() . '.pdf';
 
 
-        generateDocument($groupId, $documentId, $templateName, $data, $htmlContentPage, $pdfFilename);
+        generateDocument($groupId, $documentId, $data, $htmlContentPage, $pdfFilename);
 
         // Create a BinaryFileResponse to send the PDF
         $response = new BinaryFileResponse($pdfFilename);
