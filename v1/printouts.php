@@ -284,12 +284,12 @@ function generateDocument($group_id, $document_id, $templateName, $data, $htmlCo
             $pdf = registerOfMembers($htmlContentPage , $pdfFilename);
             break;
         case 46:
-            if ($doc_id == 01) {
-                $pdf = appointmentOfAuditors($htmlContentPage , $pdfFilename);
-            } elseif ($doc_id == 02) {
-                $pdf = consentToAct($htmlContentPage , $pdfFilename);
-            } elseif ($doc_id == 03) {
-                $pdf = engagementLetter($htmlContentPage , $pdfFilename);
+            if ($doc_id == '01') {
+                $pdf = appointmentOfAuditors($htmlContentPage, $pdfFilename);
+            } elseif ($doc_id == '02') {
+                $pdf = consentToAct($htmlContentPage, $pdfFilename);
+            } elseif ($doc_id == '03') {
+                $pdf = engagementLetter($htmlContentPage, $pdfFilename);
             }
             break;
     }
