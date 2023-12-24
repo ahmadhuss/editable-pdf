@@ -3950,7 +3950,8 @@ function appointmentOfAuditors($html, $pdf_name, $output_type = "I")
       </style>
       <table border="0" cellspacing="0" cellpadding="0">
         <tr>
-          <td align="right" style="width:50%;"><br><br>
+        <td align="left"  style="width:50%;"></td>
+        <td align="right" style="width:50%;"><br><br>
             <strong>LEE KIM AUDIT PAC</strong><br>
             <span>111 Somerset, #06-01</span><br>
             <span>111 Somerset, Singapore 238164</span><br>
