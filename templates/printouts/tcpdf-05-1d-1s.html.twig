@@ -12,21 +12,21 @@
 <table border="0" width="100%">
   <tr>
     <td width="100%" style="font-size:14px;font-weight:bold; text-align:justify;" colspan="2"><br/>
-      In consideration of {{ datas.secretary.full_name }} ({{ datas.secretary.field_id_type }}: {{ datas.secretary.field_id_no }})
-      of {{ datas.secretary.field_address_line_1 }} {{ datas.secretary.field_address_line_2 }} {{ datas.secretary.field_postal_code }} ('the
+      In consideration of {{ app.secretary.full_name }} ({{ app.secretary.id_type }}: {{ app.secretary.id_no }})
+      of {{ app.secretary.address_line_1 }} {{ app.secretary.address_line_2 }} {{ app.secretary.postal_code }} ('the
       Local Director') agreeing at my/our request to act as a Director
-      of {{ datas.title }} {{ datas.field_company_type }} ('the Company')
-      of {{ datas.field_address_line_1 }} {{ datas.field_address_line_2 }} {{ datas.field_postal_code }}
+      of {{ app.title }} {{ app.company_type }} ('the Company')
+      of {{ app.address_line_1 }} {{ app.address_line_2 }} {{ app.postal_code }}
 
-      {% if datas.shareholder.field_id_type_key == 2563 %}
+      {% if app.shareholder.id_type_key == 2563 %}
         We,
       {% else %}
         I,
       {% endif %}
 
-      {{ datas.shareholder.full_name }} ("{{ datas.shareholder.field_id_type }}: {{ datas.shareholder.field_id_no }}") ('The Principal')
+      {{ app.shareholder.full_name }} ("{{ app.shareholder.id_type }}: {{ app.shareholder.id_no }}") ('The Principal')
       of
-      {{ datas.shareholder.field_address_line_1 }} {{ datas.shareholder.field_address_line_2 }} {{ datas.shareholder.field_postal_code }}
+      {{ app.shareholder.address_line_1 }} {{ app.shareholder.address_line_2 }} {{ app.shareholder.postal_code }}
       hereby agree as follows:-
       <br/>
     </td>
@@ -123,28 +123,28 @@
   </tr>
   <tr>
     <td class="tl" width="50%" height="30" align="right"> SIGNED by the said:</td>
-    <td class="tl" width="50%" height="30" align="left">_________________<span style="color: white; font-size: 0.1px">{{ datas.shareholder.signature }}</span>______________________________</td>
+    <td class="tl" width="50%" height="30" align="left">_________________<span style="color: white; font-size: 0.1px">{{ app.shareholder.signature }}</span>______________________________</td>
   </tr>
   <tr>
     <td colspan="2" height="20"></td>
   </tr>
   <tr>
     <td class="tl" width="50%" height="30" align="right"> The Principal:</td>
-    <td class="tl" width="50%" height="30" align="center"> {{ datas.shareholder.full_name }} <hr></td>
+    <td class="tl" width="50%" height="30" align="center"> {{ app.shareholder.full_name }} <hr></td>
   </tr>
   <tr>
     <td colspan="2" height="20"></td>
   </tr>
   <tr>
     <td class="tl" width="50%" height="30" align="right"> SIGNED by the said:</td>
-    <td class="tl" width="50%" height="30" align="left">_________________<span style="color: white; font-size: 0.1px">{{ datas.witness.signature }}</span>______________________________</td>
+    <td class="tl" width="50%" height="30" align="left">_________________<span style="color: white; font-size: 0.1px">{{ app.witness.signature }}</span>______________________________</td>
   </tr>
   <tr>
     <td colspan="2" height="20"></td>
   </tr>
   <tr>
     <td class="tl" width="50%" height="30" align="right"> The Witness:</td>
-    <td class="tl" width="50%" height="30" align="center"> {{ datas.witness.full_name }} <hr></td>
+    <td class="tl" width="50%" height="30" align="center"> {{ app.witness.full_name }} <hr></td>
   </tr>
 </table>
 </body>

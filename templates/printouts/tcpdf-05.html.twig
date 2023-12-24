@@ -10,22 +10,22 @@
   <tr>
     <td width="100%" style="font-size:14px;font-weight:bold; text-align:justify;" colspan="2">
       <br/>
-      {% set director = datas.directors|first %}
-      {% set shareholder = datas.shareholders|first %}
-      In consideration of {{ datas.secretary.full_name }} ("{{ datas.secretary.field_id_type }}
-      : {{ datas.secretary.field_id_no }}")
-      of {{ datas.secretary.field_address_line_1|upper }} {{ datas.secretary.field_address_line_2|upper }} {{ datas.secretary.field_postal_code }}
+      {% set director = app.officers_directors|first %}
+      {% set shareholder = app.officers_shareholders|first %}
+      In consideration of {{ app.secretary.full_name }} ("{{ app.secretary.id_type }}
+      : {{ app.secretary.id_no }}")
+      of {{ app.secretary.address_line_1|upper }} {{ app.secretary.address_line_2|upper }} {{ app.secretary.postal_code }}
       ('the Local Director')
-      agreeing at my/our request to act as a Director of {{ datas.title }} {{ datas.field_company_type }} ('the
-      Company') of {{ datas.field_address_line_1 }} {{ datas.field_address_line_2 }} {{ datas.field_postcode }}
-      {% if datas.director.field_id_type_key == 2563 %}
+      agreeing at my/our request to act as a Director of {{ app.title }} {{ app.company_type }} ('the
+      Company') of {{ app.address_line_1 }} {{ app.address_line_2 }} {{ app.postcode }}
+      {% if app.director.id_type_key == 2563 %}
         We,
       {% else %}
         I,
       {% endif %}
-      {{ datas.director.full_name }} ("{{ datas.director.field_id_type }}: {{ datas.director.field_id_no }}") ('The Principal')
+      {{ app.director.full_name }} ("{{ app.director.id_type }}: {{ app.director.id_no }}") ('The Principal')
       of
-      {{ datas.director.field_address_line_1 }} {{ datas.director.field_address_line_2 }} {{ datas.director.field_postal_code }}
+      {{ app.director.address_line_1 }} {{ app.director.address_line_2 }} {{ app.director.postal_code }}
       hereby agree as follows:-
       <br/>
     </td>
@@ -122,7 +122,7 @@
   </tr>
   <tr>
     <td class="tl" width="50%" height="30" align="right"> SIGNED by the said:</td>
-    <td class="tl" width="50%" height="30" align="left">_________________<span style="color: white; font-size: 0.1px">{{ datas.director.signature }}</span>______________________________
+    <td class="tl" width="50%" height="30" align="left">_________________<span style="color: white; font-size: 0.1px">{{ app.director.signature }}</span>______________________________
     </td>
   </tr>
   <tr>
@@ -130,14 +130,14 @@
   </tr>
   <tr>
     <td class="tl" width="50%" height="30" align="right"> The Principal:</td>
-    <td class="tl" width="50%" height="30" align="center">{{ datas.director.full_name }}<hr></td>
+    <td class="tl" width="50%" height="30" align="center">{{ app.director.full_name }}<hr></td>
   </tr>
   <tr>
     <td colspan="2" height="20"></td>
   </tr>
   <tr>
     <td class="tl" width="50%" height="30" align="right"> SIGNED by the said:</td>
-    <td class="tl" width="50%" height="30" align="left">_________________<span style="color: white; font-size: 0.1px">{{ datas.witness.signature }}</span>______________________________
+    <td class="tl" width="50%" height="30" align="left">_________________<span style="color: white; font-size: 0.1px">{{ app.witness.signature }}</span>______________________________
     </td>
   </tr>
   <tr>
@@ -145,7 +145,7 @@
   </tr>
   <tr>
     <td class="tl" width="50%" height="30" align="right"> The Witness:</td>
-    <td class="tl" width="50%" height="30" align="center"> {{ datas.witness.full_name }}<hr></td>
+    <td class="tl" width="50%" height="30" align="center"> {{ app.witness.full_name }}<hr></td>
   </tr>
 </table>
 </body>
