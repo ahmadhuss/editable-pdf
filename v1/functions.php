@@ -3930,7 +3930,7 @@ function serviceIndemnityAgreementSFA($html_content, $pdf_name, $output_type = '
 //    */
 function appointmentOfAuditors($html, $pdf_name, $output_type = "I")
 {
-    // $datas = DocumentWrapper::appointmentOfAuditors($company);
+    $datas = DocumentWrapper::appointmentOfAuditors($company);
     // $html_template = [
     //   '#theme' => 'tcpdf_46_01_appointment_of_auditors',
     //   '#datas' => $datas,
@@ -3944,28 +3944,28 @@ function appointmentOfAuditors($html, $pdf_name, $output_type = "I")
 
     $tcpdf = new PDFSFA(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, TRUE, 'UTF-8', FALSE);
 
-    // $companyTitleStr = $datas['company_name'] . ' ' . $datas['field_company_type'];
-    // $addressStr = $datas['address'] ? '<span>' . $datas['address'] . '</span><br>' : '';
-    // $address2Str = $datas['address_2'] ? '<span>' . $datas['address_2'] . '</span><br>' : '';
-    // $contactNoStr = $datas['contact_no'] ? '<span>TEL: ' . $datas['contact_no'] . '</span><br>' : '';
-    // $mailStr = $datas['mail'] ? '<span>Email: ' . $datas['mail'] . '</span><br>' : '';
-    // $tcpdf->setCustomHeaderText('
-    //   <style>
-    //     span {font-size: 11px;font-weight: normal;font-family: Arial, Helvetica, sans-serif;}
-    //   </style>
-    //   <table border="0" cellspacing="0" cellpadding="0">
-    //     <tr>
-    //       <td align="left"  style="width:50%;"></td>
-    //       <td align="right" style="width:50%;"><br><br>
-    //         <strong>' . $companyTitleStr . '</strong><br>
-    //         ' . $addressStr . '
-    //         ' . $address2Str . '
-    //         ' . $contactNoStr . '
-    //         ' . $mailStr . '
-    //       </td>
-    //     </tr>
-    //   </table>
-    // ');
+    $companyTitleStr = $datas['company_name'] . ' ' . $datas['company_type'];
+    $addressStr = $datas['addr_1'] ? '<span>' . $datas['addr_1'] . '</span><br>' : '';
+    $address2Str = $datas['addr_2'] ? '<span>' . $datas['addr_2'] . '</span><br>' : '';
+    $contactNoStr = $datas['contact_no'] ? '<span>TEL: ' . $datas['contact_no'] . '</span><br>' : '';
+    $mailStr = $datas['mail'] ? '<span>Email: ' . $datas['mail'] . '</span><br>' : '';
+    $tcpdf->setCustomHeaderText('
+      <style>
+        span {font-size: 11px;font-weight: normal;font-family: Arial, Helvetica, sans-serif;}
+      </style>
+      <table border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td align="left"  style="width:50%;"></td>
+          <td align="right" style="width:50%;"><br><br>
+            <strong>' . $companyTitleStr . '</strong><br>
+            ' . $addressStr . '
+            ' . $address2Str . '
+            ' . $contactNoStr . '
+            ' . $mailStr . '
+          </td>
+        </tr>
+      </table>
+    ');
 
     $tcpdf->SetHeaderMargin(PDF_MARGIN_FOOTER);
     $tcpdf->setPrintFooter(FALSE);
