@@ -3950,7 +3950,6 @@ function appointmentOfAuditors($html, $pdf_name, $output_type = "I")
       </style>
       <table border="0" cellspacing="0" cellpadding="0">
         <tr>
-          <td align="left"  style="width:50%;"><img src="/themes/custom/zurblk/img/pdf_logo.png"></td>
           <td align="right" style="width:50%;"><br><br>
             <strong>LEE KIM AUDIT PAC</strong><br>
             <span>111 Somerset, #06-01</span><br>
@@ -4050,7 +4049,7 @@ function consentToAct($html, $pdf_name, $output_type = "I")
       </style>
       <table border="0" cellspacing="0" cellpadding="0">
         <tr>
-          <td align="left"  style="width:50%;"><img src="/themes/custom/zurblk/img/pdf_logo.png"></td>
+          <td align="left"  style="width:50%;"><img src="../public/assets/printouts/korean_logo_official.png"></td>
           <td align="right" style="width:50%;"><br><br>
             <strong>LEE KIM AUDIT PAC</strong><br>
             <span>111 Somerset, #06-01</span><br>
