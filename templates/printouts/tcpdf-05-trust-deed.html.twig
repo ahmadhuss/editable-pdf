@@ -7,10 +7,10 @@
 
 <table border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td align="left" style="width:30%;"><img src="/themes/custom/zurblk/img/logo.png"
+    <td align="left" style="width:30%;"><img src="../public/assets/printouts/leekim-service.png"
                                              style="height:40px;"></td>
     <td align="right" style="width:70%;"><h1
-        style="font-size:20px;">{{ app.company_name }} {{ app.company_type }}</h1></td>
+        style="font-size:20px;">{{ app.company_name }}</h1></td>
   </tr>
 </table>
 <div style="width:100%; height:20px;"></div>
@@ -35,12 +35,13 @@
     <td width="20">&nbsp;</td>
     <td width="20">A.</td>
     <td width="90%" style="font-size:13px; text-align:justify;" colspan="2">
-      <br/><b>{{ app.nominee.full_name }}</b> ({{ app.nominee.id_type }}
-      {% if app.nominee.id_type_key != 2563 %}
+      <br/><b>{{ officer.full_name }}</b> ({{ officer.id_type }}
+      {# REGISTRATION_NO = 2563 #}
+      {% if officer.id_type != 'REGISTRATION NO.' %}
       No.:
       {% endif %}
-      <b>{{ app.nominee.id_no }}</b>) care of <b>{{ app.nominee.address_line_1 }}
-        {{ app.nominee.address_line_2 }} {{ app.nominee.postal_code }}</b> (hereinafter referred to as
+      <b>{{ officer.id_number }}</b>) care of <b>{{ officer.address_1 }}
+        {{ officer.address_2 }} {{ officer.postal_code }}</b> (hereinafter referred to as
       the "<b>Trustee</b>");
       <br/>
     </td>
@@ -54,12 +55,12 @@
     <td width="20">&nbsp;</td>
     <td width="20">B.</td>
     <td width="90%" style="font-size:13px; text-align:justify;" colspan="2">
-      <br/><b>{{ app.shareholder.full_name }}</b> ({{ app.shareholder.id_type }}
-      {% if app.shareholder.id_type_key != 2563 %}
+      <br/><b>{{ officer.full_name }}</b> ({{ officer.id_type }}
+      {% if officer.id_type != 'REGISTRATION NO.' %}
         No.:
       {% endif %}
-      <b>{{ app.shareholder.id_no }}</b>) of <b>{{ app.shareholder.address_line_1 }}
-        {{ app.shareholder.address_line_2 }} {{ app.shareholder.postal_code }}</b>
+      <b>{{ officer.id_number }}</b>) of <b>{{ officer.address_1 }}
+        {{ officer.address_2 }} {{ officer.postal_code }}</b>
       {#            <b>'.$Memo.'</b> #}
       (hereinafter referred to as the "Beneficiary");
       <br/>
@@ -101,16 +102,16 @@
     <td width="90%" style="font-size:13px; text-align:justify;" colspan="2">
       <br/>Interpretation,<br/><br/>
 
-      "Company" means <b>{{ app.company_name }} {{ app.company_type }}</b>, a company incorporated in
+      "Company" means <b>{{ app.company_name }}</b>, a company incorporated in
       Singapore with Company Registration No.
-      {% if app.application_id %}
-        <b>{{ app.application_id }}</b>
+      {% if app.uen %}
+        <b>{{ app.uen }}</b>
       {% else %}
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       {% endif %}
 
       and having its registered office at
-      <b>{{ app.address_line_1 }} {{ app.address_line_2 }} {{ app.postcode }}</b>.
+      <b>{{ app.addr_1 }} {{ app.addr_2 }} {{ app.postcode }}</b>.
       <br/><br/>
 
       "Trust Shares" means the <b>{{ app.capital_detail.number_of_share|number_format(0,'',',') }}</b> ordinary
@@ -381,14 +382,14 @@ IN WITNESS WHEREOF the parties have executed this Deed the day and year first ab
     <td class="tl" width="50%" height="20" align="left"></td>
   </tr>
   <tr>
-    <td class="tl" width="50%" height="20" align="left"> By <b>{{ app.nominee.full_name }}</b></td>
-    <td class="tl" width="50%" height="20" align="left">_________________<span style="color: white; font-size: 0.1px">{{ app.nominee.signature }}</span>______________________________</td>
+    <td class="tl" width="50%" height="20" align="left"> By <b>{{ officer.full_name }}</b></td>
+    <td class="tl" width="50%" height="20" align="left">_________________<span style="color: white; font-size: 0.1px">{{ officer.signature }}</span>______________________________</td>
   </tr>
 
   <tr><td colspan="2" height="20"></td></tr>
   <tr>
-    <td class="tl" width="50%" height="20" align="left"> In the presence of: <b>{{ app.secretary.full_name }}</b></td>
-    <td class="tl" width="50%" height="20" align="left">_________________<span style="color: white; font-size: 0.1px">{{ app.secretary.signature }}</span>______________________________</td>
+    <td class="tl" width="50%" height="20" align="left"> In the presence of: <b>{{ officer.full_name }}</b></td>
+    <td class="tl" width="50%" height="20" align="left">_________________<span style="color: white; font-size: 0.1px">{{ officer.signature }}</span>______________________________</td>
   </tr>
 
   <tr><td colspan="2" height="50"></td></tr>
@@ -398,12 +399,12 @@ IN WITNESS WHEREOF the parties have executed this Deed the day and year first ab
     <td class="tl" width="50%" height="20" align="left"></td>
   </tr>
   <tr>
-    <td class="tl" width="50%" height="20" align="left"> By <b>{{ app.shareholder.full_name }}</b></td>
-    <td class="tl" width="50%" height="20" align="left">_________________<span style="color: white; font-size: 0.1px">{{ app.shareholder.signature }}</span>______________________________</td>
+    <td class="tl" width="50%" height="20" align="left"> By <b>{{ officer.full_name }}</b></td>
+    <td class="tl" width="50%" height="20" align="left">_________________<span style="color: white; font-size: 0.1px">{{ officer.signature }}</span>______________________________</td>
   </tr>
   <tr><td colspan="2" height="20"></td></tr>
   <tr>
-    <td class="tl" width="50%" height="20" align="left"> In the presence of: <b>{{ app.secretary.full_name }}</b></td>
-    <td class="tl" width="50%" height="20" align="left">_________________<span style="color: white; font-size: 0.1px">{{ app.secretary.signature }}</span>______________________________</td>
+    <td class="tl" width="50%" height="20" align="left"> In the presence of: <b>{{ officer.full_name }}</b></td>
+    <td class="tl" width="50%" height="20" align="left">_________________<span style="color: white; font-size: 0.1px">{{ officer.signature }}</span>______________________________</td>
   </tr>
 </table>
