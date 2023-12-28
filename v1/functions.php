@@ -3758,6 +3758,7 @@ function serviceIndemnityAgreementSFA($html_content, $pdf_name, $templateName, $
     // ];
     // $html = $this->renderer->render($html_template);
     $id = '1st';
+    // It will help us to differentiate the text between documents
     if (in_array($templateName,
         ['tcpdf-05-service-fee-agreement.html.twig',
             'tcpdf-05-service-fee-agreement-principal-03.html.twig',
